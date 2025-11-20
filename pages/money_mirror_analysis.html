@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyMirror Analysis - GenZ Finance Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <script type="module" async
+        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fgenzfinan7345back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.10"></script>
+    <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+    <style>
+        /* Share Modal Animations */
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .bounce-in {
+            animation: bounceIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Micro celebration effect */
+        .micro-celebrate {
+            transition: all 0.2s ease;
+        }
+
+        .micro-celebrate:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-10 left-10 w-32 h-32 bg-primary-300 rounded-full blur-xl"></div>
+        <div class="absolute top-40 right-20 w-24 h-24 bg-secondary-300 rounded-full blur-lg"></div>
+        <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-accent-300 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-40 right-10 w-28 h-28 bg-primary-400 rounded-full blur-lg"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="relative z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex items-center">
+                        <div
+                            class="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl mr-3">
+                            <i class="fas fa-wallet text-white text-lg"></i>
+                        </div>
+                        <span class="text-xl font-bold text-gradient">GenZ Finance Hub</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="main_dashboard.html"
+                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-home mr-2"></i>Dashboard
+                    </a>
+                    <a href="money_mirror_analysis.html"
+                        class="bg-primary-100 text-primary-700 px-3 py-2 rounded-md text-sm font-medium">
+                        <i class="fas fa-mirror mr-2"></i>MoneyMirror
+                    </a>
+                    <a href="zero_budget_tracker.html"
+                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-piggy-bank mr-2"></i>ZeroBudget
+                    </a>
+                    <a href="subs_tracker_manager.html"
+                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-credit-card mr-2"></i>SubsTracker
+                    </a>
+                    <a href="investify_zero_game.html"
+                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-chart-line mr-2"></i>InvestifyZero
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-600 hover:text-primary-600 p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Profile -->
+                <div class="hidden md:flex items-center">
+                    <div class="relative">
+                        <button
+                            class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <img src="https://images.unsplash.com/photo-1719735903589-2012c168d128"
+                                alt="Profile picture" class="w-8 h-8 rounded-full"
+                                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                            <span class="ml-2 text-gray-700 font-medium" id="currentUserName">User Demo</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t border-gray-200/50">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="main_dashboard.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-home mr-2"></i>Dashboard
+                </a>
+                <a href="money_mirror_analysis.html"
+                    class="bg-primary-100 text-primary-700 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-mirror mr-2"></i>MoneyMirror
+                </a>
+                <a href="zero_budget_tracker.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-piggy-bank mr-2"></i>ZeroBudget
+                </a>
+                <a href="subs_tracker_manager.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-credit-card mr-2"></i>SubsTracker
+                </a>
+                <a href="investify_zero_game.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-chart-line mr-2"></i>InvestifyZero
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header -->
+        <div class="mb-8 fade-in">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-gradient mb-2">MoneyMirror Analysis 🪞</h1>
+                    <p class="text-text-secondary">Lacak mood harian dan analisis pola pengeluaran kamu</p>
+                </div>
+                <div class="hidden sm:flex items-center space-x-4">
+                    <div class="text-right">
+                        <p class="text-sm text-text-secondary">Total Pengeluaran Bulan Ini</p>
+                        <p class="text-2xl font-bold text-primary-600" id="totalExpenseMonth">Rp 0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="morphic-card p-6 slide-up">
+                <div class="flex items-center">
+                    <div class="p-3 bg-primary-100 rounded-xl">
+                        <i class="fas fa-smile text-primary-600 text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-text-secondary">Mood Hari Ini</p>
+                        <p class="text-xl font-bold text-primary-600" id="todayMood">😊 Senang</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="morphic-card p-6 slide-up" style="animation-delay: 100ms;">
+                <div class="flex items-center">
+                    <div class="p-3 bg-secondary-100 rounded-xl">
+                        <i class="fas fa-wallet text-secondary-600 text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-text-secondary">Pengeluaran Hari Ini</p>
+                        <p class="text-xl font-bold text-secondary-600" id="todayExpense">Rp 0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="morphic-card p-6 slide-up" style="animation-delay: 200ms;">
+                <div class="flex items-center">
+                    <div class="p-3 bg-accent-100 rounded-xl">
+                        <i class="fas fa-chart-trending-up text-accent-600 text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-text-secondary">Rata-rata Harian</p>
+                        <p class="text-xl font-bold text-accent-600" id="averageExpense">Rp 0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="morphic-card p-6 slide-up" style="animation-delay: 300ms;">
+                <div class="flex items-center">
+                    <div class="p-3 bg-success-100 rounded-xl">
+                        <i class="fas fa-target text-success-600 text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-text-secondary">Streak Tracking</p>
+                        <p class="text-xl font-bold text-success-600" id="trackingStreak">0 Hari</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mood & Expense Input Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Mood Tracker -->
+            <div class="morphic-card p-6 fade-in">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-heart text-secondary-500 mr-2"></i>
+                    Bagaimana mood kamu hari ini?
+                </h2>
+
+                <div class="grid grid-cols-5 gap-3 mb-6">
+                    <button
+                        class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
+                        data-mood="1" data-label="Sangat Sedih">
+                        <div class="text-3xl mb-2">😢</div>
+                        <div class="text-xs text-gray-600">Sangat Sedih</div>
+                    </button>
+                    <button
+                        class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
+                        data-mood="2" data-label="Sedih">
+                        <div class="text-3xl mb-2">😔</div>
+                        <div class="text-xs text-gray-600">Sedih</div>
+                    </button>
+                    <button
+                        class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
+                        data-mood="3" data-label="Biasa">
+                        <div class="text-3xl mb-2">😐</div>
+                        <div class="text-xs text-gray-600">Biasa</div>
+                    </button>
+                    <button
+                        class="mood-btn p-4 rounded-xl border-2 border-primary-300 bg-primary-50 transition-all duration-200 text-center selected"
+                        data-mood="4" data-label="Senang">
+                        <div class="text-3xl mb-2">😊</div>
+                        <div class="text-xs text-primary-600 font-medium">Senang</div>
+                    </button>
+                    <button
+                        class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
+                        data-mood="5" data-label="Sangat Senang">
+                        <div class="text-3xl mb-2">😄</div>
+                        <div class="text-xs text-gray-600">Sangat Senang</div>
+                    </button>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Catatan Mood (Opsional)</label>
+                    <textarea id="moodNotes" class="input-field w-full h-20 resize-none"
+                        placeholder="Ceritakan tentang mood kamu hari ini..."></textarea>
+                </div>
+
+                <button id="saveMoodBtn" class="btn-primary w-full micro-celebrate">
+                    <i class="fas fa-save mr-2"></i>
+                    Simpan Mood Hari Ini
+                </button>
+            </div>
+
+            <!-- Expense Input -->
+            <div class="morphic-card p-6 fade-in">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-money-bill-wave text-accent-500 mr-2"></i>
+                    Catat Pengeluaran
+                </h2>
+
+                <form id="expenseForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Jumlah Pengeluaran</label>
+                        <div class="relative">
+                            <span
+                                class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 font-medium">Rp</span>
+                            <input type="text" id="expenseAmount" class="input-field w-full pl-10" placeholder="0"
+                                required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
+                        <select id="expenseCategory" class="input-field w-full" required>
+                            <option value="">Pilih kategori</option>
+                            <option value="makanan">🍔 Makanan & Minuman</option>
+                            <option value="transportasi">🚗 Transportasi</option>
+                            <option value="belanja">🛍️ Belanja</option>
+                            <option value="hiburan">🎬 Hiburan</option>
+                            <option value="kesehatan">💊 Kesehatan</option>
+                            <option value="pendidikan">📚 Pendidikan</option>
+                            <option value="lainnya">📦 Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
+                        <input type="text" id="expenseDescription" class="input-field w-full"
+                            placeholder="Contoh: Makan siang di cafe">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Waktu</label>
+                        <input type="datetime-local" id="expenseTime" class="input-field w-full" required>
+                    </div>
+
+                    <button type="submit" class="btn-secondary w-full micro-celebrate">
+                        <i class="fas fa-plus mr-2"></i>
+                        Tambah Pengeluaran
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Chart Analysis Section -->
+        <div class="morphic-card p-6 mb-8 fade-in">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold text-gray-800">
+                    <i class="fas fa-chart-line text-primary-500 mr-2"></i>
+                    Analisis Mood vs Pengeluaran
+                </h2>
+                <div class="flex items-center space-x-4">
+                    <select id="chartPeriod" class="input-field text-sm">
+                        <option value="7">7 Hari Terakhir</option>
+                        <option value="30" selected>30 Hari Terakhir</option>
+                        <option value="90">3 Bulan Terakhir</option>
+                    </select>
+                    <button id="refreshChart" class="p-2 text-gray-500 hover:text-primary-600 transition-colors">
+                        <i class="fas fa-refresh"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chart Container -->
+            <div class="relative">
+                <canvas id="moodExpenseChart" class="w-full h-80 rounded-lg"></canvas>
+                <div id="chartLoading" class="absolute inset-0 flex items-center justify-center bg-white/80 rounded-lg">
+                    <div class="text-center">
+                        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500 mx-auto mb-2"></div>
+                        <p class="text-sm text-gray-500">Memuat data chart...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart Legend -->
+            <div class="flex items-center justify-center space-x-6 mt-4 text-sm">
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-primary-500 rounded-full mr-2"></div>
+                    <span class="text-gray-600">Mood Score</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-secondary-500 rounded-full mr-2"></div>
+                    <span class="text-gray-600">Pengeluaran (Ribuan)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Historical Data & Analysis -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Historical Data Table -->
+            <div class="lg:col-span-2 morphic-card p-6 fade-in">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-gray-800">
+                        <i class="fas fa-history text-accent-500 mr-2"></i>
+                        Riwayat Data
+                    </h2>
+                    <div class="flex items-center space-x-2">
+                        <input type="date" id="filterDate" class="input-field text-sm">
+                        <select id="filterMood" class="input-field text-sm">
+                            <option value="">Semua Mood</option>
+                            <option value="1">😢 Sangat Sedih</option>
+                            <option value="2">😔 Sedih</option>
+                            <option value="3">😐 Biasa</option>
+                            <option value="4">😊 Senang</option>
+                            <option value="5">😄 Sangat Senang</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Desktop Table -->
+                <div class="hidden md:block overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-gray-200">
+                                <th class="text-left py-3 px-2 text-sm font-medium text-gray-600">Tanggal</th>
+                                <th class="text-left py-3 px-2 text-sm font-medium text-gray-600">Mood</th>
+                                <th class="text-left py-3 px-2 text-sm font-medium text-gray-600">Pengeluaran</th>
+                                <th class="text-left py-3 px-2 text-sm font-medium text-gray-600">Kategori</th>
+                                <th class="text-left py-3 px-2 text-sm font-medium text-gray-600">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Mobile Cards -->
+                <div class="md:hidden space-y-4" id="historyMobileCards">
+                    <!-- Cards will be populated by JavaScript -->
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex items-center justify-between mt-6">
+                    <p class="text-sm text-gray-600">Menampilkan <span id="showingCount">0</span> dari <span
+                            id="totalCount">0</span> data</p>
+                    <div class="flex items-center space-x-2">
+                        <button id="prevPage" class="p-2 text-gray-500 hover:text-primary-600 transition-colors">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span class="px-3 py-1 bg-primary-100 text-primary-600 rounded-md text-sm font-medium"
+                            id="currentPageNumber">1</span>
+                        <button id="nextPage" class="p-2 text-gray-500 hover:text-primary-600 transition-colors">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Panel -->
+            <div class="space-y-6">
+                <!-- Insights Card -->
+                <div class="morphic-card p-6 fade-in">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">
+                        <i class="fas fa-lightbulb text-accent-500 mr-2"></i>
+                        Insight Terbaru
+                    </h3>
+
+                    <div class="space-y-4" id="insightsContainer">
+                        <!-- Insights will be populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Progress Card -->
+                <div class="morphic-card p-6 fade-in">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">
+                        <i class="fas fa-chart-pie text-success-500 mr-2"></i>
+                        Progress Tracking
+                    </h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-600">Konsistensi Tracking</span>
+                                <span class="font-medium text-success-600" id="consistencyPercentage">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-success-500 h-2 rounded-full" id="consistencyBar" style="width: 0%">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-600">Mood Stability</span>
+                                <span class="font-medium text-primary-600" id="moodStabilityPercentage">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary-500 h-2 rounded-full" id="moodStabilityBar" style="width: 0%">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-600">Budget Control</span>
+                                <span class="font-medium text-secondary-600" id="budgetControlPercentage">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary-500 h-2 rounded-full" id="budgetControlBar" style="width: 0%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-gradient-to-r from-primary-50 to-secondary-50 rounded-lg">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-gradient mb-1" id="userLevel">Level 1</div>
+                            <div class="text-sm text-gray-600 mb-2" id="levelTitle">Money Mirror Beginner</div>
+                            <div class="w-full bg-white rounded-full h-2">
+                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 rounded-full"
+                                    id="levelProgressBar" style="width: 0%"></div>
+                            </div>
+                            <div class="text-xs text-gray-500 mt-1" id="levelProgressText">0/100 XP to Level 2</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="morphic-card p-6 fade-in">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">
+                        <i class="fas fa-bolt text-accent-500 mr-2"></i>
+                        Quick Actions
+                    </h3>
+
+                    <div class="space-y-3">
+                        <button id="exportDataBtn"
+                            class="w-full p-3 text-left bg-gray-50 hover:bg-primary-50 rounded-lg transition-colors micro-celebrate">
+                            <div class="flex items-center">
+                                <i class="fas fa-download text-primary-500 mr-3"></i>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-800">Export Data</p>
+                                    <p class="text-xs text-gray-500">Download riwayat dalam format CSV</p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button id="shareProgressBtn"
+                            class="w-full p-3 text-left bg-gray-50 hover:bg-secondary-50 rounded-lg transition-colors micro-celebrate">
+                            <div class="flex items-center">
+                                <i class="fas fa-share text-secondary-500 mr-3"></i>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-800">Share Progress</p>
+                                    <p class="text-xs text-gray-500">Bagikan pencapaian ke social media</p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button id="setReminderBtn"
+                            class="w-full p-3 text-left bg-gray-50 hover:bg-accent-50 rounded-lg transition-colors micro-celebrate">
+                            <div class="flex items-center">
+                                <i class="fas fa-bell text-accent-500 mr-3"></i>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-800">Set Reminder</p>
+                                    <p class="text-xs text-gray-500">Pengingat harian untuk tracking</p>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success/Error Messages -->
+    <div id="messageContainer" class="fixed top-4 right-4 z-50 hidden">
+        <div id="successMessage" class="hidden p-4 bg-success-50 border border-success-200 rounded-lg shadow-lg">
+            <div class="flex items-center">
+                <i class="fas fa-check-circle text-success-500 mr-2"></i>
+                <span class="text-success-700 text-sm font-medium" id="successText"></span>
+            </div>
+        </div>
+        <div id="errorMessage" class="hidden p-4 bg-error-50 border border-error-200 rounded-lg shadow-lg">
+            <div class="flex items-center">
+                <i class="fas fa-exclamation-circle text-error-500 mr-2"></i>
+                <span class="text-error-700 text-sm font-medium" id="errorText"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Global variables
+        let currentMood = 4;
+        let moodExpenseData = [];
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let currentUserId = null;
+
+        // User management functions
+        function getCurrentUser() {
+            const userSession = localStorage.getItem('userSession');
+            if (userSession) {
+                const session = JSON.parse(userSession);
+                currentUserId = session.userId;
+                document.getElementById('currentUserName').textContent = session.username || 'User Demo';
+                return session;
+            }
+            return null;
+        }
+
+        function getUserDataKey() {
+            return `moneyMirrorData_${currentUserId}`;
+        }
+
+        function getUserStatsKey() {
+            return `userStats_${currentUserId}`;
+        }
+
+        function getDefaultUserStats() {
+            return {
+                totalExpenseMonth: 0,
+                todayExpense: 0,
+                averageExpense: 0,
+                trackingStreak: 0,
+                consistencyPercentage: 0,
+                moodStabilityPercentage: 0,
+                budgetControlPercentage: 0,
+                userLevel: 1,
+                levelTitle: "Money Mirror Beginner",
+                currentXP: 0,
+                nextLevelXP: 100
+            };
+        }
+
+        function initializeUserData() {
+            const userDataKey = getUserDataKey();
+            const userStatsKey = getUserStatsKey();
+
+            // Initialize user data if not exists
+            if (!localStorage.getItem(userDataKey)) {
+                localStorage.setItem(userDataKey, JSON.stringify([]));
+            }
+
+            // Initialize user stats if not exists
+            if (!localStorage.getItem(userStatsKey)) {
+                localStorage.setItem(userStatsKey, JSON.stringify(getDefaultUserStats()));
+            }
+
+            // Load user data
+            moodExpenseData = JSON.parse(localStorage.getItem(userDataKey)) || [];
+
+            // Update UI with user data
+            updateStats();
+            updateProgressBars();
+            updateInsights();
+        }
+
+        function saveUserData() {
+            const userDataKey = getUserDataKey();
+            localStorage.setItem(userDataKey, JSON.stringify(moodExpenseData));
+        }
+
+        function updateUserStats(newStats) {
+            const userStatsKey = getUserStatsKey();
+            const currentStats = JSON.parse(localStorage.getItem(userStatsKey)) || getDefaultUserStats();
+            const updatedStats = { ...currentStats, ...newStats };
+            localStorage.setItem(userStatsKey, JSON.stringify(updatedStats));
+            return updatedStats;
+        }
+
+        function calculateUserStats() {
+            const today = new Date().toISOString().split('T')[0];
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+
+            // Filter data for current month
+            const monthlyData = moodExpenseData.filter(entry => {
+                const entryDate = new Date(entry.date);
+                return entryDate.getMonth() === currentMonth && entryDate.getFullYear() === currentYear;
+            });
+
+            // Filter data for today
+            const todayData = moodExpenseData.filter(entry => entry.date === today);
+
+            // Calculate stats
+            const totalExpenseMonth = monthlyData.reduce((sum, entry) => sum + entry.amount, 0);
+            const todayExpense = todayData.reduce((sum, entry) => sum + entry.amount, 0);
+
+            // Calculate average daily expense for current month
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            const averageExpense = totalExpenseMonth / daysInMonth;
+
+            // Calculate tracking streak (consecutive days with entries)
+            let streak = 0;
+            const sortedDates = [...new Set(moodExpenseData.map(entry => entry.date))].sort().reverse();
+            let currentDate = new Date();
+
+            for (let i = 0; i < sortedDates.length; i++) {
+                const entryDate = new Date(sortedDates[i]);
+                const diffTime = Math.abs(currentDate - entryDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                if (diffDays === i) {
+                    streak++;
+                } else {
+                    break;
+                }
+            }
+
+            // Calculate percentages based on data patterns
+            const totalEntries = moodExpenseData.length;
+            const daysTracked = new Set(moodExpenseData.map(entry => entry.date)).size;
+            const consistencyPercentage = Math.min(100, Math.round((daysTracked / 30) * 100));
+
+            // Mood stability calculation (simplified)
+            const moodStabilityPercentage = totalEntries > 0 ? Math.min(100, Math.round((4 / 5) * 100)) : 0;
+
+            // Budget control calculation (simplified)
+            const budgetControlPercentage = totalEntries > 0 ? Math.min(100, Math.round((3 / 5) * 100)) : 0;
+
+            // Calculate XP and level
+            const baseXP = totalEntries * 10 + daysTracked * 5;
+            const userLevel = Math.min(10, Math.floor(baseXP / 100) + 1);
+            const currentXP = baseXP % 100;
+            const nextLevelXP = 100;
+            const levelTitles = [
+                "Money Mirror Beginner", "Money Mirror Explorer", "Money Mirror Master",
+                "Money Mirror Expert", "Money Mirror Guru", "Money Mirror Sage",
+                "Money Mirror Legend", "Money Mirror Champion", "Money Mirror Hero",
+                "Money Mirror Grand Master"
+            ];
+            const levelTitle = levelTitles[userLevel - 1] || "Money Mirror Master";
+
+            return {
+                totalExpenseMonth,
+                todayExpense,
+                averageExpense,
+                trackingStreak: streak,
+                consistencyPercentage,
+                moodStabilityPercentage,
+                budgetControlPercentage,
+                userLevel,
+                levelTitle,
+                currentXP,
+                nextLevelXP
+            };
+        }
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeApp();
+            setupEventListeners();
+            renderChart();
+            renderHistoryTable();
+            setCurrentDateTime();
+            // Tambahkan di dalam function setupEventListeners() - cari bagian Quick Actions
+            document.getElementById('exportDataBtn').addEventListener('click', exportData);
+            document.getElementById('shareProgressBtn').addEventListener('click', shareProgress);
+            document.getElementById('setReminderBtn').addEventListener('click', setReminder);
+            // Tambahkan di dalam function initializeApp()
+            initializeReminders();
+        });
+
+        function initializeApp() {
+            // Check if user is logged in
+            const user = getCurrentUser();
+            if (!user) {
+                window.location.href = 'authentication_portal.html';
+                return;
+            }
+
+            // Initialize user data
+            initializeUserData();
+        }
+
+        function setupEventListeners() {
+            // Mood selection
+            document.querySelectorAll('.mood-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    document.querySelectorAll('.mood-btn').forEach(b => {
+                        b.classList.remove('selected', 'border-primary-300', 'bg-primary-50');
+                        b.classList.add('border-gray-200');
+                        b.querySelector('.text-xs').classList.remove('text-primary-600', 'font-medium');
+                        b.querySelector('.text-xs').classList.add('text-gray-600');
+                    });
+
+                    this.classList.add('selected', 'border-primary-300', 'bg-primary-50');
+                    this.classList.remove('border-gray-200');
+                    this.querySelector('.text-xs').classList.add('text-primary-600', 'font-medium');
+                    this.querySelector('.text-xs').classList.remove('text-gray-600');
+
+                    currentMood = parseInt(this.dataset.mood);
+                });
+            });
+
+            // Save mood button
+            document.getElementById('saveMoodBtn').addEventListener('click', function () {
+                const notes = document.getElementById('moodNotes').value;
+                const moodLabel = document.querySelector('.mood-btn.selected').dataset.label;
+
+                // Save mood data
+                const today = new Date().toISOString().split('T')[0];
+                const existingEntry = moodExpenseData.find(entry => entry.date === today);
+
+                if (existingEntry) {
+                    existingEntry.mood = currentMood;
+                    existingEntry.moodLabel = moodLabel;
+                    existingEntry.moodNotes = notes;
+                } else {
+                    moodExpenseData.unshift({
+                        date: today,
+                        mood: currentMood,
+                        moodLabel: moodLabel,
+                        moodNotes: notes,
+                        amount: 0,
+                        category: '',
+                        description: '',
+                        time: ''
+                    });
+                }
+
+                saveUserData();
+                updateStats();
+                showMessage('success', 'Mood berhasil disimpan! 🎉');
+                renderChart();
+                renderHistoryTable();
+            });
+
+            // Expense form
+            document.getElementById('expenseForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const amount = parseFloat(document.getElementById('expenseAmount').value.replace(/\./g, ''));
+                const category = document.getElementById('expenseCategory').value;
+                const description = document.getElementById('expenseDescription').value;
+                const datetime = document.getElementById('expenseTime').value;
+
+                if (!amount || !category || !datetime) {
+                    showMessage('error', 'Mohon lengkapi semua field yang wajib diisi!');
+                    return;
+                }
+
+                const date = datetime.split('T')[0];
+                const time = datetime.split('T')[1];
+
+                // Add expense data
+                moodExpenseData.unshift({
+                    date: date,
+                    mood: currentMood,
+                    moodLabel: document.querySelector('.mood-btn.selected').dataset.label,
+                    amount: amount,
+                    category: category,
+                    description: description,
+                    time: time
+                });
+
+                saveUserData();
+                updateStats();
+
+                // Reset form
+                this.reset();
+                setCurrentDateTime();
+
+                showMessage('success', 'Pengeluaran berhasil ditambahkan! 💰');
+                renderChart();
+                renderHistoryTable();
+            });
+
+            // Amount formatting
+            document.getElementById('expenseAmount').addEventListener('input', function () {
+                let value = this.value.replace(/\D/g, '');
+                if (value) {
+                    value = parseInt(value).toLocaleString('id-ID');
+                }
+                this.value = value;
+            });
+
+            // Chart period change
+            document.getElementById('chartPeriod').addEventListener('change', function () {
+                renderChart();
+            });
+
+            // Refresh chart
+            document.getElementById('refreshChart').addEventListener('click', function () {
+                renderChart();
+            });
+
+            // Filter events
+            document.getElementById('filterDate').addEventListener('change', function () {
+                renderHistoryTable();
+            });
+
+            document.getElementById('filterMood').addEventListener('change', function () {
+                renderHistoryTable();
+            });
+
+            // Quick actions
+            document.getElementById('exportDataBtn').addEventListener('click', exportData);
+            document.getElementById('shareProgressBtn').addEventListener('click', shareProgress);
+            document.getElementById('setReminderBtn').addEventListener('click', setReminder);
+        }
+
+        function setCurrentDateTime() {
+            const now = new Date();
+            const datetime = now.toISOString().slice(0, 16);
+            document.getElementById('expenseTime').value = datetime;
+        }
+
+        function showMessage(type, message) {
+            const messageContainer = document.getElementById('messageContainer');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const successText = document.getElementById('successText');
+            const errorText = document.getElementById('errorText');
+
+            messageContainer.classList.remove('hidden');
+
+            if (type === 'success') {
+                successMessage.classList.remove('hidden');
+                errorMessage.classList.add('hidden');
+                successText.textContent = message;
+            } else {
+                errorMessage.classList.remove('hidden');
+                successMessage.classList.add('hidden');
+                errorText.textContent = message;
+            }
+
+            setTimeout(() => {
+                messageContainer.classList.add('hidden');
+                successMessage.classList.add('hidden');
+                errorMessage.classList.add('hidden');
+            }, 5000);
+        }
+
+        function updateStats() {
+            const stats = calculateUserStats();
+            updateUserStats(stats);
+
+            // Update UI
+            document.getElementById('totalExpenseMonth').textContent = `Rp ${stats.totalExpenseMonth.toLocaleString('id-ID')}`;
+            document.getElementById('todayExpense').textContent = `Rp ${stats.todayExpense.toLocaleString('id-ID')}`;
+            document.getElementById('averageExpense').textContent = `Rp ${Math.round(stats.averageExpense).toLocaleString('id-ID')}`;
+            document.getElementById('trackingStreak').textContent = `${stats.trackingStreak} Hari`;
+
+            // Update today's mood
+            const today = new Date().toISOString().split('T')[0];
+            const todayEntry = moodExpenseData.find(entry => entry.date === today);
+            if (todayEntry) {
+                document.getElementById('todayMood').textContent = `${getMoodEmoji(todayEntry.mood)} ${todayEntry.moodLabel}`;
+            }
+        }
+
+        function updateProgressBars() {
+            const stats = calculateUserStats();
+
+            document.getElementById('consistencyPercentage').textContent = `${stats.consistencyPercentage}%`;
+            document.getElementById('moodStabilityPercentage').textContent = `${stats.moodStabilityPercentage}%`;
+            document.getElementById('budgetControlPercentage').textContent = `${stats.budgetControlPercentage}%`;
+
+            document.getElementById('consistencyBar').style.width = `${stats.consistencyPercentage}%`;
+            document.getElementById('moodStabilityBar').style.width = `${stats.moodStabilityPercentage}%`;
+            document.getElementById('budgetControlBar').style.width = `${stats.budgetControlPercentage}%`;
+
+            document.getElementById('userLevel').textContent = `Level ${stats.userLevel}`;
+            document.getElementById('levelTitle').textContent = stats.levelTitle;
+            document.getElementById('levelProgressBar').style.width = `${(stats.currentXP / stats.nextLevelXP) * 100}%`;
+            document.getElementById('levelProgressText').textContent = `${stats.currentXP}/${stats.nextLevelXP} XP to Level ${stats.userLevel + 1}`;
+        }
+
+        function updateInsights() {
+            const insightsContainer = document.getElementById('insightsContainer');
+            const stats = calculateUserStats();
+
+            let insights = [];
+
+            if (moodExpenseData.length === 0) {
+                insights.push({
+                    type: 'primary',
+                    icon: 'fas fa-rocket',
+                    title: 'Selamat Datang!',
+                    message: 'Mulai track mood dan pengeluaran kamu untuk mendapatkan insight yang berguna.'
+                });
+            } else {
+                if (stats.trackingStreak >= 7) {
+                    insights.push({
+                        type: 'success',
+                        icon: 'fas fa-fire',
+                        title: 'Streak Impresif!',
+                        message: `Kamu telah konsisten tracking selama ${stats.trackingStreak} hari berturut-turut. Pertahankan!`
+                    });
+                }
+
+                if (stats.averageExpense > 100000) {
+                    insights.push({
+                        type: 'secondary',
+                        icon: 'fas fa-lightbulb',
+                        title: 'Tips Penghematan',
+                        message: 'Coba alokasikan 30% dari pengeluaran untuk tabungan dan investasi.'
+                    });
+                }
+
+                // Default insight
+                insights.push({
+                    type: 'accent',
+                    icon: 'fas fa-chart-line',
+                    title: 'Progress Bagus!',
+                    message: 'Terus lanjutkan tracking untuk melihat pola pengeluaran dan mood kamu.'
+                });
+            }
+
+            // Ensure we always have at least one insight
+            if (insights.length === 0) {
+                insights.push({
+                    type: 'primary',
+                    icon: 'fas fa-smile',
+                    title: 'Keep Going!',
+                    message: 'Setiap data yang kamu catat membantu memahami kebiasaan finansial lebih baik.'
+                });
+            }
+
+            insightsContainer.innerHTML = insights.map(insight => `
+                <div class="p-4 bg-${insight.type}-50 rounded-lg border-l-4 border-${insight.type}-500">
+                    <div class="flex items-start">
+                        <i class="${insight.icon} text-${insight.type}-500 mt-1 mr-3"></i>
+                        <div>
+                            <p class="text-sm font-medium text-${insight.type}-700">${insight.title}</p>
+                            <p class="text-xs text-${insight.type}-600 mt-1">${insight.message}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderChart() {
+            const canvas = document.getElementById('moodExpenseChart');
+            const ctx = canvas.getContext('2d');
+            const period = parseInt(document.getElementById('chartPeriod').value);
+
+            // Show loading
+            document.getElementById('chartLoading').classList.remove('hidden');
+
+            setTimeout(() => {
+                // Filter data by period
+                const endDate = new Date();
+                const startDate = new Date();
+                startDate.setDate(startDate.getDate() - period);
+
+                const filteredData = moodExpenseData.filter(entry => {
+                    const entryDate = new Date(entry.date);
+                    return entryDate >= startDate && entryDate <= endDate && entry.amount > 0;
+                }).slice(0, period);
+
+                // Clear canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                if (filteredData.length === 0) {
+                    ctx.fillStyle = '#6B7280';
+                    ctx.font = '16px Inter';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('Belum ada data untuk ditampilkan', canvas.width / 2, canvas.height / 2);
+                    document.getElementById('chartLoading').classList.add('hidden');
+                    return;
+                }
+
+                // Set canvas size
+                const rect = canvas.getBoundingClientRect();
+                canvas.width = rect.width * window.devicePixelRatio;
+                canvas.height = rect.height * window.devicePixelRatio;
+                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+                const width = rect.width;
+                const height = rect.height;
+                const padding = 60;
+                const chartWidth = width - padding * 2;
+                const chartHeight = height - padding * 2;
+
+                // Find min/max values
+                const maxAmount = Math.max(...filteredData.map(d => d.amount));
+                const minAmount = Math.min(...filteredData.map(d => d.amount));
+                const maxMood = 5;
+                const minMood = 1;
+
+                // Draw grid
+                ctx.strokeStyle = '#E5E7EB';
+                ctx.lineWidth = 1;
+
+                // Vertical grid lines
+                for (let i = 0; i <= 10; i++) {
+                    const x = padding + (chartWidth / 10) * i;
+                    ctx.beginPath();
+                    ctx.moveTo(x, padding);
+                    ctx.lineTo(x, height - padding);
+                    ctx.stroke();
+                }
+
+                // Horizontal grid lines
+                for (let i = 0; i <= 5; i++) {
+                    const y = padding + (chartHeight / 5) * i;
+                    ctx.beginPath();
+                    ctx.moveTo(padding, y);
+                    ctx.lineTo(width - padding, y);
+                    ctx.stroke();
+                }
+
+                // Draw axes
+                ctx.strokeStyle = '#374151';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(padding, padding);
+                ctx.lineTo(padding, height - padding);
+                ctx.lineTo(width - padding, height - padding);
+                ctx.stroke();
+
+                // Draw data points
+                filteredData.forEach((entry, index) => {
+                    const x = padding + (chartWidth / (filteredData.length - 1)) * index;
+                    const moodY = height - padding - ((entry.mood - minMood) / (maxMood - minMood)) * chartHeight;
+                    const amountY = height - padding - ((entry.amount - minAmount) / (maxAmount - minAmount)) * chartHeight;
+
+                    // Mood point
+                    ctx.fillStyle = '#6366F1';
+                    ctx.beginPath();
+                    ctx.arc(x, moodY, 6, 0, 2 * Math.PI);
+                    ctx.fill();
+
+                    // Amount point
+                    ctx.fillStyle = '#EC4899';
+                    ctx.beginPath();
+                    ctx.arc(x, amountY, 6, 0, 2 * Math.PI);
+                    ctx.fill();
+
+                    // Connect mood points
+                    if (index > 0) {
+                        const prevX = padding + (chartWidth / (filteredData.length - 1)) * (index - 1);
+                        const prevMoodY = height - padding - ((filteredData[index - 1].mood - minMood) / (maxMood - minMood)) * chartHeight;
+                        const prevAmountY = height - padding - ((filteredData[index - 1].amount - minAmount) / (maxAmount - minAmount)) * chartHeight;
+
+                        // Mood line
+                        ctx.strokeStyle = '#6366F1';
+                        ctx.lineWidth = 2;
+                        ctx.beginPath();
+                        ctx.moveTo(prevX, prevMoodY);
+                        ctx.lineTo(x, moodY);
+                        ctx.stroke();
+
+                        // Amount line
+                        ctx.strokeStyle = '#EC4899';
+                        ctx.lineWidth = 2;
+                        ctx.beginPath();
+                        ctx.moveTo(prevX, prevAmountY);
+                        ctx.lineTo(x, amountY);
+                        ctx.stroke();
+                    }
+                });
+
+                // Draw labels
+                ctx.fillStyle = '#6B7280';
+                ctx.font = '12px Inter';
+                ctx.textAlign = 'center';
+
+                // Y-axis labels (left - mood)
+                ctx.textAlign = 'right';
+                for (let i = 1; i <= 5; i++) {
+                    const y = height - padding - ((i - minMood) / (maxMood - minMood)) * chartHeight;
+                    ctx.fillText(i.toString(), padding - 10, y + 4);
+                }
+
+                // Y-axis labels (right - amount)
+                ctx.textAlign = 'left';
+                for (let i = 0; i <= 5; i++) {
+                    const amount = minAmount + ((maxAmount - minAmount) / 5) * i;
+                    const y = height - padding - (i / 5) * chartHeight;
+                    ctx.fillText((amount / 1000).toFixed(0) + 'k', width - padding + 10, y + 4);
+                }
+
+                document.getElementById('chartLoading').classList.add('hidden');
+            }, 1000);
+        }
+
+        function renderHistoryTable() {
+            const filterDate = document.getElementById('filterDate').value;
+            const filterMood = document.getElementById('filterMood').value;
+
+            let filteredData = moodExpenseData.filter(entry => entry.amount > 0);
+
+            if (filterDate) {
+                filteredData = filteredData.filter(entry => entry.date === filterDate);
+            }
+
+            if (filterMood) {
+                filteredData = filteredData.filter(entry => entry.mood == filterMood);
+            }
+
+            // Desktop table
+            const tableBody = document.getElementById('historyTableBody');
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageData = filteredData.slice(startIndex, endIndex);
+
+            tableBody.innerHTML = '';
+            pageData.forEach((entry, index) => {
+                const row = document.createElement('tr');
+                row.className = 'border-b border-gray-100 hover:bg-gray-50 transition-colors';
+                row.innerHTML = `
+                    <td class="py-3 px-2 text-sm text-gray-800">${formatDate(entry.date)}</td>
+                    <td class="py-3 px-2 text-sm">${getMoodEmoji(entry.mood)} ${entry.moodLabel}</td>
+                    <td class="py-3 px-2 text-sm font-medium text-gray-800">Rp ${entry.amount.toLocaleString('id-ID')}</td>
+                    <td class="py-3 px-2 text-sm text-gray-600">${getCategoryIcon(entry.category)} ${getCategoryName(entry.category)}</td>
+                    <td class="py-3 px-2 text-sm">
+                        <button class="text-primary-600 hover:text-primary-700 mr-2" onclick="editEntry(${startIndex + index})">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="text-error-600 hover:text-error-700" onclick="deleteEntry(${startIndex + index})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            // Mobile cards
+            const mobileCards = document.getElementById('historyMobileCards');
+            mobileCards.innerHTML = '';
+            pageData.forEach((entry, index) => {
+                const card = document.createElement('div');
+                card.className = 'morphic-card p-4';
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <div class="flex items-center">
+                            <span class="text-lg mr-2">${getMoodEmoji(entry.mood)}</span>
+                            <div>
+                                <p class="font-medium text-gray-800">Rp ${entry.amount.toLocaleString('id-ID')}</p>
+                                <p class="text-sm text-gray-600">${formatDate(entry.date)} • ${entry.time}</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="text-primary-600 hover:text-primary-700" onclick="editEntry(${startIndex + index})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="text-error-600 hover:text-error-700" onclick="deleteEntry(${startIndex + index})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-600">${getCategoryIcon(entry.category)} ${getCategoryName(entry.category)}</span>
+                        <span class="text-sm text-gray-500">${entry.moodLabel}</span>
+                    </div>
+                    ${entry.description ? `<p class="text-sm text-gray-600 mt-2">${entry.description}</p>` : ''}
+                `;
+                mobileCards.appendChild(card);
+            });
+
+            // Update pagination
+            document.getElementById('showingCount').textContent = pageData.length;
+            document.getElementById('totalCount').textContent = filteredData.length;
+            document.getElementById('currentPageNumber').textContent = currentPage;
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('id-ID', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+        }
+
+        function getMoodEmoji(mood) {
+            const emojis = ['', '😢', '😔', '😐', '😊', '😄'];
+            return emojis[mood] || '😐';
+        }
+
+        function getCategoryIcon(category) {
+            const icons = {
+                'makanan': '🍔',
+                'transportasi': '🚗',
+                'belanja': '🛍️',
+                'hiburan': '🎬',
+                'kesehatan': '💊',
+                'pendidikan': '📚',
+                'lainnya': '📦'
+            };
+            return icons[category] || '📦';
+        }
+
+        function getCategoryName(category) {
+            const names = {
+                'makanan': 'Makanan & Minuman',
+                'transportasi': 'Transportasi',
+                'belanja': 'Belanja',
+                'hiburan': 'Hiburan',
+                'kesehatan': 'Kesehatan',
+                'pendidikan': 'Pendidikan',
+                'lainnya': 'Lainnya'
+            };
+            return names[category] || 'Lainnya';
+        }
+
+        function editEntry(index) {
+            // This would open an edit modal
+            showMessage('success', 'Fitur edit akan segera hadir! 🚀');
+        }
+
+        function deleteEntry(index) {
+            if (confirm('Yakin ingin menghapus data ini?')) {
+                moodExpenseData.splice(index, 1);
+                saveUserData();
+                updateStats();
+                updateProgressBars();
+                updateInsights();
+                renderHistoryTable();
+                renderChart();
+                showMessage('success', 'Data berhasil dihapus! 🗑️');
+            }
+        }
+
+        function exportData() {
+            showMessage('success', 'Fitur export data akan segera hadir! 📊');
+        }
+
+        function shareProgress() {
+            showMessage('success', 'Fitur share progress akan segera hadir! 📱');
+        }
+
+        function setReminder() {
+            showMessage('success', 'Fitur reminder akan segera hadir! ⏰');
+        }
+
+        // Pagination
+        document.getElementById('prevPage').addEventListener('click', function () {
+            if (currentPage > 1) {
+                currentPage--;
+                renderHistoryTable();
+            }
+        });
+
+        document.getElementById('nextPage').addEventListener('click', function () {
+            const totalPages = Math.ceil(moodExpenseData.length / itemsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderHistoryTable();
+            }
+        });
+
+        // Export Data Function
+        function exportData() {
+            if (moodExpenseData.length === 0) {
+                showMessage('error', 'Belum ada data untuk di-export!');
+                return;
+            }
+
+            // Create CSV content
+            let csvContent = "Tanggal,Mood,Pengeluaran,Kategori,Deskripsi,Waktu\\n";
+
+            moodExpenseData.forEach(entry => {
+                const row = [
+                    entry.date,
+                    entry.moodLabel,
+                    entry.amount,
+                    getCategoryName(entry.category),
+                    entry.description || '',
+                    entry.time || ''
+                ];
+                csvContent += row.join(',') + '\\n';
+            });
+
+            // Create download link
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+
+            link.setAttribute('href', url);
+            link.setAttribute('download', `money-mirror-data-${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showMessage('success', 'Data berhasil di-export! 📊');
+        }
+
+        // Set Reminder Function
+        function setReminder() {
+            // Check if browser supports notifications
+            if (!("Notification" in window)) {
+                showMessage('error', 'Browser tidak mendukung notifikasi!');
+                return;
+            }
+
+            // Request permission
+            Notification.requestPermission().then(permission => {
+                if (permission === "granted") {
+                    // Create reminder in localStorage
+                    const reminder = {
+                        id: Date.now(),
+                        enabled: true,
+                        time: "20:00",
+                        message: "Jangan lupa catat mood dan pengeluaran hari ini! 📝",
+                        createdAt: new Date().toISOString()
+                    };
+
+                    const userStatsKey = getUserStatsKey();
+                    const currentStats = JSON.parse(localStorage.getItem(userStatsKey)) || getDefaultUserStats();
+                    currentStats.reminder = reminder;
+                    localStorage.setItem(userStatsKey, JSON.stringify(currentStats));
+
+                    // Show confirmation notification
+                    if (Notification.permission === "granted") {
+                        new Notification("Reminder Disetel! ⏰", {
+                            body: "Kami akan mengingatkan kamu setiap jam 20:00 untuk tracking harian",
+                            icon: "/favicon.ico"
+                        });
+                    }
+
+                    showMessage('success', 'Reminder berhasil disetel! ⏰\\nKami akan mengingatkan jam 20:00 setiap hari.');
+                } else {
+                    showMessage('error', 'Izin notifikasi ditolak. Aktifkan notifikasi untuk reminder.');
+                }
+            });
+        }
+
+        // Share Progress Function
+        function shareProgress() {
+            const stats = calculateUserStats();
+
+            // Create shareable content
+            const shareContent = {
+                title: "Progress MoneyMirror Saya 📊",
+                text: `Saya sudah tracking mood dan pengeluaran selama ${stats.trackingStreak} hari berturut-turut! 🎯\\n\\n` +
+                    `Total Pengeluaran Bulan Ini: Rp ${stats.totalExpenseMonth.toLocaleString('id-ID')}\\n` +
+                    `Level: ${stats.userLevel} - ${stats.levelTitle}\\n\\n` +
+                    `Download GenZ Finance Hub untuk mulai tracking keuanganmu! 💰`,
+                url: window.location.origin
+            };
+
+            // Check if Web Share API is available
+            if (navigator.share) {
+                navigator.share(shareContent)
+                    .then(() => showMessage('success', 'Progress berhasil dibagikan! 🎉'))
+                    .catch(error => {
+                        console.log('Error sharing:', error);
+                        fallbackShare(shareContent);
+                    });
+            } else {
+                fallbackShare(shareContent);
+            }
+        }
+
+        // Fallback share for browsers without Web Share API
+        function fallbackShare(shareContent) {
+            // Copy to clipboard as fallback
+            const textToCopy = `${shareContent.title}\\n\\n${shareContent.text}`;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showMessage('success', 'Progress berhasil disalin ke clipboard! 📋\\nSekarang bisa paste di media sosial.');
+            }).catch(() => {
+                // Final fallback - show modal with shareable text
+                showShareModal(shareContent);
+            });
+        }
+
+        // Show share modal for manual sharing
+        function showShareModal(shareContent) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 fade-in';
+            modal.innerHTML = `
+        <div class="bg-white rounded-2xl p-6 w-full max-w-md morphic-card bounce-in">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-gray-900">Bagikan Progress</h3>
+                <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-gray-600 transition-all duration-300 hover:scale-110">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+            
+            <div class="mb-4 p-4 bg-gray-50 rounded-lg">
+                <p class="text-sm text-gray-600 mb-2">Salin teks di bawah untuk dibagikan:</p>
+                <textarea class="w-full h-32 p-3 text-sm border border-gray-300 rounded-lg resize-none" readonly>${shareContent.text}</textarea>
+            </div>
+            
+            <div class="flex space-x-3">
+                <button onclick="copyShareText()" class="flex-1 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105 micro-celebrate">
+                    <i class="fas fa-copy mr-2"></i>
+                    Salin Teks
+                </button>
+                <button onclick="this.closest('.fixed').remove()" class="flex-1 py-3 bg-gray-500 hover:bg-gray-600 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    `;
+
+            document.body.appendChild(modal);
+        }
+
+        // Copy share text to clipboard
+        function copyShareText() {
+            const textarea = document.querySelector('.fixed textarea');
+            textarea.select();
+            document.execCommand('copy');
+
+            showMessage('success', 'Teks berhasil disalin ke clipboard! 📋');
+            document.querySelector('.fixed').remove();
+        }
+
+        // Check and trigger daily reminders
+        function checkDailyReminder() {
+            const userStatsKey = getUserStatsKey();
+            const currentStats = JSON.parse(localStorage.getItem(userStatsKey)) || getDefaultUserStats();
+
+            if (currentStats.reminder && currentStats.reminder.enabled) {
+                const now = new Date();
+                const currentTime = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+
+                // Check if it's reminder time and user hasn't tracked today
+                if (currentTime === currentStats.reminder.time) {
+                    const today = new Date().toISOString().split('T')[0];
+                    const hasTrackedToday = moodExpenseData.some(entry => entry.date === today);
+
+                    if (!hasTrackedToday && Notification.permission === "granted") {
+                        new Notification("MoneyMirror Reminder ⏰", {
+                            body: currentStats.reminder.message,
+                            icon: "/favicon.ico",
+                            tag: "daily-reminder"
+                        });
+                    }
+                }
+            }
+        }
+
+        // Initialize reminder check
+        function initializeReminders() {
+            // Check reminder every minute
+            setInterval(checkDailyReminder, 60000);
+
+            // Initial check
+            checkDailyReminder();
+        }
+
+    </script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,2334 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Utama - GenZ Finance Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <script type="module" async
+        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fgenzfinan7345back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.10"></script>
+    <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+
+    <style>
+        /* Animasi tambahan untuk memastikan semua animasi tetap ada */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .bounce-in {
+            animation: bounceIn 0.8s ease-out;
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+
+            70% {
+                transform: scale(0.9);
+                opacity: 0.9;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 5px rgba(59, 130, 246, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+            }
+
+            100% {
+                box-shadow: 0 0 5px rgba(59, 130, 246, 0.4);
+            }
+        }
+
+        /* Style untuk popup notifikasi */
+        .notification-item {
+            transition: all 0.3s ease;
+        }
+
+        .notification-item:hover {
+            transform: translateX(5px);
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+
+        /* Micro celebration effect */
+        .micro-celebrate {
+            transition: all 0.2s ease;
+        }
+
+        /* Morphic card effect */
+        .morphic-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .morphic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Text gradient */
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+
+        /* Navbar Sticky Styles */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            transition: all 0.3s ease;
+        }
+
+        .sticky-nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sticky-nav.compact {
+            height: 60px;
+        }
+
+        .sticky-nav.compact .flex.items-center.justify-between {
+            height: 60px;
+        }
+
+        .sticky-nav.compact .text-xl {
+            font-size: 1.1rem;
+        }
+
+        .sticky-nav.compact .w-10.h-10 {
+            width: 8px;
+            height: 8px;
+        }
+
+        /* Smooth transition for all elements */
+        .sticky-nav * {
+            transition: all 0.3s ease;
+        }
+
+        /* Nav link hover effects */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Tambahkan di bagian style */
+        .splitmate-notification {
+            border-left: 4px solid #8b5cf6;
+            animation: pulseGlow 2s infinite;
+        }
+
+        .splitmate-urgent {
+            background: linear-gradient(135deg, #fef3c7, #fef7cd);
+            border: 1px solid #f59e0b;
+        }
+
+        .splitmate-settled {
+            background: linear-gradient(135deg, #d1fae5, #dcfce7);
+            border: 1px solid #10b981;
+        }
+
+        /* Tambahkan di bagian style */
+        .notification-popup {
+            max-height: 70vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notification-header {
+            flex-shrink: 0;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem;
+        }
+
+        .notification-body {
+            flex: 1;
+            overflow-y: auto;
+            max-height: 50vh;
+            padding: 0.5rem;
+        }
+
+        .notification-footer {
+            flex-shrink: 0;
+            border-top: 1px solid #e5e7eb;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .notification-item {
+            transition: all 0.3s ease;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .notification-item:hover {
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+
+        .notification-item.selected {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .notification-checkbox {
+            margin-right: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .empty-notifications {
+            text-align: center;
+            padding: 2rem;
+            color: #6b7280;
+        }
+
+        .select-all-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-10 left-10 w-32 h-32 bg-primary-300 rounded-full blur-xl"></div>
+        <div class="absolute top-40 right-20 w-24 h-24 bg-secondary-300 rounded-full blur-lg"></div>
+        <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-accent-300 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-40 right-10 w-28 h-28 bg-primary-400 rounded-full blur-lg"></div>
+    </div>
+
+    <!-- Header -->
+    <!-- Ganti header yang sudah ada dengan ini -->
+    <header
+        class="sticky-nav relative z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div
+                        class="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl">
+                        <i class="fas fa-wallet text-white text-lg"></i>
+                    </div>
+                    <h1 class="ml-3 text-xl font-bold text-gradient">GenZ Finance Hub</h1>
+                </div>
+
+                <!-- Ganti bagian Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="main_dashboard.html"
+                        class="nav-link text-primary-600 font-medium border-b-2 border-primary-600 pb-1">Dashboard</a>
+                    <a href="money_mirror_analysis.html"
+                        class="nav-link text-gray-600 hover:text-primary-600 transition-colors">MoneyMirror</a>
+                    <a href="zero_budget_tracker.html"
+                        class="nav-link text-gray-600 hover:text-primary-600 transition-colors">ZeroBudget</a>
+                    <a href="subs_tracker_manager.html"
+                        class="nav-link text-gray-600 hover:text-primary-600 transition-colors">SubsTracker</a>
+
+                    <a href="investify_zero_game.html"
+                        class="nav-link text-gray-600 hover:text-primary-600 transition-colors">InvestifyZero</a>
+                </nav>
+
+                <!-- Ganti bagian Mobile Menu juga -->
+                <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
+                    <div class="px-4 py-2 space-y-1">
+                        <a href="main_dashboard.html"
+                            class="block px-3 py-2 text-primary-600 font-medium bg-primary-50 rounded-lg">Dashboard</a>
+                        <a href="money_mirror_analysis.html"
+                            class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">MoneyMirror</a>
+                        <a href="zero_budget_tracker.html"
+                            class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">ZeroBudget</a>
+                        <a href="subs_tracker_manager.html"
+                            class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">SubsTracker</a>
+                        <a href="splitmate_bill_splitter.html"
+                            class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">SplitMate</a>
+                        <!-- TAMBAHKAN SMARTDEBT DI MOBILE MENU -->
+                        <a href="smartdebt_calculator.html"
+                            class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">SmartDebt</a>
+                        <a href="investify_zero_game.html"
+                            class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">InvestifyZero</a>
+                        <button id="mobileLogoutBtn"
+                            class="block w-full text-left px-3 py-2 text-error-600 hover:bg-error-50 rounded-lg transition-colors">
+                            <i class="fas fa-sign-out-alt mr-2"></i>
+                            Keluar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notifications -->
+                <button id="notificationBtn"
+                    class="relative p-2 text-gray-600 hover:text-primary-600 transition-colors">
+                    <i class="fas fa-bell text-lg"></i>
+                    <span
+                        class="absolute -top-1 -right-1 w-5 h-5 bg-secondary-500 text-white text-xs rounded-full flex items-center justify-center"
+                        id="notificationCount">3</span>
+                </button>
+
+                <!-- User Profile -->
+                <div class="flex items-center space-x-3">
+                    <img src="https://images.unsplash.com/photo-1629525526541-02606b575fdf" alt="User profile picture"
+                        class="w-8 h-8 rounded-full object-cover">
+                    <span class="hidden md:block text-sm font-medium text-gray-700" id="userName">User Demo</span>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-gray-600 hover:text-primary-600 transition-colors">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+
+                <!-- Logout Button -->
+                <button id="logoutBtn"
+                    class="hidden md:block px-4 py-2 text-sm font-medium text-gray-600 hover:text-error-600 transition-colors">
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    Keluar
+                </button>
+            </div>
+        </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 py-2 space-y-1">
+                <a href="main_dashboard.html"
+                    class="block px-3 py-2 text-primary-600 font-medium bg-primary-50 rounded-lg">Dashboard</a>
+                <a href="money_mirror_analysis.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">MoneyMirror</a>
+                <a href="zero_budget_tracker.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">ZeroBudget</a>
+                <a href="subs_tracker_manager.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">SubsTracker</a>
+                <a href="investify_zero_game.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">InvestifyZero</a>
+                <button id="mobileLogoutBtn"
+                    class="block w-full text-left px-3 py-2 text-error-600 hover:bg-error-50 rounded-lg transition-colors">
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    Keluar
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Welcome Section -->
+        <section class="mb-8 fade-in">
+            <div class="morphic-card p-6 lg:p-8">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                    <div class="mb-6 lg:mb-0">
+                        <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
+                            Halo, <span id="welcomeName" class="text-gradient">User Demo</span>! 👋
+                        </h2>
+                        <p class="text-gray-600 mb-4">Selamat datang kembali di dashboard keuangan kamu. Mari lihat
+                            progress hari ini!</p>
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span id="currentDate">Selasa, 19 November 2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats - UBAH NILAI DEFAULT JADI 0 -->
+                    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                        <div class="text-center">
+                            <div
+                                class="w-12 h-12 bg-success-100 rounded-xl flex items-center justify-center mx-auto mb-2 transition-all duration-300 hover:scale-110">
+                                <i class="fas fa-piggy-bank text-success-600 text-lg"></i>
+                            </div>
+                            <div class="text-lg font-bold text-gray-900 bounce-in" id="totalTabungan">Rp 0</div>
+                            <div class="text-xs text-gray-500">Total Tabungan</div>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-12 h-12 bg-warning-100 rounded-xl flex items-center justify-center mx-auto mb-2 transition-all duration-300 hover:scale-110">
+                                <i class="fas fa-credit-card text-warning-600 text-lg"></i>
+                            </div>
+                            <div class="text-lg font-bold text-gray-900 bounce-in">5</div>
+                            <div class="text-xs text-gray-500">Langganan Aktif</div>
+                        </div>
+                        <div class="text-center col-span-2 lg:col-span-1">
+                            <div
+                                class="w-12 h-12 bg-error-100 rounded-xl flex items-center justify-center mx-auto mb-2 transition-all duration-300 hover:scale-110">
+                                <i class="fas fa-exclamation-triangle text-error-600 text-lg"></i>
+                            </div>
+                            <div class="text-lg font-bold text-gray-900 bounce-in" id="totalHutang">Rp 0</div>
+                            <div class="text-xs text-gray-500">Total Hutang</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Cards Grid -->
+        <section class="mb-8">
+            <h3 class="text-xl font-bold text-gray-900 mb-6 fade-in">Fitur Unggulan 🚀</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- MoneyMirror Card -->
+                <div class="morphic-card p-6 hover:scale-105 transition-all duration-200 cursor-pointer micro-celebrate"
+                    onclick="window.location.href='money_mirror_analysis.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-mirror text-white text-lg"></i>
+                        </div>
+                        <span
+                            class="px-3 py-1 bg-primary-100 text-primary-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105">Aktif</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">MoneyMirror</h4>
+                    <p class="text-gray-600 text-sm mb-4">Analisis mood vs pengeluaran harian dengan AI insights</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-xs text-gray-500">
+                            <i class="fas fa-chart-line mr-1"></i>
+                            Mood hari ini: 😊 Bahagia
+                        </div>
+                        <i
+                            class="fas fa-arrow-right text-primary-500 transition-all duration-300 hover:translate-x-1"></i>
+                    </div>
+                </div>
+
+                <!-- SplitMate Card -->
+                <!-- GANTI SplitMate Card dengan ini -->
+                <div class="morphic-card p-6 hover:scale-105 transition-all duration-200 cursor-pointer micro-celebrate"
+                    onclick="window.location.href='splitmate_bill_splitter.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-secondary-500 to-secondary-600 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-users text-white text-lg"></i>
+                        </div>
+                        <span
+                            class="px-3 py-1 bg-secondary-100 text-secondary-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105"
+                            id="splitmateStatus">Baru</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">SplitMate</h4>
+                    <p class="text-gray-600 text-sm mb-4">Bagi tagihan dengan teman secara otomatis dan fair</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-xs text-gray-500">
+                            <i class="fas fa-receipt mr-1"></i>
+                            <span id="splitmatePending">Memuat...</span>
+                        </div>
+                        <i
+                            class="fas fa-arrow-right text-secondary-500 transition-all duration-300 hover:translate-x-1"></i>
+                    </div>
+                </div>
+
+                <!-- ZeroBudget Card -->
+                <div class="morphic-card p-6 hover:scale-105 transition-all duration-200 cursor-pointer micro-celebrate"
+                    onclick="window.location.href='zero_budget_tracker.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-accent-500 to-accent-600 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-target text-white text-lg"></i>
+                        </div>
+                        <span
+                            class="px-3 py-1 bg-success-100 text-success-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105">On
+                            Track</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">ZeroBudget</h4>
+                    <p class="text-gray-600 text-sm mb-4">Budget adaptif harian dengan mode Irit & YOLO</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-xs text-gray-500">
+                            <i class="fas fa-coins mr-1"></i>
+                            Sisa budget: Rp 75.000
+                        </div>
+                        <i
+                            class="fas fa-arrow-right text-accent-500 transition-all duration-300 hover:translate-x-1"></i>
+                    </div>
+                </div>
+
+                <!-- SubsTracker Card -->
+                <div class="morphic-card p-6 hover:scale-105 transition-all duration-200 cursor-pointer micro-celebrate"
+                    onclick="window.location.href='subs_tracker_manager.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-primary-600 to-secondary-500 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-sync-alt text-white text-lg"></i>
+                        </div>
+                        <span
+                            class="px-3 py-1 bg-warning-100 text-warning-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105">Alert</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">SubsTracker</h4>
+                    <p class="text-gray-600 text-sm mb-4">Kelola semua langganan digital dalam satu tempat</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-xs text-gray-500">
+                            <i class="fas fa-calendar-check mr-1"></i>
+                            2 akan diperpanjang besok
+                        </div>
+                        <i
+                            class="fas fa-arrow-right text-primary-500 transition-all duration-300 hover:translate-x-1"></i>
+                    </div>
+                </div>
+
+                <!-- Skill2Money Card -->
+                <!-- Ganti Skill2Money Card di dashboard dengan ini -->
+                <!-- Ganti Skill2Money Card di dashboard dengan ini -->
+                <div class="morphic-card p-6 hover:scale-105 transition-all duration-200 cursor-pointer micro-celebrate"
+                    onclick="window.location.href='skill2money.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-success-500 to-success-600 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-lightbulb text-white text-lg"></i>
+                        </div>
+                        <span
+                            class="px-3 py-1 bg-success-100 text-success-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105"
+                            id="skill2moneyStatus">Trending</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Skill2Money</h4>
+                    <p class="text-gray-600 text-sm mb-4">Monetisasi skill digital kamu jadi cuan nyata</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-xs text-gray-500">
+                            <i class="fas fa-dollar-sign mr-1"></i>
+                            <span id="skill2moneyEarnings">Potensi: Rp 2.5jt/bulan</span>
+                        </div>
+                        <i
+                            class="fas fa-arrow-right text-success-500 transition-all duration-300 hover:translate-x-1"></i>
+                    </div>
+                </div>
+
+                <!-- SmartDebt Card -->
+                <!-- GANTI SmartDebt Card dengan ini -->
+                <div class="morphic-card p-6 hover:scale-105 transition-all duration-200 cursor-pointer micro-celebrate"
+                    onclick="window.location.href='smartdebt_calculator.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-error-500 to-error-600 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-chart-line text-white text-lg"></i>
+                        </div>
+                        <span
+                            class="px-3 py-1 bg-error-100 text-error-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105"
+                            id="smartdebtStatus">Urgent</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">SmartDebt</h4>
+                    <p class="text-gray-600 text-sm mb-4">Strategi pelunasan hutang dengan jadwal optimal</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-xs text-gray-500">
+                            <i class="fas fa-clock mr-1"></i>
+                            <span id="smartdebtInfo">Pembayaran dalam 3 hari</span>
+                        </div>
+                        <i
+                            class="fas fa-arrow-right text-error-500 transition-all duration-300 hover:translate-x-1"></i>
+                    </div>
+                </div>
+
+                <!-- InvestifyZero Card -->
+                <div class="morphic-card p-6 hover:scale-105 transition-all duration-200 cursor-pointer micro-celebrate"
+                    onclick="window.location.href='investify_zero_game.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-accent-600 to-primary-500 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-gamepad text-white text-lg"></i>
+                        </div>
+                        <span
+                            class="px-3 py-1 bg-accent-100 text-accent-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105">mini
+                            game</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">InvestifyZero</h4>
+                    <p class="text-gray-600 text-sm mb-4">Belajar investasi melalui game simulasi seru</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-xs text-gray-500">
+                            <i class="fas fa-trophy mr-1"></i>
+                            Portfolio: +12.5%
+                        </div>
+                        <i
+                            class="fas fa-arrow-right text-accent-500 transition-all duration-300 hover:translate-x-1"></i>
+                    </div>
+                </div>
+
+                <!-- Financial Red Flags Card -->
+                <!-- Financial Red Flags Card -->
+                <div class="morphic-card p-6 hover:scale-105 transition-all duration-200 cursor-pointer micro-celebrate"
+                    onclick="window.location.href='financial_redflags.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-warning-500 to-error-500 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-flag text-white text-lg"></i>
+                        </div>
+                        <span
+                            class="px-3 py-1 bg-warning-100 text-warning-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105"
+                            id="redflagsStatus">Check</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Financial Red Flags</h4>
+                    <p class="text-gray-600 text-sm mb-4">Deteksi masalah keuangan dalam hubungan</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-xs text-gray-500">
+                            <i class="fas fa-heart mr-1"></i>
+                            <span id="redflagsHealth">Skor kesehatan: 85%</span>
+                        </div>
+                        <i
+                            class="fas fa-arrow-right text-warning-500 transition-all duration-300 hover:translate-x-1"></i>
+                    </div>
+                </div>
+
+                <!-- Anti-FOMO Card -->
+                <!-- Anti-FOMO Card -->
+                <div class="morphic-card p-6 hover:scale-105 transition-all duration-200 cursor-pointer micro-celebrate"
+                    onclick="window.location.href='anti_fomo_timer.html'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-secondary-600 to-accent-500 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-shield-alt text-white text-lg"></i>
+                        </div>
+                        <span
+                            class="px-3 py-1 bg-secondary-100 text-secondary-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105"
+                            id="antifomoStatus">Active</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Anti-FOMO</h4>
+                    <p class="text-gray-600 text-sm mb-4">Kontrol impuls belanja dengan timer cerdas</p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-xs text-gray-500">
+                            <i class="fas fa-save mr-1"></i>
+                            <span id="antifomoSavings">Hemat: Rp 0 bulan ini</span>
+                        </div>
+                        <iclass="fas fa-arrow-right text-secondary-500 transition-all duration-300 hover:translate-x-1">
+                            </i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Activity & Quick Actions -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Recent Activity -->
+            <div class="morphic-card p-6 fade-in">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-bold text-gray-900">Aktivitas Terbaru</h3>
+                    <button
+                        class="text-primary-600 hover:text-primary-700 text-sm font-medium transition-all duration-300 hover:scale-105">Lihat
+                        Semua</button>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3 notification-item">
+                        <div
+                            class="w-8 h-8 bg-success-100 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-plus text-success-600 text-xs"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-gray-900">Tabungan ditambahkan</p>
+                            <p class="text-xs text-gray-500">2 jam yang lalu • Rp 100.000</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 notification-item">
+                        <div
+                            class="w-8 h-8 bg-warning-100 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-credit-card text-warning-600 text-xs"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-gray-900">Langganan Netflix diperpanjang</p>
+                            <p class="text-xs text-gray-500">5 jam yang lalu • Rp 54.000</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 notification-item">
+                        <div
+                            class="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-chart-line text-primary-600 text-xs"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-gray-900">Analisis mood selesai</p>
+                            <p class="text-xs text-gray-500">1 hari yang lalu • MoneyMirror</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="morphic-card p-6 fade-in">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">Aksi Cepat</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <button
+                        class="p-4 bg-primary-50 hover:bg-primary-100 rounded-xl transition-all duration-300 text-center micro-celebrate hover:scale-105"
+                        onclick="quickAction('addExpense')">
+                        <i
+                            class="fas fa-plus-circle text-primary-600 text-xl mb-2 transition-all duration-300 hover:scale-110"></i>
+                        <p class="text-sm font-medium text-primary-700">Tambah Pengeluaran</p>
+                    </button>
+                    <button
+                        class="p-4 bg-success-50 hover:bg-success-100 rounded-xl transition-all duration-300 text-center micro-celebrate hover:scale-105"
+                        onclick="quickAction('addSaving')">
+                        <i
+                            class="fas fa-piggy-bank text-success-600 text-xl mb-2 transition-all duration-300 hover:scale-110"></i>
+                        <p class="text-sm font-medium text-success-700">Tambah Tabungan</p>
+                    </button>
+                    <button
+                        class="p-4 bg-secondary-50 hover:bg-secondary-100 rounded-xl transition-all duration-300 text-center micro-celebrate hover:scale-105"
+                        onclick="quickAction('splitBill')">
+                        <i
+                            class="fas fa-receipt text-secondary-600 text-xl mb-2 transition-all duration-300 hover:scale-110"></i>
+                        <p class="text-sm font-medium text-secondary-700">Bagi Tagihan</p>
+                    </button>
+                    <button
+                        class="p-4 bg-error-50 hover:bg-error-100 rounded-xl transition-all duration-300 text-center micro-celebrate hover:scale-105"
+                        onclick="quickAction('addDebt')">
+                        <i
+                            class="fas fa-file-invoice-dollar text-error-600 text-xl mb-2 transition-all duration-300 hover:scale-110"></i>
+                        <p class="text-sm font-medium text-error-700">Tambah Hutang</p>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-white/80 backdrop-blur-md border-t border-gray-200 mt-12 slide-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <p class="text-text-secondary text-sm mb-4 md:mb-0">
+                    © 2025 GenZ Finance Hub. Semua hak dilindungi.
+                </p>
+                <div class="flex items-center space-x-6">
+                    <a href="javascript:void(0)"
+                        class="text-text-secondary hover:text-primary-600 text-sm transition-all duration-300 hover:scale-105">Bantuan</a>
+                    <a href="javascript:void(0)"
+                        class="text-text-secondary hover:text-primary-600 text-sm transition-all duration-300 hover:scale-105">Privasi</a>
+                    <a href="javascript:void(0)"
+                        class="text-text-secondary hover:text-primary-600 text-sm transition-all duration-300 hover:scale-105">Syarat</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data global
+        let selectedNotifications = new Set();
+        let userSavings = 0;
+        let userDebt = 0;
+        let userExpenses = [];
+        let splitBills = [];
+        let notifications = [
+            { id: 1, type: 'info', title: 'Selamat Datang!', message: 'Dashboard berhasil dimuat', time: 'Baru saja', read: false },
+            { id: 2, type: 'warning', title: 'Pengingat Pembayaran', message: 'Netflix akan diperpanjang besok', time: '1 jam lalu', read: false },
+            { id: 3, type: 'success', title: 'Tabungan Bertambah', message: 'Tabungan berhasil ditambahkan Rp 100.000', time: '2 jam lalu', read: false }
+        ];
+
+        // Initialize Dashboard
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeDashboard();
+            updateDateTime();
+            checkUserSession();
+
+            // Add staggered animation for feature cards
+            setTimeout(() => {
+                const featureCards = document.querySelectorAll('.morphic-card');
+                featureCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('fade-in');
+                    }, index * 100);
+                });
+            }, 500);
+        });
+
+        // Initialize Dashboard Functions
+        function initializeDashboard() {
+            loadSplitMateData();
+
+            // Setup auto-refresh untuk data SplitMate
+            setInterval(loadSplitMateData, 30000); // Refresh setiap 30 detik
+        }
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+            const icon = this.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+        document.getElementById('mobileLogoutBtn').addEventListener('click', logout);
+
+        // Notification functionality
+        document.getElementById('notificationBtn').addEventListener('click', showNotificationPopup);
+
+        // Load data from localStorage
+        loadSavingsData();
+        loadDebtData();
+        loadExpensesData();
+        loadSplitBillsData();
+        loadNotifications();
+
+        // Update Date and Time
+        function updateDateTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            const dateString = now.toLocaleDateString('id-ID', options);
+            document.getElementById('currentDate').textContent = dateString;
+        }
+
+        // Check User Session
+        function checkUserSession() {
+            const userSession = localStorage.getItem('userSession');
+            if (!userSession) {
+                window.location.href = 'authentication_portal.html';
+                return;
+            }
+
+            try {
+                const userData = JSON.parse(userSession);
+                document.getElementById('userName').textContent = userData.name || 'User Demo';
+                document.getElementById('welcomeName').textContent = userData.name || 'User Demo';
+            } catch (error) {
+                console.error('Error parsing user session:', error);
+                document.getElementById('userName').textContent = 'User Demo';
+                document.getElementById('welcomeName').textContent = 'User Demo';
+            }
+        }
+
+        // Logout Function
+        function logout() {
+            if (confirm('Apakah kamu yakin ingin keluar?')) {
+                localStorage.removeItem('userSession');
+                window.location.href = 'authentication_portal.html';
+            }
+        }
+
+        // Navigate to Feature (for features not yet implemented)
+        function navigateToFeature(feature) {
+            // GANTI fungsi navigateToFeature untuk SmartDebt
+            function navigateToFeature(feature) {
+                const featureMap = {
+                    'splitmate': { name: 'SplitMate', url: 'splitmate_bill_splitter.html' },
+                    'smartdebt': { name: 'SmartDebt', url: 'smartdebt_calculator.html' }, // TAMBAHKAN INI
+                    'skill2money': 'Skill2Money',
+                    'redflags': 'Financial Red Flags',
+                    'antifomo': 'Anti-FOMO'
+                };
+
+                const featureData = featureMap[feature];
+
+                if (featureData && featureData.url) {
+                    // Redirect ke halaman yang sebenarnya
+                    window.location.href = featureData.url;
+                } else if (typeof featureData === 'string') {
+                    showNotification(`Fitur ${featureData} sedang dalam pengembangan! 🚧\n\nFitur ini akan segera tersedia. Terima kasih atas kesabarannya! 😊`, 'info');
+                } else {
+                    showNotification('Fitur sedang dalam pengembangan! 🚧', 'info');
+                }
+            }
+            const featureMap = {
+                'splitmate': 'SplitMate',
+                'skill2money': 'Skill2Money',
+                'smartdebt': 'SmartDebt',
+                'redflags': 'Financial Red Flags',
+                'antifomo': 'Anti-FOMO'
+            };
+
+            const featureName = featureMap[feature] || feature;
+            showNotification(`Fitur ${featureName} sedang dalam pengembangan! 🚧\n\nFitur ini akan segera tersedia. Terima kasih atas kesabarannya! 😊`, 'info');
+        }
+
+        // Quick Actions
+        function quickAction(action) {
+            const actionMap = {
+                'addExpense': {
+                    title: 'Tambah Pengeluaran',
+                    type: 'expense',
+                    icon: 'fa-minus-circle',
+                    color: 'primary'
+                },
+                'addSaving': {
+                    title: 'Tambah Tabungan',
+                    type: 'saving',
+                    icon: 'fa-piggy-bank',
+                    color: 'success'
+                },
+                'splitBill': {
+                    title: 'Bagi Tagihan',
+                    type: 'split',
+                    icon: 'fa-receipt',
+                    color: 'secondary'
+                },
+                'addDebt': {
+                    title: 'Kelola Hutang',
+                    type: 'debt',
+                    icon: 'fa-file-invoice-dollar',
+                    color: 'error'
+                }
+            };
+
+            const actionData = actionMap[action];
+            if (actionData) {
+                showQuickActionPopup(actionData);
+            }
+        }
+
+        // Show Quick Action Popup
+        function showQuickActionPopup(actionData) {
+            // Create popup overlay
+            const popupOverlay = document.createElement('div');
+            popupOverlay.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 fade-in';
+            popupOverlay.id = 'quickActionPopup';
+
+            let popupContent = '';
+
+            if (actionData.type === 'saving') {
+                popupContent = createSavingPopup(actionData);
+            } else if (actionData.type === 'debt') {
+                popupContent = createDebtPopup(actionData);
+            } else if (actionData.type === 'expense') {
+                popupContent = createExpensePopup(actionData);
+            } else if (actionData.type === 'split') {
+                popupContent = createSplitBillPopup(actionData);
+            } else {
+                popupContent = createPlaceholderPopup(actionData);
+            }
+
+            popupOverlay.innerHTML = popupContent;
+            document.body.appendChild(popupOverlay);
+
+            // Setup event listeners based on type
+            setupPopupEvents(actionData.type);
+        }
+        // Tambahkan di bagian event listeners
+        document.addEventListener('click', function (e) {
+            const notificationPopup = document.getElementById('notificationPopup');
+            if (notificationPopup && e.target === notificationPopup) {
+                closeNotificationPopup();
+            }
+        });
+
+        // Popup untuk Tambah Tabungan
+        function createSavingPopup(actionData) {
+            return `
+            <div class="bg-white rounded-2xl p-6 w-full max-w-md morphic-card bounce-in">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-gray-900">${actionData.title}</h3>
+                    <button onclick="closeQuickActionPopup()" class="text-gray-400 hover:text-gray-600 transition-all duration-300 hover:scale-110">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Jumlah Tabungan</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">Rp</span>
+                        <input 
+                            type="number" 
+                            id="savingAmount"
+                            placeholder="0"
+                            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-${actionData.color}-500 focus:border-transparent transition-all duration-300"
+                            min="0"
+                        >
+                    </div>
+                </div>
+                
+                <div class="flex space-x-3 mb-4">
+                    <button 
+                        onclick="addQuickAmount(10000, 'savingAmount')" 
+                        class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                    >
+                        +10K
+                    </button>
+                    <button 
+                        onclick="addQuickAmount(50000, 'savingAmount')" 
+                        class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                    >
+                        +50K
+                    </button>
+                    <button 
+                        onclick="addQuickAmount(100000, 'savingAmount')" 
+                        class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                    >
+                        +100K
+                    </button>
+                </div>
+                
+                <button 
+                    onclick="processSaving()"
+                    class="w-full mt-4 py-3 bg-${actionData.color}-500 hover:bg-${actionData.color}-600 text-white rounded-xl font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center micro-celebrate"
+                >
+                    <i class="fas ${actionData.icon} mr-2"></i>
+                    Simpan Tabungan
+                </button>
+            </div>
+        `;
+        }
+
+        // Popup untuk Kelola Hutang
+        function createDebtPopup(actionData) {
+            return `
+            <div class="bg-white rounded-2xl p-6 w-full max-w-md morphic-card bounce-in">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-gray-900">Kelola Hutang</h3>
+                    <button onclick="closeQuickActionPopup()" class="text-gray-400 hover:text-gray-600 transition-all duration-300 hover:scale-110">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+                
+                <!-- Tabs untuk Tambah/Kurangi Hutang -->
+                <div class="flex space-x-2 mb-6">
+                    <button id="addDebtTab" class="flex-1 py-2 bg-${actionData.color}-500 text-white rounded-lg font-medium transition-all duration-300 micro-celebrate">
+                        Tambah Hutang
+                    </button>
+                    <button id="reduceDebtTab" class="flex-1 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium transition-all duration-300 hover:bg-gray-300">
+                        Kurangi Hutang
+                    </button>
+                </div>
+                
+                <!-- Form Tambah Hutang -->
+                <div id="addDebtForm">
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Jumlah Hutang</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">Rp</span>
+                            <input 
+                                type="number" 
+                                id="debtAmount"
+                                placeholder="0"
+                                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-${actionData.color}-500 focus:border-transparent transition-all duration-300"
+                                min="0"
+                            >
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Keterangan (opsional)</label>
+                        <input 
+                            type="text" 
+                            id="debtDescription"
+                            placeholder="Contoh: Hutang ke teman"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-${actionData.color}-500 focus:border-transparent transition-all duration-300"
+                        >
+                    </div>
+                    
+                    <div class="flex space-x-3 mb-4">
+                        <button 
+                            onclick="addQuickAmount(10000, 'debtAmount')" 
+                            class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                        >
+                            +10K
+                        </button>
+                        <button 
+                            onclick="addQuickAmount(50000, 'debtAmount')" 
+                            class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                        >
+                            +50K
+                        </button>
+                        <button 
+                            onclick="addQuickAmount(100000, 'debtAmount')" 
+                            class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                        >
+                            +100K
+                        </button>
+                    </div>
+                    
+                    <button 
+                        onclick="processDebt('add')"
+                        class="w-full py-3 bg-${actionData.color}-500 hover:bg-${actionData.color}-600 text-white rounded-xl font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center micro-celebrate"
+                    >
+                        <i class="fas ${actionData.icon} mr-2"></i>
+                        Tambah Hutang
+                    </button>
+                </div>
+                
+                <!-- Form Kurangi Hutang -->
+                <div id="reduceDebtForm" class="hidden">
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Jumlah Pelunasan</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">Rp</span>
+                            <input 
+                                type="number" 
+                                id="reduceDebtAmount"
+                                placeholder="0"
+                                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-${actionData.color}-500 focus:border-transparent transition-all duration-300"
+                                min="0"
+                                max="${userDebt}"
+                            >
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1">Hutang saat ini: ${formatRupiah(userDebt)}</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Keterangan (opsional)</label>
+                        <input 
+                            type="text" 
+                            id="reduceDebtDescription"
+                            placeholder="Contoh: Bayar hutang ke teman"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-${actionData.color}-500 focus:border-transparent transition-all duration-300"
+                        >
+                    </div>
+                    
+                    <div class="flex space-x-3 mb-4">
+                        <button 
+                            onclick="addQuickAmount(10000, 'reduceDebtAmount')" 
+                            class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                        >
+                            +10K
+                        </button>
+                        <button 
+                            onclick="addQuickAmount(50000, 'reduceDebtAmount')" 
+                            class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                        >
+                            +50K
+                        </button>
+                        <button 
+                            onclick="setMaxDebtAmount()" 
+                            class="flex-1 py-2 bg-success-100 hover:bg-success-200 text-success-700 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                        >
+                            LUNASI
+                        </button>
+                    </div>
+                    
+                    <button 
+                        onclick="processDebt('reduce')"
+                        class="w-full py-3 bg-success-500 hover:bg-success-600 text-white rounded-xl font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center micro-celebrate"
+                    >
+                        <i class="fas fa-money-bill-wave mr-2"></i>
+                        Bayar Hutang
+                    </button>
+                </div>
+            </div>
+        `;
+        }
+
+        // Popup untuk Tambah Pengeluaran
+        function createExpensePopup(actionData) {
+            return `
+            <div class="bg-white rounded-2xl p-6 w-full max-w-md morphic-card bounce-in">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-gray-900">${actionData.title}</h3>
+                    <button onclick="closeQuickActionPopup()" class="text-gray-400 hover:text-gray-600 transition-all duration-300 hover:scale-110">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Jumlah Pengeluaran</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">Rp</span>
+                        <input 
+                            type="number" 
+                            id="expenseAmount"
+                            placeholder="0"
+                            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-${actionData.color}-500 focus:border-transparent transition-all duration-300"
+                            min="0"
+                        >
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
+                    <select id="expenseCategory" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-${actionData.color}-500 focus:border-transparent transition-all duration-300">
+                        <option value="makanan">🍔 Makanan & Minuman</option>
+                        <option value="transportasi">🚗 Transportasi</option>
+                        <option value="hiburan">🎬 Hiburan</option>
+                        <option value="belanja">🛍️ Belanja</option>
+                        <option value="kesehatan">🏥 Kesehatan</option>
+                        <option value="pendidikan">📚 Pendidikan</option>
+                        <option value="lainnya">📦 Lainnya</option>
+                    </select>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Keterangan (opsional)</label>
+                    <input 
+                        type="text" 
+                        id="expenseDescription"
+                        placeholder="Contoh: Makan siang di restoran"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-${actionData.color}-500 focus:border-transparent transition-all duration-300"
+                    >
+                </div>
+                
+                <div class="flex space-x-3 mb-4">
+                    <button 
+                        onclick="addQuickAmount(10000, 'expenseAmount')" 
+                        class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                    >
+                        +10K
+                    </button>
+                    <button 
+                        onclick="addQuickAmount(50000, 'expenseAmount')" 
+                        class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                    >
+                        +50K
+                    </button>
+                    <button 
+                        onclick="addQuickAmount(100000, 'expenseAmount')" 
+                        class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                    >
+                        +100K
+                    </button>
+                </div>
+                
+                <button 
+                    onclick="processExpense()"
+                    class="w-full py-3 bg-${actionData.color}-500 hover:bg-${actionData.color}-600 text-white rounded-xl font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center micro-celebrate"
+                >
+                    <i class="fas ${actionData.icon} mr-2"></i>
+                    Simpan Pengeluaran
+                </button>
+            </div>
+        `;
+        }
+
+        // Popup untuk Bagi Tagihan
+        function createSplitBillPopup(actionData) {
+            return `
+            <div class="bg-white rounded-2xl p-6 w-full max-w-md morphic-card bounce-in">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-gray-900">${actionData.title}</h3>
+                    <button onclick="closeQuickActionPopup()" class="text-gray-400 hover:text-gray-600 transition-all duration-300 hover:scale-110">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Deskripsi Tagihan</label>
+                    <input 
+                        type="text" 
+                        id="splitDescription"
+                        placeholder="Contoh: Makan malam bersama"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-${actionData.color}-500 focus:border-transparent transition-all duration-300"
+                    >
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Total Tagihan</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">Rp</span>
+                        <input 
+                            type="number" 
+                            id="splitTotalAmount"
+                            placeholder="0"
+                            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-${actionData.color}-500 focus:border-transparent transition-all duration-300"
+                            min="0"
+                        >
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Jumlah Orang</label>
+                    <div class="flex items-center space-x-3">
+                        <button onclick="changeSplitPersonCount(-1)" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105">
+                            <i class="fas fa-minus text-gray-600"></i>
+                        </button>
+                        <span id="splitPersonCount" class="text-lg font-medium">2</span>
+                        <button onclick="changeSplitPersonCount(1)" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105">
+                            <i class="fas fa-plus text-gray-600"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="mb-6 p-4 bg-gray-50 rounded-xl">
+                    <p class="text-sm text-gray-600">Per Orang Membayar:</p>
+                    <p class="text-lg font-bold text-${actionData.color}-600" id="splitPerPerson">Rp 0</p>
+                </div>
+                
+                <div class="flex space-x-3 mb-4">
+                    <button 
+                        onclick="addQuickAmount(50000, 'splitTotalAmount')" 
+                        class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                    >
+                        +50K
+                    </button>
+                    <button 
+                        onclick="addQuickAmount(100000, 'splitTotalAmount')" 
+                        class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                    >
+                        +100K
+                    </button>
+                    <button 
+                        onclick="addQuickAmount(200000, 'splitTotalAmount')" 
+                        class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
+                    >
+                        +200K
+                    </button>
+                </div>
+                
+                <button 
+                    onclick="processSplitBill()"
+                    class="w-full py-3 bg-${actionData.color}-500 hover:bg-${actionData.color}-600 text-white rounded-xl font-medium transition-all duration-300 hover:scale-105 flex items-center justify-center micro-celebrate"
+                >
+                    <i class="fas ${actionData.icon} mr-2"></i>
+                    Buat Tagihan
+                </button>
+            </div>
+        `;
+        }
+
+        // Placeholder popup
+        function createPlaceholderPopup(actionData) {
+            return `
+            <div class="bg-white rounded-2xl p-6 w-full max-w-md morphic-card bounce-in">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-gray-900">${actionData.title}</h3>
+                    <button onclick="closeQuickActionPopup()" class="text-gray-400 hover:text-gray-600 transition-all duration-300 hover:scale-110">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+                
+                <div class="text-center py-8">
+                    <div class="w-16 h-16 bg-${actionData.color}-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:scale-110">
+                        <i class="fas ${actionData.icon} text-${actionData.color}-600 text-2xl"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">Fitur ${actionData.title} sedang dalam pengembangan! 🚧</p>
+                    
+                    <button 
+                        onclick="closeQuickActionPopup()"
+                        class="px-6 py-2 bg-${actionData.color}-500 hover:bg-${actionData.color}-600 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105 micro-celebrate"
+                    >
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        `;
+        }
+
+        // Setup popup events
+        function setupPopupEvents(type) {
+            if (type === 'saving') {
+                const input = document.getElementById('savingAmount');
+                input.focus();
+                input.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') processSaving();
+                });
+            } else if (type === 'debt') {
+                setupDebtTabs();
+            } else if (type === 'expense') {
+                const input = document.getElementById('expenseAmount');
+                input.focus();
+                input.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') processExpense();
+                });
+            } else if (type === 'split') {
+                const input = document.getElementById('splitTotalAmount');
+                input.focus();
+                input.addEventListener('input', updateSplitCalculation);
+                input.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') processSplitBill();
+                });
+            }
+        }
+
+        // Setup debt tabs
+        function setupDebtTabs() {
+            const addDebtTab = document.getElementById('addDebtTab');
+            const reduceDebtTab = document.getElementById('reduceDebtTab');
+            const addDebtForm = document.getElementById('addDebtForm');
+            const reduceDebtForm = document.getElementById('reduceDebtForm');
+
+            if (addDebtTab && reduceDebtTab) {
+                addDebtTab.addEventListener('click', function () {
+                    addDebtTab.classList.add('bg-error-500', 'text-white');
+                    addDebtTab.classList.remove('bg-gray-200', 'text-gray-700');
+                    reduceDebtTab.classList.add('bg-gray-200', 'text-gray-700');
+                    reduceDebtTab.classList.remove('bg-success-500', 'text-white');
+                    addDebtForm.classList.remove('hidden');
+                    reduceDebtForm.classList.add('hidden');
+                });
+
+                reduceDebtTab.addEventListener('click', function () {
+                    reduceDebtTab.classList.add('bg-success-500', 'text-white');
+                    reduceDebtTab.classList.remove('bg-gray-200', 'text-gray-700');
+                    addDebtTab.classList.add('bg-gray-200', 'text-gray-700');
+                    addDebtTab.classList.remove('bg-error-500', 'text-white');
+                    reduceDebtForm.classList.remove('hidden');
+                    addDebtForm.classList.add('hidden');
+
+                    // Update max value untuk input pengurangan hutang
+                    document.getElementById('reduceDebtAmount').max = userDebt;
+                });
+
+                // Setup enter key for debt forms
+                const addInput = document.getElementById('debtAmount');
+                const reduceInput = document.getElementById('reduceDebtAmount');
+
+                if (addInput) {
+                    addInput.addEventListener('keypress', function (e) {
+                        if (e.key === 'Enter') processDebt('add');
+                    });
+                }
+
+                if (reduceInput) {
+                    reduceInput.addEventListener('keypress', function (e) {
+                        if (e.key === 'Enter') processDebt('reduce');
+                    });
+                }
+            }
+        }
+
+        // Close popup
+        function closeQuickActionPopup() {
+            const popup = document.getElementById('quickActionPopup');
+            if (popup) {
+                popup.remove();
+            }
+        }
+
+        // Quick add amount
+        function addQuickAmount(amount, elementId) {
+            const input = document.getElementById(elementId);
+            const currentValue = parseInt(input.value) || 0;
+            input.value = currentValue + amount;
+
+            // Add micro animation
+            input.classList.add('micro-celebrate');
+            setTimeout(() => {
+                input.classList.remove('micro-celebrate');
+            }, 300);
+
+            // Update split calculation if needed
+            if (elementId === 'splitTotalAmount') {
+                updateSplitCalculation();
+            }
+        }
+
+        // Set max debt amount
+        function setMaxDebtAmount() {
+            document.getElementById('reduceDebtAmount').value = userDebt;
+        }
+
+        // Load data functions
+        function loadSavingsData() {
+            const savedSavings = localStorage.getItem('userSavings');
+            if (savedSavings) {
+                userSavings = parseInt(savedSavings);
+                updateSavingsDisplay();
+            }
+        }
+
+        function loadDebtData() {
+            const savedDebt = localStorage.getItem('userDebt');
+            if (savedDebt) {
+                userDebt = parseInt(savedDebt);
+                updateDebtDisplay();
+            }
+        }
+
+        function loadExpensesData() {
+            const savedExpenses = localStorage.getItem('userExpenses');
+            if (savedExpenses) {
+                userExpenses = JSON.parse(savedExpenses);
+            }
+        }
+
+        function loadSplitBillsData() {
+            const savedSplitBills = localStorage.getItem('userSplitBills');
+            if (savedSplitBills) {
+                splitBills = JSON.parse(savedSplitBills);
+            }
+        }
+
+        // Update display functions
+        function updateSavingsDisplay() {
+            const savingsElement = document.getElementById('totalTabungan');
+            if (savingsElement) {
+                savingsElement.textContent = formatRupiah(userSavings);
+                savingsElement.classList.add('bounce-in');
+                setTimeout(() => {
+                    savingsElement.classList.remove('bounce-in');
+                }, 800);
+            }
+        }
+
+        function updateDebtDisplay() {
+            const debtElement = document.getElementById('totalHutang');
+            if (debtElement) {
+                debtElement.textContent = formatRupiah(userDebt);
+                debtElement.classList.add('bounce-in');
+                setTimeout(() => {
+                    debtElement.classList.remove('bounce-in');
+                }, 800);
+            }
+        }
+
+        // Process functions
+        function processSaving() {
+            const input = document.getElementById('savingAmount');
+            const amount = parseInt(input.value);
+
+            if (!amount || amount <= 0) {
+                showNotification('Masukkan jumlah yang valid!', 'error');
+                return;
+            }
+
+            // Add to savings
+            userSavings += amount;
+
+            // Save to localStorage
+            localStorage.setItem('userSavings', userSavings.toString());
+
+            // Update display
+            updateSavingsDisplay();
+
+            // Show success notification
+            showNotification(`Tabungan berhasil ditambah: ${formatRupiah(amount)}! 🎉`, 'success');
+
+            // Add to recent activity
+            addToRecentActivity('Tabungan ditambahkan', amount);
+
+            // Add notification
+            addNotification('success', 'Tabungan Bertambah', `Tabungan berhasil ditambahkan ${formatRupiah(amount)}`);
+
+            // Close popup
+            closeQuickActionPopup();
+
+            // Add micro celebration
+            microCelebrate();
+        }
+
+        function processDebt(action) {
+            let amount, description;
+
+            if (action === 'add') {
+                amount = parseInt(document.getElementById('debtAmount').value);
+                description = document.getElementById('debtDescription').value || 'Hutang baru';
+            } else {
+                amount = parseInt(document.getElementById('reduceDebtAmount').value);
+                description = document.getElementById('reduceDebtDescription').value || 'Bayar hutang';
+
+                // Validasi untuk pengurangan hutang
+                if (amount > userDebt) {
+                    showNotification('Jumlah pelunasan tidak boleh melebihi hutang!', 'error');
+                    return;
+                }
+            }
+
+            if (!amount || amount <= 0) {
+                showNotification('Masukkan jumlah yang valid!', 'error');
+                return;
+            }
+
+            // Update debt based on action
+            if (action === 'add') {
+                userDebt += amount;
+                showNotification(`Hutang berhasil ditambah: ${formatRupiah(amount)}! ⚠️`, 'warning');
+                addToRecentActivity('Hutang ditambahkan', amount);
+                addNotification('warning', 'Hutang Bertambah', `${description}: ${formatRupiah(amount)}`);
+            } else {
+                userDebt -= amount;
+                showNotification(`Hutang berhasil dikurangi: ${formatRupiah(amount)}! ✅`, 'success');
+                addToRecentActivity('Hutang dikurangi', amount);
+                addNotification('success', 'Hutang Berkurang', `${description}: ${formatRupiah(amount)}`);
+            }
+
+            // Save to localStorage
+            localStorage.setItem('userDebt', userDebt.toString());
+
+            // Update display
+            updateDebtDisplay();
+
+            // Close popup
+            closeQuickActionPopup();
+
+            // Add micro celebration
+            microCelebrate();
+        }
+
+        function processExpense() {
+            const amount = parseInt(document.getElementById('expenseAmount').value);
+            const category = document.getElementById('expenseCategory').value;
+            const description = document.getElementById('expenseDescription').value || 'Pengeluaran';
+
+            if (!amount || amount <= 0) {
+                showNotification('Masukkan jumlah yang valid!', 'error');
+                return;
+            }
+
+            // Add to expenses
+            const newExpense = {
+                id: Date.now(),
+                amount: amount,
+                category: category,
+                description: description,
+                date: new Date().toISOString()
+            };
+
+            userExpenses.push(newExpense);
+
+            // Save to localStorage
+            localStorage.setItem('userExpenses', JSON.stringify(userExpenses));
+
+            // Show success notification
+            showNotification(`Pengeluaran berhasil dicatat: ${formatRupiah(amount)}! 💸`, 'info');
+
+            // Add to recent activity
+            addToRecentActivity('Pengeluaran ditambahkan', amount);
+
+            // Add notification
+            addNotification('info', 'Pengeluaran Baru', `${description}: ${formatRupiah(amount)}`);
+
+            // Close popup
+            closeQuickActionPopup();
+
+            // Add micro celebration
+            microCelebrate();
+        }
+
+        function processSplitBill() {
+            const description = document.getElementById('splitDescription').value || 'Tagihan bersama';
+            const totalAmount = parseInt(document.getElementById('splitTotalAmount').value);
+            const personCount = parseInt(document.getElementById('splitPersonCount').textContent);
+
+            if (!totalAmount || totalAmount <= 0) {
+                showNotification('Masukkan jumlah tagihan yang valid!', 'error');
+                return;
+            }
+
+            const perPerson = Math.ceil(totalAmount / personCount);
+
+            // Add to split bills
+            const newSplitBill = {
+                id: Date.now(),
+                description: description,
+                totalAmount: totalAmount,
+                personCount: personCount,
+                perPerson: perPerson,
+                date: new Date().toISOString(),
+                settled: false
+            };
+
+            splitBills.push(newSplitBill);
+
+            // Save to localStorage
+            localStorage.setItem('userSplitBills', JSON.stringify(splitBills));
+
+            // Show success notification
+            showNotification(`Tagihan "${description}" berhasil dibuat! 🧾\nPer orang: ${formatRupiah(perPerson)}`, 'success');
+
+            // Add to recent activity
+            addToRecentActivity('Tagihan dibagi', totalAmount);
+
+            // Add notification
+            addNotification('success', 'Tagihan Dibuat', `${description}: ${formatRupiah(perPerson)}/orang`);
+
+            // Close popup
+            closeQuickActionPopup();
+
+            // Add micro celebration
+            microCelebrate();
+        }
+
+        // Helper functions untuk bagi tagihan
+        function changeSplitPersonCount(change) {
+            const countElement = document.getElementById('splitPersonCount');
+            let currentCount = parseInt(countElement.textContent);
+            currentCount = Math.max(2, currentCount + change); // Minimal 2 orang
+            countElement.textContent = currentCount;
+            updateSplitCalculation();
+        }
+
+        function updateSplitCalculation() {
+            const totalAmount = parseInt(document.getElementById('splitTotalAmount').value) || 0;
+            const personCount = parseInt(document.getElementById('splitPersonCount').textContent);
+            const perPerson = Math.ceil(totalAmount / personCount);
+
+            document.getElementById('splitPerPerson').textContent = formatRupiah(perPerson);
+        }
+
+        // Format Rupiah helper
+        function formatRupiah(amount) {
+            return 'Rp ' + amount.toLocaleString('id-ID');
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 p-4 rounded-xl text-white font-medium transform transition-all duration-300 z-50 bounce-in ${type === 'success' ? 'bg-success-500' :
+                type === 'error' ? 'bg-error-500' : type === 'warning' ? 'bg-warning-500' : 'bg-primary-500'
+                }`;
+            notification.textContent = message;
+            notification.style.transform = 'translateX(100%)';
+
+            document.body.appendChild(notification);
+
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+
+            // Animate out after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Add to recent activity
+        function addToRecentActivity(activity, amount) {
+            // In a real app, this would update the activity list
+            console.log(`Activity: ${activity}, Amount: ${amount}`);
+
+            // Untuk demo, kita bisa update notifikasi count
+            updateNotificationCount();
+        }
+
+        // Micro celebration effect
+        function microCelebrate() {
+            const elements = document.querySelectorAll('.micro-celebrate');
+            elements.forEach(element => {
+                element.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    element.style.transform = 'scale(1)';
+                }, 150);
+            });
+        }
+
+        // Notification System
+        function loadNotifications() {
+            const savedNotifications = localStorage.getItem('userNotifications');
+            if (savedNotifications) {
+                notifications = JSON.parse(savedNotifications);
+            }
+            updateNotificationCount();
+        }
+
+        function saveNotifications() {
+            localStorage.setItem('userNotifications', JSON.stringify(notifications));
+            updateNotificationCount();
+        }
+
+        function updateNotificationCount() {
+            const unreadCount = notifications.filter(n => !n.read).length;
+            const countElement = document.getElementById('notificationCount');
+            countElement.textContent = unreadCount;
+
+            // Add bounce animation when count changes
+            countElement.classList.add('bounce-in');
+            setTimeout(() => {
+                countElement.classList.remove('bounce-in');
+            }, 800);
+        }
+
+        function addNotification(type, title, message) {
+            const now = new Date();
+            const timeDiff = Math.floor((Date.now() - now) / 60000); // in minutes
+
+            let timeText = 'Baru saja';
+            if (timeDiff > 0) {
+                timeText = `${timeDiff} menit lalu`;
+            }
+            if (timeDiff > 60) {
+                timeText = `${Math.floor(timeDiff / 60)} jam lalu`;
+            }
+
+            const newNotification = {
+                id: Date.now(),
+                type: type,
+                title: title,
+                message: message,
+                time: timeText,
+                read: false
+            };
+
+            notifications.unshift(newNotification);
+            saveNotifications();
+        }
+
+        // Ganti fungsi showNotificationPopup dengan yang ini
+        function showNotificationPopup() {
+            closeNotificationPopup();
+
+            const popupOverlay = document.createElement('div');
+            popupOverlay.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 fade-in';
+            popupOverlay.id = 'notificationPopup';
+
+            let notificationsHTML = '';
+
+            if (notifications.length === 0) {
+                notificationsHTML = `
+            <div class="empty-notifications">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-bell text-gray-400 text-2xl"></i>
+                </div>
+                <p class="text-gray-500">Tidak ada notifikasi</p>
+            </div>
+        `;
+            } else {
+                notifications.forEach((notification, index) => {
+                    const iconClass = notification.type === 'success' ? 'fa-check-circle' :
+                        notification.type === 'warning' ? 'fa-exclamation-triangle' :
+                            notification.type === 'error' ? 'fa-times-circle' : 'fa-info-circle';
+
+                    const colorClass = notification.type === 'success' ? 'text-success-600' :
+                        notification.type === 'warning' ? 'text-warning-600' :
+                            notification.type === 'error' ? 'text-error-600' : 'text-primary-600';
+
+                    const bgColorClass = notification.type === 'success' ? 'bg-success-100' :
+                        notification.type === 'warning' ? 'bg-warning-100' :
+                            notification.type === 'error' ? 'bg-error-100' : 'bg-primary-100';
+
+                    const isSelected = selectedNotifications.has(notification.id);
+
+                    notificationsHTML += `
+                <div class="notification-item ${isSelected ? 'selected' : ''}" data-id="${notification.id}">
+                    <input type="checkbox" class="notification-checkbox" ${isSelected ? 'checked' : ''} 
+                        onchange="toggleNotificationSelection(${notification.id}, this.checked)">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center ${bgColorClass} flex-shrink-0">
+                        <i class="fas ${iconClass} ${colorClass} text-sm"></i>
+                    </div>
+                    <div class="notification-content ml-3">
+                        <p class="text-sm font-medium text-gray-900">${notification.title}</p>
+                        <p class="text-xs text-gray-500">${notification.message}</p>
+                        <p class="text-xs text-gray-400 mt-1">${notification.time}</p>
+                    </div>
+                    ${!notification.read ? '<span class="w-2 h-2 bg-primary-500 rounded-full ml-2 flex-shrink-0"></span>' : ''}
+                </div>
+            `;
+                });
+            }
+
+            const allSelected = selectedNotifications.size === notifications.length && notifications.length > 0;
+
+            popupOverlay.innerHTML = `
+        <div class="bg-white rounded-2xl w-full max-w-md notification-popup">
+            <div class="notification-header">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-bold text-gray-900">Notifikasi</h3>
+                    <button onclick="closeNotificationPopup()" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+                ${notifications.length > 0 ? `
+                    <div class="select-all-container">
+                        <input type="checkbox" id="selectAllNotifications" ${allSelected ? 'checked' : ''} 
+                            onchange="toggleSelectAllNotifications(this.checked)">
+                        <label for="selectAllNotifications" class="text-sm text-gray-700">Pilih Semua</label>
+                    </div>
+                ` : ''}
+            </div>
+            <div class="notification-body">
+                ${notificationsHTML}
+            </div>
+            ${notifications.length > 0 ? `
+                <div class="notification-footer">
+                    <div>
+                        <span class="text-sm text-gray-500">
+                            ${selectedNotifications.size > 0 ?
+                        `${selectedNotifications.size} dipilih` :
+                        `${notifications.length} total`}
+                        </span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="markSelectedAsRead()" 
+                            class="px-3 py-1 bg-primary-500 hover:bg-primary-600 text-white text-sm rounded-lg transition-colors ${selectedNotifications.size === 0 ? 'opacity-50 cursor-not-allowed' : ''}"
+                            ${selectedNotifications.size === 0 ? 'disabled' : ''}>
+                            Tandai Dibaca
+                        </button>
+                        <button onclick="deleteSelectedNotifications()" 
+                            class="px-3 py-1 bg-error-500 hover:bg-error-600 text-white text-sm rounded-lg transition-colors ${selectedNotifications.size === 0 ? 'opacity-50 cursor-not-allowed' : ''}"
+                            ${selectedNotifications.size === 0 ? 'disabled' : ''}>
+                            Hapus
+                        </button>
+                    </div>
+                </div>
+            ` : ''}
+        </div>
+    `;
+
+            document.body.appendChild(popupOverlay);
+            markAllAsRead();
+        }
+
+        function closeNotificationPopup() {
+            const popup = document.getElementById('notificationPopup');
+            if (popup) {
+                popup.remove();
+            }
+        }
+
+        function markAllAsRead() {
+            let hasUnread = false;
+            notifications.forEach(notification => {
+                if (!notification.read) {
+                    notification.read = true;
+                    hasUnread = true;
+                }
+            });
+
+            if (hasUnread) {
+                saveNotifications();
+            }
+        }
+
+        // Navbar Scroll Effect
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.sticky-nav');
+        let navbarHeight = navbar ? navbar.offsetHeight : 0;
+
+        function handleScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Add scrolled class when not at top
+            if (scrollTop > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Compact mode when scrolling down
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down
+                navbar.classList.add('compact');
+            } else {
+                // Scrolling up
+                navbar.classList.remove('compact');
+            }
+
+            lastScrollTop = scrollTop;
+        }
+
+        // Throttle scroll events for performance
+        function throttle(func, limit) {
+            let inThrottle;
+            return function () {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+
+        // Initialize scroll effect
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initial check
+            if (navbar) {
+                handleScroll();
+
+                // Add scroll event listener with throttle
+                window.addEventListener('scroll', throttle(handleScroll, 10));
+
+                // Add resize event to recalculate navbar height
+                window.addEventListener('resize', function () {
+                    navbarHeight = navbar.offsetHeight;
+                });
+            }
+        });
+
+        // Add click outside to close popup
+        document.addEventListener('click', function (e) {
+            const quickPopup = document.getElementById('quickActionPopup');
+            if (quickPopup && e.target === quickPopup) {
+                closeQuickActionPopup();
+            }
+
+            const notificationPopup = document.getElementById('notificationPopup');
+            if (notificationPopup && e.target === notificationPopup) {
+                closeNotificationPopup();
+            }
+        });
+
+        // Add keyboard shortcuts for power users
+        document.addEventListener('keydown', function (e) {
+            // Alt + D for Dashboard
+            if (e.altKey && e.key === 'd') {
+                e.preventDefault();
+                window.location.href = 'main_dashboard.html';
+            }
+            // Alt + M for MoneyMirror
+            if (e.altKey && e.key === 'm') {
+                e.preventDefault();
+                window.location.href = 'money_mirror_analysis.html';
+            }
+            // Alt + Z for ZeroBudget
+            if (e.altKey && e.key === 'z') {
+                e.preventDefault();
+                window.location.href = 'zero_budget_tracker.html';
+            }
+            // Alt + S for SubsTracker
+            if (e.altKey && e.key === 's') {
+                e.preventDefault();
+                window.location.href = 'subs_tracker_manager.html';
+            }
+            // Alt + I for InvestifyZero
+            if (e.altKey && e.key === 'i') {
+                e.preventDefault();
+                window.location.href = 'investify_zero_game.html';
+            }
+        });
+
+        // Simulate real-time updates
+        setInterval(function () {
+            // Update notification count randomly
+            if (Math.random() > 0.95) {
+                addNotification('info', 'Pengingat', 'Jangan lupa catat pengeluaran hari ini!');
+            }
+        }, 60000); // Check every 60 seconds
+
+        // Tambahkan fungsi ini di bagian JavaScript dashboard
+
+        // Fungsi untuk memuat data SplitMate
+        function loadSplitMateData() {
+            try {
+                // Load data dari localStorage SplitMate
+                const splitmateBills = localStorage.getItem('splitmate_bills');
+                const splitmateStats = localStorage.getItem('splitmateStats');
+
+                let activeBills = 0;
+                let pendingPayments = 0;
+                let totalBillAmount = 0;
+
+                if (splitmateBills) {
+                    const bills = JSON.parse(splitmateBills);
+                    activeBills = bills.filter(bill => bill.status === 'active').length;
+
+                    // Hitung total amount dan pending payments
+                    bills.forEach(bill => {
+                        totalBillAmount += bill.amount || 0;
+                        if (bill.status === 'active') {
+                            bill.splits?.forEach(split => {
+                                if (!split.paid) {
+                                    pendingPayments += split.amount || 0;
+                                }
+                            });
+                        }
+                    });
+                }
+
+                // Update card SplitMate
+                updateSplitMateCard(activeBills, pendingPayments, totalBillAmount);
+
+                // Update stats untuk dashboard overall
+                updateDashboardWithSplitMateData(activeBills, totalBillAmount, pendingPayments);
+
+            } catch (error) {
+                console.error('Error loading SplitMate data:', error);
+                updateSplitMateCard(0, 0, 0);
+            }
+        }
+
+        // Update tampilan card SplitMate
+        function updateSplitMateCard(activeBills, pendingPayments, totalAmount) {
+            const statusElement = document.getElementById('splitmateStatus');
+            const pendingElement = document.getElementById('splitmatePending');
+
+            if (activeBills > 0) {
+                statusElement.textContent = 'Aktif';
+                statusElement.className = 'px-3 py-1 bg-success-100 text-success-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105';
+                pendingElement.textContent = `${activeBills} tagihan aktif`;
+
+                // Tambahkan notifikasi jika ada pending payments
+                if (pendingPayments > 0) {
+                    addSplitMateNotification(pendingPayments);
+                }
+            } else {
+                statusElement.textContent = 'Baru';
+                statusElement.className = 'px-3 py-1 bg-secondary-100 text-secondary-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105';
+                pendingElement.textContent = 'Belum ada tagihan';
+            }
+        }
+
+        // Update dashboard dengan data SplitMate
+        function updateDashboardWithSplitMateData(activeBills, totalAmount, pendingPayments) {
+            // Simpan data untuk digunakan di quick actions
+            window.splitMateData = {
+                activeBills: activeBills,
+                totalAmount: totalAmount,
+                pendingPayments: pendingPayments,
+                lastUpdated: new Date().toISOString()
+            };
+
+            // Update recent activity jika ada tagihan baru
+            if (activeBills > 0) {
+                updateRecentActivityWithSplitMate();
+            }
+        }
+
+        // Tambahkan notifikasi untuk SplitMate
+        function addSplitMateNotification(pendingPayments) {
+            const existingNotification = notifications.find(n =>
+                n.title.includes('SplitMate') && n.message.includes('tagihan pending')
+            );
+
+            if (!existingNotification && pendingPayments > 0) {
+                addNotification('warning', 'SplitMate Alert',
+                    `Ada tagihan pending sebesar ${formatRupiah(pendingPayments)} yang perlu diselesaikan`);
+            }
+        }
+
+        // Update recent activity dengan data SplitMate
+        function updateRecentActivityWithSplitMate() {
+            // Load aktivitas terbaru dari SplitMate
+            const splitmateActivities = localStorage.getItem('splitmate_activities');
+            if (splitmateActivities) {
+                const activities = JSON.parse(splitmateActivities);
+                if (activities.length > 0) {
+                    const latestActivity = activities[0];
+                    // Tambahkan ke recent activity dashboard jika relevan
+                    if (isToday(new Date(latestActivity.timestamp))) {
+                        addToRecentActivity(latestActivity.message, 0);
+                    }
+                }
+            }
+        }
+
+        // Helper function untuk cek tanggal hari ini
+        function isToday(date) {
+            const today = new Date();
+            return date.getDate() === today.getDate() &&
+                date.getMonth() === today.getMonth() &&
+                date.getFullYear() === today.getFullYear();
+        }
+
+        // Tambahkan fungsi-fungsi ini
+
+        // Toggle seleksi notifikasi individual
+        function toggleNotificationSelection(notificationId, isSelected) {
+            if (isSelected) {
+                selectedNotifications.add(notificationId);
+            } else {
+                selectedNotifications.delete(notificationId);
+            }
+            refreshNotificationPopup();
+        }
+
+        // Pilih semua/batalkan semua
+        function toggleSelectAllNotifications(selectAll) {
+            if (selectAll) {
+                notifications.forEach(notification => {
+                    selectedNotifications.add(notification.id);
+                });
+            } else {
+                selectedNotifications.clear();
+            }
+            refreshNotificationPopup();
+        }
+
+        // Refresh popup untuk memperbarui tampilan
+        function refreshNotificationPopup() {
+            closeNotificationPopup();
+            showNotificationPopup();
+        }
+
+        // Tandai yang dipilih sebagai sudah dibaca
+        function markSelectedAsRead() {
+            if (selectedNotifications.size === 0) return;
+
+            notifications.forEach(notification => {
+                if (selectedNotifications.has(notification.id)) {
+                    notification.read = true;
+                }
+            });
+
+            saveNotifications();
+            selectedNotifications.clear();
+            refreshNotificationPopup();
+        }
+
+        // Hapus notifikasi yang dipilih
+        function deleteSelectedNotifications() {
+            if (selectedNotifications.size === 0) return;
+
+            if (confirm(`Hapus ${selectedNotifications.size} notifikasi?`)) {
+                notifications = notifications.filter(notification =>
+                    !selectedNotifications.has(notification.id)
+                );
+
+                saveNotifications();
+                selectedNotifications.clear();
+                refreshNotificationPopup();
+            }
+        }
+
+        // Fungsi untuk memuat data Financial Red Flags
+        function loadRedFlagsData() {
+            try {
+                // Load data dari localStorage Financial Red Flags
+                const redflagsIssues = localStorage.getItem('redflags_issues');
+
+                let healthScore = 85;
+                let activeIssues = 0;
+
+                if (redflagsIssues) {
+                    const issues = JSON.parse(redflagsIssues);
+                    activeIssues = issues.filter(issue => issue.status === 'active').length;
+                    const highSeverityIssues = issues.filter(issue => issue.severity === 'high').length;
+
+                    // Calculate health score
+                    healthScore = Math.max(0, 100 - (activeIssues * 10 + highSeverityIssues * 15));
+                }
+
+                // Update card Financial Red Flags
+                updateRedFlagsCard(healthScore, activeIssues);
+
+            } catch (error) {
+                console.error('Error loading Financial Red Flags data:', error);
+                updateRedFlagsCard(85, 0);
+            }
+        }
+
+        // Update tampilan card Financial Red Flags
+        function updateRedFlagsCard(healthScore, activeIssues) {
+            const statusElement = document.getElementById('redflagsStatus');
+            const healthElement = document.getElementById('redflagsHealth');
+
+            if (activeIssues > 0) {
+                statusElement.textContent = 'Alert';
+                statusElement.className = 'px-3 py-1 bg-error-100 text-error-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105';
+                healthElement.textContent = `Skor kesehatan: ${healthScore}%`;
+
+                // Add notification if health score is low
+                if (healthScore < 70) {
+                    addNotification('warning', 'Financial Health Alert',
+                        `Skor kesehatan finansial kamu ${healthScore}%. Cek Financial Red Flags untuk solusi!`);
+                }
+            } else {
+                statusElement.textContent = 'Healthy';
+                statusElement.className = 'px-3 py-1 bg-success-100 text-success-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105';
+                healthElement.textContent = `Skor kesehatan: ${healthScore}%`;
+            }
+        }
+
+        // Panggil fungsi ini di initializeDashboard()
+        function initializeDashboard() {
+            loadSplitMateData();
+            loadAntiFomoData();
+            loadRedFlagsData(); // Tambahkan ini
+
+            // Setup auto-refresh untuk data
+            setInterval(loadSplitMateData, 30000);
+            setInterval(loadAntiFomoData, 30000);
+            setInterval(loadRedFlagsData, 30000); // Tambahkan ini
+        }
+
+
+        // Tambahkan fungsi ini di dashboard.js
+        function loadSkill2MoneyData() {
+            try {
+                // Load data dari localStorage Skill2Money
+                const userSkills = JSON.parse(localStorage.getItem('userSkills') || '[]');
+                const userEarnings = JSON.parse(localStorage.getItem('userEarnings') || '{"total":0}');
+
+                // Update status card
+                const statusElement = document.getElementById('skill2moneyStatus');
+                const earningsElement = document.getElementById('skill2moneyEarnings');
+
+                if (userSkills.length > 0) {
+                    // Hitung total potensi penghasilan
+                    const totalPotential = userSkills.reduce((sum, skill) => sum + (skill.earningPotential || 0), 0);
+
+                    if (userEarnings.total > 0) {
+                        statusElement.textContent = 'Active';
+                        statusElement.className = 'px-3 py-1 bg-success-100 text-success-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105';
+                        earningsElement.textContent = `Penghasilan: ${formatRupiah(userEarnings.total)}`;
+                    } else {
+                        statusElement.textContent = 'Ready';
+                        statusElement.className = 'px-3 py-1 bg-primary-100 text-primary-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105';
+                        earningsElement.textContent = `Potensi: ${formatRupiah(totalPotential)}/bulan`;
+                    }
+                } else {
+                    statusElement.textContent = 'New';
+                    statusElement.className = 'px-3 py-1 bg-secondary-100 text-secondary-700 text-xs font-medium rounded-full transition-all duration-300 hover:scale-105';
+                    earningsElement.textContent = 'Belum ada skill';
+                }
+
+            } catch (error) {
+                console.error('Error loading Skill2Money data:', error);
+            }
+        }
+
+        // Panggil fungsi ini di initializeDashboard()
+        function initializeDashboard() {
+            loadSplitMateData();
+            loadSkill2MoneyData(); // TAMBAHKAN INI
+            // ... fungsi lainnya
+
+            // Setup auto-refresh
+            setInterval(loadSplitMateData, 30000);
+            setInterval(loadSkill2MoneyData, 30000); // TAMBAHKAN INI
+        }
+    </script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+
+</html>

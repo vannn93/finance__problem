@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Portal - GenZ Finance Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script type="module" async
+        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fgenzfinan7345back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.10"></script>
+    <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-10 left-10 w-32 h-32 bg-primary-300 rounded-full blur-xl"></div>
+        <div class="absolute top-40 right-20 w-24 h-24 bg-secondary-300 rounded-full blur-lg"></div>
+        <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-accent-300 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-40 right-10 w-28 h-28 bg-primary-400 rounded-full blur-lg"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="relative min-h-screen flex items-center justify-center p-4">
+        <!-- Authentication Card -->
+        <div class="morphic-card w-full max-w-md p-8 fade-in">
+            <!-- Logo Section -->
+            <div class="text-center mb-8">
+                <div
+                    class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl mb-4">
+                    <i class="fas fa-wallet text-white text-2xl"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-gradient mb-2">GenZ Finance Hub</h1>
+                <p class="text-text-secondary text-sm">Kelola keuangan dengan cara yang keren! 💰</p>
+            </div>
+
+            <!-- Form Toggle -->
+            <div class="flex bg-gray-100 rounded-xl p-1 mb-6">
+                <button id="loginTab"
+                    class="flex-1 py-2 px-4 text-sm font-medium rounded-lg transition-all duration-200 bg-white text-primary-600 shadow-sm">
+                    Masuk
+                </button>
+                <button id="registerTab"
+                    class="flex-1 py-2 px-4 text-sm font-medium rounded-lg transition-all duration-200 text-gray-600 hover:text-primary-600">
+                    Daftar
+                </button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="space-y-4">
+                <div class="relative">
+                    <input type="email" id="loginEmail" class="input-field w-full peer" placeholder=" " required>
+                    <label for="loginEmail"
+                        class="absolute text-sm text-gray-500 duration-200 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-primary-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+                        Email
+                    </label>
+                    <i class="fas fa-envelope absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+
+                <div class="relative">
+                    <input type="password" id="loginPassword" class="input-field w-full peer" placeholder=" " required>
+                    <label for="loginPassword"
+                        class="absolute text-sm text-gray-500 duration-200 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-primary-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+                        Password
+                    </label>
+                    <button type="button" id="toggleLoginPassword"
+                        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+
+                <div class="flex items-center justify-between text-sm">
+                    <label class="flex items-center">
+                        <input type="checkbox"
+                            class="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500">
+                        <span class="ml-2 text-gray-600">Ingat saya</span>
+                    </label>
+                    <a href="javascript:void(0)" class="text-primary-600 hover:text-primary-700 font-medium">Lupa
+                        password?</a>
+                </div>
+
+                <button type="submit" class="btn-primary w-full micro-celebrate">
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    Masuk
+                </button>
+
+                <div class="relative my-6">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white text-gray-500">atau</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <button type="button"
+                        class="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1bd018874-1763525923992.png"
+                            alt="Google logo" class="w-5 h-5 mr-2"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                        <span class="text-sm font-medium text-gray-700">Google</span>
+                    </button>
+                    <button type="button"
+                        class="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_16230fae7-1763525923579.png"
+                            alt="Facebook logo" class="w-5 h-5 mr-2"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                        <span class="text-sm font-medium text-gray-700">Facebook</span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="space-y-4 hidden">
+                <div class="relative">
+                    <input type="text" id="registerName" class="input-field w-full peer" placeholder=" " required>
+                    <label for="registerName"
+                        class="absolute text-sm text-gray-500 duration-200 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-primary-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+                        Nama Lengkap
+                    </label>
+                    <i class="fas fa-user absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+
+                <div class="relative">
+                    <input type="email" id="registerEmail" class="input-field w-full peer" placeholder=" " required>
+                    <label for="registerEmail"
+                        class="absolute text-sm text-gray-500 duration-200 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-primary-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+                        Email
+                    </label>
+                    <i class="fas fa-envelope absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+
+                <div class="relative">
+                    <input type="password" id="registerPassword" class="input-field w-full peer" placeholder=" "
+                        required>
+                    <label for="registerPassword"
+                        class="absolute text-sm text-gray-500 duration-200 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-primary-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+                        Password
+                    </label>
+                    <button type="button" id="toggleRegisterPassword"
+                        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+
+                <div class="relative">
+                    <input type="password" id="confirmPassword" class="input-field w-full peer" placeholder=" "
+                        required>
+                    <label for="confirmPassword"
+                        class="absolute text-sm text-gray-500 duration-200 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-primary-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+                        Konfirmasi Password
+                    </label>
+                    <i class="fas fa-lock absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+
+                <div class="relative">
+                    <select id="financialGoal" class="input-field w-full peer" required>
+                        <option value="">Pilih tujuan finansial</option>
+                        <option value="saving">Menabung untuk masa depan</option>
+                        <option value="debt">Melunasi hutang</option>
+                        <option value="investment">Mulai investasi</option>
+                        <option value="budgeting">Mengatur budget harian</option>
+                        <option value="emergency">Dana darurat</option>
+                    </select>
+                    <label for="financialGoal"
+                        class="absolute text-sm text-gray-500 duration-200 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-primary-600 left-1">
+                        Tujuan Finansial
+                    </label>
+                    <i class="fas fa-target absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+
+                <div class="flex items-start">
+                    <input type="checkbox" id="agreeTerms"
+                        class="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500 mt-1" required>
+                    <label for="agreeTerms" class="ml-2 text-sm text-gray-600">
+                        Saya setuju dengan <a href="javascript:void(0)"
+                            class="text-primary-600 hover:text-primary-700 font-medium">Syarat & Ketentuan</a> dan <a
+                            href="javascript:void(0)"
+                            class="text-primary-600 hover:text-primary-700 font-medium">Kebijakan Privasi</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-secondary w-full micro-celebrate">
+                    <i class="fas fa-user-plus mr-2"></i>
+                    Daftar Sekarang
+                </button>
+            </form>
+
+            <!-- Success/Error Messages -->
+            <div id="messageContainer" class="mt-4 hidden">
+                <div id="successMessage" class="hidden p-4 bg-success-50 border border-success-200 rounded-lg">
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-success-500 mr-2"></i>
+                        <span class="text-success-700 text-sm font-medium" id="successText"></span>
+                    </div>
+                </div>
+                <div id="errorMessage" class="hidden p-4 bg-error-50 border border-error-200 rounded-lg">
+                    <div class="flex items-center">
+                        <i class="fas fa-exclamation-circle text-error-500 mr-2"></i>
+                        <span class="text-error-700 text-sm font-medium" id="errorText"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="absolute bottom-4 left-0 right-0 text-center">
+        <p class="text-text-secondary text-sm">
+            © 2025 GenZ Finance Hub. Semua hak dilindungi.
+            <span class="inline-block mx-2">|</span>
+            <a href="javascript:void(0)" class="text-primary-600 hover:text-primary-700">Bantuan</a>
+        </p>
+    </footer>
+
+    <script>
+        // Form Toggle Functionality
+        const loginTab = document.getElementById('loginTab');
+        const registerTab = document.getElementById('registerTab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        loginTab.addEventListener('click', () => {
+            loginTab.classList.add('bg-white', 'text-primary-600', 'shadow-sm');
+            loginTab.classList.remove('text-gray-600');
+            registerTab.classList.remove('bg-white', 'text-primary-600', 'shadow-sm');
+            registerTab.classList.add('text-gray-600');
+
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+        });
+
+        registerTab.addEventListener('click', () => {
+            registerTab.classList.add('bg-white', 'text-primary-600', 'shadow-sm');
+            registerTab.classList.remove('text-gray-600');
+            loginTab.classList.remove('bg-white', 'text-primary-600', 'shadow-sm');
+            loginTab.classList.add('text-gray-600');
+
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        });
+
+        // Password Toggle Functionality
+        document.getElementById('toggleLoginPassword').addEventListener('click', function () {
+            const passwordField = document.getElementById('loginPassword');
+            const icon = this.querySelector('i');
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+
+        document.getElementById('toggleRegisterPassword').addEventListener('click', function () {
+            const passwordField = document.getElementById('registerPassword');
+            const icon = this.querySelector('i');
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+
+        // Form Validation and Submission
+        function showMessage(type, message) {
+            const messageContainer = document.getElementById('messageContainer');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const successText = document.getElementById('successText');
+            const errorText = document.getElementById('errorText');
+
+            messageContainer.classList.remove('hidden');
+
+            if (type === 'success') {
+                successMessage.classList.remove('hidden');
+                errorMessage.classList.add('hidden');
+                successText.textContent = message;
+            } else {
+                errorMessage.classList.remove('hidden');
+                successMessage.classList.add('hidden');
+                errorText.textContent = message;
+            }
+
+            setTimeout(() => {
+                messageContainer.classList.add('hidden');
+                successMessage.classList.add('hidden');
+                errorMessage.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Login Form Submission
+        // Login Form Submission
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Cek apakah user sudah terdaftar di localStorage
+            const userSession = localStorage.getItem('userSession');
+
+            if (userSession) {
+                const userData = JSON.parse(userSession);
+
+                // Validasi: email harus sama dengan yang didaftarkan
+                // Untuk password, karena demo, kita terima password apapun selama email cocok
+                if (userData.email === email) {
+                    // Update last login time
+                    userData.lastLogin = new Date().toISOString();
+                    localStorage.setItem('userSession', JSON.stringify(userData));
+
+                    showMessage('success', 'Login berhasil! Mengalihkan ke dashboard...');
+
+                    setTimeout(() => {
+                        window.location.href = 'main_dashboard.html';
+                    }, 2000);
+                } else {
+                    showMessage('error', 'Email tidak terdaftar!');
+                }
+            } else {
+                // Fallback untuk demo - jika belum ada user terdaftar
+                if (email && password) {
+                    // Auto register user baru
+                    const newUserData = {
+                        name: email.split('@')[0],
+                        email: email,
+                        registrationDate: new Date().toISOString(),
+                        lastLogin: new Date().toISOString()
+                    };
+
+                    localStorage.setItem('userSession', JSON.stringify(newUserData));
+
+                    showMessage('success', 'Login berhasil! Mengalihkan ke dashboard...');
+
+                    setTimeout(() => {
+                        window.location.href = 'main_dashboard.html';
+                    }, 2000);
+                } else {
+                    showMessage('error', 'Email dan password harus diisi!');
+                }
+            }
+        });
+        
+        // Register Form Submission
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const financialGoal = document.getElementById('financialGoal').value;
+            const agreeTerms = document.getElementById('agreeTerms').checked;
+
+            // Validation
+            if (password !== confirmPassword) {
+                showMessage('error', 'Password dan konfirmasi password tidak cocok!');
+                return;
+            }
+
+            if (password.length < 6) {
+                showMessage('error', 'Password harus minimal 6 karakter!');
+                return;
+            }
+
+            if (!agreeTerms) {
+                showMessage('error', 'Anda harus menyetujui syarat dan ketentuan!');
+                return;
+            }
+
+            // Mock registration - in real app, this would be server-side
+            const userData = {
+                name: name,
+                email: email,
+                financialGoal: financialGoal,
+                registrationDate: new Date().toISOString(),
+                lastLogin: new Date().toISOString()
+            };
+
+            // Simpan user session
+            localStorage.setItem('userSession', JSON.stringify(userData));
+
+            showMessage('success', 'Registrasi berhasil! Mengalihkan ke dashboard...');
+
+            // Redirect setelah 1 detik
+            setTimeout(() => {
+                window.location.href = 'main_dashboard.html';
+            }, 1000);
+        });
+
+        // Real-time password confirmation validation
+        document.getElementById('confirmPassword').addEventListener('input', function () {
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = this.value;
+
+            if (confirmPassword && password !== confirmPassword) {
+                this.classList.add('border-error-500');
+                this.classList.remove('border-gray-300');
+            } else {
+                this.classList.remove('border-error-500');
+                this.classList.add('border-gray-300');
+            }
+        });
+
+        // Check if user is already logged in
+        window.addEventListener('load', function () {
+            const userSession = localStorage.getItem('userSession');
+            if (userSession) {
+                window.location.href = 'main_dashboard.html';
+            }
+        });
+    </script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+
+</html>

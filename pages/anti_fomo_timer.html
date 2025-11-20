@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti-FOMO - GenZ Finance Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Animasi Super Smooth */
+        .fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        .slide-up {
+            animation: slideUp 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+
+        .spring-bounce {
+            animation: springBounce 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite both;
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite both;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        .scale-in {
+            animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+
+        .typewriter {
+            animation: typewriter 1.5s steps(20) both, blink 0.8s infinite;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid;
+        }
+
+        .stagger-item {
+            opacity: 0;
+            animation: staggerFade 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95) rotateX(10deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotateX(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px) rotateX(15deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+
+        @keyframes springBounce {
+            0% {
+                transform: scale(0.3) rotate(-8deg);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.15) rotate(3deg);
+                opacity: 0.8;
+            }
+
+            70% {
+                transform: scale(0.95) rotate(-2deg);
+                opacity: 0.9;
+            }
+
+            85% {
+                transform: scale(1.05) rotate(1deg);
+                opacity: 0.95;
+            }
+
+            100% {
+                transform: scale(1) rotate(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 35px rgba(139, 92, 246, 0.7);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+
+            33% {
+                transform: translateY(-15px) rotate(3deg) scale(1.02);
+            }
+
+            66% {
+                transform: translateY(-8px) rotate(-2deg) scale(0.98);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px) skewX(-8deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0) skewX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5) rotate(12deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: #8b5cf6;
+            }
+        }
+
+        @keyframes staggerFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Micro celebration effect yang lebih smooth */
+        .micro-celebrate {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .micro-celebrate:hover {
+            transform: translateY(-4px) scale(1.03);
+        }
+
+        .micro-celebrate:active {
+            transform: translateY(1px) scale(0.97);
+        }
+
+        /* Morphic card effect yang lebih menarik */
+        .morphic-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow:
+                0 12px 45px rgba(0, 0, 0, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .morphic-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.18),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .morphic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 150%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: left 0.8s;
+            transform: skewX(-15deg);
+        }
+
+        .morphic-card:hover::before {
+            left: 150%;
+        }
+
+        /* Text gradient yang lebih menarik */
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientShift 6s ease infinite;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Custom styles untuk Anti-FOMO */
+        .fomo-card {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .fomo-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .timer-badge {
+            transition: all 0.3s ease;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-weight: 600;
+        }
+
+        .timer-badge:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Input fields yang lebih menarik */
+        .input-field {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 16px;
+            border: 2px solid rgba(99, 102, 241, 0.15);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 14px 18px;
+            font-size: 16px;
+        }
+
+        .input-field:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
+            transform: scale(1.03);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Button styles yang lebih menarik */
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
+            border: none;
+            border-radius: 18px;
+            padding: 16px 28px;
+            font-weight: 700;
+            color: white;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-6px) scale(1.06);
+            box-shadow: 0 18px 40px rgba(99, 102, 241, 0.5);
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa, #c4b5fd);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(99, 102, 241, 0.25);
+            border-radius: 18px;
+            padding: 14px 26px;
+            font-weight: 600;
+            color: #6366f1;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.08);
+        }
+
+        /* Progress bars yang lebih menarik */
+        .progress-bar {
+            height: 10px;
+            border-radius: 12px;
+            background: rgba(99, 102, 241, 0.15);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #a78bfa, #c4b5fd);
+            transition: width 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 150%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            animation: shimmer 2.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -150%;
+            }
+
+            100% {
+                left: 150%;
+            }
+        }
+
+        /* Notification yang lebih menarik */
+        .notification {
+            animation: slideInRight 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 18px;
+            padding: 18px 22px;
+            margin-bottom: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-left: 5px solid;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Background pattern yang lebih dinamis */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.08;
+            animation: float 20s infinite linear;
+            filter: blur(1px);
+        }
+
+        .shape-1 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            top: 5%;
+            left: 3%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            top: 65%;
+            right: 8%;
+            animation-delay: -7s;
+        }
+
+        .shape-3 {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            bottom: 15%;
+            left: 15%;
+            animation-delay: -12s;
+        }
+
+        .shape-4 {
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            top: 25%;
+            right: 15%;
+            animation-delay: -9s;
+        }
+
+        .shape-5 {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            bottom: 40%;
+            left: 80%;
+            animation-delay: -5s;
+        }
+
+        /* Chart container styling */
+        .chart-container {
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .chart-container:hover {
+            transform: scale(1.02);
+        }
+
+        /* Timer styles */
+        .timer-display {
+            font-size: 4rem;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .timer-btn {
+            padding: 12px 24px;
+            border-radius: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .timer-btn.start {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        .timer-btn.pause {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+        }
+
+        .timer-btn.reset {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+        }
+
+        .timer-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Status indicators */
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+        }
+
+        /* Number counter animation */
+        .counter {
+            font-variant-numeric: tabular-nums;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Stagger animation delays */
+        .stagger-1 {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-4 {
+            animation-delay: 0.4s;
+        }
+
+        .stagger-5 {
+            animation-delay: 0.5s;
+        }
+
+        /* Custom styles untuk Anti-FOMO */
+        .impulse-item {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .impulse-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .savings-badge {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .motivation-quote {
+            font-style: italic;
+            text-align: center;
+            padding: 16px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(99, 102, 241, 0.1));
+            margin: 16px 0;
+            border-left: 4px solid #8b5cf6;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <!-- Background Pattern yang Lebih Dinamis -->
+    <div class="floating-shapes">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+        <div class="floating-shape shape-5"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="relative bg-white/95 backdrop-blur-xl border-b border-white/30 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-xl micro-celebrate">
+                            <i class="fas fa-wallet text-white text-lg"></i>
+                        </div>
+                        <span class="ml-3 text-xl font-bold text-gradient">GenZ Finance Hub</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="main_dashboard.html"
+                            class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 micro-celebrate">
+                            <i class="fas fa-home mr-2"></i>Dashboard
+                        </a>
+                        <a href="money_mirror_analysis.html"
+                            class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 micro-celebrate">
+                            <i class="fas fa-mirror mr-2"></i>MoneyMirror
+                        </a>
+                        <a href="zero_budget_tracker.html"
+                            class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 micro-celebrate">
+                            <i class="fas fa-calculator mr-2"></i>ZeroBudget
+                        </a>
+                        <a href="subs_tracker_manager.html"
+                            class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 micro-celebrate">
+                            <i class="fas fa-credit-card mr-2"></i>SubsTracker
+                        </a>
+                        <a href="splitmate_bill_splitter.html"
+                            class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 micro-celebrate">
+                            <i class="fas fa-users mr-2"></i>SplitMate
+                        </a>
+                        <a href="smartdebt_calculator.html"
+                            class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 micro-celebrate">
+                            <i class="fas fa-chart-line mr-2"></i>SmartDebt
+                        </a>
+                        <a href="anti_fomo_timer.html"
+                            class="bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 px-3 py-2 rounded-md text-sm font-medium shadow-lg micro-celebrate">
+                            <i class="fas fa-shield-alt mr-2"></i>Anti-FOMO
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600 p-2 micro-celebrate">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- User Profile -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative">
+                        <button
+                            class="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-all duration-300 micro-celebrate">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1a5df2297-1763292384104.png"
+                                alt="User profile picture" class="w-8 h-8 rounded-full object-cover shadow-lg"
+                                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                            <span class="text-sm font-medium" id="userName">User</span>
+                            <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-xl border-t border-white/30 shadow-2xl">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="main_dashboard.html"
+                    class="text-gray-600 hover:text-blue-600 block px-3 py-2 text-base font-medium rounded-md transition-all duration-300 micro-celebrate">
+                    <i class="fas fa-home mr-2"></i>Dashboard
+                </a>
+                <a href="money_mirror_analysis.html"
+                    class="text-gray-600 hover:text-blue-600 block px-3 py-2 text-base font-medium rounded-md transition-all duration-300 micro-celebrate">
+                    <i class="fas fa-mirror mr-2"></i>MoneyMirror
+                </a>
+                <a href="zero_budget_tracker.html"
+                    class="text-gray-600 hover:text-blue-600 block px-3 py-2 text-base font-medium rounded-md transition-all duration-300 micro-celebrate">
+                    <i class="fas fa-calculator mr-2"></i>ZeroBudget
+                </a>
+                <a href="subs_tracker_manager.html"
+                    class="text-gray-600 hover:text-blue-600 block px-3 py-2 text-base font-medium rounded-md transition-all duration-300 micro-celebrate">
+                    <i class="fas fa-credit-card mr-2"></i>SubsTracker
+                </a>
+                <a href="splitmate_bill_splitter.html"
+                    class="text-gray-600 hover:text-blue-600 block px-3 py-2 text-base font-medium rounded-md transition-all duration-300 micro-celebrate">
+                    <i class="fas fa-users mr-2"></i>SplitMate
+                </a>
+                <a href="smartdebt_calculator.html"
+                    class="text-gray-600 hover:text-blue-600 block px-3 py-2 text-base font-medium rounded-md transition-all duration-300 micro-celebrate">
+                    <i class="fas fa-chart-line mr-2"></i>SmartDebt
+                </a>
+                <a href="anti_fomo_timer.html"
+                    class="bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 block px-3 py-2 text-base font-medium rounded-md shadow-lg micro-celebrate">
+                    <i class="fas fa-shield-alt mr-2"></i>Anti-FOMO
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header -->
+        <div class="mb-8 fade-in">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-4xl font-bold text-gradient mb-3 spring-bounce">Anti-FOMO</h1>
+                    <p class="text-lg text-gray-600 typewriter">Kontrol impuls belanja dengan timer cerdas! 🛡️⏱️</p>
+                </div>
+                <div class="hidden sm:flex items-center space-x-4">
+                    <div class="text-right">
+                        <p class="text-sm text-gray-500">Total Uang Diselamatkan</p>
+                        <p class="text-2xl font-bold text-green-600 counter" id="totalSavings">Rp 0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Total Savings -->
+            <div class="morphic-card p-6 fade-in stagger-item stagger-1">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Total Diselamatkan</p>
+                        <p class="text-2xl font-bold text-green-600 counter" id="totalSaved">Rp 0</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-xl micro-celebrate">
+                        <i class="fas fa-piggy-bank text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-green-600 font-medium" id="savingsChange">+0%</span>
+                        <span class="text-gray-500 ml-1">dari bulan lalu</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impulses Resisted -->
+            <div class="morphic-card p-6 fade-in stagger-item stagger-2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Impuls Ditolak</p>
+                        <p class="text-2xl font-bold text-blue-600 counter" id="impulsesResisted">0</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-xl micro-celebrate">
+                        <i class="fas fa-shield-alt text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-blue-600 font-medium" id="resistedToday">0 hari ini</span>
+                        <span class="text-gray-500 ml-1">rata-rata</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Timers -->
+            <div class="morphic-card p-6 fade-in stagger-item stagger-3">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Timer Aktif</p>
+                        <p class="text-2xl font-bold text-amber-600 counter" id="activeTimers">0</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl flex items-center justify-center shadow-xl micro-celebrate">
+                        <i class="fas fa-clock text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-amber-600 font-medium">Sedang berjalan</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Rate -->
+            <div class="morphic-card p-6 fade-in stagger-item stagger-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Tingkat Keberhasilan</p>
+                        <p class="text-2xl font-bold text-purple-600 counter" id="successRate">0%</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center shadow-xl micro-celebrate">
+                        <i class="fas fa-trophy text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-purple-600 font-medium">Konsistensi</span>
+                        <span class="text-gray-500 ml-1">30 hari terakhir</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Timer Section -->
+            <div class="lg:col-span-1">
+                <div class="morphic-card p-6 fade-in">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-gray-800">Timer Cerdas</h2>
+                        <i class="fas fa-clock text-blue-500 text-xl micro-celebrate"></i>
+                    </div>
+
+                    <!-- Timer Display -->
+                    <div class="text-center mb-6">
+                        <div class="timer-display" id="timerDisplay">24:00</div>
+                        <p class="text-gray-600 mt-2">Tunggu sebelum membeli</p>
+                    </div>
+
+                    <!-- Timer Controls -->
+                    <div class="timer-controls">
+                        <button id="startTimer" class="timer-btn start micro-celebrate">
+                            <i class="fas fa-play mr-2"></i>Mulai
+                        </button>
+                        <button id="pauseTimer" class="timer-btn pause micro-celebrate" disabled>
+                            <i class="fas fa-pause mr-2"></i>Jeda
+                        </button>
+                        <button id="resetTimer" class="timer-btn reset micro-celebrate">
+                            <i class="fas fa-redo mr-2"></i>Reset
+                        </button>
+                    </div>
+
+                    <!-- Quick Timer Presets -->
+                    <div class="mt-6">
+                        <h3 class="text-sm font-medium text-gray-700 mb-3">Preset Cepat</h3>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button
+                                class="py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
+                                data-minutes="15">
+                                15m
+                            </button>
+                            <button
+                                class="py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
+                                data-minutes="30">
+                                30m
+                            </button>
+                            <button
+                                class="py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
+                                data-minutes="60">
+                                1j
+                            </button>
+                            <button
+                                class="py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
+                                data-minutes="120">
+                                2j
+                            </button>
+                            <button
+                                class="py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
+                                data-minutes="240">
+                                4j
+                            </button>
+                            <button
+                                class="py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
+                                data-minutes="1440">
+                                24j
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Custom Timer -->
+                    <div class="mt-6">
+                        <h3 class="text-sm font-medium text-gray-700 mb-3">Timer Kustom</h3>
+                        <div class="flex space-x-2">
+                            <input type="number" id="customHours" placeholder="Jam"
+                                class="input-field flex-1 text-center" min="0" max="24">
+                            <span class="self-center text-gray-500">:</span>
+                            <input type="number" id="customMinutes" placeholder="Menit"
+                                class="input-field flex-1 text-center" min="0" max="59">
+                            <button id="setCustomTimer" class="btn-primary px-4 micro-celebrate">
+                                <i class="fas fa-check"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Impulse Management -->
+                <div class="morphic-card p-6 mt-6 fade-in">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Kelola Impuls</h3>
+                    <div class="space-y-3">
+                        <button id="addImpulseBtn" class="w-full btn-secondary text-left p-4 micro-celebrate">
+                            <div class="flex items-center">
+                                <div
+                                    class="w-10 h-10 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-plus text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Catat Impuls</p>
+                                    <p class="text-xs text-gray-500">Tambah item yang ingin dibeli</p>
+                                </div>
+                            </div>
+                        </button>
+                        <button id="savingsGoalBtn" class="w-full btn-secondary text-left p-4 micro-celebrate">
+                            <div class="flex items-center">
+                                <div
+                                    class="w-10 h-10 bg-gradient-to-r from-green-100 to-emerald-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-bullseye text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Target Tabungan</p>
+                                    <p class="text-xs text-gray-500">Tetapkan tujuan finansial</p>
+                                </div>
+                            </div>
+                        </button>
+                        <button id="exportReportBtn" class="w-full btn-secondary text-left p-4 micro-celebrate">
+                            <div class="flex items-center">
+                                <div
+                                    class="w-10 h-10 bg-gradient-to-r from-amber-100 to-orange-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-chart-bar text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Laporan Progress</p>
+                                    <p class="text-xs text-gray-500">Lihat perkembangan kamu</p>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impulse List & Visualization -->
+            <div class="lg:col-span-2">
+                <div class="morphic-card p-6 fade-in">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-gray-800">Daftar Impuls</h2>
+                        <div class="flex items-center space-x-2">
+                            <button id="sortImpulsesBtn"
+                                class="text-gray-500 hover:text-blue-600 p-2 rounded-lg transition-all duration-300 micro-celebrate">
+                                <i class="fas fa-sort text-sm"></i>
+                            </button>
+                            <button id="filterImpulsesBtn"
+                                class="text-gray-500 hover:text-blue-600 p-2 rounded-lg transition-all duration-300 micro-celebrate">
+                                <i class="fas fa-filter text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Impulse List -->
+                    <div id="impulseList" class="space-y-4">
+                        <!-- Impulses will be dynamically generated here -->
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="emptyState" class="text-center py-12">
+                        <div
+                            class="w-24 h-24 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl">
+                            <i class="fas fa-shopping-cart text-blue-400 text-3xl"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-800 mb-2">Belum Ada Impuls</h3>
+                        <p class="text-gray-500 mb-4">Mulai catat impuls belanja pertama kamu!</p>
+                        <button class="btn-primary micro-celebrate pulse-glow"
+                            onclick="document.getElementById('addImpulseBtn').click()">
+                            <i class="fas fa-plus mr-2"></i>
+                            Catat Impuls
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Charts & Analysis -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <!-- Savings Progress -->
+                    <div class="morphic-card p-6 slide-in-right">
+                        <h3 class="text-lg font-bold text-gray-800 mb-4">Progress Tabungan</h3>
+                        <div class="chart-container h-64">
+                            <canvas id="savingsProgressChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Impulse Categories -->
+                    <div class="morphic-card p-6 slide-in-right">
+                        <h3 class="text-lg font-bold text-gray-800 mb-4">Kategori Impuls</h3>
+                        <div class="chart-container h-64">
+                            <canvas id="impulseCategoriesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Motivation & Insights -->
+                <div class="morphic-card p-6 mt-6 scale-in">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">💡 Motivasi & Insight</h3>
+                    <div id="motivationInsights" class="space-y-3">
+                        <!-- Insights will be generated here -->
+                    </div>
+                    <div id="emptyInsights" class="text-center py-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-lightbulb text-gray-400"></i>
+                        </div>
+                        <p class="text-sm text-gray-500">Mulai gunakan timer untuk mendapatkan insight</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification System -->
+        <div id="notificationContainer" class="fixed top-20 right-4 z-50 space-y-2"></div>
+    </main>
+
+    <!-- Add Impulse Modal -->
+    <div id="addImpulseModal"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="morphic-card max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">Catat Impuls Baru</h3>
+                    <button id="closeImpulseModal" class="text-gray-500 hover:text-gray-700 micro-celebrate">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <form id="addImpulseForm" class="space-y-4">
+                    <div>
+                        <label for="impulseName" class="block text-sm font-medium text-gray-700 mb-2">Nama Item</label>
+                        <input type="text" id="impulseName" class="input-field w-full"
+                            placeholder="Contoh: Sepatu baru, Headphone, dll." required>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="impulsePrice" class="block text-sm font-medium text-gray-700 mb-2">Harga
+                                (Rp)</label>
+                            <input type="number" id="impulsePrice" class="input-field w-full" placeholder="500000"
+                                required>
+                        </div>
+                        <div>
+                            <label for="impulseCategory"
+                                class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
+                            <select id="impulseCategory" class="input-field w-full" required>
+                                <option value="fashion">Fashion</option>
+                                <option value="electronics">Elektronik</option>
+                                <option value="entertainment">Hiburan</option>
+                                <option value="food">Makanan</option>
+                                <option value="beauty">Kecantikan</option>
+                                <option value="other">Lainnya</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="impulseReason" class="block text-sm font-medium text-gray-700 mb-2">Alasan Ingin
+                            Beli</label>
+                        <textarea id="impulseReason" class="input-field w-full" rows="3"
+                            placeholder="Mengapa kamu ingin membeli ini?"></textarea>
+                    </div>
+
+                    <div class="flex space-x-3 pt-4">
+                        <button type="submit" class="btn-primary flex-1 micro-celebrate">
+                            <i class="fas fa-save mr-2"></i>
+                            Simpan & Mulai Timer
+                        </button>
+                        <button type="button" id="cancelImpulse" class="btn-secondary flex-1 micro-celebrate">
+                            Batal
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white/95 backdrop-blur-xl border-t border-white/30 shadow-lg mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                    <div
+                        class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg micro-celebrate">
+                        <i class="fas fa-wallet text-white text-sm"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gradient">GenZ Finance Hub</span>
+                </div>
+                <p class="text-sm text-gray-500 text-center md:text-left">
+                    © 2025 GenZ Finance Hub. Semua hak dilindungi.
+                    <span class="mx-2">|</span>
+                    <a href="javascript:void(0)" class="text-blue-600 hover:text-blue-700 micro-celebrate">Bantuan</a>
+                    <span class="mx-2">|</span>
+                    <a href="javascript:void(0)" class="text-blue-600 hover:text-blue-700 micro-celebrate">Privasi</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data management
+        let impulses = [];
+        let currentUserId = null;
+        let savingsChart = null;
+        let categoriesChart = null;
+        let timerInterval = null;
+        let timerRunning = false;
+        let timerPaused = false;
+        let remainingTime = 24 * 60 * 60; // 24 hours in seconds
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function () {
+            loadUserData();
+            loadImpulses();
+            initializeEventListeners();
+            updateDashboard();
+            renderImpulses();
+            initializeCharts();
+            updateMotivationInsights();
+        });
+
+        // Load user data
+        // Load user data
+        function loadUserData() {
+            const userSession = localStorage.getItem('userSession');
+            if (userSession) {
+                try {
+                    const session = JSON.parse(userSession);
+                    currentUserId = session.userId;
+
+                    // Ambil nama user dari localStorage atau session
+                    const userName = session.username || session.name || 'User';
+                    document.getElementById('userName').textContent = userName;
+
+                } catch (error) {
+                    console.error('Error parsing user session:', error);
+                    // Fallback ke data dari dashboard
+                    const dashboardUser = localStorage.getItem('dashboardUserName');
+                    if (dashboardUser) {
+                        document.getElementById('userName').textContent = dashboardUser;
+                    } else {
+                        document.getElementById('userName').textContent = 'User';
+                    }
+                }
+            } else {
+                // Jika tidak ada session, coba ambil dari dashboard
+                const dashboardUser = localStorage.getItem('dashboardUserName');
+                if (dashboardUser) {
+                    document.getElementById('userName').textContent = dashboardUser;
+                }
+            }
+        }
+
+        // Load impulses from localStorage
+        function loadImpulses() {
+            const saved = localStorage.getItem('antifomo_impulses');
+            if (saved) {
+                impulses = JSON.parse(saved);
+            } else {
+                // Initialize with sample data
+                impulses = [
+                    {
+                        id: 1,
+                        name: 'Sepatu Sneakers',
+                        price: 750000,
+                        category: 'fashion',
+                        reason: 'Lagi trend di sosial media',
+                        createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+                        status: 'resisted',
+                        savings: 750000
+                    },
+                    {
+                        id: 2,
+                        name: 'Headphone Wireless',
+                        price: 1200000,
+                        category: 'electronics',
+                        reason: 'Pengen upgrade audio experience',
+                        createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+                        status: 'resisted',
+                        savings: 1200000
+                    }
+                ];
+                saveImpulses();
+            }
+        }
+
+        // Save impulses to localStorage
+        function saveImpulses() {
+            localStorage.setItem('antifomo_impulses', JSON.stringify(impulses));
+        }
+
+        // Initialize event listeners
+        function initializeEventListeners() {
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-button').addEventListener('click', function () {
+                const mobileMenu = document.getElementById('mobile-menu');
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Timer controls
+            document.getElementById('startTimer').addEventListener('click', startTimer);
+            document.getElementById('pauseTimer').addEventListener('click', pauseTimer);
+            document.getElementById('resetTimer').addEventListener('click', resetTimer);
+
+            // Quick timer presets
+            document.querySelectorAll('[data-minutes]').forEach(button => {
+                button.addEventListener('click', function () {
+                    const minutes = parseInt(this.getAttribute('data-minutes'));
+                    setTimer(minutes * 60);
+                });
+            });
+
+            // Custom timer
+            document.getElementById('setCustomTimer').addEventListener('click', setCustomTimer);
+
+            // Quick actions
+            document.getElementById('addImpulseBtn').addEventListener('click', showAddImpulseModal);
+            document.getElementById('savingsGoalBtn').addEventListener('click', showSavingsGoal);
+            document.getElementById('exportReportBtn').addEventListener('click', exportReport);
+
+            // Modal controls
+            document.getElementById('closeImpulseModal').addEventListener('click', closeAddImpulseModal);
+            document.getElementById('cancelImpulse').addEventListener('click', closeAddImpulseModal);
+            document.getElementById('addImpulseForm').addEventListener('submit', handleAddImpulse);
+
+            // Filter and sort controls
+            document.getElementById('filterImpulsesBtn').addEventListener('click', toggleFilterOptions);
+
+            // Set default timer to 24 hours
+            updateTimerDisplay();
+        }
+
+        // Timer functions
+        function startTimer() {
+            if (timerRunning && !timerPaused) return;
+
+            if (timerPaused) {
+                timerPaused = false;
+            } else {
+                timerRunning = true;
+            }
+
+            document.getElementById('startTimer').disabled = true;
+            document.getElementById('pauseTimer').disabled = false;
+
+            timerInterval = setInterval(function () {
+                if (remainingTime > 0) {
+                    remainingTime--;
+                    updateTimerDisplay();
+
+                    // Check if timer completed
+                    if (remainingTime === 0) {
+                        timerCompleted();
+                    }
+                }
+            }, 1000);
+
+            showNotification('Timer dimulai! Tunggu sebelum membeli.', 'info');
+        }
+
+        function pauseTimer() {
+            if (!timerRunning) return;
+
+            clearInterval(timerInterval);
+            timerPaused = true;
+            document.getElementById('startTimer').disabled = false;
+            document.getElementById('pauseTimer').disabled = true;
+
+            showNotification('Timer dijeda. Lanjutkan kapan saja.', 'warning');
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            timerPaused = false;
+            remainingTime = 24 * 60 * 60; // Reset to 24 hours
+            updateTimerDisplay();
+
+            document.getElementById('startTimer').disabled = false;
+            document.getElementById('pauseTimer').disabled = true;
+
+            showNotification('Timer direset ke 24 jam.', 'info');
+        }
+
+        function setTimer(seconds) {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            timerPaused = false;
+            remainingTime = seconds;
+            updateTimerDisplay();
+
+            document.getElementById('startTimer').disabled = false;
+            document.getElementById('pauseTimer').disabled = true;
+
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            showNotification(`Timer diatur ke ${hours} jam ${minutes} menit.`, 'success');
+        }
+
+        function setCustomTimer() {
+            const hours = parseInt(document.getElementById('customHours').value) || 0;
+            const minutes = parseInt(document.getElementById('customMinutes').value) || 0;
+            const totalSeconds = (hours * 3600) + (minutes * 60);
+
+            if (totalSeconds > 0) {
+                setTimer(totalSeconds);
+            } else {
+                showNotification('Masukkan waktu yang valid!', 'error');
+            }
+        }
+
+        function updateTimerDisplay() {
+            const hours = Math.floor(remainingTime / 3600);
+            const minutes = Math.floor((remainingTime % 3600) / 60);
+            const seconds = remainingTime % 60;
+
+            const display = document.getElementById('timerDisplay');
+            display.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            // Change color based on time remaining
+            if (remainingTime < 3600) { // Less than 1 hour
+                display.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+                display.style.webkitBackgroundClip = 'text';
+                display.style.webkitTextFillColor = 'transparent';
+                display.style.backgroundClip = 'text';
+            } else if (remainingTime < 7200) { // Less than 2 hours
+                display.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
+                display.style.webkitBackgroundClip = 'text';
+                display.style.webkitTextFillColor = 'transparent';
+                display.style.backgroundClip = 'text';
+            } else {
+                display.style.background = 'linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa)';
+                display.style.webkitBackgroundClip = 'text';
+                display.style.webkitTextFillColor = 'transparent';
+                display.style.backgroundClip = 'text';
+            }
+        }
+
+        function timerCompleted() {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            timerPaused = false;
+
+            document.getElementById('startTimer').disabled = false;
+            document.getElementById('pauseTimer').disabled = true;
+
+            // Play completion sound (if implemented)
+            // Show celebration
+            showNotification('Timer selesai! Apakah kamu masih ingin membeli?', 'success');
+
+            // Add micro celebration
+            microCelebrate();
+        }
+
+        // Show add impulse modal
+        function showAddImpulseModal() {
+            document.getElementById('addImpulseModal').classList.remove('hidden');
+        }
+
+        // Close add impulse modal
+        function closeAddImpulseModal() {
+            document.getElementById('addImpulseModal').classList.add('hidden');
+        }
+
+        // Handle add impulse
+        function handleAddImpulse(e) {
+            e.preventDefault();
+
+            const impulse = {
+                id: Date.now(),
+                name: document.getElementById('impulseName').value,
+                price: parseFloat(document.getElementById('impulsePrice').value),
+                category: document.getElementById('impulseCategory').value,
+                reason: document.getElementById('impulseReason').value,
+                createdAt: new Date().toISOString(),
+                status: 'pending',
+                savings: 0
+            };
+
+            impulses.push(impulse);
+            saveImpulses();
+            updateDashboard();
+            renderImpulses();
+            updateCharts();
+            updateMotivationInsights();
+            closeAddImpulseModal();
+
+            // Start timer automatically
+            startTimer();
+
+            showNotification('Impuls berhasil dicatat! Timer dimulai.', 'success');
+        }
+
+        // Show savings goal
+        function showSavingsGoal() {
+            // Implementation for savings goal
+            showNotification('Fitur Target Tabungan akan segera hadir!', 'info');
+        }
+
+        // Export report
+        function exportReport() {
+            showNotification('Laporan Anti-FOMO berhasil diekspor!', 'success');
+        }
+
+        // Toggle filter options
+        function toggleFilterOptions() {
+            // Implementation for filter options
+            showNotification('Filter diterapkan!', 'info');
+        }
+
+        // Update dashboard statistics
+        function updateDashboard() {
+            const resistedImpulses = impulses.filter(impulse => impulse.status === 'resisted');
+            const totalSavings = resistedImpulses.reduce((sum, impulse) => sum + impulse.price, 0);
+            const resistedToday = resistedImpulses.filter(impulse => {
+                const today = new Date();
+                const impulseDate = new Date(impulse.createdAt);
+                return impulseDate.toDateString() === today.toDateString();
+            }).length;
+
+            const successRate = impulses.length > 0 ?
+                Math.round((resistedImpulses.length / impulses.length) * 100) : 0;
+
+            // Animate counter values
+            animateCounter('totalSavings', totalSavings);
+            animateCounter('totalSaved', totalSavings);
+            animateCounter('impulsesResisted', resistedImpulses.length);
+            animateCounter('activeTimers', timerRunning ? 1 : 0);
+            animateCounter('successRate', successRate);
+
+            document.getElementById('resistedToday').textContent = `${resistedToday} hari ini`;
+        }
+
+        // Animate counter
+        function animateCounter(elementId, targetValue) {
+            const element = document.getElementById(elementId);
+            const currentValue = parseFloat(element.textContent.replace(/[^\d]/g, '') || 0);
+            const duration = 1000;
+            const steps = 60;
+            const stepValue = (targetValue - currentValue) / steps;
+            let currentStep = 0;
+
+            const timer = setInterval(() => {
+                currentStep++;
+                const newValue = currentValue + (stepValue * currentStep);
+
+                if (elementId.includes('Savings') || elementId.includes('Saved')) {
+                    element.textContent = formatCurrency(Math.round(newValue));
+                } else if (elementId === 'successRate') {
+                    element.textContent = Math.round(newValue) + '%';
+                } else {
+                    element.textContent = Math.round(newValue);
+                }
+
+                if (currentStep >= steps) {
+                    clearInterval(timer);
+                    if (elementId.includes('Savings') || elementId.includes('Saved')) {
+                        element.textContent = formatCurrency(targetValue);
+                    } else if (elementId === 'successRate') {
+                        element.textContent = targetValue + '%';
+                    } else {
+                        element.textContent = targetValue;
+                    }
+                }
+            }, duration / steps);
+        }
+
+        // Render impulses
+        function renderImpulses() {
+            const container = document.getElementById('impulseList');
+            const emptyState = document.getElementById('emptyState');
+
+            if (impulses.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            container.innerHTML = impulses.map(impulse => {
+                const createdDate = new Date(impulse.createdAt);
+                const timeAgo = getTimeAgo(createdDate);
+                const categoryIcons = {
+                    'fashion': 'fa-tshirt',
+                    'electronics': 'fa-laptop',
+                    'entertainment': 'fa-gamepad',
+                    'food': 'fa-utensils',
+                    'beauty': 'fa-spa',
+                    'other': 'fa-shopping-bag'
+                };
+
+                return `
+                    <div class="impulse-item slide-up" data-impulse-id="${impulse.id}">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg micro-celebrate">
+                                    <i class="fas ${categoryIcons[impulse.category]} text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800">${impulse.name}</h3>
+                                    <p class="text-sm text-gray-500">${formatCurrency(impulse.price)} • ${timeAgo}</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                ${impulse.status === 'resisted' ?
+                        `<span class="savings-badge micro-celebrate">
+                                        <i class="fas fa-check mr-1"></i>Diselamatkan
+                                    </span>` :
+                        `<span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-medium">
+                                        <i class="fas fa-clock mr-1"></i>Menunggu
+                                    </span>`
+                    }
+                            </div>
+                        </div>
+                        
+                        ${impulse.reason ? `<p class="text-sm text-gray-600 mb-3">"${impulse.reason}"</p>` : ''}
+                        
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-200">
+                            <div class="flex items-center space-x-2">
+                                <span class="status-indicator ${impulse.status === 'resisted' ? 'bg-green-500' : 'bg-amber-500'}"></span>
+                                <span class="text-sm text-gray-600">${impulse.status === 'resisted' ? 'Berhasil ditolak' : 'Masih dipikirkan'}</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                ${impulse.status !== 'resisted' ?
+                        `<button onclick="resistImpulse(${impulse.id})" class="text-sm px-4 py-2 bg-green-100 text-green-600 rounded-xl hover:bg-green-200 transition-all duration-300 micro-celebrate">
+                                        <i class="fas fa-check mr-1"></i>Tolak
+                                    </button>` :
+                        `<span class="savings-badge">
+                                        <i class="fas fa-piggy-bank mr-1"></i>${formatCurrency(impulse.price)}
+                                    </span>`
+                    }
+                                <button onclick="deleteImpulse(${impulse.id})" class="text-gray-500 hover:text-red-600 p-2 rounded-lg transition-all duration-300 micro-celebrate">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Resist impulse (mark as resisted)
+        function resistImpulse(impulseId) {
+            const impulse = impulses.find(i => i.id === impulseId);
+            if (impulse) {
+                impulse.status = 'resisted';
+                impulse.savings = impulse.price;
+                impulse.resistedAt = new Date().toISOString();
+
+                saveImpulses();
+                updateDashboard();
+                renderImpulses();
+                updateCharts();
+                updateMotivationInsights();
+
+                showNotification(`Selamat! Kamu berhasil menolak impuls "${impulse.name}" dan menyelamatkan ${formatCurrency(impulse.price)}! 🎉`, 'success');
+
+                // Add micro celebration
+                microCelebrate();
+            }
+        }
+
+        // Delete impulse
+        function deleteImpulse(impulseId) {
+            if (confirm('Apakah Anda yakin ingin menghapus impuls ini?')) {
+                impulses = impulses.filter(i => i.id !== impulseId);
+                saveImpulses();
+                updateDashboard();
+                renderImpulses();
+                updateCharts();
+                updateMotivationInsights();
+                showNotification('Impuls berhasil dihapus!', 'success');
+            }
+        }
+
+        // Initialize charts
+        function initializeCharts() {
+            updateSavingsProgressChart();
+            updateImpulseCategoriesChart();
+        }
+
+        // Update savings progress chart
+        function updateSavingsProgressChart() {
+            const ctx = document.getElementById('savingsProgressChart').getContext('2d');
+
+            if (savingsChart) {
+                savingsChart.destroy();
+            }
+
+            const resistedImpulses = impulses.filter(impulse => impulse.status === 'resisted');
+
+            if (resistedImpulses.length === 0) {
+                // Show empty state
+                return;
+            }
+
+            // Group by date (last 7 days)
+            const last7Days = [];
+            for (let i = 6; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                last7Days.push(date.toDateString());
+            }
+
+            const savingsByDay = last7Days.map(day => {
+                const daySavings = resistedImpulses
+                    .filter(impulse => new Date(impulse.resistedAt).toDateString() === day)
+                    .reduce((sum, impulse) => sum + impulse.price, 0);
+                return daySavings;
+            });
+
+            savingsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: last7Days.map(day => {
+                        const date = new Date(day);
+                        return date.toLocaleDateString('id-ID', { weekday: 'short', day: 'numeric' });
+                    }),
+                    datasets: [{
+                        label: 'Tabungan per Hari',
+                        data: savingsByDay,
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#059669',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 2,
+                        pointRadius: 6,
+                        pointHoverRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function (value) {
+                                    return formatCurrency(value);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update impulse categories chart
+        function updateImpulseCategoriesChart() {
+            const ctx = document.getElementById('impulseCategoriesChart').getContext('2d');
+
+            if (categoriesChart) {
+                categoriesChart.destroy();
+            }
+
+            const resistedImpulses = impulses.filter(impulse => impulse.status === 'resisted');
+
+            if (resistedImpulses.length === 0) {
+                // Show empty state
+                return;
+            }
+
+            // Group by category
+            const categories = {};
+            resistedImpulses.forEach(impulse => {
+                if (!categories[impulse.category]) {
+                    categories[impulse.category] = 0;
+                }
+                categories[impulse.category] += impulse.price;
+            });
+
+            const categoryLabels = {
+                'fashion': 'Fashion',
+                'electronics': 'Elektronik',
+                'entertainment': 'Hiburan',
+                'food': 'Makanan',
+                'beauty': 'Kecantikan',
+                'other': 'Lainnya'
+            };
+
+            categoriesChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(categories).map(cat => categoryLabels[cat]),
+                    datasets: [{
+                        data: Object.values(categories),
+                        backgroundColor: [
+                            '#6366f1', '#8b5cf6', '#a78bfa', '#c4b5fd',
+                            '#10b981', '#059669', '#047857', '#065f46'
+                        ],
+                        borderWidth: 0,
+                        hoverOffset: 15
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true,
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        animateScale: true,
+                        animateRotate: true
+                    }
+                }
+            });
+        }
+
+        // Update charts
+        function updateCharts() {
+            updateSavingsProgressChart();
+            updateImpulseCategoriesChart();
+        }
+
+        // Update motivation insights
+        function updateMotivationInsights() {
+            const insightsContainer = document.getElementById('motivationInsights');
+            const emptyInsights = document.getElementById('emptyInsights');
+
+            if (impulses.length === 0) {
+                insightsContainer.innerHTML = '';
+                emptyInsights.classList.remove('hidden');
+                return;
+            }
+
+            emptyInsights.classList.add('hidden');
+
+            const resistedImpulses = impulses.filter(impulse => impulse.status === 'resisted');
+            const totalSavings = resistedImpulses.reduce((sum, impulse) => sum + impulse.price, 0);
+            const successRate = impulses.length > 0 ?
+                Math.round((resistedImpulses.length / impulses.length) * 100) : 0;
+
+            const motivations = [
+                {
+                    icon: 'fa-piggy-bank',
+                    color: 'from-green-100 to-emerald-100 text-green-600',
+                    title: 'Tabungan Kamu',
+                    description: `Kamu sudah menyelamatkan ${formatCurrency(totalSavings)}!`
+                },
+                {
+                    icon: 'fa-trophy',
+                    color: 'from-purple-100 to-pink-100 text-purple-600',
+                    title: 'Tingkat Keberhasilan',
+                    description: `Kamu berhasil menolak ${successRate}% impuls belanja`
+                },
+                {
+                    icon: 'fa-lightbulb',
+                    color: 'from-amber-100 to-orange-100 text-amber-600',
+                    title: 'Tips Hari Ini',
+                    description: getRandomMotivationTip()
+                }
+            ];
+
+            insightsContainer.innerHTML = motivations.map((motivation, index) => `
+                <div class="flex items-start space-x-3 p-3 bg-gradient-to-r ${motivation.color} rounded-2xl border border-white micro-celebrate stagger-item stagger-${index + 1}">
+                    <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                        <i class="fas ${motivation.icon}"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 mb-1">${motivation.title}</h4>
+                        <p class="text-sm text-gray-600">${motivation.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Get random motivation tip
+        function getRandomMotivationTip() {
+            const tips = [
+                "Tunggu 24 jam sebelum membeli item yang diinginkan",
+                "Pikirkan apakah item ini benar-benar dibutuhkan atau hanya keinginan sesaat",
+                "Bandungkan harga item dengan waktu kerja yang dibutuhkan untuk mendapatkannya",
+                "Alokasikan uang yang diselamatkan untuk tujuan finansial yang lebih penting",
+                "Ingatlah bahwa kebahagiaan sejati tidak berasal dari kepemilikan barang"
+            ];
+            return tips[Math.floor(Math.random() * tips.length)];
+        }
+
+        // Utility functions
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+
+        function getTimeAgo(date) {
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+
+            if (diffMins < 1) return 'Baru saja';
+            if (diffMins < 60) return `${diffMins} menit lalu`;
+            if (diffHours < 24) return `${diffHours} jam lalu`;
+            if (diffDays === 1) return 'Kemarin';
+            if (diffDays < 7) return `${diffDays} hari lalu`;
+
+            return date.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' });
+        }
+
+        function showNotification(message, type = 'info') {
+            const container = document.getElementById('notificationContainer');
+            const notification = document.createElement('div');
+
+            const colors = {
+                success: 'bg-gradient-to-r from-green-50 to-emerald-50 border-green-200 text-green-700 border-l-green-500',
+                error: 'bg-gradient-to-r from-red-50 to-pink-50 border-red-200 text-red-700 border-l-red-500',
+                warning: 'bg-gradient-to-r from-amber-50 to-orange-50 border-amber-200 text-amber-700 border-l-amber-500',
+                info: 'bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 text-blue-700 border-l-blue-500'
+            };
+
+            notification.className = `notification ${colors[type]}`;
+            notification.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle'} mr-3 text-lg"></i>
+                        <span class="text-sm font-medium">${message}</span>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-gray-400 hover:text-gray-600 micro-celebrate">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+
+            container.appendChild(notification);
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        function microCelebrate() {
+            const elements = document.querySelectorAll('.micro-celebrate');
+            elements.forEach(element => {
+                element.classList.add('micro-celebrate');
+                setTimeout(() => {
+                    element.classList.remove('micro-celebrate');
+                }, 300);
+            });
+        }
+    </script>
+</body>
+
+</html>

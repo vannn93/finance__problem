@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill2Money - GenZ Finance Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <script type="module" async
+        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fgenzfinan7345back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.10"></script>
+    <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+
+    <style>
+        /* Animasi tambahan untuk memastikan semua animasi tetap ada */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .bounce-in {
+            animation: bounceIn 0.8s ease-out;
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+
+            70% {
+                transform: scale(0.9);
+                opacity: 0.9;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 5px rgba(59, 130, 246, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+            }
+
+            100% {
+                box-shadow: 0 0 5px rgba(59, 130, 246, 0.4);
+            }
+        }
+
+        /* Style untuk popup notifikasi */
+        .notification-item {
+            transition: all 0.3s ease;
+        }
+
+        .notification-item:hover {
+            transform: translateX(5px);
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+
+        /* Micro celebration effect */
+        .micro-celebrate {
+            transition: all 0.2s ease;
+        }
+
+        /* Morphic card effect */
+        .morphic-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .morphic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Text gradient */
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Navbar Sticky Styles */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .sticky-nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sticky-nav.compact {
+            height: 60px;
+        }
+
+        .sticky-nav.compact .flex.items-center.justify-between {
+            height: 60px;
+        }
+
+        .sticky-nav.compact .text-xl {
+            font-size: 1.1rem;
+        }
+
+        .sticky-nav.compact .w-10.h-10 {
+            width: 8px;
+            height: 8px;
+        }
+
+        /* Smooth transition for all elements */
+        .sticky-nav * {
+            transition: all 0.3s ease;
+        }
+
+        /* Nav link hover effects */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Skill2Money specific styles */
+        .skill-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+        }
+
+        .skill-progress {
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+        }
+
+        .skill-progress-bar {
+            height: 100%;
+            background: white;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .marketplace-card {
+            border-left: 4px solid #10b981;
+        }
+
+        .freelance-card {
+            border-left: 4px solid #3b82f6;
+        }
+
+        .digital-product-card {
+            border-left: 4px solid #8b5cf6;
+        }
+
+        .skill-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 4px 12px;
+            margin: 4px;
+            font-size: 0.75rem;
+        }
+
+        .earning-chart {
+            height: 200px;
+            position: relative;
+        }
+
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            width: 30px;
+            background: linear-gradient(to top, #3b82f6, #60a5fa);
+            border-radius: 4px 4px 0 0;
+            transition: height 0.5s ease;
+        }
+
+        /* Modal styles - IMPROVED */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: scale(0.95);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 1.5rem 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            color: #374151;
+            background-color: #f3f4f6;
+        }
+
+        .modal-body {
+            padding: 1rem 1.5rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem 1.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        /* Form styles - IMPROVED */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-input:hover,
+        .form-select:hover {
+            border-color: #9ca3af;
+        }
+
+        /* Button styles - IMPROVED */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #6b7280;
+            border: 1px solid #d1d5db;
+        }
+
+        .btn-outline:hover {
+            background: #f9fafb;
+            color: #374151;
+            border-color: #9ca3af;
+        }
+
+        /* Quick amount buttons */
+        .quick-amounts {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .quick-amount {
+            flex: 1;
+            padding: 0.5rem;
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quick-amount:hover {
+            background: #e5e7eb;
+            transform: translateY(-1px);
+        }
+
+        .quick-amount:active {
+            transform: translateY(0);
+        }
+
+        /* Form styles */
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        /* Tabs */
+        .tab-container {
+            display: flex;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 24px;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            border-bottom-color: #3b82f6;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Skill2Money specific layout */
+        .skill-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .skill-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 1.5rem;
+        }
+
+        .skill-details {
+            flex: 1;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .skill-level {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .earning-potential {
+            font-weight: 600;
+            color: #10b981;
+        }
+
+        .opportunity-card {
+            padding: 20px;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 16px;
+            transition: all 0.3s;
+        }
+
+        .opportunity-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .opportunity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .opportunity-title {
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .opportunity-badge {
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .opportunity-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+        }
+
+        .opportunity-price {
+            font-weight: 600;
+            color: #10b981;
+        }
+
+        .opportunity-deadline {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-10 left-10 w-32 h-32 bg-primary-300 rounded-full blur-xl"></div>
+        <div class="absolute top-40 right-20 w-24 h-24 bg-secondary-300 rounded-full blur-lg"></div>
+        <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-accent-300 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-40 right-10 w-28 h-28 bg-primary-400 rounded-full blur-lg"></div>
+    </div>
+
+    <!-- Header -->
+    <header
+        class="sticky-nav relative z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div
+                        class="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl">
+                        <i class="fas fa-wallet text-white text-lg"></i>
+                    </div>
+                    <h1 class="ml-3 text-xl font-bold text-gradient">GenZ Finance Hub</h1>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="main_dashboard.html"
+                        class="nav-link text-gray-600 hover:text-primary-600 transition-colors">Dashboard</a>
+                    <a href="money_mirror_analysis.html"
+                        class="nav-link text-gray-600 hover:text-primary-600 transition-colors">MoneyMirror</a>
+                    <a href="zero_budget_tracker.html"
+                        class="nav-link text-gray-600 hover:text-primary-600 transition-colors">ZeroBudget</a>
+                    <a href="subs_tracker_manager.html"
+                        class="nav-link text-gray-600 hover:text-primary-600 transition-colors">SubsTracker</a>
+                    <a href="skill2money.html"
+                        class="nav-link text-primary-600 font-medium border-b-2 border-primary-600 pb-1">Skill2Money</a>
+                    <a href="investify_zero_game.html"
+                        class="nav-link text-gray-600 hover:text-primary-600 transition-colors">InvestifyZero</a>
+                </nav>
+
+                <!-- Notifications -->
+                <button id="notificationBtn"
+                    class="relative p-2 text-gray-600 hover:text-primary-600 transition-colors">
+                    <i class="fas fa-bell text-lg"></i>
+                    <span
+                        class="absolute -top-1 -right-1 w-5 h-5 bg-secondary-500 text-white text-xs rounded-full flex items-center justify-center"
+                        id="notificationCount">0</span>
+                </button>
+
+                <!-- User Profile -->
+                <div class="flex items-center space-x-3">
+                    <img id="userAvatar" src="https://images.unsplash.com/photo-1629525526541-02606b575fdf"
+                        alt="User profile picture" class="w-8 h-8 rounded-full object-cover">
+                    <span class="hidden md:block text-sm font-medium text-gray-700" id="userName">User Demo</span>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-gray-600 hover:text-primary-600 transition-colors">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+
+                <!-- Logout Button -->
+                <button id="logoutBtn"
+                    class="hidden md:block px-4 py-2 text-sm font-medium text-gray-600 hover:text-error-600 transition-colors">
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    Keluar
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 py-2 space-y-1">
+                <a href="main_dashboard.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">Dashboard</a>
+                <a href="money_mirror_analysis.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">MoneyMirror</a>
+                <a href="zero_budget_tracker.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">ZeroBudget</a>
+                <a href="subs_tracker_manager.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">SubsTracker</a>
+                <a href="skill2money.html"
+                    class="block px-3 py-2 text-primary-600 font-medium bg-primary-50 rounded-lg">Skill2Money</a>
+                <a href="investify_zero_game.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors">InvestifyZero</a>
+                <button id="mobileLogoutBtn"
+                    class="block w-full text-left px-3 py-2 text-error-600 hover:bg-error-50 rounded-lg transition-colors">
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    Keluar
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header Section -->
+        <section class="mb-8 fade-in">
+            <div class="skill-card">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                    <div class="mb-6 lg:mb-0">
+                        <h2 class="text-2xl lg:text-3xl font-bold text-white mb-2">
+                            Halo, <span id="welcomeName" class="text-white">User Demo</span>! 🚀
+                        </h2>
+                        <p class="text-white/80 mb-4">Monetisasi skill digital kamu jadi cuan nyata dengan Skill2Money
+                        </p>
+                        <div class="text-sm text-white/70">
+                            <i class="fas fa-lightbulb mr-2"></i>
+                            <span id="currentDate">Selasa, 19 November 2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                        <div class="text-center">
+                            <div
+                                class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-2 transition-all duration-300 hover:scale-110">
+                                <i class="fas fa-dollar-sign text-white text-lg"></i>
+                            </div>
+                            <div class="text-lg font-bold text-white bounce-in" id="totalEarnings">Rp 0</div>
+                            <div class="text-xs text-white/70">Total Penghasilan</div>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-2 transition-all duration-300 hover:scale-110">
+                                <i class="fas fa-tasks text-white text-lg"></i>
+                            </div>
+                            <div class="text-lg font-bold text-white bounce-in" id="activeProjects">0</div>
+                            <div class="text-xs text-white/70">Proyek Aktif</div>
+                        </div>
+                        <div class="text-center col-span-2 lg:col-span-1">
+                            <div
+                                class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-2 transition-all duration-300 hover:scale-110">
+                                <i class="fas fa-chart-line text-white text-lg"></i>
+                            </div>
+                            <div class="text-lg font-bold text-white bounce-in" id="skillLevel">Pemula</div>
+                            <div class="text-xs text-white/70">Level Skill</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabs Navigation -->
+        <section class="mb-8">
+            <div class="tab-container">
+                <div class="tab active" data-tab="skills">Skill Saya</div>
+                <div class="tab" data-tab="marketplace">Marketplace</div>
+                <div class="tab" data-tab="projects">Proyek Saya</div>
+                <div class="tab" data-tab="analytics">Analytics</div>
+            </div>
+        </section>
+
+        <!-- Tab Contents -->
+        <section>
+            <!-- Skills Tab -->
+            <div class="tab-content active" id="skills-tab">
+                <div class="mb-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Skill Digital Saya</h3>
+                    <p class="text-gray-600 mb-6">Kelola dan tingkatkan skill digital yang bisa menghasilkan uang</p>
+
+                    <div class="mb-6">
+                        <button id="addSkillBtn" class="btn-primary">
+                            <i class="fas fa-plus mr-2"></i>Tambah Skill Baru
+                        </button>
+                    </div>
+
+                    <div class="skill-grid" id="skillsContainer">
+                        <!-- Skills will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="morphic-card p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Rekomendasi Pengembangan Skill</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
+                            <div>
+                                <h4 class="font-medium text-gray-900">Web Development</h4>
+                                <p class="text-sm text-gray-600">Permintaan tinggi dengan rata-rata penghasilan Rp
+                                    5-15jt/bulan</p>
+                            </div>
+                            <button class="btn-primary text-sm">Pelajari</button>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-green-50 rounded-lg">
+                            <div>
+                                <h4 class="font-medium text-gray-900">Digital Marketing</h4>
+                                <p class="text-sm text-gray-600">Peluang freelance luas dengan penghasilan Rp
+                                    3-10jt/bulan</p>
+                            </div>
+                            <button class="btn-primary text-sm">Pelajari</button>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-purple-50 rounded-lg">
+                            <div>
+                                <h4 class="font-medium text-gray-900">Content Creation</h4>
+                                <p class="text-sm text-gray-600">Potensi penghasilan pasif melalui platform konten</p>
+                            </div>
+                            <button class="btn-primary text-sm">Pelajari</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marketplace Tab -->
+            <div class="tab-content" id="marketplace-tab">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Peluang Monetisasi</h3>
+                <p class="text-gray-600 mb-6">Temukan peluang untuk monetisasi skill digital kamu</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <div class="morphic-card p-6 marketplace-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-laptop-code text-green-600 text-lg"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Freelance</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Platform Freelance</h4>
+                        <p class="text-gray-600 text-sm mb-4">Tawarkan jasa di platform seperti Upwork, Fiverr,
+                            Projects.co.id</p>
+                        <div class="flex items-center justify-between">
+                            <div class="text-xs text-gray-500">
+                                <i class="fas fa-users mr-1"></i>
+                                500+ proyek aktif
+                            </div>
+                            <button class="text-green-600 text-sm font-medium">Jelajahi</button>
+                        </div>
+                    </div>
+
+                    <div class="morphic-card p-6 freelance-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-shopping-cart text-blue-600 text-lg"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Digital
+                                Product</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Produk Digital</h4>
+                        <p class="text-gray-600 text-sm mb-4">Jual template, ebook, course online di marketplace digital
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="text-xs text-gray-500">
+                                <i class="fas fa-chart-bar mr-1"></i>
+                                Potensi pasif income
+                            </div>
+                            <button class="text-blue-600 text-sm font-medium">Jelajahi</button>
+                        </div>
+                    </div>
+
+                    <div class="morphic-card p-6 digital-product-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-video text-purple-600 text-lg"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Content</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Content Creation</h4>
+                        <p class="text-gray-600 text-sm mb-4">Monetisasi konten di YouTube, TikTok, Instagram, dll</p>
+                        <div class="flex items-center justify-between">
+                            <div class="text-xs text-gray-500">
+                                <i class="fas fa-eye mr-1"></i>
+                                Jangkauan luas
+                            </div>
+                            <button class="text-purple-600 text-sm font-medium">Jelajahi</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="morphic-card p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Peluang Terbaru</h3>
+                    <div id="opportunitiesContainer">
+                        <!-- Opportunities will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Tab -->
+            <div class="tab-content" id="projects-tab">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900">Proyek Saya</h3>
+                        <p class="text-gray-600">Kelola proyek monetisasi skill kamu</p>
+                    </div>
+                    <button id="addProjectBtn" class="btn-primary">
+                        <i class="fas fa-plus mr-2"></i>Tambah Proyek
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8" id="projectsContainer">
+                    <!-- Projects will be loaded here -->
+                </div>
+
+                <div class="morphic-card p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Statistik Proyek</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center p-4 bg-blue-50 rounded-lg">
+                            <div class="text-2xl font-bold text-blue-600" id="totalProjects">0</div>
+                            <div class="text-sm text-gray-600">Total Proyek</div>
+                        </div>
+                        <div class="text-center p-4 bg-green-50 rounded-lg">
+                            <div class="text-2xl font-bold text-green-600" id="completedProjects">0</div>
+                            <div class="text-sm text-gray-600">Selesai</div>
+                        </div>
+                        <div class="text-center p-4 bg-yellow-50 rounded-lg">
+                            <div class="text-2xl font-bold text-yellow-600" id="ongoingProjects">0</div>
+                            <div class="text-sm text-gray-600">Berjalan</div>
+                        </div>
+                        <div class="text-center p-4 bg-purple-50 rounded-lg">
+                            <div class="text-2xl font-bold text-purple-600" id="pendingProjects">0</div>
+                            <div class="text-sm text-gray-600">Menunggu</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div class="tab-content" id="analytics-tab">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Analytics Penghasilan</h3>
+                <p class="text-gray-600 mb-6">Pantau perkembangan monetisasi skill digital kamu</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                    <div class="morphic-card p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-4">Penghasilan Bulanan</h4>
+                        <div class="earning-chart" id="earningChart">
+                            <!-- Chart will be rendered here -->
+                        </div>
+                    </div>
+
+                    <div class="morphic-card p-6">
+                        <h4 class="text-lg font-bold text-gray-900 mb-4">Distribusi Penghasilan</h4>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Freelance Projects</span>
+                                <span class="font-medium" id="freelanceEarnings">Rp 0</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 h-2 rounded-full" id="freelanceBar" style="width: 0%"></div>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Digital Products</span>
+                                <span class="font-medium" id="productEarnings">Rp 0</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full" id="productBar" style="width: 0%"></div>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Content Creation</span>
+                                <span class="font-medium" id="contentEarnings">Rp 0</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-purple-600 h-2 rounded-full" id="contentBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="morphic-card p-6">
+                    <h4 class="text-lg font-bold text-gray-900 mb-4">Skill dengan Penghasilan Tertinggi</h4>
+                    <div class="space-y-4" id="topSkillsContainer">
+                        <!-- Top skills will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-white/80 backdrop-blur-md border-t border-gray-200 mt-12 slide-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <p class="text-text-secondary text-sm mb-4 md:mb-0">
+                    © 2025 GenZ Finance Hub. Semua hak dilindungi.
+                </p>
+                <div class="flex items-center space-x-6">
+                    <a href="javascript:void(0)"
+                        class="text-text-secondary hover:text-primary-600 text-sm transition-all duration-300 hover:scale-105">Bantuan</a>
+                    <a href="javascript:void(0)"
+                        class="text-text-secondary hover:text-primary-600 text-sm transition-all duration-300 hover:scale-105">Privasi</a>
+                    <a href="javascript:void(0)"
+                        class="text-text-secondary hover:text-primary-600 text-sm transition-all duration-300 hover:scale-105">Syarat</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add Skill Modal -->
+    <div id="addSkillModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Tambah Skill Baru</h3>
+                <button id="closeSkillModal" class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="skillForm">
+                    <div class="form-group">
+                        <label class="form-label">Nama Skill</label>
+                        <input type="text" id="skillName" class="form-input" placeholder="Contoh: Web Development"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Kategori</label>
+                        <select id="skillCategory" class="form-select" required>
+                            <option value="">Pilih Kategori</option>
+                            <option value="development">Development</option>
+                            <option value="design">Design</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="writing">Writing</option>
+                            <option value="video">Video & Audio</option>
+                            <option value="business">Business</option>
+                            <option value="other">Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Level Kemahiran</label>
+                        <select id="skillLevel" class="form-select" required>
+                            <option value="">Pilih Level</option>
+                            <option value="beginner">Pemula</option>
+                            <option value="intermediate">Menengah</option>
+                            <option value="advanced">Lanjutan</option>
+                            <option value="expert">Expert</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Potensi Penghasilan (per bulan)</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">Rp</span>
+                            <input type="number" id="skillEarningPotential" class="form-input pl-10" placeholder="0"
+                                min="0">
+                        </div>
+                        <div class="quick-amounts">
+                            <button type="button" class="quick-amount"
+                                onclick="addQuickAmount(1000000, 'skillEarningPotential')">+1JT</button>
+                            <button type="button" class="quick-amount"
+                                onclick="addQuickAmount(3000000, 'skillEarningPotential')">+3JT</button>
+                            <button type="button" class="quick-amount"
+                                onclick="addQuickAmount(5000000, 'skillEarningPotential')">+5JT</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="cancelSkill" class="btn btn-outline">Batal</button>
+                <button type="submit" form="skillForm" class="btn btn-primary">
+                    <i class="fas fa-save mr-2"></i>Simpan Skill
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Project Modal -->
+    <div id="addProjectModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Tambah Proyek Baru</h3>
+                <button id="closeProjectModal" class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="projectForm">
+                    <div class="form-group">
+                        <label class="form-label">Nama Proyek</label>
+                        <input type="text" id="projectName" class="form-input"
+                            placeholder="Contoh: Website Company Profile" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Skill yang Digunakan</label>
+                        <select id="projectSkill" class="form-select" required>
+                            <option value="">Pilih Skill</option>
+                            <!-- Skills will be populated dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Jenis Monetisasi</label>
+                        <select id="projectType" class="form-select" required>
+                            <option value="">Pilih Jenis</option>
+                            <option value="freelance">Freelance Project</option>
+                            <option value="product">Digital Product</option>
+                            <option value="content">Content Creation</option>
+                            <option value="other">Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Nilai Proyek</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">Rp</span>
+                            <input type="number" id="projectValue" class="form-input pl-10" placeholder="0" min="0"
+                                required>
+                        </div>
+                        <div class="quick-amounts">
+                            <button type="button" class="quick-amount"
+                                onclick="addQuickAmount(500000, 'projectValue')">+500K</button>
+                            <button type="button" class="quick-amount"
+                                onclick="addQuickAmount(1000000, 'projectValue')">+1JT</button>
+                            <button type="button" class="quick-amount"
+                                onclick="addQuickAmount(2000000, 'projectValue')">+2JT</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Status</label>
+                        <select id="projectStatus" class="form-select" required>
+                            <option value="pending">Menunggu</option>
+                            <option value="ongoing">Berjalan</option>
+                            <option value="completed">Selesai</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="cancelProject" class="btn btn-outline">Batal</button>
+                <button type="submit" form="projectForm" class="btn btn-primary">
+                    <i class="fas fa-save mr-2"></i>Simpan Proyek
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data global untuk Skill2Money
+        let userSkills = [];
+        let userProjects = [];
+        let userEarnings = {
+            total: 0,
+            freelance: 0,
+            product: 0,
+            content: 0,
+            other: 0
+        };
+
+        let opportunities = [
+            {
+                id: 1,
+                title: "Web Developer untuk E-commerce",
+                type: "freelance",
+                description: "Membuat website e-commerce dengan fitur lengkap",
+                price: 5000000,
+                deadline: "2025-12-10",
+                skills: ["development"]
+            },
+            {
+                id: 2,
+                title: "Social Media Content Creator",
+                type: "content",
+                description: "Membuat konten Instagram untuk brand fashion",
+                price: 3000000,
+                deadline: "2025-11-30",
+                skills: ["marketing", "content"]
+            },
+            {
+                id: 3,
+                title: "UI/UX Designer untuk Mobile App",
+                type: "freelance",
+                description: "Mendesain interface untuk aplikasi mobile",
+                price: 4500000,
+                deadline: "2025-12-05",
+                skills: ["design"]
+            },
+            {
+                id: 4,
+                title: "Copywriter untuk Website",
+                type: "freelance",
+                description: "Menulis konten untuk website perusahaan",
+                price: 2500000,
+                deadline: "2025-11-25",
+                skills: ["writing"]
+            }
+        ];
+
+        // Initialize Skill2Money
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeSkill2Money();
+            updateDateTime();
+            checkUserSession();
+            setupEventListeners();
+            loadUserData();
+        });
+
+        // Initialize Skill2Money Functions
+        function initializeSkill2Money() {
+            // Load data from localStorage
+            loadSkillsData();
+            loadProjectsData();
+            loadEarningsData();
+
+            // Render initial data
+            renderSkills();
+            renderOpportunities();
+            renderProjects();
+            updateStats();
+            renderEarningsChart();
+            renderTopSkills();
+
+            // Setup auto-refresh
+            setInterval(updateStats, 30000);
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Tab navigation
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+
+                    // Hide all tab contents
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    // Show corresponding tab content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+
+            // Add skill button
+            document.getElementById('addSkillBtn').addEventListener('click', showAddSkillModal);
+            document.getElementById('closeSkillModal').addEventListener('click', hideAddSkillModal);
+            document.getElementById('cancelSkill').addEventListener('click', hideAddSkillModal);
+            document.getElementById('skillForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                addNewSkill();
+            });
+
+            // Add project button
+            document.getElementById('addProjectBtn').addEventListener('click', showAddProjectModal);
+            document.getElementById('closeProjectModal').addEventListener('click', hideAddProjectModal);
+            document.getElementById('cancelProject').addEventListener('click', hideAddProjectModal);
+            document.getElementById('projectForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                addNewProject();
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            mobileMenuBtn.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+                const icon = this.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+
+            // Logout functionality
+            document.getElementById('logoutBtn').addEventListener('click', logout);
+            document.getElementById('mobileLogoutBtn').addEventListener('click', logout);
+
+            // Close modals when clicking outside
+            document.addEventListener('click', function (e) {
+                const skillModal = document.getElementById('addSkillModal');
+                if (skillModal && e.target === skillModal) {
+                    hideAddSkillModal();
+                }
+
+                const projectModal = document.getElementById('addProjectModal');
+                if (projectModal && e.target === projectModal) {
+                    hideAddProjectModal();
+                }
+            });
+
+            // Close modals with Escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    hideAddSkillModal();
+                    hideAddProjectModal();
+                }
+            });
+        }
+
+        // Load data functions
+        function loadSkillsData() {
+            const savedSkills = localStorage.getItem('userSkills');
+            if (savedSkills) {
+                userSkills = JSON.parse(savedSkills);
+            } else {
+                // Default skills for new users
+                userSkills = [
+                    {
+                        id: 1,
+                        name: "Web Development",
+                        category: "development",
+                        level: "intermediate",
+                        earningPotential: 8000000,
+                        createdAt: new Date().toISOString()
+                    },
+                    {
+                        id: 2,
+                        name: "Graphic Design",
+                        category: "design",
+                        level: "beginner",
+                        earningPotential: 3000000,
+                        createdAt: new Date().toISOString()
+                    }
+                ];
+                saveSkillsData();
+            }
+        }
+
+        function loadProjectsData() {
+            const savedProjects = localStorage.getItem('userProjects');
+            if (savedProjects) {
+                userProjects = JSON.parse(savedProjects);
+            }
+        }
+
+        function loadEarningsData() {
+            const savedEarnings = localStorage.getItem('userEarnings');
+            if (savedEarnings) {
+                userEarnings = JSON.parse(savedEarnings);
+            }
+        }
+
+        function loadUserData() {
+            const userSession = localStorage.getItem('userSession');
+            if (userSession) {
+                try {
+                    const userData = JSON.parse(userSession);
+                    document.getElementById('userName').textContent = userData.name || 'User Demo';
+                    document.getElementById('welcomeName').textContent = userData.name || 'User Demo';
+
+                    // Set user avatar if available
+                    if (userData.avatar) {
+                        document.getElementById('userAvatar').src = userData.avatar;
+                    }
+                } catch (error) {
+                    console.error('Error parsing user session:', error);
+                }
+            }
+        }
+
+        // Save data functions
+        function saveSkillsData() {
+            localStorage.setItem('userSkills', JSON.stringify(userSkills));
+        }
+
+        function saveProjectsData() {
+            localStorage.setItem('userProjects', JSON.stringify(userProjects));
+        }
+
+        function saveEarningsData() {
+            localStorage.setItem('userEarnings', JSON.stringify(userEarnings));
+        }
+
+        // Render functions
+        function renderSkills() {
+            const container = document.getElementById('skillsContainer');
+            if (userSkills.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-2 text-center py-8">
+                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-lightbulb text-gray-400 text-2xl"></i>
+                        </div>
+                        <p class="text-gray-500 mb-4">Belum ada skill yang ditambahkan</p>
+                        <button id="addFirstSkill" class="btn-primary">Tambah Skill Pertama</button>
+                    </div>
+                `;
+                document.getElementById('addFirstSkill').addEventListener('click', showAddSkillModal);
+                return;
+            }
+
+            container.innerHTML = userSkills.map(skill => `
+                <div class="skill-item" data-skill-id="${skill.id}">
+                    <div class="skill-icon ${getSkillColor(skill.category)}">
+                        <i class="${getSkillIcon(skill.category)}"></i>
+                    </div>
+                    <div class="skill-details">
+                        <div class="skill-name">${skill.name}</div>
+                        <div class="skill-level">Level: ${getLevelText(skill.level)}</div>
+                        <div class="earning-potential">Potensi: ${formatRupiah(skill.earningPotential)}/bulan</div>
+                    </div>
+                    <button class="text-gray-400 hover:text-red-500 delete-skill" data-skill-id="${skill.id}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+
+            // Add delete event listeners
+            document.querySelectorAll('.delete-skill').forEach(button => {
+                button.addEventListener('click', function () {
+                    const skillId = parseInt(this.getAttribute('data-skill-id'));
+                    deleteSkill(skillId);
+                });
+            });
+        }
+
+        function renderOpportunities() {
+            const container = document.getElementById('opportunitiesContainer');
+            container.innerHTML = opportunities.map(opp => `
+                <div class="opportunity-card">
+                    <div class="opportunity-header">
+                        <div class="opportunity-title">${opp.title}</div>
+                        <span class="opportunity-badge ${getOpportunityBadgeClass(opp.type)}">${getOpportunityTypeText(opp.type)}</span>
+                    </div>
+                    <p class="text-gray-600 text-sm">${opp.description}</p>
+                    <div class="opportunity-details">
+                        <div class="opportunity-price">${formatRupiah(opp.price)}</div>
+                        <div class="opportunity-deadline">Deadline: ${formatDate(opp.deadline)}</div>
+                    </div>
+                    <div class="mt-4">
+                        <button class="btn-primary w-full apply-opportunity" data-opp-id="${opp.id}">Apply Sekarang</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Add apply event listeners
+            document.querySelectorAll('.apply-opportunity').forEach(button => {
+                button.addEventListener('click', function () {
+                    const oppId = parseInt(this.getAttribute('data-opp-id'));
+                    applyOpportunity(oppId);
+                });
+            });
+        }
+
+        function renderProjects() {
+            const container = document.getElementById('projectsContainer');
+            if (userProjects.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-2 text-center py-8">
+                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-tasks text-gray-400 text-2xl"></i>
+                        </div>
+                        <p class="text-gray-500">Belum ada proyek yang ditambahkan</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = userProjects.map(project => `
+                <div class="morphic-card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-bold text-gray-900">${project.name}</h4>
+                        <span class="px-2 py-1 ${getProjectStatusClass(project.status)} text-xs rounded-full">${getProjectStatusText(project.status)}</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">Skill: ${project.skillName}</p>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-gray-700">Nilai Proyek:</span>
+                        <span class="font-bold text-green-600">${formatRupiah(project.value)}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-500 text-sm">${formatDate(project.createdAt)}</span>
+                        <button class="text-red-500 hover:text-red-700 delete-project" data-project-id="${project.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Add delete event listeners
+            document.querySelectorAll('.delete-project').forEach(button => {
+                button.addEventListener('click', function () {
+                    const projectId = parseInt(this.getAttribute('data-project-id'));
+                    deleteProject(projectId);
+                });
+            });
+        }
+
+        function renderEarningsChart() {
+            const container = document.getElementById('earningChart');
+            // In a real app, this would use a charting library
+            // For now, we'll create a simple bar chart with divs
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const earnings = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // Default to 0
+
+            // Add some sample data for demonstration
+            const currentMonth = new Date().getMonth();
+            for (let i = 0; i <= currentMonth; i++) {
+                earnings[i] = Math.floor(Math.random() * 5000000) + 1000000;
+            }
+
+            container.innerHTML = `
+                <div class="flex items-end justify-between h-full" style="padding: 0 10px;">
+                    ${months.map((month, index) => `
+                        <div class="flex flex-col items-center" style="height: 100%;">
+                            <div class="chart-bar" style="height: ${(earnings[index] / 5000000) * 100}%"></div>
+                            <div class="text-xs text-gray-500 mt-2">${month}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function renderTopSkills() {
+            const container = document.getElementById('topSkillsContainer');
+            if (userSkills.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center">Belum ada skill yang ditambahkan</p>';
+                return;
+            }
+
+            // Sort skills by earning potential
+            const sortedSkills = [...userSkills].sort((a, b) => b.earningPotential - a.earningPotential);
+            const topSkills = sortedSkills.slice(0, 3);
+
+            container.innerHTML = topSkills.map(skill => `
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 ${getSkillColor(skill.category)} rounded-full flex items-center justify-center mr-3">
+                            <i class="${getSkillIcon(skill.category)} text-white text-sm"></i>
+                        </div>
+                        <span class="font-medium">${skill.name}</span>
+                    </div>
+                    <span class="text-green-600 font-semibold">${formatRupiah(skill.earningPotential)}/bln</span>
+                </div>
+            `).join('');
+        }
+
+        // Update stats
+        function updateStats() {
+            // Update total earnings
+            document.getElementById('totalEarnings').textContent = formatRupiah(userEarnings.total);
+
+            // Update active projects count
+            const activeProjects = userProjects.filter(p => p.status === 'ongoing').length;
+            document.getElementById('activeProjects').textContent = activeProjects;
+
+            // Update skill level based on highest skill level
+            const skillLevels = {
+                'beginner': 1,
+                'intermediate': 2,
+                'advanced': 3,
+                'expert': 4
+            };
+
+            let highestLevel = 'beginner';
+            userSkills.forEach(skill => {
+                if (skillLevels[skill.level] > skillLevels[highestLevel]) {
+                    highestLevel = skill.level;
+                }
+            });
+
+            document.getElementById('skillLevel').textContent = getLevelText(highestLevel);
+
+            // Update project stats
+            document.getElementById('totalProjects').textContent = userProjects.length;
+            document.getElementById('completedProjects').textContent = userProjects.filter(p => p.status === 'completed').length;
+            document.getElementById('ongoingProjects').textContent = userProjects.filter(p => p.status === 'ongoing').length;
+            document.getElementById('pendingProjects').textContent = userProjects.filter(p => p.status === 'pending').length;
+
+            // Update earnings distribution
+            document.getElementById('freelanceEarnings').textContent = formatRupiah(userEarnings.freelance);
+            document.getElementById('productEarnings').textContent = formatRupiah(userEarnings.product);
+            document.getElementById('contentEarnings').textContent = formatRupiah(userEarnings.content);
+
+            // Update progress bars
+            const total = userEarnings.freelance + userEarnings.product + userEarnings.content + userEarnings.other;
+            if (total > 0) {
+                document.getElementById('freelanceBar').style.width = `${(userEarnings.freelance / total) * 100}%`;
+                document.getElementById('productBar').style.width = `${(userEarnings.product / total) * 100}%`;
+                document.getElementById('contentBar').style.width = `${(userEarnings.content / total) * 100}%`;
+            }
+        }
+
+        // Modal functions - FIXED VERSION
+        function showAddSkillModal() {
+            const modal = document.getElementById('addSkillModal');
+            modal.classList.add('active');
+            
+            // Focus on first input
+            setTimeout(() => {
+                document.getElementById('skillName').focus();
+            }, 300);
+        }
+
+        function hideAddSkillModal() {
+            const modal = document.getElementById('addSkillModal');
+            modal.classList.remove('active');
+            document.getElementById('skillForm').reset();
+        }
+
+        function showAddProjectModal() {
+            // Populate skills dropdown
+            const skillSelect = document.getElementById('projectSkill');
+            skillSelect.innerHTML = '<option value="">Pilih Skill</option>';
+            userSkills.forEach(skill => {
+                const option = document.createElement('option');
+                option.value = skill.id;
+                option.textContent = skill.name;
+                skillSelect.appendChild(option);
+            });
+
+            const modal = document.getElementById('addProjectModal');
+            modal.classList.add('active');
+
+            // Focus on first input
+            setTimeout(() => {
+                document.getElementById('projectName').focus();
+            }, 300);
+        }
+
+        function hideAddProjectModal() {
+            const modal = document.getElementById('addProjectModal');
+            modal.classList.remove('active');
+            document.getElementById('projectForm').reset();
+        }
+
+        // Add new skill
+        function addNewSkill() {
+            const skillName = document.getElementById('skillName').value;
+            const skillCategory = document.getElementById('skillCategory').value;
+            const skillLevel = document.getElementById('skillLevel').value;
+            const earningPotential = parseInt(document.getElementById('skillEarningPotential').value) || 0;
+
+            if (!skillName || !skillCategory || !skillLevel) {
+                showNotification('Harap isi semua field yang wajib!', 'error');
+                return;
+            }
+
+            const newSkill = {
+                id: Date.now(),
+                name: skillName,
+                category: skillCategory,
+                level: skillLevel,
+                earningPotential: earningPotential,
+                createdAt: new Date().toISOString()
+            };
+
+            userSkills.push(newSkill);
+            saveSkillsData();
+            renderSkills();
+            renderTopSkills();
+            hideAddSkillModal();
+
+            showNotification('Skill berhasil ditambahkan! 🎉', 'success');
+        }
+
+        // Add new project
+        function addNewProject() {
+            const projectName = document.getElementById('projectName').value;
+            const projectSkillId = parseInt(document.getElementById('projectSkill').value);
+            const projectType = document.getElementById('projectType').value;
+            const projectValue = parseInt(document.getElementById('projectValue').value);
+            const projectStatus = document.getElementById('projectStatus').value;
+
+            if (!projectName || !projectSkillId || !projectType || !projectValue) {
+                showNotification('Harap isi semua field yang wajib!', 'error');
+                return;
+            }
+
+            const skill = userSkills.find(s => s.id === projectSkillId);
+            if (!skill) {
+                showNotification('Skill tidak valid!', 'error');
+                return;
+            }
+
+            const newProject = {
+                id: Date.now(),
+                name: projectName,
+                skillId: projectSkillId,
+                skillName: skill.name,
+                type: projectType,
+                value: projectValue,
+                status: projectStatus,
+                createdAt: new Date().toISOString()
+            };
+
+            userProjects.push(newProject);
+            saveProjectsData();
+
+            // Update earnings based on project type
+            if (projectStatus === 'completed') {
+                userEarnings.total += projectValue;
+                userEarnings[projectType] += projectValue;
+                saveEarningsData();
+            }
+
+            renderProjects();
+            updateStats();
+            hideAddProjectModal();
+
+            showNotification('Proyek berhasil ditambahkan! 🎉', 'success');
+        }
+
+        // Delete skill
+        function deleteSkill(skillId) {
+            if (confirm('Apakah Anda yakin ingin menghapus skill ini?')) {
+                userSkills = userSkills.filter(skill => skill.id !== skillId);
+                saveSkillsData();
+                renderSkills();
+                renderTopSkills();
+                showNotification('Skill berhasil dihapus', 'success');
+            }
+        }
+
+        // Delete project
+        function deleteProject(projectId) {
+            if (confirm('Apakah Anda yakin ingin menghapus proyek ini?')) {
+                userProjects = userProjects.filter(project => project.id !== projectId);
+                saveProjectsData();
+                renderProjects();
+                updateStats();
+                showNotification('Proyek berhasil dihapus', 'success');
+            }
+        }
+
+        // Apply for opportunity
+        function applyOpportunity(oppId) {
+            const opportunity = opportunities.find(opp => opp.id === oppId);
+            if (opportunity) {
+                // In a real app, this would submit an application
+                // For now, we'll just show a notification
+                showNotification(`Berhasil apply untuk: ${opportunity.title}`, 'success');
+            }
+        }
+
+        // Helper functions
+        function getSkillColor(category) {
+            const colors = {
+                'development': 'bg-blue-500',
+                'design': 'bg-purple-500',
+                'marketing': 'bg-green-500',
+                'writing': 'bg-yellow-500',
+                'video': 'bg-red-500',
+                'business': 'bg-indigo-500',
+                'other': 'bg-gray-500'
+            };
+            return colors[category] || 'bg-gray-500';
+        }
+
+        function getSkillIcon(category) {
+            const icons = {
+                'development': 'fas fa-laptop-code',
+                'design': 'fas fa-palette',
+                'marketing': 'fas fa-bullhorn',
+                'writing': 'fas fa-pen',
+                'video': 'fas fa-video',
+                'business': 'fas fa-chart-line',
+                'other': 'fas fa-star'
+            };
+            return icons[category] || 'fas fa-star';
+        }
+
+        function getLevelText(level) {
+            const levels = {
+                'beginner': 'Pemula',
+                'intermediate': 'Menengah',
+                'advanced': 'Lanjutan',
+                'expert': 'Expert'
+            };
+            return levels[level] || level;
+        }
+
+        function getOpportunityBadgeClass(type) {
+            const classes = {
+                'freelance': 'bg-green-100 text-green-700',
+                'product': 'bg-blue-100 text-blue-700',
+                'content': 'bg-purple-100 text-purple-700'
+            };
+            return classes[type] || 'bg-gray-100 text-gray-700';
+        }
+
+        function getOpportunityTypeText(type) {
+            const types = {
+                'freelance': 'Freelance',
+                'product': 'Digital Product',
+                'content': 'Content'
+            };
+            return types[type] || type;
+        }
+
+        function getProjectStatusClass(status) {
+            const classes = {
+                'pending': 'bg-yellow-100 text-yellow-700',
+                'ongoing': 'bg-blue-100 text-blue-700',
+                'completed': 'bg-green-100 text-green-700'
+            };
+            return classes[status] || 'bg-gray-100 text-gray-700';
+        }
+
+        function getProjectStatusText(status) {
+            const statuses = {
+                'pending': 'Menunggu',
+                'ongoing': 'Berjalan',
+                'completed': 'Selesai'
+            };
+            return statuses[status] || status;
+        }
+
+        function formatRupiah(amount) {
+            return 'Rp ' + amount.toLocaleString('id-ID');
+        }
+
+        function formatDate(dateString) {
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            return new Date(dateString).toLocaleDateString('id-ID', options);
+        }
+
+        function updateDateTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            const dateString = now.toLocaleDateString('id-ID', options);
+            document.getElementById('currentDate').textContent = dateString;
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 p-4 rounded-xl text-white font-medium transform transition-all duration-300 z-50 bounce-in ${type === 'success' ? 'bg-success-500' :
+                type === 'error' ? 'bg-error-500' : type === 'warning' ? 'bg-warning-500' : 'bg-primary-500'
+                }`;
+            notification.textContent = message;
+            notification.style.transform = 'translateX(100%)';
+
+            document.body.appendChild(notification);
+
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+
+            // Animate out after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Check User Session
+        function checkUserSession() {
+            const userSession = localStorage.getItem('userSession');
+            if (!userSession) {
+                window.location.href = 'authentication_portal.html';
+                return;
+            }
+
+            try {
+                const userData = JSON.parse(userSession);
+                document.getElementById('userName').textContent = userData.name || 'User Demo';
+                document.getElementById('welcomeName').textContent = userData.name || 'User Demo';
+
+                // Set user avatar if available
+                if (userData.avatar) {
+                    document.getElementById('userAvatar').src = userData.avatar;
+                }
+            } catch (error) {
+                console.error('Error parsing user session:', error);
+                document.getElementById('userName').textContent = 'User Demo';
+                document.getElementById('welcomeName').textContent = 'User Demo';
+            }
+        }
+
+        // Logout Function
+        function logout() {
+            if (confirm('Apakah kamu yakin ingin keluar?')) {
+                localStorage.removeItem('userSession');
+                window.location.href = 'authentication_portal.html';
+            }
+        }
+
+        // Navbar Scroll Effect
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.sticky-nav');
+        let navbarHeight = navbar ? navbar.offsetHeight : 0;
+
+        function handleScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Add scrolled class when not at top
+            if (scrollTop > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Compact mode when scrolling down
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down
+                navbar.classList.add('compact');
+            } else {
+                // Scrolling up
+                navbar.classList.remove('compact');
+            }
+
+            lastScrollTop = scrollTop;
+        }
+
+        // Throttle scroll events for performance
+        function throttle(func, limit) {
+            let inThrottle;
+            return function () {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+
+        // Initialize scroll effect
+        if (navbar) {
+            handleScroll();
+            window.addEventListener('scroll', throttle(handleScroll, 10));
+            window.addEventListener('resize', function () {
+                navbarHeight = navbar.offsetHeight;
+            });
+        }
+
+        // Tambahkan fungsi ini di bagian helper functions
+        function addQuickAmount(amount, elementId) {
+            const input = document.getElementById(elementId);
+            const currentValue = parseInt(input.value) || 0;
+            input.value = currentValue + amount;
+
+            // Add micro animation
+            input.classList.add('micro-celebrate');
+            setTimeout(() => {
+                input.classList.remove('micro-celebrate');
+            }, 300);
+        }
+    </script>
+</body>
+
+</html>

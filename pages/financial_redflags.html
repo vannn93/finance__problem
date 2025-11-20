@@ -1,0 +1,2150 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Red Flags - GenZ Finance Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Animasi Super Smooth */
+        .fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        .slide-up {
+            animation: slideUp 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+
+        .spring-bounce {
+            animation: springBounce 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite both;
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite both;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        .scale-in {
+            animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+
+        .typewriter {
+            animation: typewriter 1.5s steps(20) both, blink 0.8s infinite;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid;
+        }
+
+        .stagger-item {
+            opacity: 0;
+            animation: staggerFade 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95) rotateX(10deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotateX(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px) rotateX(15deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+
+        @keyframes springBounce {
+            0% {
+                transform: scale(0.3) rotate(-8deg);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.15) rotate(3deg);
+                opacity: 0.8;
+            }
+
+            70% {
+                transform: scale(0.95) rotate(-2deg);
+                opacity: 0.9;
+            }
+
+            85% {
+                transform: scale(1.05) rotate(1deg);
+                opacity: 0.95;
+            }
+
+            100% {
+                transform: scale(1) rotate(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 15px rgba(220, 38, 38, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 35px rgba(220, 38, 38, 0.7);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+
+            33% {
+                transform: translateY(-15px) rotate(3deg) scale(1.02);
+            }
+
+            66% {
+                transform: translateY(-8px) rotate(-2deg) scale(0.98);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px) skewX(-8deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0) skewX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5) rotate(12deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: #dc2626;
+            }
+        }
+
+        @keyframes staggerFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Micro celebration effect yang lebih smooth */
+        .micro-celebrate {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .micro-celebrate:hover {
+            transform: translateY(-4px) scale(1.03);
+        }
+
+        .micro-celebrate:active {
+            transform: translateY(1px) scale(0.97);
+        }
+
+        /* Morphic card effect yang lebih menarik */
+        .morphic-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow:
+                0 12px 45px rgba(0, 0, 0, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .morphic-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.18),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .morphic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 150%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: left 0.8s;
+            transform: skewX(-15deg);
+        }
+
+        .morphic-card:hover::before {
+            left: 150%;
+        }
+
+        /* Text gradient yang lebih menarik */
+        .text-gradient {
+            background: linear-gradient(135deg, #dc2626 0%, #ea580c 25%, #d97706 50%, #ca8a04 75%, #eab308 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientShift 6s ease infinite;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Custom styles untuk Financial Red Flags */
+        .redflag-card {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .redflag-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .flag-badge {
+            transition: all 0.3s ease;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-weight: 600;
+        }
+
+        .flag-badge:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Input fields yang lebih menarik */
+        .input-field {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 16px;
+            border: 2px solid rgba(220, 38, 38, 0.15);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 14px 18px;
+            font-size: 16px;
+        }
+
+        .input-field:focus {
+            border-color: #dc2626;
+            box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.25);
+            transform: scale(1.03);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Button styles yang lebih menarik */
+        .btn-primary {
+            background: linear-gradient(135deg, #dc2626, #ea580c, #d97706);
+            border: none;
+            border-radius: 18px;
+            padding: 16px 28px;
+            font-weight: 700;
+            color: white;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-6px) scale(1.06);
+            box-shadow: 0 18px 40px rgba(220, 38, 38, 0.5);
+            background: linear-gradient(135deg, #ea580c, #d97706, #f59e0b);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(220, 38, 38, 0.25);
+            border-radius: 18px;
+            padding: 14px 26px;
+            font-weight: 600;
+            color: #dc2626;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            border-color: #dc2626;
+            background: rgba(220, 38, 38, 0.08);
+        }
+
+        /* Progress bars yang lebih menarik */
+        .progress-bar {
+            height: 10px;
+            border-radius: 12px;
+            background: rgba(220, 38, 38, 0.15);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #dc2626, #ea580c, #d97706, #f59e0b);
+            transition: width 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 150%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            animation: shimmer 2.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -150%;
+            }
+
+            100% {
+                left: 150%;
+            }
+        }
+
+        /* Notification yang lebih menarik */
+        .notification {
+            animation: slideInRight 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 18px;
+            padding: 18px 22px;
+            margin-bottom: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-left: 5px solid;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Background pattern yang lebih dinamis */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.08;
+            animation: float 20s infinite linear;
+            filter: blur(1px);
+        }
+
+        .shape-1 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #dc2626, #ea580c);
+            top: 5%;
+            left: 3%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #d97706, #ca8a04);
+            top: 65%;
+            right: 8%;
+            animation-delay: -7s;
+        }
+
+        .shape-3 {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #eab308, #f59e0b);
+            bottom: 15%;
+            left: 15%;
+            animation-delay: -12s;
+        }
+
+        .shape-4 {
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            top: 25%;
+            right: 15%;
+            animation-delay: -9s;
+        }
+
+        .shape-5 {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #ea580c, #f59e0b);
+            bottom: 40%;
+            left: 80%;
+            animation-delay: -5s;
+        }
+
+        /* Chart container styling */
+        .chart-container {
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .chart-container:hover {
+            transform: scale(1.02);
+        }
+
+        /* Status indicators */
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+        }
+
+        /* Number counter animation */
+        .counter {
+            font-variant-numeric: tabular-nums;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Stagger animation delays */
+        .stagger-1 {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-4 {
+            animation-delay: 0.4s;
+        }
+
+        .stagger-5 {
+            animation-delay: 0.5s;
+        }
+
+        /* Custom styles untuk Financial Red Flags */
+        .flag-item {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .flag-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .severity-badge {
+            background: linear-gradient(135deg, #dc2626, #ea580c);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .advice-card {
+            font-style: italic;
+            text-align: center;
+            padding: 16px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(234, 88, 12, 0.1));
+            margin: 16px 0;
+            border-left: 4px solid #dc2626;
+        }
+
+        /* Chat bubble styles */
+        .chat-bubble {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            margin: 8px 0;
+            position: relative;
+        }
+
+        .user-bubble {
+            background: linear-gradient(135deg, #dc2626, #ea580c);
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+
+        .ai-bubble {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            margin-right: auto;
+            border-bottom-left-radius: 4px;
+        }
+
+        /* Red Flag Assessment Styles */
+        .assessment-question {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid #dc2626;
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .option-btn {
+            padding: 12px 16px;
+            border: 2px solid rgba(220, 38, 38, 0.2);
+            border-radius: 12px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .option-btn:hover {
+            border-color: #dc2626;
+            background: rgba(220, 38, 38, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .option-btn.selected {
+            border-color: #dc2626;
+            background: rgba(220, 38, 38, 0.1);
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+        }
+
+        /* Health Score Styles */
+        .health-score {
+            font-size: 3rem;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+            background: linear-gradient(135deg, #dc2626, #ea580c, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        /* Chat container styles */
+        .chat-container {
+            height: 256px;
+            overflow-y: auto;
+            padding: 12px;
+            background: rgba(249, 250, 251, 0.8);
+            border-radius: 12px;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            margin-bottom: 16px;
+        }
+
+        /* Custom scrollbar untuk chat */
+        .chat-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-container::-webkit-scrollbar-track {
+            background: rgba(243, 244, 246, 0.5);
+            border-radius: 10px;
+        }
+
+        .chat-container::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.5);
+            border-radius: 10px;
+        }
+
+        .chat-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(107, 114, 128, 0.7);
+        }
+
+        /* Chat bubble styles */
+        .chat-bubble {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            margin: 8px 0;
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .user-bubble {
+            background: linear-gradient(135deg, #dc2626, #ea580c);
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+
+        .ai-bubble {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            margin-right: auto;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Perbaikan layout untuk chat container */
+        .chat-container {
+            height: 256px;
+            overflow-y: auto;
+            padding: 12px;
+            background: rgba(249, 250, 251, 0.8);
+            border-radius: 12px;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            margin-bottom: 16px;
+        }
+
+        /* Perbaikan untuk input area agar menempel di bawah */
+        .input-area {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        /* Atau alternatif dengan flexbox pada parent */
+        .chat-support-container {
+            display: flex;
+            flex-direction: column;
+            height: 400px;
+        }
+
+        .chat-messages-container {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 16px;
+        }
+
+        /* Perbaikan untuk card utama chat */
+        .chat-main-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 400px;
+        }
+
+        /* Jika menggunakan grid layout, pastikan alignment benar */
+        .grid-cols-1.lg\:grid-cols-3 {
+            align-items: start;
+        }
+
+        /* Perbaikan responsive untuk mobile */
+        @media (max-width: 768px) {
+            .chat-container {
+                height: 200px;
+            }
+
+            .input-area {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .input-area .input-field {
+                width: 100%;
+            }
+
+            .input-area button {
+                width: 100%;
+            }
+        }
+
+        /* Modal untuk solusi */
+        .solutions-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .solutions-content {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .solution-item {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-left: 4px solid #dc2626;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-amber-50">
+    <!-- Background Pattern yang Lebih Dinamis -->
+    <div class="floating-shapes">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+        <div class="floating-shape shape-5"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="relative bg-white/95 backdrop-blur-xl border-b border-white/30 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-r from-red-500 to-orange-600 rounded-xl flex items-center justify-center shadow-xl micro-celebrate">
+                            <i class="fas fa-wallet text-white text-lg"></i>
+                        </div>
+                        <span class="ml-3 text-xl font-bold text-gradient">GenZ Finance Hub</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="main_dashboard.html"
+                            class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 micro-celebrate">
+                            <i class="fas fa-home mr-2"></i>Dashboard
+                        </a>
+                        <a href="money_mirror_analysis.html"
+                            class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 micro-celebrate">
+                            <i class="fas fa-mirror mr-2"></i>MoneyMirror
+                        </a>
+                        <a href="zero_budget_tracker.html"
+                            class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 micro-celebrate">
+                            <i class="fas fa-calculator mr-2"></i>ZeroBudget
+                        </a>
+                        <a href="subs_tracker_manager.html"
+                            class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 micro-celebrate">
+                            <i class="fas fa-credit-card mr-2"></i>SubsTracker
+                        </a>
+                        <a href="splitmate_bill_splitter.html"
+                            class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 micro-celebrate">
+                            <i class="fas fa-users mr-2"></i>SplitMate
+                        </a>
+                        <a href="smartdebt_calculator.html"
+                            class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 micro-celebrate">
+                            <i class="fas fa-chart-line mr-2"></i>SmartDebt
+                        </a>
+                        <a href="anti_fomo_timer.html"
+                            class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 micro-celebrate">
+                            <i class="fas fa-shield-alt mr-2"></i>Anti-FOMO
+                        </a>
+                        <a href="financial_redflags.html"
+                            class="bg-gradient-to-r from-red-100 to-orange-100 text-red-700 px-3 py-2 rounded-md text-sm font-medium shadow-lg micro-celebrate">
+                            <i class="fas fa-flag mr-2"></i>Red Flags
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-red-600 p-2 micro-celebrate">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- User Profile -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative">
+                        <button
+                            class="flex items-center space-x-2 text-gray-600 hover:text-red-600 transition-all duration-300 micro-celebrate">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1a5df2297-1763292384104.png"
+                                alt="User profile picture" class="w-8 h-8 rounded-full object-cover shadow-lg"
+                                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                            <span class="text-sm font-medium" id="userName">User</span>
+                            <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-xl border-t border-white/30 shadow-2xl">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="main_dashboard.html"
+                    class="text-gray-600 hover:text-red-600 block px-3 py-2 text-base font-medium rounded-md transition-all duration-300 micro-celebrate">
+                    <i class="fas fa-home mr-2"></i>Dashboard
+                </a>
+                <a href="money_mirror_analysis.html"
+                    class="text-gray-600 hover:text-red-600 block px-3 py-2 text-base font-medium rounded-md transition-all duration-300 micro-celebrate">
+                    <i class="fas fa-mirror mr-2"></i>MoneyMirror
+                </a>
+                <a href="zero_budget_tracker.html"
+                    class="text-gray-600 hover:text-red-600 block px-3 py-2 text-base font-medium rounded-md transition-all duration-300 micro-celebrate">
+                    <i class="fas fa-calculator mr-2"></i>ZeroBudget
+                </a>
+                <a href="subs_tracker_manager.html"
+                    class="text-gray-600 hover:text-red-600 block px-3 py-2 text-base font-medium rounded-md transition-all duration-300 micro-celebrate">
+                    <i class="fas fa-credit-card mr-2"></i>SubsTracker
+                </a>
+                <a href="splitmate_bill_splitter.html"
+                    class="text-gray-600 hover:text-red-600 block px-3 py-2 text-base font-medium rounded-md transition-all duration-300 micro-celebrate">
+                    <i class="fas fa-users mr-2"></i>SplitMate
+                </a>
+                <a href="smartdebt_calculator.html"
+                    class="text-gray-600 hover:text-red-600 block px-3 py-2 text-base font-medium rounded-md transition-all duration-300 micro-celebrate">
+                    <i class="fas fa-chart-line mr-2"></i>SmartDebt
+                </a>
+                <a href="anti_fomo_timer.html"
+                    class="text-gray-600 hover:text-red-600 block px-3 py-2 text-base font-medium rounded-md transition-all duration-300 micro-celebrate">
+                    <i class="fas fa-shield-alt mr-2"></i>Anti-FOMO
+                </a>
+                <a href="financial_redflags.html"
+                    class="bg-gradient-to-r from-red-100 to-orange-100 text-red-700 block px-3 py-2 text-base font-medium rounded-md shadow-lg micro-celebrate">
+                    <i class="fas fa-flag mr-2"></i>Red Flags
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header -->
+        <div class="mb-8 fade-in">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-4xl font-bold text-gradient mb-3 spring-bounce">Financial Red Flags</h1>
+                    <p class="text-lg text-gray-600 typewriter">Deteksi masalah keuangan dan dapatkan solusi! 🚩💡</p>
+                </div>
+                <div class="hidden sm:flex items-center space-x-4">
+                    <div class="text-right">
+                        <p class="text-sm text-gray-500">Skor Kesehatan Finansial</p>
+                        <p class="text-2xl font-bold text-green-600 counter" id="healthScore">85%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Health Score -->
+            <div class="morphic-card p-6 fade-in stagger-item stagger-1">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Skor Kesehatan</p>
+                        <p class="health-score counter" id="currentHealthScore">85%</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-xl micro-celebrate">
+                        <i class="fas fa-heart text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-green-600 font-medium" id="healthChange">+5%</span>
+                        <span class="text-gray-500 ml-1">dari bulan lalu</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Red Flags Detected -->
+            <div class="morphic-card p-6 fade-in stagger-item stagger-2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Red Flags Terdeteksi</p>
+                        <p class="text-2xl font-bold text-red-600 counter" id="redFlagsCount">3</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-gradient-to-r from-red-500 to-orange-600 rounded-xl flex items-center justify-center shadow-xl micro-celebrate">
+                        <i class="fas fa-flag text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-red-600 font-medium" id="activeFlags">2 aktif</span>
+                        <span class="text-gray-500 ml-1">perlu perhatian</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Issues Resolved -->
+            <div class="morphic-card p-6 fade-in stagger-item stagger-3">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Masalah Diselesaikan</p>
+                        <p class="text-2xl font-bold text-amber-600 counter" id="issuesResolved">12</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-gradient-to-r from-amber-500 to-yellow-600 rounded-xl flex items-center justify-center shadow-xl micro-celebrate">
+                        <i class="fas fa-check-double text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-amber-600 font-medium">Progress bagus</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advice Given -->
+            <div class="morphic-card p-6 fade-in stagger-item stagger-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Saran Diberikan</p>
+                        <p class="text-2xl font-bold text-purple-600 counter" id="adviceCount">27</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center shadow-xl micro-celebrate">
+                        <i class="fas fa-lightbulb text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-purple-600 font-medium">Tips praktis</span>
+                        <span class="text-gray-500 ml-1">untuk kamu</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Assessment & Detection -->
+            <div class="lg:col-span-1">
+                <div class="morphic-card p-6 fade-in">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-gray-800">Deteksi Masalah</h2>
+                        <i class="fas fa-search text-red-500 text-xl micro-celebrate"></i>
+                    </div>
+
+                    <!-- Quick Assessment -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Assesmen Cepat</h3>
+                        <div class="space-y-4">
+                            <div class="assessment-question">
+                                <p class="font-medium text-gray-800 mb-3">Seberapa sering kamu merasa stres tentang
+                                    keuangan?</p>
+                                <div class="option-grid">
+                                    <div class="option-btn micro-celebrate" data-value="1">
+                                        <i class="fas fa-smile text-green-500 mb-2"></i>
+                                        <p class="text-sm">Jarang</p>
+                                    </div>
+                                    <div class="option-btn micro-celebrate" data-value="2">
+                                        <i class="fas fa-meh text-yellow-500 mb-2"></i>
+                                        <p class="text-sm">Kadang-kadang</p>
+                                    </div>
+                                    <div class="option-btn micro-celebrate" data-value="3">
+                                        <i class="fas fa-frown text-red-500 mb-2"></i>
+                                        <p class="text-sm">Sering</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="assessment-question">
+                                <p class="font-medium text-gray-800 mb-3">Apakah kamu punya tabungan darurat?</p>
+                                <div class="option-grid">
+                                    <div class="option-btn micro-celebrate" data-value="1">
+                                        <i class="fas fa-piggy-bank text-green-500 mb-2"></i>
+                                        <p class="text-sm">Cukup untuk 6+ bulan</p>
+                                    </div>
+                                    <div class="option-btn micro-celebrate" data-value="2">
+                                        <i class="fas fa-coins text-yellow-500 mb-2"></i>
+                                        <p class="text-sm">Sedikit</p>
+                                    </div>
+                                    <div class="option-btn micro-celebrate" data-value="3">
+                                        <i class="fas fa-exclamation-triangle text-red-500 mb-2"></i>
+                                        <p class="text-sm">Tidak ada</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Start Assessment Button -->
+                    <button id="startAssessment" class="btn-primary w-full py-4 micro-celebrate pulse-glow">
+                        <i class="fas fa-play-circle mr-2"></i>
+                        Mulai Assesmen Lengkap
+                    </button>
+
+                    <!-- Quick Results -->
+                    <div id="quickResults"
+                        class="mt-6 p-4 bg-gradient-to-r from-red-50 to-orange-50 rounded-2xl border border-red-100 hidden">
+                        <h3 class="font-semibold text-gray-800 mb-3">Hasil Awal</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">Tingkat Stres:</span>
+                                <span class="font-semibold text-red-600" id="resultStress">Sedang</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">Kesiapan Darurat:</span>
+                                <span class="font-semibold text-amber-600" id="resultEmergency">Perlu
+                                    ditingkatkan</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">Rekomendasi:</span>
+                                <span class="font-semibold text-green-600" id="resultRecommendation">Assesmen
+                                    lengkap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Issue Management -->
+                <div class="morphic-card p-6 mt-6 fade-in">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Kelola Masalah</h3>
+                    <div class="space-y-3">
+                        <button id="reportIssueBtn" class="w-full btn-secondary text-left p-4 micro-celebrate">
+                            <div class="flex items-center">
+                                <div
+                                    class="w-10 h-10 bg-gradient-to-r from-red-100 to-orange-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-plus text-red-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Laporkan Masalah</p>
+                                    <p class="text-xs text-gray-500">Ceritakan masalah keuanganmu</p>
+                                </div>
+                            </div>
+                        </button>
+                        <button id="solutionsBtn" class="w-full btn-secondary text-left p-4 micro-celebrate">
+                            <div class="flex items-center">
+                                <div
+                                    class="w-10 h-10 bg-gradient-to-r from-green-100 to-emerald-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-lightbulb text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Lihat Solusi</p>
+                                    <p class="text-xs text-gray-500">Tips dan strategi</p>
+                                </div>
+                            </div>
+                        </button>
+                        <button id="progressBtn" class="w-full btn-secondary text-left p-4 micro-celebrate">
+                            <div class="flex items-center">
+                                <div
+                                    class="w-10 h-10 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-chart-line text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Progress Report</p>
+                                    <p class="text-xs text-gray-500">Lihat perkembangan</p>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Issues List & Chat Support -->
+            <div class="lg:col-span-2">
+                <!-- Chat Support -->
+                <div class="morphic-card p-6 slide-in-right chat-main-card">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Ruang Curhat 💬</h3>
+
+                    <!-- Chat Container dengan scroll -->
+                    <div class="chat-container mb-4 space-y-3" id="chatMessages">
+                        <div class="chat-bubble ai-bubble fade-in">
+                            <p class="text-sm">Halo! Saya di sini untuk membantu masalah keuanganmu. Ceritakan apa yang
+                                sedang kamu hadapi, dan saya akan memberikan saran yang praktis...</p>
+                        </div>
+                    </div>
+
+                    <!-- Input area -->
+                    <div class="flex space-x-2">
+                        <input type="text" id="chatInput" placeholder="Ketik masalahmu di sini..."
+                            class="input-field flex-1" maxlength="500">
+                        <button id="sendMessage" class="btn-primary px-4 micro-celebrate">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+
+                    <!-- Typing indicator (opsional) -->
+                    <div id="typingIndicator" class="hidden mt-2">
+                        <div class="chat-bubble ai-bubble">
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                                <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s">
+                                </div>
+                                <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Issues List -->
+                <div id="issuesList" class="mt-6 space-y-4">
+                    <!-- Issues will be dynamically generated here -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="text-center py-12">
+                    <div
+                        class="w-24 h-24 bg-gradient-to-r from-red-100 to-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl">
+                        <i class="fas fa-flag text-red-400 text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-800 mb-2">Belum Ada Masalah Terdeteksi</h3>
+                    <p class="text-gray-500 mb-4">Mulai deteksi masalah keuangan pertama kamu!</p>
+                    <button class="btn-primary micro-celebrate pulse-glow"
+                        onclick="document.getElementById('startAssessment').click()">
+                        <i class="fas fa-search mr-2"></i>
+                        Deteksi Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Personalized Advice -->
+        <div class="morphic-card p-6 mt-6 scale-in">
+            <h3 class="text-lg font-bold text-gray-800 mb-4">💡 Saran Personal</h3>
+            <div id="personalizedAdvice" class="space-y-3">
+                <!-- Advice will be generated here -->
+            </div>
+            <div id="emptyAdvice" class="text-center py-4">
+                <div
+                    class="w-12 h-12 bg-gradient-to-r from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-comments text-gray-400"></i>
+                </div>
+                <p class="text-sm text-gray-500">Mulai chat untuk mendapatkan saran personal</p>
+            </div>
+        </div>
+
+        <!-- Notification System -->
+        <div id="notificationContainer" class="fixed top-20 right-4 z-50 space-y-2"></div>
+    </main>
+
+    <!-- Report Issue Modal -->
+    <div id="reportIssueModal"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="morphic-card max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">Laporkan Masalah</h3>
+                    <button id="closeIssueModal" class="text-gray-500 hover:text-gray-700 micro-celebrate">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <form id="reportIssueForm" class="space-y-4">
+                    <div>
+                        <label for="issueCategory" class="block text-sm font-medium text-gray-700 mb-2">Kategori
+                            Masalah</label>
+                        <select id="issueCategory" class="input-field w-full" required>
+                            <option value="">Pilih kategori</option>
+                            <option value="debt">Hutang & Kredit</option>
+                            <option value="spending">Pengeluaran Tak Terkontrol</option>
+                            <option value="income">Pendapatan Tidak Stabil</option>
+                            <option value="savings">Tabungan & Investasi</option>
+                            <option value="relationship">Masalah dengan Pasangan/Keluarga</option>
+                            <option value="emergency">Darurat Keuangan</option>
+                            <option value="other">Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="issueDescription" class="block text-sm font-medium text-gray-700 mb-2">Deskripsi
+                            Masalah</label>
+                        <textarea id="issueDescription" class="input-field w-full" rows="4"
+                            placeholder="Ceritakan masalah keuangan yang sedang kamu hadapi secara detail..."
+                            required></textarea>
+                    </div>
+
+                    <div>
+                        <label for="issueSeverity" class="block text-sm font-medium text-gray-700 mb-2">Tingkat
+                            Keparahan</label>
+                        <div class="flex space-x-2">
+                            <button type="button"
+                                class="flex-1 py-2 bg-green-100 text-green-700 rounded-lg micro-celebrate severity-btn"
+                                data-severity="low">
+                                Ringan
+                            </button>
+                            <button type="button"
+                                class="flex-1 py-2 bg-yellow-100 text-yellow-700 rounded-lg micro-celebrate severity-btn"
+                                data-severity="medium">
+                                Sedang
+                            </button>
+                            <button type="button"
+                                class="flex-1 py-2 bg-red-100 text-red-700 rounded-lg micro-celebrate severity-btn"
+                                data-severity="high">
+                                Serius
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-3 pt-4">
+                        <button type="submit" class="btn-primary flex-1 micro-celebrate">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Kirim Laporan
+                        </button>
+                        <button type="button" id="cancelIssue" class="btn-secondary flex-1 micro-celebrate">
+                            Batal
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white/95 backdrop-blur-xl border-t border-white/30 shadow-lg mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                    <div
+                        class="w-8 h-8 bg-gradient-to-r from-red-500 to-orange-600 rounded-lg flex items-center justify-center shadow-lg micro-celebrate">
+                        <i class="fas fa-wallet text-white text-sm"></i>
+                    </div>
+                    <span class="text-sm font-medium text-gradient">GenZ Finance Hub</span>
+                </div>
+                <p class="text-sm text-gray-500 text-center md:text-left">
+                    © 2025 GenZ Finance Hub. Semua hak dilindungi.
+                    <span class="mx-2">|</span>
+                    <a href="javascript:void(0)" class="text-red-600 hover:text-red-700 micro-celebrate">Bantuan</a>
+                    <span class="mx-2">|</span>
+                    <a href="javascript:void(0)" class="text-red-600 hover:text-red-700 micro-celebrate">Privasi</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data management
+        let issues = [];
+        let currentUserId = null;
+        let chatMessages = [];
+        let selectedSeverity = 'medium';
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function () {
+            loadUserData();
+            loadIssues();
+            initializeEventListeners();
+            updateDashboard();
+            renderIssues();
+            updatePersonalizedAdvice();
+            initializeChat();
+        });
+
+        // Load user data
+        function loadUserData() {
+            // Coba ambil dari userSession terlebih dahulu
+            const userSession = localStorage.getItem('userSession');
+            if (userSession) {
+                try {
+                    const session = JSON.parse(userSession);
+                    currentUserId = session.userId;
+
+                    // Ambil nama user dari berbagai sumber yang mungkin
+                    const userName = session.username || session.name || 'User Demo';
+                    document.getElementById('userName').textContent = userName;
+
+                    // Simpan juga di localStorage untuk backup
+                    localStorage.setItem('currentUserName', userName);
+
+                } catch (error) {
+                    console.error('Error loading user data:', error);
+                    loadUserFromDashboard();
+                }
+            } else {
+                loadUserFromDashboard();
+            }
+        }
+
+        // Fallback function untuk mengambil data user dari dashboard
+        function loadUserFromDashboard() {
+            // Coba ambil dari berbagai sumber yang mungkin
+            const sources = [
+                'currentUserName',
+                'dashboardUserName',
+                'userName',
+                'welcomeName'
+            ];
+
+            for (const source of sources) {
+                const savedName = localStorage.getItem(source);
+                if (savedName) {
+                    document.getElementById('userName').textContent = savedName;
+                    return;
+                }
+            }
+
+            // Default fallback
+            document.getElementById('userName').textContent = 'User Demo';
+        }
+
+        // Load issues from localStorage
+        function loadIssues() {
+            const saved = localStorage.getItem('redflags_issues');
+            if (saved) {
+                issues = JSON.parse(saved);
+            } else {
+                // Initialize with sample data
+                issues = [
+                    {
+                        id: 1,
+                        category: 'debt',
+                        description: 'Hutang kartu kredit menumpuk dengan bunga tinggi',
+                        severity: 'high',
+                        status: 'active',
+                        createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+                        solutions: [
+                            'Prioritaskan pembayaran kartu kredit dengan bunga tertinggi',
+                            'Pertimbangkan konsolidasi hutang',
+                            'Buat rencana pembayaran yang realistis'
+                        ]
+                    },
+                    {
+                        id: 2,
+                        category: 'spending',
+                        description: 'Pengeluaran untuk makan di luar terlalu besar',
+                        severity: 'medium',
+                        status: 'resolved',
+                        createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+                        solutions: [
+                            'Buat budget khusus untuk makan di luar',
+                            'Belajar masak makanan favorit di rumah',
+                            'Batasi makan di luar maksimal 2x seminggu'
+                        ]
+                    }
+                ];
+                saveIssues();
+            }
+        }
+
+        // Save issues to localStorage
+        function saveIssues() {
+            localStorage.setItem('redflags_issues', JSON.stringify(issues));
+        }
+
+        // Initialize event listeners
+        function initializeEventListeners() {
+            // Enter key support untuk chat input
+            document.getElementById('chatInput').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    sendChatMessage();
+                }
+            });
+
+            // Auto-focus chat input ketika card diklik
+            document.querySelector('.chat-main-card').addEventListener('click', function () {
+                document.getElementById('chatInput').focus();
+            });
+
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-button').addEventListener('click', function () {
+                const mobileMenu = document.getElementById('mobile-menu');
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Assessment options
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    // Remove selected class from all buttons in the same question
+                    const parent = this.closest('.assessment-question');
+                    parent.querySelectorAll('.option-btn').forEach(b => {
+                        b.classList.remove('selected');
+                    });
+
+                    // Add selected class to clicked button
+                    this.classList.add('selected');
+
+                    // Show quick results
+                    showQuickResults();
+                });
+            });
+
+            // Start assessment
+            document.getElementById('startAssessment').addEventListener('click', startFullAssessment);
+
+            // Quick actions
+            document.getElementById('reportIssueBtn').addEventListener('click', showReportIssueModal);
+            document.getElementById('solutionsBtn').addEventListener('click', showSolutions);
+            document.getElementById('progressBtn').addEventListener('click', showProgress);
+
+            // Modal controls
+            document.getElementById('closeIssueModal').addEventListener('click', closeReportIssueModal);
+            document.getElementById('cancelIssue').addEventListener('click', closeReportIssueModal);
+            document.getElementById('reportIssueForm').addEventListener('submit', handleReportIssue);
+
+            // Solutions modal controls
+            document.getElementById('closeSolutionsModal').addEventListener('click', closeSolutionsModal);
+
+            // Severity buttons
+            document.querySelectorAll('.severity-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    selectedSeverity = this.getAttribute('data-severity');
+                    document.querySelectorAll('.severity-btn').forEach(b => {
+                        b.classList.remove('bg-green-500', 'bg-yellow-500', 'bg-red-500', 'text-white');
+                        b.classList.add('bg-green-100', 'bg-yellow-100', 'bg-red-100', 'text-green-700', 'text-yellow-700', 'text-red-700');
+                    });
+                    this.classList.remove('bg-green-100', 'bg-yellow-100', 'bg-red-100', 'text-green-700', 'text-yellow-700', 'text-red-700');
+
+                    switch (selectedSeverity) {
+                        case 'low':
+                            this.classList.add('bg-green-500', 'text-white');
+                            break;
+                        case 'medium':
+                            this.classList.add('bg-yellow-500', 'text-white');
+                            break;
+                        case 'high':
+                            this.classList.add('bg-red-500', 'text-white');
+                            break;
+                    }
+                });
+            });
+
+            // Chat functionality
+            document.getElementById('sendMessage').addEventListener('click', sendChatMessage);
+        }
+
+        // Show quick results
+        function showQuickResults() {
+            const resultsDiv = document.getElementById('quickResults');
+            document.getElementById('resultStress').textContent = 'Sedang';
+            document.getElementById('resultEmergency').textContent = 'Perlu ditingkatkan';
+            document.getElementById('resultRecommendation').textContent = 'Assesmen lengkap';
+
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.classList.add('spring-bounce');
+        }
+
+        // Start full assessment
+        function startFullAssessment() {
+            showNotification('Memulai assesmen keuangan lengkap...', 'info');
+
+            // Simulate assessment process
+            setTimeout(() => {
+                const newIssue = {
+                    id: Date.now(),
+                    category: 'assessment',
+                    description: 'Hasil assesmen keuangan lengkap menunjukkan beberapa area yang perlu perhatian',
+                    severity: 'medium',
+                    status: 'active',
+                    createdAt: new Date().toISOString(),
+                    solutions: [
+                        'Tingkatkan tabungan darurat hingga 3x pengeluaran bulanan',
+                        'Review dan optimalkan pengeluaran bulanan',
+                        'Pertimbangkan diversifikasi sumber pendapatan'
+                    ]
+                };
+
+                issues.push(newIssue);
+                saveIssues();
+                updateDashboard();
+                renderIssues();
+                updatePersonalizedAdvice();
+
+                showNotification('Assesmen selesai! Lihat hasil dan rekomendasi.', 'success');
+            }, 2000);
+        }
+
+        // Show report issue modal
+        function showReportIssueModal() {
+            document.getElementById('reportIssueModal').classList.remove('hidden');
+        }
+
+        // Close report issue modal
+        function closeReportIssueModal() {
+            document.getElementById('reportIssueModal').classList.add('hidden');
+        }
+
+        // Handle report issue
+        function handleReportIssue(e) {
+            e.preventDefault();
+
+            const issue = {
+                id: Date.now(),
+                category: document.getElementById('issueCategory').value,
+                description: document.getElementById('issueDescription').value,
+                severity: selectedSeverity,
+                status: 'active',
+                createdAt: new Date().toISOString(),
+                solutions: generateSolutions(document.getElementById('issueCategory').value)
+            };
+
+            issues.push(issue);
+            saveIssues();
+            updateDashboard();
+            renderIssues();
+            updatePersonalizedAdvice();
+            closeReportIssueModal();
+
+            showNotification('Masalah berhasil dilaporkan! Kami akan memberikan solusi.', 'success');
+        }
+
+        // Generate solutions based on category
+        function generateSolutions(category) {
+            const solutions = {
+                'debt': [
+                    'Buat daftar semua hutang dengan detail bunga dan minimum payment',
+                    'Prioritaskan pembayaran hutang dengan bunga tertinggi (Avalanche Method)',
+                    'Pertimbangkan konsolidasi hutang untuk menyederhanakan pembayaran',
+                    'Negosiasikan suku bunga dengan pemberi pinjaman'
+                ],
+                'spending': [
+                    'Track semua pengeluaran selama 30 hari',
+                    'Buat budget menggunakan metode 50/30/20',
+                    'Identifikasi dan kurangi pengeluaran impulsif',
+                    'Gunakan sistem amplop untuk pengeluaran variabel'
+                ],
+                'income': [
+                    'Diversifikasi sumber pendapatan dengan side hustle',
+                    'Tingkatkan skill untuk peluang karir yang lebih baik',
+                    'Negosiasikan kenaikan gaji atau promosi',
+                    'Pertimbangkan freelance atau pekerjaan paruh waktu'
+                ],
+                'savings': [
+                    'Otomatiskan transfer tabungan setiap gajian',
+                    'Buat target tabungan yang spesifik dan terukur',
+                    'Pisahkan tabungan jangka pendek dan panjang',
+                    'Pelajari dasar-dasar investasi untuk pertumbuhan jangka panjang'
+                ],
+                'relationship': [
+                    'Komunikasikan secara terbuka tentang kondisi keuangan',
+                    'Buat budget bersama dengan tujuan yang disepakati',
+                    'Tetapkan batasan yang jelas untuk pengeluaran pribadi',
+                    'Pertimbangkan konseling keuangan jika diperlukan'
+                ],
+                'emergency': [
+                    'Buat rencana darurat untuk mengurangi pengeluaran',
+                    'Identifikasi aset yang bisa dicairkan dengan cepat',
+                    'Cari bantuan dari keluarga atau program bantuan',
+                    'Pertimbangkan pinjaman darurat dengan syarat yang jelas'
+                ],
+                'other': [
+                    'Konsultasikan dengan financial advisor',
+                    'Ikuti workshop atau kursus literasi keuangan',
+                    'Gunakan aplikasi budgeting untuk tracking yang lebih baik',
+                    'Buat journal keuangan untuk refleksi dan perbaikan'
+                ]
+            };
+
+            return solutions[category] || solutions['other'];
+        }
+
+        // Show solutions
+        function showSolutions() {
+            const solutionsModal = document.getElementById('solutionsModal');
+            const solutionsList = document.getElementById('solutionsList');
+            
+            // Clear previous solutions
+            solutionsList.innerHTML = '';
+            
+            // Add solutions for each issue
+            issues.forEach(issue => {
+                if (issue.status === 'active') {
+                    const solutionItem = document.createElement('div');
+                    solutionItem.className = 'solution-item';
+                    solutionItem.innerHTML = `
+                        <h4 class="font-semibold text-gray-800 mb-2">${getCategoryName(issue.category)}</h4>
+                        <p class="text-sm text-gray-600 mb-3">${issue.description}</p>
+                        <div class="space-y-2">
+                            ${issue.solutions.map(solution => `
+                                <div class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <p class="text-sm">${solution}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    solutionsList.appendChild(solutionItem);
+                }
+            });
+            
+            // Show modal
+            solutionsModal.classList.remove('hidden');
+            showNotification('Membuka library solusi keuangan...', 'info');
+        }
+
+        // Close solutions modal
+        function closeSolutionsModal() {
+            document.getElementById('solutionsModal').classList.add('hidden');
+        }
+
+        // Show progress
+        function showProgress() {
+            showNotification('Membuka laporan progress...', 'info');
+        }
+
+        // Send chat message
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // Add user message
+            addChatMessage(message, 'user');
+
+            // Show typing indicator
+            showTypingIndicator();
+
+            // Clear input
+            input.value = '';
+
+            // Simulate AI response dengan delay
+            setTimeout(() => {
+                hideTypingIndicator();
+                const aiResponse = generateAIResponse(message);
+                addChatMessage(aiResponse, 'ai');
+
+                // Update personalized advice based on conversation
+                updatePersonalizedAdviceBasedOnChat();
+            }, 1500 + Math.random() * 1000); // Random delay untuk natural feel
+        }
+
+        // Add chat message
+        function addChatMessage(message, sender) {
+            const chatContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-bubble ${sender}-bubble fade-in`;
+            messageDiv.innerHTML = `<p class="text-sm">${message}</p>`;
+
+            chatContainer.appendChild(messageDiv);
+
+            // Auto scroll to bottom
+            scrollChatToBottom();
+
+            // Store message
+            chatMessages.push({
+                sender: sender,
+                message: message,
+                timestamp: new Date().toISOString()
+            });
+
+            // Limit chat history (keep last 50 messages)
+            if (chatMessages.length > 50) {
+                chatMessages = chatMessages.slice(-50);
+                // Also remove from DOM if needed
+                if (chatContainer.children.length > 50) {
+                    chatContainer.removeChild(chatContainer.firstChild);
+                }
+            }
+        }
+
+        // Function untuk auto-scroll ke bottom
+        function scrollChatToBottom() {
+            const chatContainer = document.getElementById('chatMessages');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Typing indicator functions
+        function showTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            indicator.classList.remove('hidden');
+            scrollChatToBottom();
+        }
+
+        function hideTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            indicator.classList.add('hidden');
+        }
+
+        // Enhanced AI response generator
+        function generateAIResponse(userMessage) {
+            const lowerMessage = userMessage.toLowerCase();
+
+            // Keyword-based responses
+            const responses = {
+                debt: [
+                    "Tentang hutang, coba prioritaskan yang bunganya tertinggi dulu. Metode avalanche bisa lebih hemat dalam jangka panjang!",
+                    "Untuk hutang, buat daftar lengkap semua kewajibanmu. Seeing the whole picture bantu buat rencana yang realistis.",
+                    "Hutang kartu kredit? Coba negosiasikan suku bunga atau pertimbangkan balance transfer ke kartu dengan promo 0%."
+                ],
+                savings: [
+                    "Tabungan darurat itu penting! Targetkan 3-6x pengeluaran bulanan. Mulai dari amount kecil yang konsisten.",
+                    "Coba sistem 50/30/20: 50% kebutuhan, 30% keinginan, 20% tabungan/investasi. Works like magic!",
+                    "Automate your savings! Set up auto-debit begitu gajian masuk. Out of sight, out of mind!"
+                ],
+                budget: [
+                    "Budget fleksibel itu kuncinya! Allocate 10-15% untuk 'unexpected expenses' biar nggak stres.",
+                    "Coba track pengeluaran 30 hari dulu sebelum bikin budget. You might be surprised where your money goes!",
+                    "Budget bukan berarti nggak bisa seneng-seneng. Just make sure it's planned happiness!"
+                ],
+                income: [
+                    "Side hustle zaman now banyak banget! Coba identifikasi skill yang bisa dimonetisasi.",
+                    "Passive income doesn't have to be complicated. Even Rp 100.000 per bulan dari deposito itu start yang bagus!",
+                    "Upskilling = investing in yourself. Sometimes the best ROI comes from learning new skills."
+                ],
+                stress: [
+                    "Financial stress is real and valid. Take a deep breath, kita breakdown masalahnya step by step.",
+                    "Remember: Progress, not perfection. Small consistent steps matter more than giant leaps.",
+                    "You're not alone in this! Banyak yang mengalami hal serupa. Yang penting kita punya plan."
+                ]
+            };
+
+            // Check for keywords and return appropriate response
+            if (lowerMessage.includes('hutang') || lowerMessage.includes('utang') || lowerMessage.includes('pinjam')) {
+                return responses.debt[Math.floor(Math.random() * responses.debt.length)];
+            } else if (lowerMessage.includes('tabung') || lowerMessage.includes('simpan') || lowerMessage.includes('darurat')) {
+                return responses.savings[Math.floor(Math.random() * responses.savings.length)];
+            } else if (lowerMessage.includes('budget') || lowerMessage.includes('pengeluar') || lowerMessage.includes('belanja')) {
+                return responses.budget[Math.floor(Math.random() * responses.budget.length)];
+            } else if (lowerMessage.includes('gaji') || lowerMessage.includes('pendapat') || lowerMessage.includes('income')) {
+                return responses.income[Math.floor(Math.random() * responses.income.length)];
+            } else if (lowerMessage.includes('stres') || lowerMessage.includes('stress') || lowerMessage.includes('khawatir')) {
+                return responses.stress[Math.floor(Math.random() * responses.stress.length)];
+            }
+
+            // Default responses
+            const defaultResponses = [
+                "Interesting! Bisa ceritakan lebih detail? Saya ingin pahami situasinya dulu sebelum kasih saran.",
+                "I feel you! Banyak yang mengalami hal serupa. Coba kita breakdown masalahnya jadi bagian-bagian kecil.",
+                "Thanks for sharing! Based on what you said, I think we should focus on...",
+                "That's a common challenge. Have you tried tracking your expenses for a month to see the full picture?",
+                "I understand your concern. Let's create a simple action plan together. What's your biggest priority right now?",
+                "Good that you're being proactive about this! Small steps lead to big changes over time.",
+                "Financial journeys are personal and unique. What works for others might need adjustment for your situation."
+            ];
+
+            return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+        }
+
+        // Update advice based on chat conversation
+        function updatePersonalizedAdviceBasedOnChat() {
+            if (chatMessages.length > 2) {
+                // Analyze recent conversation untuk memberikan advice yang lebih relevan
+                const recentMessages = chatMessages.slice(-3);
+                const hasDebtTalk = recentMessages.some(msg =>
+                    msg.message.toLowerCase().includes('hutang') ||
+                    msg.message.toLowerCase().includes('utang')
+                );
+
+                if (hasDebtTalk) {
+                    // Update advice panel dengan tips hutang
+                    const adviceContainer = document.getElementById('personalizedAdvice');
+                    adviceContainer.innerHTML = `
+                <div class="advice-card fade-in">
+                    <p class="text-sm">💡 <strong>Berdasarkan percakapan kita:</strong> Fokus pada strategi pembayaran hutang yang sistematis. Prioritaskan yang bunganya tertinggi!</p>
+                </div>
+            `;
+                }
+            }
+        }
+
+        // Initialize chat dengan welcome message
+        function initializeChat() {
+            const chatContainer = document.getElementById('chatMessages');
+            // Clear existing messages except the first welcome message
+            while (chatContainer.children.length > 1) {
+                chatContainer.removeChild(chatContainer.lastChild);
+            }
+
+            chatMessages = [{
+                sender: 'ai',
+                message: 'Halo! Saya di sini untuk membantu masalah keuanganmu. Ceritakan apa yang sedang kamu hadapi, dan saya akan memberikan saran yang praktis...',
+                timestamp: new Date().toISOString()
+            }];
+
+            scrollChatToBottom();
+        }
+
+        // Update dashboard statistics
+        function updateDashboard() {
+            const activeIssues = issues.filter(issue => issue.status === 'active');
+            const resolvedIssues = issues.filter(issue => issue.status === 'resolved');
+            const highSeverityIssues = issues.filter(issue => issue.severity === 'high');
+
+            const healthScore = Math.max(0, 100 - (activeIssues.length * 10 + highSeverityIssues.length * 15));
+
+            // Animate counter values
+            animateCounter('healthScore', healthScore);
+            animateCounter('currentHealthScore', healthScore);
+            animateCounter('redFlagsCount', activeIssues.length);
+            animateCounter('issuesResolved', resolvedIssues.length);
+            animateCounter('adviceCount', issues.reduce((sum, issue) => sum + issue.solutions.length, 0));
+
+            document.getElementById('activeFlags').textContent = `${activeIssues.length} aktif`;
+        }
+
+        // Animate counter
+        function animateCounter(elementId, targetValue) {
+            const element = document.getElementById(elementId);
+            const currentValue = parseFloat(element.textContent.replace(/[^\d]/g, '') || 0);
+            const duration = 1000;
+            const steps = 60;
+            const stepValue = (targetValue - currentValue) / steps;
+            let currentStep = 0;
+
+            const timer = setInterval(() => {
+                currentStep++;
+                const newValue = currentValue + (stepValue * currentStep);
+
+                if (elementId.includes('Score')) {
+                    element.textContent = Math.round(newValue) + '%';
+                } else {
+                    element.textContent = Math.round(newValue);
+                }
+
+                if (currentStep >= steps) {
+                    clearInterval(timer);
+                    if (elementId.includes('Score')) {
+                        element.textContent = targetValue + '%';
+                    } else {
+                        element.textContent = targetValue;
+                    }
+                }
+            }, duration / steps);
+        }
+
+        // Render issues
+        function renderIssues() {
+            const container = document.getElementById('issuesList');
+            const emptyState = document.getElementById('emptyState');
+
+            if (issues.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            container.innerHTML = issues.map(issue => {
+                const createdDate = new Date(issue.createdAt);
+                const timeAgo = getTimeAgo(createdDate);
+                const categoryIcons = {
+                    'debt': 'fa-credit-card',
+                    'spending': 'fa-shopping-cart',
+                    'income': 'fa-money-bill-wave',
+                    'savings': 'fa-piggy-bank',
+                    'relationship': 'fa-heart',
+                    'emergency': 'fa-exclamation-triangle',
+                    'assessment': 'fa-chart-line',
+                    'other': 'fa-question-circle'
+                };
+
+                const severityColors = {
+                    'low': 'bg-green-100 text-green-700',
+                    'medium': 'bg-yellow-100 text-yellow-700',
+                    'high': 'bg-red-100 text-red-700'
+                };
+
+                return `
+                    <div class="flag-item slide-up" data-issue-id="${issue.id}">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-gradient-to-r from-red-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg micro-celebrate">
+                                    <i class="fas ${categoryIcons[issue.category]} text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800">${getCategoryName(issue.category)}</h3>
+                                    <p class="text-sm text-gray-500">${timeAgo}</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                ${issue.status === 'active' ?
+                        `<span class="px-3 py-1 ${severityColors[issue.severity]} rounded-full text-xs font-medium micro-celebrate">
+                                        ${getSeverityName(issue.severity)}
+                                    </span>` :
+                        `<span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
+                                        <i class="fas fa-check mr-1"></i>Selesai
+                                    </span>`
+                    }
+                            </div>
+                        </div>
+                        
+                        <p class="text-sm text-gray-600 mb-3">${issue.description}</p>
+                        
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-200">
+                            <div class="flex items-center space-x-2">
+                                <span class="status-indicator ${issue.status === 'active' ? 'bg-red-500' : 'bg-green-500'}"></span>
+                                <span class="text-sm text-gray-600">${issue.status === 'active' ? 'Perlu solusi' : 'Terselesaikan'}</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                ${issue.status !== 'resolved' ?
+                        `<button onclick="resolveIssue(${issue.id})" class="text-sm px-4 py-2 bg-green-100 text-green-600 rounded-xl hover:bg-green-200 transition-all duration-300 micro-celebrate">
+                                        <i class="fas fa-check mr-1"></i>Selesaikan
+                                    </button>` :
+                        `<span class="text-sm text-green-600 font-medium">
+                                        <i class="fas fa-trophy mr-1"></i>Berhasil!
+                                    </span>`
+                    }
+                                <button onclick="deleteIssue(${issue.id})" class="text-gray-500 hover:text-red-600 p-2 rounded-lg transition-all duration-300 micro-celebrate">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Get category name
+        function getCategoryName(category) {
+            const names = {
+                'debt': 'Hutang & Kredit',
+                'spending': 'Pengeluaran Tak Terkontrol',
+                'income': 'Pendapatan Tidak Stabil',
+                'savings': 'Tabungan & Investasi',
+                'relationship': 'Masalah dengan Pasangan/Keluarga',
+                'emergency': 'Darurat Keuangan',
+                'assessment': 'Assesmen Keuangan',
+                'other': 'Masalah Lainnya'
+            };
+            return names[category] || 'Masalah Lainnya';
+        }
+
+        // Get severity name
+        function getSeverityName(severity) {
+            const names = {
+                'low': 'Ringan',
+                'medium': 'Sedang',
+                'high': 'Serius'
+            };
+            return names[severity] || 'Sedang';
+        }
+
+        // Resolve issue
+        function resolveIssue(issueId) {
+            const issue = issues.find(i => i.id === issueId);
+            if (issue) {
+                issue.status = 'resolved';
+                issue.resolvedAt = new Date().toISOString();
+
+                saveIssues();
+                updateDashboard();
+                renderIssues();
+                updatePersonalizedAdvice();
+
+                showNotification(`Selamat! Masalah "${getCategoryName(issue.category)}" berhasil diselesaikan! 🎉`, 'success');
+
+                // Add micro celebration
+                microCelebrate();
+            }
+        }
+
+        // Delete issue
+        function deleteIssue(issueId) {
+            if (confirm('Apakah Anda yakin ingin menghapus masalah ini?')) {
+                issues = issues.filter(i => i.id !== issueId);
+                saveIssues();
+                updateDashboard();
+                renderIssues();
+                updatePersonalizedAdvice();
+                showNotification('Masalah berhasil dihapus!', 'success');
+            }
+        }
+
+        // Update personalized advice
+        function updatePersonalizedAdvice() {
+            const adviceContainer = document.getElementById('personalizedAdvice');
+            const emptyAdvice = document.getElementById('emptyAdvice');
+
+            if (issues.length === 0) {
+                adviceContainer.innerHTML = '';
+                emptyAdvice.classList.remove('hidden');
+                return;
+            }
+
+            emptyAdvice.classList.add('hidden');
+
+            const activeIssues = issues.filter(issue => issue.status === 'active');
+
+            if (activeIssues.length === 0) {
+                adviceContainer.innerHTML = `
+                    <div class="advice-card fade-in">
+                        <p class="text-sm">🎉 Selamat! Semua masalah keuanganmu sudah terselesaikan. Pertahankan kebiasaan baik ini!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const advice = [
+                {
+                    icon: 'fa-calendar',
+                    color: 'from-blue-100 to-purple-100 text-blue-600',
+                    title: 'Action Plan Mingguan',
+                    description: 'Buat jadwal tetap untuk review keuangan setiap minggu'
+                },
+                {
+                    icon: 'fa-piggy-bank',
+                    color: 'from-green-100 to-emerald-100 text-green-600',
+                    title: 'Tabungan Otomatis',
+                    description: 'Set up auto-debit 10% dari gaji langsung ke tabungan'
+                },
+                {
+                    icon: 'fa-chart-line',
+                    color: 'from-amber-100 to-orange-100 text-amber-600',
+                    title: 'Progress Tracking',
+                    description: 'Gunakan app untuk track progress financial goals'
+                }
+            ];
+
+            adviceContainer.innerHTML = advice.map((item, index) => `
+                <div class="flex items-start space-x-3 p-3 bg-gradient-to-r ${item.color} rounded-2xl border border-white micro-celebrate stagger-item stagger-${index + 1}">
+                    <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                        <i class="fas ${item.icon}"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 mb-1">${item.title}</h4>
+                        <p class="text-sm text-gray-600">${item.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Utility functions
+        function getTimeAgo(date) {
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+
+            if (diffMins < 1) return 'Baru saja';
+            if (diffMins < 60) return `${diffMins} menit lalu`;
+            if (diffHours < 24) return `${diffHours} jam lalu`;
+            if (diffDays === 1) return 'Kemarin';
+            if (diffDays < 7) return `${diffDays} hari lalu`;
+
+            return date.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' });
+        }
+
+        function showNotification(message, type = 'info') {
+            const container = document.getElementById('notificationContainer');
+            const notification = document.createElement('div');
+
+            const colors = {
+                success: 'bg-gradient-to-r from-green-50 to-emerald-50 border-green-200 text-green-700 border-l-green-500',
+                error: 'bg-gradient-to-r from-red-50 to-pink-50 border-red-200 text-red-700 border-l-red-500',
+                warning: 'bg-gradient-to-r from-amber-50 to-orange-50 border-amber-200 text-amber-700 border-l-amber-500',
+                info: 'bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 text-blue-700 border-l-blue-500'
+            };
+
+            notification.className = `notification ${colors[type]}`;
+            notification.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle'} mr-3 text-lg"></i>
+                        <span class="text-sm font-medium">${message}</span>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-gray-400 hover:text-gray-600 micro-celebrate">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+
+            container.appendChild(notification);
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        function microCelebrate() {
+            const elements = document.querySelectorAll('.micro-celebrate');
+            elements.forEach(element => {
+                element.classList.add('micro-celebrate');
+                setTimeout(() => {
+                    element.classList.remove('micro-celebrate');
+                }, 300);
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubsTracker Manager - GenZ Finance Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script type="module" async
+        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fgenzfinan7345back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.10"></script>
+    <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-10 left-10 w-32 h-32 bg-primary-300 rounded-full blur-xl"></div>
+        <div class="absolute top-40 right-20 w-24 h-24 bg-secondary-300 rounded-full blur-lg"></div>
+        <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-accent-300 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-40 right-10 w-28 h-28 bg-primary-400 rounded-full blur-lg"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div
+                            class="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl">
+                            <i class="fas fa-wallet text-white text-lg"></i>
+                        </div>
+                    </div>
+                    <div class="ml-3">
+                        <h1 class="text-xl font-bold text-gradient">GenZ Finance Hub</h1>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="main_dashboard.html"
+                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-home mr-2"></i>Dashboard
+                    </a>
+                    <a href="money_mirror_analysis.html"
+                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-mirror mr-2"></i>MoneyMirror
+                    </a>
+                    <a href="zero_budget_tracker.html"
+                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-calculator mr-2"></i>ZeroBudget
+                    </a>
+                    <a href="subs_tracker_manager.html"
+                        class="text-primary-600 bg-primary-50 px-3 py-2 rounded-md text-sm font-medium">
+                        <i class="fas fa-credit-card mr-2"></i>SubsTracker
+                    </a>
+                    <a href="investify_zero_game.html"
+                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-chart-line mr-2"></i>InvestifyZero
+                    </a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-600 hover:text-primary-600 p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- User Profile -->
+                <div class="hidden md:flex items-center">
+                    <div class="relative">
+                        <button
+                            class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_19fa805ca-1763300924312.png"
+                                alt="Profile picture" class="w-8 h-8 rounded-full"
+                                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                            <span class="ml-2 text-gray-700 font-medium" id="userNameDisplay">User</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="main_dashboard.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-home mr-2"></i>Dashboard
+                </a>
+                <a href="money_mirror_analysis.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-mirror mr-2"></i>MoneyMirror
+                </a>
+                <a href="zero_budget_tracker.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-calculator mr-2"></i>ZeroBudget
+                </a>
+                <a href="subs_tracker_manager.html"
+                    class="text-primary-600 bg-primary-50 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-credit-card mr-2"></i>SubsTracker
+                </a>
+                <a href="investify_zero_game.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-chart-line mr-2"></i>InvestifyZero
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-gradient mb-2">SubsTracker Manager</h1>
+                    <p class="text-text-secondary">Kelola langganan kamu dengan cerdas! 📱💳</p>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="text-right">
+                        <p class="text-sm text-text-secondary">Total Bulanan</p>
+                        <p class="text-2xl font-bold text-gradient" id="totalMonthlyAmount">Rp 0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subscription Overview Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Total Monthly Cost -->
+            <div class="morphic-card p-6 fade-in">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-text-secondary mb-1">Total Bulanan</p>
+                        <p class="text-2xl font-bold text-gradient" id="overviewTotal">Rp 0</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-credit-card text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-success-600 font-medium" id="monthlyChange">+0%</span>
+                        <span class="text-text-secondary ml-1">dari bulan lalu</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Subscriptions -->
+            <div class="morphic-card p-6 fade-in">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-text-secondary mb-1">Langganan Aktif</p>
+                        <p class="text-2xl font-bold text-primary-600" id="activeCount">0</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-gradient-to-r from-accent-500 to-accent-600 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-play-circle text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-primary-600 font-medium" id="activeServices">0 layanan</span>
+                        <span class="text-text-secondary ml-1">berjalan</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Renewals -->
+            <div class="morphic-card p-6 fade-in">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-text-secondary mb-1">Perpanjangan</p>
+                        <p class="text-2xl font-bold text-warning-600" id="upcomingCount">0</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-gradient-to-r from-warning-500 to-warning-600 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-calendar-alt text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-warning-600 font-medium">7 hari ke depan</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cost Health -->
+            <div class="morphic-card p-6 fade-in">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-text-secondary mb-1">Kesehatan Biaya</p>
+                        <p class="text-2xl font-bold" id="healthScore">100%</p>
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-gradient-to-r from-success-500 to-success-600 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-heart text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex items-center text-sm">
+                        <span class="text-success-600 font-medium">Sangat Sehat</span>
+                        <span class="text-text-secondary ml-1">dari pendapatan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Add Subscription Form -->
+            <div class="lg:col-span-1">
+                <div class="morphic-card p-6 fade-in">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-text-primary">Tambah Langganan</h2>
+                        <i class="fas fa-plus-circle text-primary-500 text-xl"></i>
+                    </div>
+
+                    <form id="addSubscriptionForm" class="space-y-4">
+                        <div>
+                            <label for="serviceName" class="block text-sm font-medium text-text-primary mb-2">Nama
+                                Layanan</label>
+                            <input type="text" id="serviceName" class="input-field w-full"
+                                placeholder="Netflix, Spotify, dll." required>
+                        </div>
+
+                        <div>
+                            <label for="serviceCategory"
+                                class="block text-sm font-medium text-text-primary mb-2">Kategori</label>
+                            <select id="serviceCategory" class="input-field w-full" required>
+                                <option value="">Pilih kategori</option>
+                                <option value="entertainment">🎬 Hiburan</option>
+                                <option value="music">🎵 Musik</option>
+                                <option value="productivity">💼 Produktivitas</option>
+                                <option value="fitness">💪 Fitness</option>
+                                <option value="education">📚 Edukasi</option>
+                                <option value="cloud">☁️ Cloud Storage</option>
+                                <option value="other">🔧 Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="monthlyCost" class="block text-sm font-medium text-text-primary mb-2">Biaya
+                                    (Rp)</label>
+                                <input type="number" id="monthlyCost" class="input-field w-full" placeholder="50000"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="billingCycle"
+                                    class="block text-sm font-medium text-text-primary mb-2">Siklus</label>
+                                <select id="billingCycle" class="input-field w-full" required>
+                                    <option value="monthly">Bulanan</option>
+                                    <option value="yearly">Tahunan</option>
+                                    <option value="weekly">Mingguan</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="renewalDate" class="block text-sm font-medium text-text-primary mb-2">Tanggal
+                                Perpanjangan</label>
+                            <input type="date" id="renewalDate" class="input-field w-full" required>
+                        </div>
+
+                        <div>
+                            <label for="serviceUrl" class="block text-sm font-medium text-text-primary mb-2">Website/URL
+                                (Opsional)</label>
+                            <input type="url" id="serviceUrl" class="input-field w-full"
+                                placeholder="https://netflix.com">
+                        </div>
+
+                        <button type="submit" class="btn-primary w-full micro-celebrate">
+                            <i class="fas fa-plus mr-2"></i>
+                            Tambah Langganan
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="morphic-card p-6 mt-6 fade-in">
+                    <h3 class="text-lg font-bold text-text-primary mb-4">Statistik Cepat</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Rata-rata per layanan</span>
+                            <span class="font-medium" id="avgCostPerService">Rp 0</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Kategori terbanyak</span>
+                            <span class="font-medium" id="topCategory">-</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Penghematan potensial</span>
+                            <span class="font-medium text-success-600" id="potentialSavings">Rp 0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscription List -->
+            <div class="lg:col-span-2">
+                <div class="morphic-card p-6 fade-in">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-text-primary">Langganan Aktif</h2>
+                        <div class="flex items-center space-x-2">
+                            <button id="sortBtn"
+                                class="text-text-secondary hover:text-primary-600 p-2 rounded-lg transition-colors">
+                                <i class="fas fa-sort text-sm"></i>
+                            </button>
+                            <button id="filterBtn"
+                                class="text-text-secondary hover:text-primary-600 p-2 rounded-lg transition-colors">
+                                <i class="fas fa-filter text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filter Options -->
+                    <div id="filterOptions" class="hidden mb-4 p-4 bg-gray-50 rounded-lg">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <select id="categoryFilter" class="input-field">
+                                <option value="">Semua Kategori</option>
+                                <option value="entertainment">🎬 Hiburan</option>
+                                <option value="music">🎵 Musik</option>
+                                <option value="productivity">💼 Produktivitas</option>
+                                <option value="fitness">💪 Fitness</option>
+                                <option value="education">📚 Edukasi</option>
+                                <option value="cloud">☁️ Cloud Storage</option>
+                                <option value="other">🔧 Lainnya</option>
+                            </select>
+                            <select id="costFilter" class="input-field">
+                                <option value="">Semua Harga</option>
+                                <option value="low">
+                                    < Rp 50.000</option>
+                                <option value="medium">Rp 50.000 - Rp 150.000</option>
+                                <option value="high">> Rp 150.000</option>
+                            </select>
+                            <select id="statusFilter" class="input-field">
+                                <option value="">Semua Status</option>
+                                <option value="active">Aktif</option>
+                                <option value="paused">Dijeda</option>
+                                <option value="expiring">Akan Berakhir</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Subscription Cards -->
+                    <div id="subscriptionList" class="space-y-4">
+                        <!-- Subscription cards will be dynamically generated here -->
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="emptyState" class="text-center py-12">
+                        <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-credit-card text-gray-400 text-3xl"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-text-primary mb-2">Belum Ada Langganan</h3>
+                        <p class="text-text-secondary mb-4">Mulai tambahkan langganan pertama kamu!</p>
+                        <button class="btn-primary micro-celebrate"
+                            onclick="document.getElementById('serviceName').focus()">
+                            <i class="fas fa-plus mr-2"></i>
+                            Tambah Langganan
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Analysis Panel -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <!-- Category Distribution Chart -->
+                    <div class="morphic-card p-6 fade-in">
+                        <h3 class="text-lg font-bold text-text-primary mb-4">Distribusi Kategori</h3>
+                        <div class="relative h-64">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Monthly Trend Chart -->
+                    <div class="morphic-card p-6 fade-in">
+                        <h3 class="text-lg font-bold text-text-primary mb-4">Tren Bulanan</h3>
+                        <div class="relative h-64">
+                            <canvas id="trendChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renewal Calendar -->
+                <div class="morphic-card p-6 mt-6 fade-in">
+                    <h3 class="text-lg font-bold text-text-primary mb-4">Kalender Perpanjangan</h3>
+                    <div id="renewalCalendar" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Calendar items will be generated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert System -->
+        <div id="alertSystem" class="mt-8 space-y-4">
+            <!-- Alerts will be dynamically generated here -->
+        </div>
+    </main>
+
+    <!-- Edit Subscription Modal -->
+    <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="morphic-card max-w-md w-full p-6">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-xl font-bold text-text-primary">Edit Langganan</h3>
+                <button id="closeEditModal" class="text-text-secondary hover:text-text-primary">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <form id="editSubscriptionForm" class="space-y-4">
+                <input type="hidden" id="editSubscriptionId">
+
+                <div>
+                    <label for="editServiceName" class="block text-sm font-medium text-text-primary mb-2">Nama
+                        Layanan</label>
+                    <input type="text" id="editServiceName" class="input-field w-full" required>
+                </div>
+
+                <div>
+                    <label for="editServiceCategory"
+                        class="block text-sm font-medium text-text-primary mb-2">Kategori</label>
+                    <select id="editServiceCategory" class="input-field w-full" required>
+                        <option value="entertainment">🎬 Hiburan</option>
+                        <option value="music">🎵 Musik</option>
+                        <option value="productivity">💼 Produktivitas</option>
+                        <option value="fitness">💪 Fitness</option>
+                        <option value="education">📚 Edukasi</option>
+                        <option value="cloud">☁️ Cloud Storage</option>
+                        <option value="other">🔧 Lainnya</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="editMonthlyCost" class="block text-sm font-medium text-text-primary mb-2">Biaya
+                            (Rp)</label>
+                        <input type="number" id="editMonthlyCost" class="input-field w-full" required>
+                    </div>
+                    <div>
+                        <label for="editBillingCycle"
+                            class="block text-sm font-medium text-text-primary mb-2">Siklus</label>
+                        <select id="editBillingCycle" class="input-field w-full" required>
+                            <option value="monthly">Bulanan</option>
+                            <option value="yearly">Tahunan</option>
+                            <option value="weekly">Mingguan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="editRenewalDate" class="block text-sm font-medium text-text-primary mb-2">Tanggal
+                        Perpanjangan</label>
+                    <input type="date" id="editRenewalDate" class="input-field w-full" required>
+                </div>
+
+                <div class="flex space-x-3 pt-4">
+                    <button type="submit" class="btn-primary flex-1 micro-celebrate">
+                        <i class="fas fa-save mr-2"></i>
+                        Simpan
+                    </button>
+                    <button type="button" id="cancelEdit" class="btn-secondary flex-1">
+                        Batal
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="morphic-card max-w-sm w-full p-6">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-error-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-trash text-error-500 text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-bold text-text-primary mb-2">Hapus Langganan?</h3>
+                <p class="text-text-secondary mb-6">Tindakan ini tidak dapat dibatalkan.</p>
+
+                <div class="flex space-x-3">
+                    <button id="confirmDelete" class="btn-primary flex-1 bg-error-500 hover:bg-error-600">
+                        Hapus
+                    </button>
+                    <button id="cancelDelete" class="btn-secondary flex-1">
+                        Batal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let subscriptions = [];
+        let categoryChart = null;
+        let trendChart = null;
+        let currentEditId = null;
+        let currentDeleteId = null;
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function () {
+            loadUserData();
+            loadSubscriptions();
+            initializeEventListeners();
+            updateDashboard();
+            initializeCharts();
+            generateRenewalCalendar();
+            checkAlerts();
+            renderSubscriptions(); // Ensure subscriptions are rendered on load
+        });
+
+        // Load user data
+        function loadUserData() {
+            const userSession = localStorage.getItem('userSession');
+            if (userSession) {
+                const userData = JSON.parse(userSession);
+                document.getElementById('userNameDisplay').textContent = userData.name || 'User';
+            }
+        }
+
+        // Load subscriptions from localStorage
+        function loadSubscriptions() {
+            const saved = localStorage.getItem('subscriptions');
+            if (saved) {
+                subscriptions = JSON.parse(saved);
+            } else {
+                // Initialize with empty array for new users
+                subscriptions = [];
+                saveSubscriptions();
+            }
+        }
+
+        // Save subscriptions to localStorage
+        function saveSubscriptions() {
+            localStorage.setItem('subscriptions', JSON.stringify(subscriptions));
+        }
+
+        // Initialize event listeners
+        function initializeEventListeners() {
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', function () {
+                const mobileMenu = document.getElementById('mobileMenu');
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Add subscription form
+            document.getElementById('addSubscriptionForm').addEventListener('submit', handleAddSubscription);
+
+            // Edit subscription form
+            document.getElementById('editSubscriptionForm').addEventListener('submit', handleEditSubscription);
+
+            // Modal controls
+            document.getElementById('closeEditModal').addEventListener('click', closeEditModal);
+            document.getElementById('cancelEdit').addEventListener('click', closeEditModal);
+            document.getElementById('cancelDelete').addEventListener('click', closeDeleteModal);
+            document.getElementById('confirmDelete').addEventListener('click', handleDeleteSubscription);
+
+            // Filter and sort controls
+            document.getElementById('filterBtn').addEventListener('click', toggleFilterOptions);
+            document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+            document.getElementById('costFilter').addEventListener('change', applyFilters);
+            document.getElementById('statusFilter').addEventListener('change', applyFilters);
+
+            // Set default renewal date to next month
+            const nextMonth = new Date();
+            nextMonth.setMonth(nextMonth.getMonth() + 1);
+            document.getElementById('renewalDate').value = nextMonth.toISOString().split('T')[0];
+        }
+
+        // Handle add subscription
+        function handleAddSubscription(e) {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const subscription = {
+                id: Date.now(),
+                name: document.getElementById('serviceName').value,
+                category: document.getElementById('serviceCategory').value,
+                cost: parseInt(document.getElementById('monthlyCost').value),
+                billingCycle: document.getElementById('billingCycle').value,
+                renewalDate: document.getElementById('renewalDate').value,
+                status: 'active',
+                url: document.getElementById('serviceUrl').value || '',
+                addedDate: new Date().toISOString().split('T')[0]
+            };
+
+            subscriptions.push(subscription);
+            saveSubscriptions();
+            updateDashboard();
+            renderSubscriptions();
+            updateCharts();
+            generateRenewalCalendar();
+            checkAlerts();
+
+            // Reset form
+            e.target.reset();
+            const nextMonth = new Date();
+            nextMonth.setMonth(nextMonth.getMonth() + 1);
+            document.getElementById('renewalDate').value = nextMonth.toISOString().split('T')[0];
+
+            // Show success message
+            showNotification('Langganan berhasil ditambahkan!', 'success');
+        }
+
+        // Handle edit subscription
+        function handleEditSubscription(e) {
+            e.preventDefault();
+
+            const id = parseInt(document.getElementById('editSubscriptionId').value);
+            const index = subscriptions.findIndex(sub => sub.id === id);
+
+            if (index !== -1) {
+                subscriptions[index] = {
+                    ...subscriptions[index],
+                    name: document.getElementById('editServiceName').value,
+                    category: document.getElementById('editServiceCategory').value,
+                    cost: parseInt(document.getElementById('editMonthlyCost').value),
+                    billingCycle: document.getElementById('editBillingCycle').value,
+                    renewalDate: document.getElementById('editRenewalDate').value
+                };
+
+                saveSubscriptions();
+                updateDashboard();
+                renderSubscriptions();
+                updateCharts();
+                generateRenewalCalendar();
+                closeEditModal();
+                showNotification('Langganan berhasil diperbarui!', 'success');
+            }
+        }
+
+        // Handle delete subscription
+        function handleDeleteSubscription() {
+            if (currentDeleteId) {
+                subscriptions = subscriptions.filter(sub => sub.id !== currentDeleteId);
+                saveSubscriptions();
+                updateDashboard();
+                renderSubscriptions();
+                updateCharts();
+                generateRenewalCalendar();
+                closeDeleteModal();
+                showNotification('Langganan berhasil dihapus!', 'success');
+            }
+        }
+
+        // Update dashboard statistics
+        function updateDashboard() {
+            const activeSubscriptions = subscriptions.filter(sub => sub.status === 'active');
+            const totalMonthlyCost = activeSubscriptions.reduce((sum, sub) => {
+                let monthlyCost = sub.cost;
+                if (sub.billingCycle === 'yearly') {
+                    monthlyCost = sub.cost / 12;
+                } else if (sub.billingCycle === 'weekly') {
+                    monthlyCost = sub.cost * 4.33;
+                }
+                return sum + monthlyCost;
+            }, 0);
+
+            // Update overview cards
+            document.getElementById('totalMonthlyAmount').textContent = formatCurrency(totalMonthlyCost);
+            document.getElementById('overviewTotal').textContent = formatCurrency(totalMonthlyCost);
+            document.getElementById('activeCount').textContent = activeSubscriptions.length;
+            document.getElementById('activeServices').textContent = `${activeSubscriptions.length} layanan`;
+
+            // Calculate upcoming renewals (next 7 days)
+            const today = new Date();
+            const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+            const upcomingRenewals = activeSubscriptions.filter(sub => {
+                const renewalDate = new Date(sub.renewalDate);
+                return renewalDate >= today && renewalDate <= nextWeek;
+            });
+            document.getElementById('upcomingCount').textContent = upcomingRenewals.length;
+
+            // Calculate health score (based on percentage of income)
+            const healthScore = Math.max(0, Math.min(100, 100 - (totalMonthlyCost / 5000000 * 100)));
+            document.getElementById('healthScore').textContent = `${Math.round(healthScore)}%`;
+
+            // Update quick stats
+            const avgCost = activeSubscriptions.length > 0 ? totalMonthlyCost / activeSubscriptions.length : 0;
+            document.getElementById('avgCostPerService').textContent = formatCurrency(avgCost);
+
+            // Find top category
+            const categoryCount = {};
+            activeSubscriptions.forEach(sub => {
+                categoryCount[sub.category] = (categoryCount[sub.category] || 0) + 1;
+            });
+            const topCategory = Object.keys(categoryCount).length > 0
+                ? Object.keys(categoryCount).reduce((a, b) =>
+                    categoryCount[a] > categoryCount[b] ? a : b, 'entertainment')
+                : '-';
+            document.getElementById('topCategory').textContent = getCategoryName(topCategory);
+
+            // Calculate potential savings (unused services)
+            const potentialSavings = totalMonthlyCost * 0.15; // Assume 15% can be saved
+            document.getElementById('potentialSavings').textContent = formatCurrency(potentialSavings);
+        }
+
+        // Render subscription list
+        function renderSubscriptions() {
+            const container = document.getElementById('subscriptionList');
+            const emptyState = document.getElementById('emptyState');
+
+            if (subscriptions.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            container.innerHTML = subscriptions.map(sub => {
+                const nextRenewal = new Date(sub.renewalDate);
+                const today = new Date();
+                const daysUntilRenewal = Math.ceil((nextRenewal - today) / (1000 * 60 * 60 * 24));
+
+                let statusBadge = '';
+                let statusClass = '';
+
+                if (sub.status === 'paused') {
+                    statusBadge = '<span class="px-2 py-1 text-xs font-medium bg-warning-100 text-warning-600 rounded-full">Dijeda</span>';
+                    statusClass = 'opacity-60';
+                } else if (daysUntilRenewal <= 3) {
+                    statusBadge = '<span class="px-2 py-1 text-xs font-medium bg-error-100 text-error-600 rounded-full">Akan Berakhir</span>';
+                } else if (daysUntilRenewal <= 7) {
+                    statusBadge = '<span class="px-2 py-1 text-xs font-medium bg-warning-100 text-warning-600 rounded-full">Segera Perpanjang</span>';
+                } else {
+                    statusBadge = '<span class="px-2 py-1 text-xs font-medium bg-success-100 text-success-600 rounded-full">Aktif</span>';
+                }
+
+                return `
+                    <div class="morphic-card p-4 ${statusClass} slide-up">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-r ${getCategoryGradient(sub.category)} rounded-xl flex items-center justify-center">
+                                    <i class="fas ${getCategoryIcon(sub.category)} text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-text-primary">${sub.name}</h3>
+                                    <p class="text-sm text-text-secondary">${getCategoryName(sub.category)}</p>
+                                    <p class="text-xs text-text-secondary">Perpanjang: ${formatDate(sub.renewalDate)}</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-bold text-lg text-text-primary">${formatCurrency(sub.cost)}</p>
+                                <p class="text-sm text-text-secondary">${getBillingCycleText(sub.billingCycle)}</p>
+                                ${statusBadge}
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="toggleSubscriptionStatus(${sub.id})" class="text-sm px-3 py-1 rounded-lg transition-colors ${sub.status === 'active' ? 'bg-warning-100 text-warning-600 hover:bg-warning-200' : 'bg-success-100 text-success-600 hover:bg-success-200'}">
+                                    <i class="fas ${sub.status === 'active' ? 'fa-pause' : 'fa-play'} mr-1"></i>
+                                    ${sub.status === 'active' ? 'Jeda' : 'Aktifkan'}
+                                </button>
+                                ${sub.url ? `<a href="${sub.url}" target="_blank" class="text-sm px-3 py-1 bg-primary-100 text-primary-600 rounded-lg hover:bg-primary-200 transition-colors">
+                                    <i class="fas fa-external-link-alt mr-1"></i>
+                                    Buka
+                                </a>` : ''}
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button onclick="editSubscription(${sub.id})" class="text-text-secondary hover:text-primary-600 p-2 rounded-lg transition-colors">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button onclick="deleteSubscription(${sub.id})" class="text-text-secondary hover:text-error-600 p-2 rounded-lg transition-colors">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Toggle subscription status
+        function toggleSubscriptionStatus(id) {
+            const subscription = subscriptions.find(sub => sub.id === id);
+            if (subscription) {
+                subscription.status = subscription.status === 'active' ? 'paused' : 'active';
+                saveSubscriptions();
+                updateDashboard();
+                renderSubscriptions();
+                updateCharts();
+                showNotification(`Langganan ${subscription.status === 'active' ? 'diaktifkan' : 'dijeda'}!`, 'success');
+            }
+        }
+
+        // Edit subscription
+        function editSubscription(id) {
+            const subscription = subscriptions.find(sub => sub.id === id);
+            if (subscription) {
+                currentEditId = id;
+                document.getElementById('editSubscriptionId').value = id;
+                document.getElementById('editServiceName').value = subscription.name;
+                document.getElementById('editServiceCategory').value = subscription.category;
+                document.getElementById('editMonthlyCost').value = subscription.cost;
+                document.getElementById('editBillingCycle').value = subscription.billingCycle;
+                document.getElementById('editRenewalDate').value = subscription.renewalDate;
+
+                document.getElementById('editModal').classList.remove('hidden');
+            }
+        }
+
+        // Delete subscription
+        function deleteSubscription(id) {
+            currentDeleteId = id;
+            document.getElementById('deleteModal').classList.remove('hidden');
+        }
+
+        // Close modals
+        function closeEditModal() {
+            document.getElementById('editModal').classList.add('hidden');
+            currentEditId = null;
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').classList.add('hidden');
+            currentDeleteId = null;
+        }
+
+        // Toggle filter options
+        function toggleFilterOptions() {
+            const filterOptions = document.getElementById('filterOptions');
+            filterOptions.classList.toggle('hidden');
+        }
+
+        // Apply filters
+        function applyFilters() {
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const costFilter = document.getElementById('costFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+
+            let filteredSubscriptions = [...subscriptions];
+
+            if (categoryFilter) {
+                filteredSubscriptions = filteredSubscriptions.filter(sub => sub.category === categoryFilter);
+            }
+
+            if (costFilter) {
+                filteredSubscriptions = filteredSubscriptions.filter(sub => {
+                    if (costFilter === 'low') return sub.cost < 50000;
+                    if (costFilter === 'medium') return sub.cost >= 50000 && sub.cost <= 150000;
+                    if (costFilter === 'high') return sub.cost > 150000;
+                    return true;
+                });
+            }
+
+            if (statusFilter) {
+                if (statusFilter === 'expiring') {
+                    const today = new Date();
+                    const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+                    filteredSubscriptions = filteredSubscriptions.filter(sub => {
+                        const renewalDate = new Date(sub.renewalDate);
+                        return renewalDate >= today && renewalDate <= nextWeek;
+                    });
+                } else {
+                    filteredSubscriptions = filteredSubscriptions.filter(sub => sub.status === statusFilter);
+                }
+            }
+
+            // Temporarily replace subscriptions for rendering
+            const originalSubscriptions = [...subscriptions];
+            subscriptions = filteredSubscriptions;
+            renderSubscriptions();
+            subscriptions = originalSubscriptions;
+        }
+
+        // Initialize charts
+        function initializeCharts() {
+            initializeCategoryChart();
+            initializeTrendChart();
+        }
+
+        // Initialize category chart
+        function initializeCategoryChart() {
+            const ctx = document.getElementById('categoryChart').getContext('2d');
+
+            const categoryData = {};
+            subscriptions.forEach(sub => {
+                if (sub.status === 'active') {
+                    categoryData[sub.category] = (categoryData[sub.category] || 0) + sub.cost;
+                }
+            });
+
+            const labels = Object.keys(categoryData).map(cat => getCategoryName(cat));
+            const data = Object.values(categoryData);
+            const colors = Object.keys(categoryData).map(cat => getCategoryColor(cat));
+
+            categoryChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: colors,
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize trend chart
+        function initializeTrendChart() {
+            const ctx = document.getElementById('trendChart').getContext('2d');
+
+            // Generate mock trend data for the last 6 months
+            const months = [];
+            const costs = [];
+            const today = new Date();
+
+            for (let i = 5; i >= 0; i--) {
+                const date = new Date(today.getFullYear(), today.getMonth() - i, 1);
+                months.push(date.toLocaleDateString('id-ID', { month: 'short' }));
+
+                // Mock data with some variation
+                const baseCost = subscriptions.reduce((sum, sub) => sum + (sub.status === 'active' ? sub.cost : 0), 0);
+                const variation = (Math.random() - 0.5) * 0.2; // ±10% variation
+                costs.push(baseCost * (1 + variation));
+            }
+
+            trendChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: 'Biaya Bulanan',
+                        data: costs,
+                        borderColor: '#6366F1',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function (value) {
+                                    return formatCurrency(value);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update charts
+        function updateCharts() {
+            if (categoryChart) {
+                categoryChart.destroy();
+                initializeCategoryChart();
+            }
+            if (trendChart) {
+                trendChart.destroy();
+                initializeTrendChart();
+            }
+        }
+
+        // Generate renewal calendar
+        function generateRenewalCalendar() {
+            const container = document.getElementById('renewalCalendar');
+            const today = new Date();
+            const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+
+            const upcomingRenewals = subscriptions
+                .filter(sub => sub.status === 'active')
+                .filter(sub => {
+                    const renewalDate = new Date(sub.renewalDate);
+                    return renewalDate >= today && renewalDate <= nextMonth;
+                })
+                .sort((a, b) => new Date(a.renewalDate) - new Date(b.renewalDate));
+
+            if (upcomingRenewals.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-8">
+                        <div class="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-calendar-check text-success-500 text-2xl"></i>
+                        </div>
+                        <p class="text-text-secondary">Tidak ada perpanjangan dalam 30 hari ke depan</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = upcomingRenewals.map(sub => {
+                const renewalDate = new Date(sub.renewalDate);
+                const daysUntil = Math.ceil((renewalDate - today) / (1000 * 60 * 60 * 24));
+
+                let urgencyClass = 'border-success-200 bg-success-50';
+                let urgencyIcon = 'fa-calendar-check text-success-500';
+
+                if (daysUntil <= 3) {
+                    urgencyClass = 'border-error-200 bg-error-50';
+                    urgencyIcon = 'fa-exclamation-triangle text-error-500';
+                } else if (daysUntil <= 7) {
+                    urgencyClass = 'border-warning-200 bg-warning-50';
+                    urgencyIcon = 'fa-clock text-warning-500';
+                }
+
+                return `
+                    <div class="border-2 ${urgencyClass} rounded-xl p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas ${urgencyIcon}"></i>
+                                <span class="font-medium text-sm">${daysUntil} hari lagi</span>
+                            </div>
+                            <span class="text-xs text-text-secondary">${formatDate(sub.renewalDate)}</span>
+                        </div>
+                        <h4 class="font-semibold text-text-primary mb-1">${sub.name}</h4>
+                        <p class="text-sm text-text-secondary mb-2">${getCategoryName(sub.category)}</p>
+                        <p class="font-bold text-primary-600">${formatCurrency(sub.cost)}</p>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Check and display alerts
+        function checkAlerts() {
+            const container = document.getElementById('alertSystem');
+            const alerts = [];
+
+            // Check for high spending
+            const totalMonthlyCost = subscriptions
+                .filter(sub => sub.status === 'active')
+                .reduce((sum, sub) => sum + sub.cost, 0);
+
+            if (totalMonthlyCost > 500000) {
+                alerts.push({
+                    type: 'warning',
+                    title: 'Pengeluaran Tinggi',
+                    message: `Total langganan bulanan kamu ${formatCurrency(totalMonthlyCost)}. Pertimbangkan untuk mengurangi beberapa layanan.`,
+                    icon: 'fa-exclamation-triangle'
+                });
+            }
+
+            // Check for upcoming renewals
+            const today = new Date();
+            const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+            const upcomingRenewals = subscriptions.filter(sub => {
+                const renewalDate = new Date(sub.renewalDate);
+                return sub.status === 'active' && renewalDate >= today && renewalDate <= nextWeek;
+            });
+
+            if (upcomingRenewals.length > 0) {
+                alerts.push({
+                    type: 'info',
+                    title: 'Perpanjangan Segera',
+                    message: `${upcomingRenewals.length} langganan akan diperpanjang dalam 7 hari ke depan.`,
+                    icon: 'fa-calendar-alt'
+                });
+            }
+
+            // Check for unused subscriptions (mock logic)
+            const potentiallyUnused = subscriptions.filter(sub =>
+                sub.status === 'active' && Math.random() < 0.3 // Mock 30% chance
+            );
+
+            if (potentiallyUnused.length > 0) {
+                alerts.push({
+                    type: 'success',
+                    title: 'Optimasi Tersedia',
+                    message: `Kamu bisa menghemat ${formatCurrency(potentiallyUnused.reduce((sum, sub) => sum + sub.cost, 0))} dengan meninjau langganan yang jarang digunakan.`,
+                    icon: 'fa-lightbulb'
+                });
+            }
+
+            if (alerts.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            container.innerHTML = alerts.map(alert => {
+                const colorClass = {
+                    'warning': 'border-warning-200 bg-warning-50 text-warning-800',
+                    'info': 'border-primary-200 bg-primary-50 text-primary-800',
+                    'success': 'border-success-200 bg-success-50 text-success-800',
+                    'error': 'border-error-200 bg-error-50 text-error-800'
+                }[alert.type];
+
+                return `
+                    <div class="border-2 ${colorClass} rounded-xl p-4 fade-in">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas ${alert.icon} text-xl mt-1"></i>
+                            <div class="flex-1">
+                                <h4 class="font-semibold mb-1">${alert.title}</h4>
+                                <p class="text-sm opacity-90">${alert.message}</p>
+                            </div>
+                            <button class="text-current opacity-60 hover:opacity-100" onclick="this.parentElement.parentElement.remove()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Utility functions
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString('id-ID', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+            });
+        }
+
+        function getCategoryName(category) {
+            const names = {
+                'entertainment': '🎬 Hiburan',
+                'music': '🎵 Musik',
+                'productivity': '💼 Produktivitas',
+                'fitness': '💪 Fitness',
+                'education': '📚 Edukasi',
+                'cloud': '☁️ Cloud Storage',
+                'other': '🔧 Lainnya'
+            };
+            return names[category] || '🔧 Lainnya';
+        }
+
+        function getCategoryIcon(category) {
+            const icons = {
+                'entertainment': 'fa-play',
+                'music': 'fa-music',
+                'productivity': 'fa-briefcase',
+                'fitness': 'fa-dumbbell',
+                'education': 'fa-graduation-cap',
+                'cloud': 'fa-cloud',
+                'other': 'fa-cog'
+            };
+            return icons[category] || 'fa-cog';
+        }
+
+        function getCategoryGradient(category) {
+            const gradients = {
+                'entertainment': 'from-red-500 to-pink-500',
+                'music': 'from-green-500 to-teal-500',
+                'productivity': 'from-blue-500 to-indigo-500',
+                'fitness': 'from-orange-500 to-red-500',
+                'education': 'from-purple-500 to-pink-500',
+                'cloud': 'from-cyan-500 to-blue-500',
+                'other': 'from-gray-500 to-gray-600'
+            };
+            return gradients[category] || 'from-gray-500 to-gray-600';
+        }
+
+        function getCategoryColor(category) {
+            const colors = {
+                'entertainment': '#EF4444',
+                'music': '#10B981',
+                'productivity': '#3B82F6',
+                'fitness': '#F97316',
+                'education': '#8B5CF6',
+                'cloud': '#06B6D4',
+                'other': '#6B7280'
+            };
+            return colors[category] || '#6B7280';
+        }
+
+        function getBillingCycleText(cycle) {
+            const texts = {
+                'monthly': '/bulan',
+                'yearly': '/tahun',
+                'weekly': '/minggu'
+            };
+            return texts[cycle] || '/bulan';
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg ${type === 'success' ? 'bg-success-500' : 'bg-error-500'} text-white fade-in`;
+            notification.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+    </script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+
+</html>

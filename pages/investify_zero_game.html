@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestifyZero Game - GenZ Finance Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <script type="module" async
+        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fgenzfinan7345back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.10"></script>
+    <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-10 left-10 w-32 h-32 bg-primary-300 rounded-full blur-xl"></div>
+        <div class="absolute top-40 right-20 w-24 h-24 bg-secondary-300 rounded-full blur-lg"></div>
+        <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-accent-300 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-40 right-10 w-28 h-28 bg-primary-400 rounded-full blur-lg"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="relative z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex items-center">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-wallet text-white text-lg"></i>
+                        </div>
+                        <span class="ml-3 text-xl font-bold text-gradient">GenZ Finance Hub</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="main_dashboard.html"
+                            class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <i class="fas fa-home mr-2"></i>Dashboard
+                        </a>
+                        <a href="money_mirror_analysis.html"
+                            class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <i class="fas fa-mirror mr-2"></i>MoneyMirror
+                        </a>
+                        <a href="zero_budget_tracker.html"
+                            class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <i class="fas fa-calculator mr-2"></i>ZeroBudget
+                        </a>
+                        <a href="subs_tracker_manager.html"
+                            class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <i class="fas fa-credit-card mr-2"></i>SubsTracker
+                        </a>
+                        <a href="investify_zero_game.html"
+                            class="text-primary-600 bg-primary-50 px-3 py-2 rounded-md text-sm font-medium">
+                            <i class="fas fa-gamepad mr-2"></i>InvestifyZero
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-600 hover:text-primary-600 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- User Profile -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1a5df2297-1763292384104.png"
+                            alt="User profile picture" class="w-8 h-8 rounded-full object-cover"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                        <span class="text-sm font-medium text-gray-700" id="userGreeting">Halo, Investor!</span>
+                    </div>
+                    <button onclick="logout()" class="text-gray-600 hover:text-red-600 transition-colors">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="main_dashboard.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-home mr-2"></i>Dashboard
+                </a>
+                <a href="money_mirror_analysis.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-mirror mr-2"></i>MoneyMirror
+                </a>
+                <a href="zero_budget_tracker.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-calculator mr-2"></i>ZeroBudget
+                </a>
+                <a href="subs_tracker_manager.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-credit-card mr-2"></i>SubsTracker
+                </a>
+                <a href="investify_zero_game.html"
+                    class="text-primary-600 bg-primary-50 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-gamepad mr-2"></i>InvestifyZero
+                </a>
+                <div class="border-t border-gray-200 pt-2">
+                    <div class="flex items-center px-3 py-2">
+                        <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1a5df2297-1763292384104.png"
+                            alt="User profile picture" class="w-8 h-8 rounded-full object-cover mr-3"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                        <span class="text-sm font-medium text-gray-700">Halo, Investor!</span>
+                    </div>
+                    <button onclick="logout()"
+                        class="text-red-600 hover:text-red-700 block px-3 py-2 rounded-md text-base font-medium w-full text-left">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Keluar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Game Header -->
+        <div class="text-center mb-8 fade-in">
+            <div
+                class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-accent-400 to-secondary-500 rounded-3xl mb-4">
+                <i class="fas fa-gamepad text-white text-3xl"></i>
+            </div>
+            <h1 class="text-4xl font-bold text-gradient mb-2">InvestifyZero Game 🎮</h1>
+            <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+                Belajar investasi sambil main game! Kelola portfolio virtual dan raih level tertinggi! 🚀
+            </p>
+        </div>
+
+        <!-- Portfolio Overview -->
+        <section class="mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <!-- Virtual Balance -->
+                <div class="morphic-card p-6 text-center">
+                    <div class="flex items-center justify-center w-12 h-12 bg-success-100 rounded-xl mx-auto mb-3">
+                        <i class="fas fa-coins text-success-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-sm font-medium text-gray-600 mb-1">Saldo Virtual</h3>
+                    <p class="text-2xl font-bold text-success-600" id="virtualBalance">Rp 10.000.000</p>
+                    <div class="flex items-center justify-center mt-2">
+                        <i class="fas fa-arrow-up text-success-500 text-sm mr-1"></i>
+                        <span class="text-success-500 text-sm font-medium">+2.5%</span>
+                    </div>
+                </div>
+
+                <!-- Portfolio Value -->
+                <div class="morphic-card p-6 text-center">
+                    <div class="flex items-center justify-center w-12 h-12 bg-primary-100 rounded-xl mx-auto mb-3">
+                        <i class="fas fa-chart-line text-primary-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-sm font-medium text-gray-600 mb-1">Nilai Portfolio</h3>
+                    <p class="text-2xl font-bold text-primary-600" id="portfolioValue">Rp 8.750.000</p>
+                    <div class="flex items-center justify-center mt-2">
+                        <i class="fas fa-arrow-down text-error-500 text-sm mr-1"></i>
+                        <span class="text-error-500 text-sm font-medium">-1.2%</span>
+                    </div>
+                </div>
+
+                <!-- Current Level -->
+                <div class="morphic-card p-6 text-center">
+                    <div class="flex items-center justify-center w-12 h-12 bg-accent-100 rounded-xl mx-auto mb-3">
+                        <i class="fas fa-trophy text-accent-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-sm font-medium text-gray-600 mb-1">Level Saat Ini</h3>
+                    <p class="text-2xl font-bold text-accent-600" id="currentLevel">Level 3</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-accent-500 h-2 rounded-full" style="width: 65%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">650/1000 XP</p>
+                </div>
+
+                <!-- Achievement Score -->
+                <div class="morphic-card p-6 text-center">
+                    <div class="flex items-center justify-center w-12 h-12 bg-secondary-100 rounded-xl mx-auto mb-3">
+                        <i class="fas fa-medal text-secondary-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-sm font-medium text-gray-600 mb-1">Skor Achievement</h3>
+                    <p class="text-2xl font-bold text-secondary-600" id="achievementScore">1,250</p>
+                    <div class="flex items-center justify-center mt-2">
+                        <i class="fas fa-star text-accent-500 text-sm mr-1"></i>
+                        <span class="text-accent-500 text-sm font-medium">5 Badges</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Game Interface -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Market & Trading Panel -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Market Overview -->
+                <div class="morphic-card p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-gray-800">
+                            <i class="fas fa-chart-bar text-primary-600 mr-2"></i>
+                            Pasar Virtual
+                        </h2>
+                        <div class="flex items-center space-x-2">
+                            <span class="px-3 py-1 bg-success-100 text-success-700 rounded-full text-sm font-medium">
+                                <i class="fas fa-circle text-success-500 text-xs mr-1"></i>
+                                Market Open
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Asset List -->
+                    <div class="space-y-4">
+                        <!-- Stock Assets -->
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <h3 class="font-semibold text-gray-700 mb-3 flex items-center">
+                                <i class="fas fa-building text-primary-500 mr-2"></i>
+                                Saham Virtual
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="asset-item flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                                    data-asset="TECH" data-price="125000" data-change="2.5">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                            <i class="fas fa-laptop-code text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium text-gray-800">TECH</p>
+                                            <p class="text-sm text-gray-500">Technology Corp</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold text-gray-800">Rp 125.000</p>
+                                        <p class="text-sm text-success-600">+2.5%</p>
+                                    </div>
+                                </div>
+
+                                <div class="asset-item flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                                    data-asset="BANK" data-price="85000" data-change="-1.2">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                                            <i class="fas fa-university text-green-600"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium text-gray-800">BANK</p>
+                                            <p class="text-sm text-gray-500">Banking Ltd</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold text-gray-800">Rp 85.000</p>
+                                        <p class="text-sm text-error-600">-1.2%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Crypto Assets -->
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <h3 class="font-semibold text-gray-700 mb-3 flex items-center">
+                                <i class="fas fa-coins text-accent-500 mr-2"></i>
+                                Cryptocurrency Virtual
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="asset-item flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                                    data-asset="VBTC" data-price="750000000" data-change="5.8">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
+                                            <i class="fab fa-bitcoin text-orange-600"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium text-gray-800">VBTC</p>
+                                            <p class="text-sm text-gray-500">Virtual Bitcoin</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold text-gray-800">Rp 750.000.000</p>
+                                        <p class="text-sm text-success-600">+5.8%</p>
+                                    </div>
+                                </div>
+
+                                <div class="asset-item flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                                    data-asset="VETH" data-price="45000000" data-change="3.2">
+                                    <div class="flex items-center">
+                                        <div
+                                            class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                                            <i class="fab fa-ethereum text-purple-600"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium text-gray-800">VETH</p>
+                                            <p class="text-sm text-gray-500">Virtual Ethereum</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold text-gray-800">Rp 45.000.000</p>
+                                        <p class="text-sm text-success-600">+3.2%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Chart -->
+                <div class="morphic-card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-800">
+                            <i class="fas fa-chart-line text-primary-600 mr-2"></i>
+                            Grafik Harga - <span id="selectedAsset">TECH</span>
+                        </h3>
+                        <div class="flex space-x-2">
+                            <button
+                                class="px-3 py-1 text-sm bg-primary-100 text-primary-600 rounded-lg font-medium">1H</button>
+                            <button class="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">1D</button>
+                            <button class="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">1W</button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <canvas id="priceChart" width="600" height="300"
+                            class="w-full h-64 border border-gray-200 rounded-lg"></canvas>
+                    </div>
+                </div>
+                <div
+                    class="morphic-card p-6 text-center cursor-pointer hover:scale-105 transition-transform duration-300 micro-celebrate">
+                    <div class="morphic-card p-6 text-center cursor-pointer hover:scale-105 transition-transform duration-300 micro-celebrate"
+                        onclick="showResetConfirmation()">
+                        <div class="flex items-center justify-center w-12 h-12 bg-warning-100 rounded-xl mx-auto mb-3">
+                            <i class="fas fa-rotate text-warning-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-sm font-medium text-gray-600 mb-1">Reset Game</h3>
+                        <p class="text-lg font-bold text-warning-600">Mulai Ulang</p>
+                        <p class="text-xs text-gray-500 mt-1">Kembali ke level 1 dengan saldo awal</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trading & Portfolio Panel -->
+            <div class="space-y-6">
+                <!-- Trading Form -->
+                <div class="morphic-card p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                        <i class="fas fa-exchange-alt text-secondary-600 mr-2"></i>
+                        Trading Panel
+                    </h3>
+
+                    <form id="tradingForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Asset</label>
+                            <select id="assetSelect" class="input-field w-full">
+                                <option value="TECH">TECH - Technology Corp</option>
+                                <option value="BANK">BANK - Banking Ltd</option>
+                                <option value="VBTC">VBTC - Virtual Bitcoin</option>
+                                <option value="VETH">VETH - Virtual Ethereum</option>
+                            </select>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <button type="button" id="buyBtn" class="btn-primary py-3 text-sm">
+                                <i class="fas fa-arrow-up mr-1"></i>BUY
+                            </button>
+                            <button type="button" id="sellBtn"
+                                class="bg-error-500 hover:bg-error-600 text-white py-3 px-4 rounded-lg text-sm font-medium transition-colors">
+                                <i class="fas fa-arrow-down mr-1"></i>SELL
+                            </button>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Jumlah</label>
+                            <input type="number" id="quantity" class="input-field w-full" placeholder="0" min="1">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Harga per Unit</label>
+                            <input type="text" id="unitPrice" class="input-field w-full" readonly>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Total</label>
+                            <input type="text" id="totalPrice" class="input-field w-full" readonly>
+                        </div>
+
+                        <button type="submit" class="btn-secondary w-full micro-celebrate">
+                            <i class="fas fa-check mr-2"></i>
+                            Konfirmasi Trading
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Current Holdings -->
+                <div class="morphic-card p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                        <i class="fas fa-briefcase text-accent-600 mr-2"></i>
+                        Portfolio Saya
+                    </h3>
+
+                    <div class="space-y-3" id="portfolioHoldings">
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-laptop-code text-blue-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800 text-sm">TECH</p>
+                                    <p class="text-xs text-gray-500">10 units</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-gray-800 text-sm">Rp 1.250.000</p>
+                                <p class="text-xs text-success-600">+Rp 125.000</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fab fa-bitcoin text-orange-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800 text-sm">VBTC</p>
+                                    <p class="text-xs text-gray-500">0.01 units</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-gray-800 text-sm">Rp 7.500.000</p>
+                                <p class="text-xs text-error-600">-Rp 250.000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Allocation Chart -->
+                    <div class="mt-6">
+                        <h4 class="text-sm font-medium text-gray-700 mb-3">Alokasi Asset</h4>
+                        <canvas id="allocationChart" width="200" height="200" class="w-full h-32"></canvas>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div class="morphic-card p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                        <i class="fas fa-trophy text-accent-600 mr-2"></i>
+                        Achievement Badges
+                    </h3>
+
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="text-center p-3 bg-success-50 rounded-lg">
+                            <i class="fas fa-medal text-success-600 text-2xl mb-2"></i>
+                            <p class="text-xs font-medium text-success-700">First Trade</p>
+                        </div>
+                        <div class="text-center p-3 bg-primary-50 rounded-lg">
+                            <i class="fas fa-chart-line text-primary-600 text-2xl mb-2"></i>
+                            <p class="text-xs font-medium text-primary-700">Profit Maker</p>
+                        </div>
+                        <div class="text-center p-3 bg-accent-50 rounded-lg">
+                            <i class="fas fa-graduation-cap text-accent-600 text-2xl mb-2"></i>
+                            <p class="text-xs font-medium text-accent-700">Quick Learner</p>
+                        </div>
+                        <div class="text-center p-3 bg-gray-100 rounded-lg opacity-50">
+                            <i class="fas fa-crown text-gray-400 text-2xl mb-2"></i>
+                            <p class="text-xs font-medium text-gray-500">Master Trader</p>
+                        </div>
+                        <div class="text-center p-3 bg-gray-100 rounded-lg opacity-50">
+                            <i class="fas fa-rocket text-gray-400 text-2xl mb-2"></i>
+                            <p class="text-xs font-medium text-gray-500">High Roller</p>
+                        </div>
+                        <div class="text-center p-3 bg-gray-100 rounded-lg opacity-50">
+                            <i class="fas fa-diamond text-gray-400 text-2xl mb-2"></i>
+                            <p class="text-xs font-medium text-gray-500">Diamond Hands</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Educational Tips -->
+        <section class="mt-8">
+            <div class="morphic-card p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-lightbulb text-accent-600 mr-2"></i>
+                    Tips Investasi Hari Ini 💡
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="p-4 bg-primary-50 rounded-lg border border-primary-200">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-shield-alt text-primary-600 mr-2"></i>
+                            <h3 class="font-semibold text-primary-800">Diversifikasi</h3>
+                        </div>
+                        <p class="text-sm text-primary-700">Jangan taruh semua telur dalam satu keranjang. Bagi
+                            investasi ke berbagai asset!</p>
+                    </div>
+                    <div class="p-4 bg-success-50 rounded-lg border border-success-200">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-clock text-success-600 mr-2"></i>
+                            <h3 class="font-semibold text-success-800">Long Term</h3>
+                        </div>
+                        <p class="text-sm text-success-700">Investasi terbaik adalah untuk jangka panjang. Sabar adalah
+                            kunci kesuksesan!</p>
+                    </div>
+                    <div class="p-4 bg-accent-50 rounded-lg border border-accent-200">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-book text-accent-600 mr-2"></i>
+                            <h3 class="font-semibold text-accent-800">Belajar Terus</h3>
+                        </div>
+                        <p class="text-sm text-accent-700">Terus belajar tentang pasar dan analisis. Knowledge is power!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Trading Confirmation Modal -->
+    <div id="tradingModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="morphic-card max-w-md w-full p-6 spring-bounce">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-exchange-alt text-secondary-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Konfirmasi Trading</h3>
+                <p class="text-gray-600">Pastikan detail trading sudah benar</p>
+            </div>
+
+            <div class="space-y-3 mb-6">
+                <div class="flex justify-between">
+                    <span class="text-gray-600">Tipe:</span>
+                    <span class="font-semibold" id="modalTradeType">BUY</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-600">Asset:</span>
+                    <span class="font-semibold" id="modalAsset">TECH</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-600">Jumlah:</span>
+                    <span class="font-semibold" id="modalQuantity">10</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-600">Total:</span>
+                    <span class="font-semibold text-primary-600" id="modalTotal">Rp 1.250.000</span>
+                </div>
+            </div>
+
+            <div class="bg-accent-50 border border-accent-200 rounded-lg p-3 mb-6">
+                <div class="flex items-start">
+                    <i class="fas fa-info-circle text-accent-600 mt-0.5 mr-2"></i>
+                    <p class="text-sm text-accent-700">
+                        <strong>Tip:</strong> Selalu lakukan riset sebelum trading. Ini adalah simulasi untuk belajar!
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex space-x-3">
+                <button id="cancelTrade"
+                    class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+                    Batal
+                </button>
+                <button id="confirmTrade" class="flex-1 btn-secondary micro-celebrate">
+                    Konfirmasi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-16 bg-white/80 backdrop-blur-md border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center">
+                <p class="text-text-secondary text-sm">
+                    © 2025 GenZ Finance Hub. Semua hak dilindungi.
+                    <span class="inline-block mx-2">|</span>
+                    <a href="javascript:void(0)" class="text-primary-600 hover:text-primary-700">Bantuan</a>
+                    <span class="inline-block mx-2">|</span>
+                    <a href="javascript:void(0)" class="text-primary-600 hover:text-primary-700">Tentang Game</a>
+                </p>
+                <p class="text-xs text-gray-400 mt-2">
+                    ⚠️ Ini adalah simulasi trading untuk tujuan edukasi. Tidak menggunakan uang sungguhan.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global variables
+        let currentTradeType = 'buy';
+        let selectedAsset = 'TECH';
+        let assetPrices = {
+            'TECH': 125000,
+            'BANK': 85000,
+            'VBTC': 750000000,
+            'VETH': 45000000
+        };
+
+        let portfolio = {};
+        let virtualBalance = 1000000; // Rp 1.000.000 untuk user baru
+        let currentLevel = 1;
+        let xp = 0;
+        let maxXp = 100;
+        let tradingHistory = [];
+
+        // Initialize the game
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeGame();
+            setupEventListeners();
+            drawPriceChart();
+            drawAllocationChart();
+            updatePortfolioDisplay();
+            startPriceSimulation();
+        });
+
+        function initializeGame() {
+            // Check user session
+            const userSession = localStorage.getItem('userSession');
+            if (userSession) {
+                const userData = JSON.parse(userSession);
+                document.getElementById('userGreeting').textContent = `Halo, ${userData.name || 'Investor'}!`;
+
+                // Load saved game data for this user
+                const userId = userData.id || 'default';
+                const savedGame = localStorage.getItem(`investifyGameData_${userId}`);
+
+                if (savedGame) {
+                    const gameData = JSON.parse(savedGame);
+                    virtualBalance = gameData.virtualBalance || 1000000;
+                    portfolio = gameData.portfolio || {};
+                    currentLevel = gameData.currentLevel || 1;
+                    xp = gameData.xp || 0;
+                    maxXp = gameData.maxXp || 100;
+                    tradingHistory = gameData.tradingHistory || [];
+                } else {
+                    // Fresh start for new user
+                    resetGameData(userId);
+                }
+            } else {
+                // Default state if no user session
+                resetGameData('default');
+            }
+
+            updateUI();
+        }
+
+        function resetGameData(userId) {
+            virtualBalance = 1000000; // Rp 1.000.000
+            portfolio = {};
+            currentLevel = 1;
+            xp = 0;
+            maxXp = 100;
+            tradingHistory = [];
+
+            // Save initial state
+            saveGameData(userId);
+        }
+
+        function setupEventListeners() {
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', function () {
+                const mobileMenu = document.getElementById('mobileMenu');
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Asset selection
+            document.querySelectorAll('.asset-item').forEach(item => {
+                item.addEventListener('click', function () {
+                    selectedAsset = this.dataset.asset;
+                    document.getElementById('selectedAsset').textContent = selectedAsset;
+                    document.getElementById('assetSelect').value = selectedAsset;
+                    updateTradingForm();
+                    drawPriceChart();
+                });
+            });
+
+            // Trading buttons
+            document.getElementById('buyBtn').addEventListener('click', function () {
+                currentTradeType = 'buy';
+                updateTradeButtons();
+            });
+
+            document.getElementById('sellBtn').addEventListener('click', function () {
+                currentTradeType = 'sell';
+                updateTradeButtons();
+            });
+
+            // Asset select change
+            document.getElementById('assetSelect').addEventListener('change', function () {
+                selectedAsset = this.value;
+                document.getElementById('selectedAsset').textContent = selectedAsset;
+                updateTradingForm();
+                drawPriceChart();
+            });
+
+            // Quantity input - allow decimals
+            const quantityInput = document.getElementById('quantity');
+            quantityInput.step = 'any';
+            quantityInput.min = '0.00000001';
+            quantityInput.addEventListener('input', updateTradingForm);
+
+            // Add quick buy buttons
+            setupQuickBuyButtons();
+
+            // Trading form submission
+            document.getElementById('tradingForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                showTradingModal();
+            });
+
+            // Modal buttons
+            document.getElementById('cancelTrade').addEventListener('click', hideTradingModal);
+            document.getElementById('confirmTrade').addEventListener('click', executeTrade);
+
+            // Close modal on backdrop click
+            document.getElementById('tradingModal').addEventListener('click', function (e) {
+                if (e.target === this) {
+                    hideTradingModal();
+                }
+            });
+
+            // Initialize trade buttons
+            updateTradeButtons();
+        }
+
+        function updateTradeButtons() {
+            const buyBtn = document.getElementById('buyBtn');
+            const sellBtn = document.getElementById('sellBtn');
+
+            if (currentTradeType === 'buy') {
+                buyBtn.classList.add('bg-primary-600', 'text-white');
+                buyBtn.classList.remove('btn-primary');
+                sellBtn.classList.remove('bg-error-600', 'text-white');
+                sellBtn.classList.add('bg-error-500');
+            } else {
+                sellBtn.classList.add('bg-error-600', 'text-white');
+                sellBtn.classList.remove('bg-error-500');
+                buyBtn.classList.remove('bg-primary-600', 'text-white');
+                buyBtn.classList.add('btn-primary');
+            }
+        }
+
+        function setupQuickBuyButtons() {
+            // Remove existing quick buy buttons if any
+            const existingQuickBuy = document.querySelector('.quick-buy-container');
+            if (existingQuickBuy) {
+                existingQuickBuy.remove();
+            }
+
+            // Add quick buy buttons for common amounts
+            const quickBuyContainer = document.createElement('div');
+            quickBuyContainer.className = 'quick-buy-container flex space-x-2 mb-4';
+            quickBuyContainer.innerHTML = `
+            <button type="button" class="quick-buy-btn px-3 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors" data-amount="0.1">0.1</button>
+            <button type="button" class="quick-buy-btn px-3 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors" data-amount="0.5">0.5</button>
+            <button type="button" class="quick-buy-btn px-3 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors" data-amount="1">1</button>
+            <button type="button" class="quick-buy-btn px-3 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors" data-amount="5">5</button>
+        `;
+
+            const quantityInput = document.getElementById('quantity');
+            if (quantityInput && quantityInput.parentNode) {
+                quantityInput.parentNode.insertBefore(quickBuyContainer, quantityInput);
+
+                // Add event listeners to quick buy buttons
+                document.querySelectorAll('.quick-buy-btn').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        const amount = parseFloat(this.dataset.amount);
+                        document.getElementById('quantity').value = amount;
+                        updateTradingForm();
+                    });
+                });
+            }
+        }
+
+        function updateTradingForm() {
+            const quantityInput = document.getElementById('quantity').value;
+            const quantity = parseFloat(quantityInput) || 0;
+            const unitPrice = assetPrices[selectedAsset];
+            const total = quantity * unitPrice;
+
+            document.getElementById('unitPrice').value = formatCurrency(unitPrice);
+            document.getElementById('totalPrice').value = formatCurrency(total);
+        }
+
+        function showTradingModal() {
+            const quantityInput = document.getElementById('quantity').value;
+            const quantity = parseFloat(quantityInput);
+            const unitPrice = assetPrices[selectedAsset];
+            const total = quantity * unitPrice;
+
+            console.log('Trade Type:', currentTradeType);
+            console.log('Selected Asset:', selectedAsset);
+            console.log('Portfolio:', portfolio);
+            console.log('Quantity to trade:', quantity);
+
+            // Fix validation - allow very small decimal numbers
+            if (isNaN(quantity) || quantity <= 0) {
+                showNotification('Masukkan jumlah yang valid (minimal 0.00000001)!', 'error');
+                return;
+            }
+
+            if (currentTradeType === 'buy') {
+                if (total > virtualBalance) {
+                    showNotification('Saldo tidak mencukupi!', 'error');
+                    return;
+                }
+            } else if (currentTradeType === 'sell') {
+                // FIX: Proper sell validation
+                if (!portfolio[selectedAsset]) {
+                    showNotification(`Anda tidak memiliki ${selectedAsset} untuk dijual!`, 'error');
+                    return;
+                }
+
+                const currentHolding = portfolio[selectedAsset].quantity;
+                console.log('Current holding:', currentHolding);
+                console.log('Quantity to sell:', quantity);
+                console.log('Is enough:', currentHolding >= quantity);
+
+                // Fix: Use simple comparison for sell validation
+                if (currentHolding < quantity) {
+                    showNotification(`Tidak memiliki cukup ${selectedAsset} untuk dijual! Anda memiliki ${formatQuantity(currentHolding)} unit.`, 'error');
+                    return;
+                }
+            }
+
+            document.getElementById('modalTradeType').textContent = currentTradeType.toUpperCase();
+            document.getElementById('modalAsset').textContent = selectedAsset;
+            document.getElementById('modalQuantity').textContent = formatQuantity(quantity);
+            document.getElementById('modalTotal').textContent = formatCurrency(total);
+
+            document.getElementById('tradingModal').classList.remove('hidden');
+            document.getElementById('tradingModal').classList.add('flex');
+        }
+
+        function hideTradingModal() {
+            document.getElementById('tradingModal').classList.add('hidden');
+            document.getElementById('tradingModal').classList.remove('flex');
+        }
+
+        function executeTrade() {
+            const quantityInput = document.getElementById('quantity').value;
+            const quantity = parseFloat(quantityInput);
+            const unitPrice = assetPrices[selectedAsset];
+            const total = quantity * unitPrice;
+
+            // Get user ID for data storage
+            const userSession = localStorage.getItem('userSession');
+            const userData = userSession ? JSON.parse(userSession) : { id: 'default' };
+            const userId = userData.id || 'default';
+
+            // Record trade in history
+            const tradeRecord = {
+                type: currentTradeType,
+                asset: selectedAsset,
+                quantity: quantity,
+                price: unitPrice,
+                total: total,
+                timestamp: new Date().toISOString()
+            };
+            tradingHistory.push(tradeRecord);
+
+            if (currentTradeType === 'buy') {
+                // Buy logic
+                virtualBalance -= total;
+
+                if (portfolio[selectedAsset]) {
+                    const currentValue = portfolio[selectedAsset].quantity * portfolio[selectedAsset].avgPrice;
+                    const newValue = currentValue + total;
+                    const newQuantity = portfolio[selectedAsset].quantity + quantity;
+                    portfolio[selectedAsset].avgPrice = newValue / newQuantity;
+                    portfolio[selectedAsset].quantity = newQuantity;
+                } else {
+                    portfolio[selectedAsset] = {
+                        quantity: quantity,
+                        avgPrice: unitPrice
+                    };
+                }
+
+                showNotification(`✅ Berhasil membeli ${formatQuantity(quantity)} ${selectedAsset}!`, 'success');
+                addXP(10);
+            } else {
+                // Sell logic - FIXED
+                virtualBalance += total;
+
+                // Update portfolio
+                portfolio[selectedAsset].quantity -= quantity;
+
+                // Remove asset if quantity is zero or very close to zero
+                if (portfolio[selectedAsset].quantity < 0.00000001) {
+                    delete portfolio[selectedAsset];
+                    console.log(`Removed ${selectedAsset} from portfolio`);
+                }
+
+                showNotification(`✅ Berhasil menjual ${formatQuantity(quantity)} ${selectedAsset}!`, 'success');
+                addXP(15);
+            }
+
+            // Reset form
+            document.getElementById('quantity').value = '';
+            updateTradingForm();
+            updateUI();
+            updatePortfolioDisplay();
+            drawAllocationChart();
+            saveGameData(userId);
+            hideTradingModal();
+        }
+
+        function addXP(amount) {
+            xp += amount;
+            if (xp >= maxXp) {
+                currentLevel++;
+                xp = xp - maxXp;
+                maxXp = Math.floor(maxXp * 1.2);
+                showNotification(`🎉 Level Up! Sekarang Level ${currentLevel}!`, 'success');
+            }
+        }
+
+        function updateUI() {
+            document.getElementById('virtualBalance').textContent = formatCurrency(virtualBalance);
+            document.getElementById('currentLevel').textContent = `Level ${currentLevel}`;
+
+            const portfolioValue = calculatePortfolioValue();
+            document.getElementById('portfolioValue').textContent = formatCurrency(portfolioValue);
+
+            // Update XP bar
+            const xpPercentage = Math.min(100, (xp / maxXp) * 100);
+            const xpBar = document.querySelector('.bg-accent-500');
+            if (xpBar) {
+                xpBar.style.width = `${xpPercentage}%`;
+                const xpText = xpBar.parentElement.nextElementSibling;
+                if (xpText) {
+                    xpText.textContent = `${xp}/${maxXp} XP`;
+                }
+            }
+        }
+
+        function calculatePortfolioValue() {
+            let total = 0;
+            for (const asset in portfolio) {
+                total += portfolio[asset].quantity * assetPrices[asset];
+            }
+            return total;
+        }
+
+        function updatePortfolioDisplay() {
+            const container = document.getElementById('portfolioHoldings');
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            for (const asset in portfolio) {
+                const holding = portfolio[asset];
+                const currentValue = holding.quantity * assetPrices[asset];
+                const originalValue = holding.quantity * holding.avgPrice;
+                const profit = currentValue - originalValue;
+                const profitClass = profit >= 0 ? 'text-success-600' : 'text-error-600';
+                const profitSign = profit >= 0 ? '+' : '';
+
+                const assetIcons = {
+                    'TECH': 'fas fa-laptop-code text-blue-600',
+                    'BANK': 'fas fa-university text-green-600',
+                    'VBTC': 'fab fa-bitcoin text-orange-600',
+                    'VETH': 'fab fa-ethereum text-purple-600'
+                };
+
+                const holdingElement = document.createElement('div');
+                holdingElement.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-lg';
+                holdingElement.innerHTML = `
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                        <i class="${assetIcons[asset]} text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-800 text-sm">${asset}</p>
+                        <p class="text-xs text-gray-500">${formatQuantity(holding.quantity)} units</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="font-semibold text-gray-800 text-sm">${formatCurrency(currentValue)}</p>
+                    <p class="text-xs ${profitClass}">${profitSign}${formatCurrency(Math.abs(profit))}</p>
+                </div>
+            `;
+                container.appendChild(holdingElement);
+            }
+
+            if (Object.keys(portfolio).length === 0) {
+                container.innerHTML = '<p class="text-center text-gray-500 py-4">Belum ada investasi</p>';
+            }
+        }
+
+        function drawPriceChart() {
+            const canvas = document.getElementById('priceChart');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Generate mock price data
+            const basePrice = assetPrices[selectedAsset];
+            const dataPoints = 50;
+            const prices = [];
+
+            for (let i = 0; i < dataPoints; i++) {
+                const variation = (Math.random() - 0.5) * 0.1;
+                const price = basePrice * (1 + variation * (i / dataPoints));
+                prices.push(price);
+            }
+
+            // Draw chart
+            const padding = 40;
+            const chartWidth = canvas.width - padding * 2;
+            const chartHeight = canvas.height - padding * 2;
+
+            const minPrice = Math.min(...prices);
+            const maxPrice = Math.max(...prices);
+            const priceRange = maxPrice - minPrice;
+
+            // Draw grid
+            ctx.strokeStyle = '#e5e7eb';
+            ctx.lineWidth = 1;
+
+            for (let i = 0; i <= 5; i++) {
+                const y = padding + (chartHeight / 5) * i;
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(canvas.width - padding, y);
+                ctx.stroke();
+            }
+
+            // Draw price line
+            ctx.strokeStyle = '#6366f1';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+
+            for (let i = 0; i < prices.length; i++) {
+                const x = padding + (chartWidth / (prices.length - 1)) * i;
+                const y = padding + chartHeight - ((prices[i] - minPrice) / priceRange) * chartHeight;
+
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+
+            ctx.stroke();
+
+            // Draw current price point
+            const lastX = padding + chartWidth;
+            const lastY = padding + chartHeight - ((prices[prices.length - 1] - minPrice) / priceRange) * chartHeight;
+
+            ctx.fillStyle = '#6366f1';
+            ctx.beginPath();
+            ctx.arc(lastX, lastY, 4, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+
+        function drawAllocationChart() {
+            const canvas = document.getElementById('allocationChart');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            if (Object.keys(portfolio).length === 0) {
+                ctx.fillStyle = '#9ca3af';
+                ctx.font = '14px Inter';
+                ctx.textAlign = 'center';
+                ctx.fillText('Belum ada investasi', canvas.width / 2, canvas.height / 2);
+                return;
+            }
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = Math.min(centerX, centerY) - 10;
+
+            const totalValue = calculatePortfolioValue();
+            const colors = ['#6366f1', '#ec4899', '#f59e0b', '#10b981'];
+
+            let currentAngle = 0;
+            let colorIndex = 0;
+
+            for (const asset in portfolio) {
+                const value = portfolio[asset].quantity * assetPrices[asset];
+                const percentage = value / totalValue;
+                const sliceAngle = percentage * 2 * Math.PI;
+
+                ctx.fillStyle = colors[colorIndex % colors.length];
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, currentAngle, currentAngle + sliceAngle);
+                ctx.closePath();
+                ctx.fill();
+
+                currentAngle += sliceAngle;
+                colorIndex++;
+            }
+        }
+
+        function startPriceSimulation() {
+            setInterval(() => {
+                // Simulate price changes
+                for (const asset in assetPrices) {
+                    const change = (Math.random() - 0.5) * 0.02; // ±2% change
+                    assetPrices[asset] *= (1 + change);
+                }
+
+                // Update asset displays
+                document.querySelectorAll('.asset-item').forEach(item => {
+                    const asset = item.dataset.asset;
+                    const priceElement = item.querySelector('.font-semibold');
+                    const changeElement = item.querySelector('.text-sm');
+
+                    if (priceElement && changeElement) {
+                        priceElement.textContent = formatCurrency(assetPrices[asset]);
+
+                        const oldChange = parseFloat(item.dataset.change);
+                        const newChange = oldChange + (Math.random() - 0.5) * 0.5;
+                        item.dataset.change = newChange.toFixed(1);
+
+                        changeElement.textContent = `${newChange >= 0 ? '+' : ''}${newChange.toFixed(1)}%`;
+                        changeElement.className = `text-sm ${newChange >= 0 ? 'text-success-600' : 'text-error-600'}`;
+                    }
+                });
+
+                updateTradingForm();
+                updateUI();
+                updatePortfolioDisplay();
+                drawPriceChart();
+                drawAllocationChart();
+            }, 5000); // Update every 5 seconds
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+
+        function formatQuantity(quantity) {
+            // Format quantity to show appropriate decimal places
+            if (quantity % 1 === 0) {
+                return quantity.toString();
+            } else if (quantity < 0.01) {
+                return quantity.toFixed(8).replace(/\.?0+$/, '');
+            } else if (quantity < 0.1) {
+                return quantity.toFixed(6).replace(/\.?0+$/, '');
+            } else if (quantity < 1) {
+                return quantity.toFixed(4).replace(/\.?0+$/, '');
+            } else {
+                return quantity.toFixed(2).replace(/\.?0+$/, '');
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm fade-in ${type === 'success' ? 'bg-success-50 border border-success-200 text-success-700' :
+                type === 'error' ? 'bg-error-50 border border-error-200 text-error-700' :
+                    'bg-primary-50 border border-primary-200 text-primary-700'
+                }`;
+
+            notification.innerHTML = `
+            <div class="flex items-center">
+                <i class="fas ${type === 'success' ? 'fa-check-circle' :
+                    type === 'error' ? 'fa-exclamation-circle' :
+                        'fa-info-circle'
+                } mr-2"></i>
+                <span class="font-medium">${message}</span>
+            </div>
+        `;
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        function saveGameData(userId) {
+            const gameData = {
+                virtualBalance,
+                portfolio,
+                currentLevel,
+                xp,
+                maxXp,
+                tradingHistory,
+                lastSaved: new Date().toISOString()
+            };
+            localStorage.setItem(`investifyGameData_${userId}`, JSON.stringify(gameData));
+        }
+
+        function logout() {
+            // Only remove user session, keep game data
+            localStorage.removeItem('userSession');
+            window.location.href = 'authentication_portal.html';
+        }
+
+        // Auto-save every minute
+        setInterval(() => {
+            const userSession = localStorage.getItem('userSession');
+            const userData = userSession ? JSON.parse(userSession) : { id: 'default' };
+            const userId = userData.id || 'default';
+            saveGameData(userId);
+        }, 60000);
+
+        function showResetConfirmation() {
+            const modal = document.createElement('div');
+            modal.id = 'resetConfirmationModal'; // Tambahkan ID
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+        <div class="morphic-card max-w-md w-full p-6 spring-bounce">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-warning-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-exclamation-triangle text-warning-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Reset Game?</h3>
+                <p class="text-gray-600">Semua progress dan portfolio akan dihapus. Tidak bisa dikembalikan!</p>
+            </div>
+
+            <div class="bg-warning-50 border border-warning-200 rounded-lg p-3 mb-6">
+                <div class="flex items-start">
+                    <i class="fas fa-info-circle text-warning-600 mt-0.5 mr-2"></i>
+                    <p class="text-sm text-warning-700">
+                        <strong>Perhatian:</strong> Saldo virtual akan kembali ke Rp 1.000.000 dan semua achievement akan direset.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex space-x-3">
+                <button id="cancelReset" 
+                    class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+                    Batal
+                </button>
+                <button id="confirmReset" 
+                    class="flex-1 bg-warning-500 hover:bg-warning-600 text-black py-2 px-4 rounded-lg font-medium transition-colors micro-celebrate">
+                    Reset Game
+                </button>
+            </div>
+        </div>
+    `;
+            document.body.appendChild(modal);
+
+            // Tambahkan event listeners untuk tombol
+            document.getElementById('cancelReset').addEventListener('click', function () {
+                document.getElementById('resetConfirmationModal').remove();
+            });
+
+            document.getElementById('confirmReset').addEventListener('click', function () {
+                resetGame();
+                document.getElementById('resetConfirmationModal').remove(); // Hapus modal setelah konfirmasi
+            });
+
+            // Close modal on backdrop click
+            modal.addEventListener('click', function (e) {
+                if (e.target === this) {
+                    this.remove();
+                }
+            });
+        }
+
+        function resetGame() {
+            const userSession = localStorage.getItem('userSession');
+            const userData = userSession ? JSON.parse(userSession) : { id: 'default' };
+            const userId = userData.id || 'default';
+
+            // Reset semua data game
+            virtualBalance = 1000000;
+            portfolio = {};
+            currentLevel = 1;
+            xp = 0;
+            maxXp = 100;
+            tradingHistory = [];
+
+            // Simpan data reset
+            saveGameData(userId);
+
+            // Update UI
+            updateUI();
+            updatePortfolioDisplay();
+            drawAllocationChart();
+
+            // Show success notification
+            showNotification('🎮 Game berhasil direset! Mulai petualangan investasi baru!', 'success');
+        }
+    </script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+
+</html>

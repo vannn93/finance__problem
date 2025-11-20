@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroBudget Tracker - GenZ Finance Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script type="module" async
+        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fgenzfinan7345back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.10"></script>
+    <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+
+    <style>
+        /* Animasi tambahan */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .slide-up {
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .spring-bounce {
+            animation: springBounce 0.8s ease-out;
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes springBounce {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+
+            70% {
+                transform: scale(0.9);
+                opacity: 0.9;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 5px rgba(59, 130, 246, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+            }
+
+            100% {
+                box-shadow: 0 0 5px rgba(59, 130, 246, 0.4);
+            }
+        }
+
+        /* Micro celebration effect */
+        .micro-celebrate {
+            transition: all 0.2s ease;
+        }
+
+        .micro-celebrate:active {
+            transform: scale(0.95);
+        }
+
+        /* Morphic card effect */
+        .morphic-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .morphic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Text gradient */
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-10 left-10 w-32 h-32 bg-primary-300 rounded-full blur-xl"></div>
+        <div class="absolute top-40 right-20 w-24 h-24 bg-secondary-300 rounded-full blur-lg"></div>
+        <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-accent-300 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-40 right-10 w-28 h-28 bg-primary-400 rounded-full blur-lg"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="relative bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-wallet text-white text-lg"></i>
+                        </div>
+                        <span class="ml-3 text-xl font-bold text-gradient">GenZ Finance Hub</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="main_dashboard.html"
+                            class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <i class="fas fa-home mr-2"></i>Dashboard
+                        </a>
+                        <a href="money_mirror_analysis.html"
+                            class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <i class="fas fa-mirror mr-2"></i>MoneyMirror
+                        </a>
+                        <a href="zero_budget_tracker.html"
+                            class="bg-primary-100 text-primary-700 px-3 py-2 rounded-md text-sm font-medium">
+                            <i class="fas fa-calculator mr-2"></i>ZeroBudget
+                        </a>
+                        <a href="subs_tracker_manager.html"
+                            class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <i class="fas fa-sync mr-2"></i>SubsTracker
+                        </a>
+                        <a href="investify_zero_game.html"
+                            class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <i class="fas fa-chart-line mr-2"></i>InvestifyZero
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-primary-600 p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- User Profile -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative">
+                        <button
+                            class="flex items-center space-x-2 text-gray-600 hover:text-primary-600 transition-colors">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1a5df2297-1763292384104.png"
+                                alt="User profile picture" class="w-8 h-8 rounded-full object-cover"
+                                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                            <span class="text-sm font-medium" id="userName">User</span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="main_dashboard.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 text-base font-medium">
+                    <i class="fas fa-home mr-2"></i>Dashboard
+                </a>
+                <a href="money_mirror_analysis.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 text-base font-medium">
+                    <i class="fas fa-mirror mr-2"></i>MoneyMirror
+                </a>
+                <a href="zero_budget_tracker.html"
+                    class="bg-primary-100 text-primary-700 block px-3 py-2 text-base font-medium rounded-md">
+                    <i class="fas fa-calculator mr-2"></i>ZeroBudget
+                </a>
+                <a href="subs_tracker_manager.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 text-base font-medium">
+                    <i class="fas fa-sync mr-2"></i>SubsTracker
+                </a>
+                <a href="investify_zero_game.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 text-base font-medium">
+                    <i class="fas fa-chart-line mr-2"></i>InvestifyZero
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header -->
+        <div class="mb-8 fade-in">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-gradient mb-2">ZeroBudget Tracker</h1>
+                    <p class="text-text-secondary">Kelola budget harian dengan adaptif dan cerdas! 💰</p>
+                </div>
+                <div class="hidden sm:flex items-center space-x-4">
+                    <div class="text-right">
+                        <p class="text-sm text-text-secondary">Sisa Budget Bulan Ini</p>
+                        <p class="text-2xl font-bold text-primary-600" id="monthlyBudgetRemaining">Rp 0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Budget Overview Section -->
+        <section class="mb-8 slide-up">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Daily Budget Status -->
+                <div class="morphic-card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-semibold text-text-primary">Budget Hari Ini</h2>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm text-text-secondary" id="currentDate">19 Nov 2025</span>
+                            <div id="budgetModeIndicator"
+                                class="px-2 py-1 bg-primary-100 text-primary-700 text-xs font-medium rounded-full">
+                                Mode Normal
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Budget Progress -->
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-medium text-text-secondary">Terpakai</span>
+                            <span class="text-sm font-medium text-text-primary" id="spentAmount">Rp 0 / Rp 0</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                            <div id="budgetProgressBar"
+                                class="h-3 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full transition-all duration-500"
+                                style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between mt-2">
+                            <span class="text-xs text-success-600" id="remainingAmount">Sisa: Rp 0</span>
+                            <span class="text-xs text-text-secondary" id="budgetPercentage">0%</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="text-center">
+                            <div
+                                class="w-12 h-12 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-check text-success-600"></i>
+                            </div>
+                            <p class="text-xs text-text-secondary">Hari Hemat</p>
+                            <p class="text-sm font-semibold text-text-primary" id="savingDays">0</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-12 h-12 bg-warning-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-exclamation text-warning-600"></i>
+                            </div>
+                            <p class="text-xs text-text-secondary">Over Budget</p>
+                            <p class="text-sm font-semibold text-text-primary" id="overBudgetDays">0</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-target text-primary-600"></i>
+                            </div>
+                            <p class="text-xs text-text-secondary">Target</p>
+                            <p class="text-sm font-semibold text-text-primary" id="targetAchievement">0%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mode Selection -->
+                <div class="morphic-card p-6">
+                    <h2 class="text-xl font-semibold text-text-primary mb-4">Mode Pengeluaran</h2>
+
+                    <!-- Mode Toggle -->
+                    <div class="flex bg-gray-100 rounded-xl p-1 mb-6">
+                        <button id="normalModeBtn"
+                            class="flex-1 py-3 px-4 text-sm font-medium rounded-lg transition-all duration-200 bg-white text-primary-600 shadow-sm micro-celebrate">
+                            <i class="fas fa-balance-scale mr-2"></i>Mode Normal
+                        </button>
+                        <button id="iritModeBtn"
+                            class="flex-1 py-3 px-4 text-sm font-medium rounded-lg transition-all duration-200 text-gray-600 hover:text-primary-600 micro-celebrate">
+                            <i class="fas fa-piggy-bank mr-2"></i>Mode Irit
+                        </button>
+                    </div>
+
+                    <!-- Mode Description -->
+                    <div id="modeDescription" class="mb-6">
+                        <div class="flex items-start space-x-3">
+                            <div
+                                class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-balance-scale text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-text-primary mb-1">Mode Normal Aktif</h3>
+                                <p class="text-sm text-text-secondary">Budget harian standar untuk keseimbangan antara
+                                    kebutuhan dan keinginan. Tetap bijak dalam pengeluaran!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Budget Adjustment -->
+                    <div class="border-t border-gray-200 pt-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm font-medium text-text-secondary">Budget Harian</span>
+                            <button id="adjustBudgetBtn"
+                                class="text-primary-600 hover:text-primary-700 text-sm font-medium micro-celebrate">
+                                <i class="fas fa-edit mr-1"></i>Sesuaikan
+                            </button>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button id="decreaseBudget"
+                                class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors micro-celebrate">
+                                <i class="fas fa-minus text-gray-600 text-xs"></i>
+                            </button>
+                            <span class="text-lg font-semibold text-text-primary" id="dailyBudgetAmount">Rp 0</span>
+                            <button id="increaseBudget"
+                                class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors micro-celebrate">
+                                <i class="fas fa-plus text-gray-600 text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Monthly Budget Input -->
+                    <div class="border-t border-gray-200 pt-4 mt-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm font-medium text-text-secondary">Budget Bulanan</span>
+                            <button id="setMonthlyBudgetBtn"
+                                class="text-primary-600 hover:text-primary-700 text-sm font-medium micro-celebrate">
+                                <i class="fas fa-calendar-plus mr-1"></i>Atur
+                            </button>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm text-text-secondary flex-1">Total:</span>
+                            <span class="text-lg font-semibold text-text-primary" id="monthlyBudgetTotal">Rp 0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expense Logging Section -->
+        <section class="mb-8 spring-bounce">
+            <div class="morphic-card p-6">
+                <h2 class="text-xl font-semibold text-text-primary mb-6">Catat Pengeluaran</h2>
+
+                <form id="expenseForm" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <!-- Amount Input -->
+                        <div class="relative">
+                            <input type="text" id="expenseAmount" class="input-field w-full peer pl-12" placeholder="0"
+                                required>
+                            <label for="expenseAmount"
+                                class="absolute text-sm text-gray-500 duration-200 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-primary-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-10">
+                                Jumlah
+                            </label>
+                            <span
+                                class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm">Rp</span>
+                        </div>
+
+                        <!-- Category Selection -->
+                        <div class="relative">
+                            <select id="expenseCategory" class="input-field w-full peer" required>
+                                <option value="">Pilih kategori</option>
+                                <option value="food">🍔 Makanan & Minuman</option>
+                                <option value="transport">🚗 Transportasi</option>
+                                <option value="shopping">🛍️ Belanja</option>
+                                <option value="entertainment">🎬 Hiburan</option>
+                                <option value="health">💊 Kesehatan</option>
+                                <option value="education">📚 Pendidikan</option>
+                                <option value="bills">💡 Tagihan</option>
+                                <option value="other">📦 Lainnya</option>
+                            </select>
+                            <label for="expenseCategory"
+                                class="absolute text-sm text-gray-500 duration-200 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-primary-600 left-1">
+                                Kategori
+                            </label>
+                        </div>
+
+                        <!-- Notes -->
+                        <div class="relative">
+                            <input type="text" id="expenseNotes" class="input-field w-full peer" placeholder=" ">
+                            <label for="expenseNotes"
+                                class="absolute text-sm text-gray-500 duration-200 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-primary-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+                                Catatan (opsional)
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn-primary micro-celebrate h-12">
+                            <i class="fas fa-plus mr-2"></i>Tambah
+                        </button>
+                    </div>
+
+                    <!-- Budget Impact Preview -->
+                    <div id="budgetImpact" class="hidden mt-4 p-4 bg-primary-50 border border-primary-200 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-info-circle text-primary-600"></i>
+                                <span class="text-sm font-medium text-primary-700">Dampak Budget:</span>
+                            </div>
+                            <span id="impactAmount" class="text-sm font-semibold text-primary-700"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Today's Expenses Timeline -->
+        <section class="mb-8 fade-in">
+            <div class="morphic-card p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-semibold text-text-primary">Pengeluaran Hari Ini</h2>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm text-text-secondary">Total:</span>
+                        <span class="text-lg font-semibold text-primary-600" id="todayTotal">Rp 0</span>
+                    </div>
+                </div>
+
+                <!-- Expense Timeline -->
+                <div id="expenseTimeline" class="space-y-4">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyExpenses" class="text-center py-12">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-receipt text-gray-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-text-primary mb-2">Belum ada pengeluaran hari ini</h3>
+                    <p class="text-text-secondary">Mulai catat pengeluaran pertama kamu!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spending Pattern Analysis -->
+        <section class="mb-8 slide-up">
+            <div class="morphic-card p-6">
+                <h2 class="text-xl font-semibold text-text-primary mb-6">Analisis Pola Pengeluaran</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Weekly Pattern -->
+                    <div>
+                        <h3 class="font-medium text-text-primary mb-4">Pola Mingguan</h3>
+                        <div id="weeklyPattern" class="space-y-3">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Category Breakdown -->
+                    <div>
+                        <h3 class="font-medium text-text-primary mb-4">Kategori Terbesar</h3>
+                        <div id="categoryBreakdown" class="space-y-3">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insights -->
+                <div class="mt-6 p-4 bg-gradient-to-r from-primary-50 to-secondary-50 rounded-lg">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-lightbulb text-primary-600 text-sm"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-text-primary mb-1">💡 Insight Cerdas</h4>
+                            <p class="text-sm text-text-secondary" id="smartInsight">Mulai catat pengeluaran untuk
+                                mendapatkan insight yang berguna!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notification System -->
+        <div id="notificationContainer" class="fixed top-20 right-4 z-50 space-y-2"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white/80 backdrop-blur-md border-t border-gray-200 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                    <div
+                        class="w-8 h-8 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-wallet text-white text-sm"></i>
+                    </div>
+                    <span class="text-sm font-medium text-text-primary">GenZ Finance Hub</span>
+                </div>
+                <p class="text-sm text-text-secondary text-center md:text-left">
+                    © 2025 GenZ Finance Hub. Semua hak dilindungi.
+                    <span class="mx-2">|</span>
+                    <a href="javascript:void(0)" class="text-primary-600 hover:text-primary-700">Bantuan</a>
+                    <span class="mx-2">|</span>
+                    <a href="javascript:void(0)" class="text-primary-600 hover:text-primary-700">Privasi</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data management
+        let currentUserId = null;
+
+        function getUserDataKey() {
+            return `zeroBudgetData_${currentUserId}`;
+        }
+
+        function getDefaultUserData() {
+            return {
+                monthlyBudget: 0,
+                dailyBudget: 0,
+                currentMode: 'normal',
+                expenses: [],
+                history: {},
+                stats: {
+                    savingDays: 0,
+                    overBudgetDays: 0,
+                    targetAchievement: 0
+                }
+            };
+        }
+
+        function loadUserData() {
+            const userSession = localStorage.getItem('userSession');
+            if (userSession) {
+                const session = JSON.parse(userSession);
+                currentUserId = session.userId;
+                document.getElementById('userName').textContent = session.username || 'User';
+            }
+
+            const userDataKey = getUserDataKey();
+            let userData = localStorage.getItem(userDataKey);
+
+            if (!userData) {
+                userData = getDefaultUserData();
+                localStorage.setItem(userDataKey, JSON.stringify(userData));
+            } else {
+                userData = JSON.parse(userData);
+            }
+
+            return userData;
+        }
+
+        function saveUserData(userData) {
+            const userDataKey = getUserDataKey();
+            localStorage.setItem(userDataKey, JSON.stringify(userData));
+        }
+
+        // Budget tracking variables
+        let userData = {};
+        let dailyBudget = 0;
+        let monthlyBudget = 0;
+        let spentAmount = 0;
+        let currentMode = 'normal';
+        let expenses = [];
+
+        // Format currency
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(amount);
+        }
+
+        // Update current date
+        function updateCurrentDate() {
+            const now = new Date();
+            const options = { day: 'numeric', month: 'short', year: 'numeric' };
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('id-ID', options);
+        }
+
+        // Update budget display
+        function updateBudgetDisplay() {
+            const remaining = dailyBudget - spentAmount;
+            const percentage = dailyBudget > 0 ? Math.round((spentAmount / dailyBudget) * 100) : 0;
+
+            document.getElementById('spentAmount').textContent = `${formatCurrency(spentAmount)} / ${formatCurrency(dailyBudget)}`;
+            document.getElementById('remainingAmount').textContent = `Sisa: ${formatCurrency(remaining)}`;
+            document.getElementById('budgetPercentage').textContent = `${percentage}%`;
+            document.getElementById('dailyBudgetAmount').textContent = formatCurrency(dailyBudget);
+            document.getElementById('todayTotal').textContent = formatCurrency(spentAmount);
+            document.getElementById('monthlyBudgetRemaining').textContent = formatCurrency(monthlyBudget);
+            document.getElementById('monthlyBudgetTotal').textContent = formatCurrency(monthlyBudget);
+
+            // Update progress bar
+            const progressBar = document.getElementById('budgetProgressBar');
+            progressBar.style.width = `${Math.min(percentage, 100)}%`;
+
+            // Change color based on percentage
+            if (percentage > 100) {
+                progressBar.className = 'h-3 bg-gradient-to-r from-error-500 to-error-600 rounded-full transition-all duration-500';
+                document.getElementById('remainingAmount').className = 'text-xs text-error-600';
+                document.getElementById('remainingAmount').textContent = `Over: ${formatCurrency(Math.abs(remaining))}`;
+            } else if (percentage > 80) {
+                progressBar.className = 'h-3 bg-gradient-to-r from-warning-500 to-warning-600 rounded-full transition-all duration-500';
+                document.getElementById('remainingAmount').className = 'text-xs text-warning-600';
+            } else {
+                progressBar.className = 'h-3 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full transition-all duration-500';
+                document.getElementById('remainingAmount').className = 'text-xs text-success-600';
+            }
+
+            // Update stats
+            document.getElementById('savingDays').textContent = userData.stats.savingDays || 0;
+            document.getElementById('overBudgetDays').textContent = userData.stats.overBudgetDays || 0;
+            document.getElementById('targetAchievement').textContent = `${userData.stats.targetAchievement || 0}%`;
+        }
+
+        // Mode switching
+        function switchMode(mode) {
+            currentMode = mode;
+            const normalBtn = document.getElementById('normalModeBtn');
+            const iritBtn = document.getElementById('iritModeBtn');
+            const modeIndicator = document.getElementById('budgetModeIndicator');
+            const modeDescription = document.getElementById('modeDescription');
+
+            if (mode === 'normal') {
+                normalBtn.className = 'flex-1 py-3 px-4 text-sm font-medium rounded-lg transition-all duration-200 bg-white text-primary-600 shadow-sm micro-celebrate';
+                iritBtn.className = 'flex-1 py-3 px-4 text-sm font-medium rounded-lg transition-all duration-200 text-gray-600 hover:text-primary-600 micro-celebrate';
+                modeIndicator.textContent = 'Mode Normal';
+                modeIndicator.className = 'px-2 py-1 bg-primary-100 text-primary-700 text-xs font-medium rounded-full';
+
+                modeDescription.innerHTML = `
+                    <div class="flex items-start space-x-3">
+                        <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-balance-scale text-primary-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-text-primary mb-1">Mode Normal Aktif</h3>
+                            <p class="text-sm text-text-secondary">Budget harian standar untuk keseimbangan antara kebutuhan dan keinginan. Tetap bijak dalam pengeluaran!</p>
+                        </div>
+                    </div>
+                `;
+
+                // Reset to original daily budget
+                dailyBudget = userData.dailyBudget || 0;
+            } else {
+                iritBtn.className = 'flex-1 py-3 px-4 text-sm font-medium rounded-lg transition-all duration-200 bg-white text-secondary-600 shadow-sm micro-celebrate';
+                normalBtn.className = 'flex-1 py-3 px-4 text-sm font-medium rounded-lg transition-all duration-200 text-gray-600 hover:text-primary-600 micro-celebrate';
+                modeIndicator.textContent = 'Mode Irit';
+                modeIndicator.className = 'px-2 py-1 bg-secondary-100 text-secondary-700 text-xs font-medium rounded-full';
+
+                modeDescription.innerHTML = `
+                    <div class="flex items-start space-x-3">
+                        <div class="w-10 h-10 bg-secondary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-piggy-bank text-secondary-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-text-primary mb-1">Mode Irit Aktif</h3>
+                            <p class="text-sm text-text-secondary">Budget harian dikurangi 20% untuk tabungan darurat. Fokus pada kebutuhan pokok dan hindari pembelian impulsif.</p>
+                        </div>
+                    </div>
+                `;
+
+                // Adjust budget for irit mode
+                dailyBudget = Math.round((userData.dailyBudget || 0) * 0.8);
+            }
+
+            userData.currentMode = mode;
+            saveUserData(userData);
+            updateBudgetDisplay();
+        }
+
+        // Set monthly budget
+        function setMonthlyBudget() {
+            const amount = prompt('Masukkan total budget bulanan Anda:');
+            if (amount && !isNaN(amount)) {
+                monthlyBudget = parseInt(amount);
+                userData.monthlyBudget = monthlyBudget;
+
+                // Set daily budget as 1/30 of monthly budget
+                dailyBudget = Math.round(monthlyBudget / 30);
+                userData.dailyBudget = dailyBudget;
+
+                saveUserData(userData);
+                updateBudgetDisplay();
+                showNotification('Budget bulanan berhasil diatur!', 'success');
+            }
+        }
+
+        // Budget adjustment
+        document.getElementById('decreaseBudget').addEventListener('click', function () {
+            if (dailyBudget > 50000) {
+                dailyBudget -= 25000;
+                userData.dailyBudget = dailyBudget;
+                saveUserData(userData);
+                updateBudgetDisplay();
+                showNotification('Budget harian dikurangi!', 'info');
+            }
+        });
+
+        document.getElementById('increaseBudget').addEventListener('click', function () {
+            if (dailyBudget < 500000) {
+                dailyBudget += 25000;
+                userData.dailyBudget = dailyBudget;
+                saveUserData(userData);
+                updateBudgetDisplay();
+                showNotification('Budget harian ditambah!', 'info');
+            }
+        });
+
+        // Expense form handling
+        document.getElementById('expenseAmount').addEventListener('input', function () {
+            let value = this.value.replace(/[^\d]/g, '');
+            if (value) {
+                const amount = parseInt(value);
+                const impact = document.getElementById('budgetImpact');
+                const impactAmount = document.getElementById('impactAmount');
+
+                impact.classList.remove('hidden');
+                impactAmount.textContent = `Sisa budget: ${formatCurrency(dailyBudget - spentAmount - amount)}`;
+
+                if (spentAmount + amount > dailyBudget) {
+                    impact.className = 'mt-4 p-4 bg-error-50 border border-error-200 rounded-lg';
+                    impactAmount.className = 'text-sm font-semibold text-error-700';
+                } else if (spentAmount + amount > dailyBudget * 0.8) {
+                    impact.className = 'mt-4 p-4 bg-warning-50 border border-warning-200 rounded-lg';
+                    impactAmount.className = 'text-sm font-semibold text-warning-700';
+                } else {
+                    impact.className = 'mt-4 p-4 bg-primary-50 border border-primary-200 rounded-lg';
+                    impactAmount.className = 'text-sm font-semibold text-primary-700';
+                }
+
+                // Format the input
+                this.value = new Intl.NumberFormat('id-ID').format(amount);
+            } else {
+                document.getElementById('budgetImpact').classList.add('hidden');
+            }
+        });
+
+        // Expense form submission
+        document.getElementById('expenseForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const amount = parseInt(document.getElementById('expenseAmount').value.replace(/[^\d]/g, ''));
+            const category = document.getElementById('expenseCategory').value;
+            const notes = document.getElementById('expenseNotes').value || 'Tidak ada catatan';
+
+            if (!amount || !category) {
+                showNotification('Mohon lengkapi jumlah dan kategori!', 'error');
+                return;
+            }
+
+            // Add expense
+            const newExpense = {
+                id: Date.now(),
+                amount: amount,
+                category: category,
+                notes: notes,
+                time: new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }),
+                emoji: getCategoryEmoji(category),
+                date: new Date().toISOString().split('T')[0]
+            };
+
+            expenses.unshift(newExpense);
+            spentAmount += amount;
+
+            // Update user data
+            userData.expenses = expenses;
+            userData.monthlyBudget = monthlyBudget;
+            userData.dailyBudget = dailyBudget;
+
+            // Update monthly budget
+            monthlyBudget -= amount;
+
+            saveUserData(userData);
+
+            // Update displays
+            updateBudgetDisplay();
+            renderExpenses();
+            updateAnalytics();
+            updateSmartInsight();
+
+            // Reset form
+            this.reset();
+            document.getElementById('budgetImpact').classList.add('hidden');
+
+            // Show notification
+            if (spentAmount > dailyBudget) {
+                showNotification('⚠️ Budget harian terlampaui!', 'error');
+            } else if (spentAmount > dailyBudget * 0.8) {
+                showNotification('⚡ Hampir mencapai limit budget!', 'warning');
+            } else {
+                showNotification('✅ Pengeluaran berhasil dicatat!', 'success');
+            }
+        });
+
+        // Get category emoji
+        function getCategoryEmoji(category) {
+            const emojis = {
+                food: '🍔',
+                transport: '🚗',
+                shopping: '🛍️',
+                entertainment: '🎬',
+                health: '💊',
+                education: '📚',
+                bills: '💡',
+                other: '📦'
+            };
+            return emojis[category] || '📦';
+        }
+
+        // Render expenses
+        function renderExpenses() {
+            const timeline = document.getElementById('expenseTimeline');
+            const emptyState = document.getElementById('emptyExpenses');
+
+            if (expenses.length === 0) {
+                timeline.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            timeline.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+
+            timeline.innerHTML = expenses.map(expense => `
+                <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors fade-in">
+                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span class="text-lg">${expense.emoji}</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-medium text-text-primary">${expense.notes}</h3>
+                            <span class="text-lg font-semibold text-text-primary">${formatCurrency(expense.amount)}</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-1">
+                            <p class="text-sm text-text-secondary">${getCategoryName(expense.category)}</p>
+                            <span class="text-xs text-text-secondary">${expense.time}</span>
+                        </div>
+                    </div>
+                    <button class="text-gray-400 hover:text-primary-600 transition-colors micro-celebrate" onclick="editExpense(${expense.id})">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Get category name
+        function getCategoryName(category) {
+            const names = {
+                food: 'Makanan & Minuman',
+                transport: 'Transportasi',
+                shopping: 'Belanja',
+                entertainment: 'Hiburan',
+                health: 'Kesehatan',
+                education: 'Pendidikan',
+                bills: 'Tagihan',
+                other: 'Lainnya'
+            };
+            return names[category] || 'Lainnya';
+        }
+
+        // Edit expense function
+        function editExpense(id) {
+            const expense = expenses.find(e => e.id === id);
+            if (expense) {
+                document.getElementById('expenseAmount').value = new Intl.NumberFormat('id-ID').format(expense.amount);
+                document.getElementById('expenseCategory').value = expense.category;
+                document.getElementById('expenseNotes').value = expense.notes;
+
+                // Remove from expenses and update totals
+                expenses = expenses.filter(e => e.id !== id);
+                spentAmount -= expense.amount;
+                monthlyBudget += expense.amount;
+
+                userData.expenses = expenses;
+                saveUserData(userData);
+
+                updateBudgetDisplay();
+                renderExpenses();
+                updateAnalytics();
+
+                showNotification('Pengeluaran siap diedit!', 'info');
+            }
+        }
+
+        // Update analytics
+        function updateAnalytics() {
+            updateWeeklyPattern();
+            updateCategoryBreakdown();
+        }
+
+        // Update weekly pattern
+        function updateWeeklyPattern() {
+            const weeklyPattern = document.getElementById('weeklyPattern');
+            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const today = new Date().getDay();
+
+            weeklyPattern.innerHTML = days.map((day, index) => {
+                const dayExpenses = expenses.filter(expense => {
+                    const expenseDate = new Date(expense.date);
+                    return expenseDate.getDay() === index;
+                });
+
+                const dayTotal = dayExpenses.reduce((sum, expense) => sum + expense.amount, 0);
+                const maxBudget = dailyBudget;
+                const percentage = maxBudget > 0 ? Math.min(100, (dayTotal / maxBudget) * 100) : 0;
+
+                // Only show days that have passed or current day
+                if (index > today) {
+                    return `
+                        <div class="flex items-center justify-between opacity-50">
+                            <span class="text-sm text-text-secondary">${day}</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-20 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-gray-400 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                                <span class="text-sm font-medium text-text-primary">-</span>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-text-secondary">${day}</span>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-20 bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary-500 h-2 rounded-full" style="width: ${percentage}%"></div>
+                            </div>
+                            <span class="text-sm font-medium text-text-primary">${formatCurrency(dayTotal)}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Update category breakdown
+        function updateCategoryBreakdown() {
+            const categoryBreakdown = document.getElementById('categoryBreakdown');
+            const categoryTotals = {};
+            let totalSpent = 0;
+
+            expenses.forEach(expense => {
+                if (!categoryTotals[expense.category]) {
+                    categoryTotals[expense.category] = 0;
+                }
+                categoryTotals[expense.category] += expense.amount;
+                totalSpent += expense.amount;
+            });
+
+            const categories = Object.entries(categoryTotals)
+                .sort(([, a], [, b]) => b - a)
+                .slice(0, 3);
+
+            if (categories.length === 0) {
+                categoryBreakdown.innerHTML = `
+                    <div class="text-center py-4 text-text-secondary text-sm">
+                        Belum ada data kategori
+                    </div>
+                `;
+                return;
+            }
+
+            categoryBreakdown.innerHTML = categories.map(([category, amount]) => {
+                const percentage = totalSpent > 0 ? Math.round((amount / totalSpent) * 100) : 0;
+                const colorClass = getCategoryColor(category);
+
+                return `
+                    <div class="flex items-center space-x-3 fade-in">
+                        <div class="w-8 h-8 ${colorClass} rounded-full flex items-center justify-center">
+                            <span class="text-sm">${getCategoryEmoji(category)}</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium text-text-primary">${getCategoryName(category)}</span>
+                                <span class="text-sm text-text-secondary">${percentage}%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                                <div class="bg-primary-500 h-1.5 rounded-full" style="width: ${percentage}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Get category color
+        function getCategoryColor(category) {
+            const colors = {
+                food: 'bg-orange-100',
+                transport: 'bg-blue-100',
+                shopping: 'bg-purple-100',
+                entertainment: 'bg-pink-100',
+                health: 'bg-green-100',
+                education: 'bg-indigo-100',
+                bills: 'bg-yellow-100',
+                other: 'bg-gray-100'
+            };
+            return colors[category] || 'bg-gray-100';
+        }
+
+        // Update smart insight
+        function updateSmartInsight() {
+            const insightElement = document.getElementById('smartInsight');
+
+            if (expenses.length === 0) {
+                insightElement.textContent = 'Mulai catat pengeluaran untuk mendapatkan insight yang berguna!';
+                return;
+            }
+
+            const foodExpenses = expenses.filter(e => e.category === 'food').reduce((sum, e) => sum + e.amount, 0);
+            const totalExpenses = expenses.reduce((sum, e) => sum + e.amount, 0);
+            const foodPercentage = totalExpenses > 0 ? (foodExpenses / totalExpenses) * 100 : 0;
+
+            if (foodPercentage > 50) {
+                insightElement.textContent = `Pengeluaran makanan kamu ${Math.round(foodPercentage)}% dari total! Coba masak di rumah 2x seminggu untuk hemat hingga Rp 200.000/bulan.`;
+            } else if (spentAmount > dailyBudget * 0.8) {
+                insightElement.textContent = 'Kamu hampir mencapai limit budget harian! Pertimbangkan untuk menunda pengeluaran tidak penting.';
+            } else if (monthlyBudget < 1000000) {
+                insightElement.textContent = 'Budget bulanan kamu cukup ketat. Pertimbangkan untuk mencari sumber pendapatan tambahan.';
+            } else {
+                insightElement.textContent = 'Pengeluaran kamu terkendali dengan baik! Pertahankan kebiasaan baik ini.';
+            }
+        }
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            const container = document.getElementById('notificationContainer');
+            const notification = document.createElement('div');
+
+            const colors = {
+                success: 'bg-success-50 border-success-200 text-success-700',
+                error: 'bg-error-50 border-error-200 text-error-700',
+                warning: 'bg-warning-50 border-warning-200 text-warning-700',
+                info: 'bg-primary-50 border-primary-200 text-primary-700'
+            };
+
+            notification.className = `p-4 border rounded-lg shadow-md ${colors[type]} fade-in`;
+            notification.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <span class="text-sm font-medium">${message}</span>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-gray-400 hover:text-gray-600 micro-celebrate">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+
+            container.appendChild(notification);
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-button').addEventListener('click', function () {
+                const mobileMenu = document.getElementById('mobile-menu');
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Load user data
+            userData = loadUserData();
+            monthlyBudget = userData.monthlyBudget || 0;
+            dailyBudget = userData.dailyBudget || 0;
+            currentMode = userData.currentMode || 'normal';
+            expenses = userData.expenses || [];
+
+            // Calculate spent amount for today
+            const today = new Date().toISOString().split('T')[0];
+            spentAmount = expenses
+                .filter(expense => expense.date === today)
+                .reduce((sum, expense) => sum + expense.amount, 0);
+
+            // Event listeners for mode switching
+            document.getElementById('normalModeBtn').addEventListener('click', () => switchMode('normal'));
+            document.getElementById('iritModeBtn').addEventListener('click', () => switchMode('irit'));
+
+            // Set monthly budget button
+            document.getElementById('setMonthlyBudgetBtn').addEventListener('click', setMonthlyBudget);
+
+            // Initialize displays
+            updateCurrentDate();
+            updateBudgetDisplay();
+            renderExpenses();
+            updateAnalytics();
+            updateSmartInsight();
+
+            // Set current mode
+            switchMode(currentMode);
+
+            // Check for overspending on load
+            if (spentAmount > dailyBudget) {
+                showNotification('⚠️ Kamu sudah over budget hari ini!', 'error');
+            }
+        });
+    </script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+
+</html>
