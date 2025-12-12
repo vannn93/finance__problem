@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SplitMate - GenZ Finance Hub</title>
     <link rel="stylesheet" href="../css/main.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -440,6 +441,454 @@
             .modal-content {
                 width: 95%;
                 padding: 16px;
+            }
+        }
+
+                @media (max-width: 768px) {
+
+            /* Main layout adjustments */
+            .max-w-7xl {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .py-8 {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+
+            /* Navigation improvements */
+            .space-x-4>*+* {
+                margin-left: 0.5rem;
+            }
+
+            /* Stats grid - 2 columns */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .stat-card {
+                padding: 1rem;
+            }
+
+            .stat-value {
+                font-size: 1.5rem;
+            }
+
+            /* Quick actions - 2 columns */
+            .quick-actions {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .quick-action-card {
+                padding: 1rem;
+            }
+
+            .quick-action-icon {
+                margin-bottom: 0.5rem;
+            }
+
+            .quick-action-title {
+                font-size: 0.875rem;
+                margin-bottom: 0.25rem;
+            }
+
+            .quick-action-desc {
+                font-size: 0.75rem;
+            }
+
+            /* Main content area - single column */
+            .grid-cols-1 {
+                grid-template-columns: 1fr !important;
+            }
+
+            .xl\:grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .xl\:col-span-1 {
+                grid-column: span 1;
+            }
+
+            .xl\:col-span-3 {
+                grid-column: span 1;
+            }
+
+            /* Sidebar spacing */
+            .space-y-6>*+* {
+                margin-top: 1rem;
+            }
+
+            /* Create bill section */
+            #createBillSection {
+                padding: 1rem;
+            }
+
+            #createBillForm .grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            /* People tags improvement */
+            #peopleTags {
+                max-height: 120px;
+                overflow-y: auto;
+            }
+
+            .people-tag {
+                font-size: 0.75rem;
+                padding: 0.375rem 0.75rem;
+            }
+
+            /* Bills list improvements */
+            .bill-card {
+                padding: 1rem;
+            }
+
+            .bill-card .flex.items-center.space-x-3 {
+                align-items: flex-start;
+            }
+
+            .bill-card .text-right {
+                text-align: left;
+                margin-top: 0.5rem;
+            }
+
+            /* Balance overview - single column */
+            .md\:grid-cols-2 {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            /* Payment buttons adjustment */
+            .payment-btn {
+                padding: 0.375rem 0.75rem;
+                font-size: 0.7rem;
+            }
+
+            /* Modal improvements */
+            .modal-content {
+                width: 95%;
+                margin: 1rem;
+                padding: 1rem;
+                max-height: 85vh;
+            }
+
+            .modal-header {
+                margin-bottom: 1rem;
+            }
+
+            /* Form input adjustments */
+            .input-field {
+                padding: 0.75rem;
+                font-size: 16px;
+                /* Prevent zoom on iOS */
+            }
+
+            /* Button adjustments */
+            .btn-primary,
+            .btn-secondary {
+                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+            }
+
+            /* Floating action button */
+            .floating-action-btn {
+                bottom: 1rem;
+                right: 1rem;
+                width: 50px;
+                height: 50px;
+            }
+
+            /* Notification container */
+            #notificationContainer {
+                top: 5rem;
+                right: 0.5rem;
+                left: 0.5rem;
+            }
+
+            .notification {
+                padding: 0.75rem;
+                font-size: 0.875rem;
+            }
+
+            /* Person avatar adjustments */
+            .person-avatar {
+                width: 32px;
+                height: 32px;
+                font-size: 0.75rem;
+            }
+
+            /* Bill progress bar */
+            .bill-card .flex.items-center.justify-between {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .bill-card .flex.items-center.space-x-2 {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            /* Category badges */
+            .category-badge {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.5rem;
+            }
+
+            /* Recent activity */
+            .max-h-60 {
+                max-height: 200px;
+            }
+
+            /* Quick calculator result */
+            #quickResult {
+                padding: 0.75rem;
+            }
+
+            #quickResultAmount {
+                font-size: 1.25rem;
+            }
+
+            /* Text adjustments */
+            .text-xl {
+                font-size: 1.25rem;
+            }
+
+            .text-lg {
+                font-size: 1.125rem;
+            }
+
+            .text-sm {
+                font-size: 0.8125rem;
+            }
+
+            .text-xs {
+                font-size: 0.75rem;
+            }
+
+            /* Spacing adjustments */
+            .mb-6 {
+                margin-bottom: 1rem;
+            }
+
+            .mb-4 {
+                margin-bottom: 0.75rem;
+            }
+
+            .mb-8 {
+                margin-bottom: 1.5rem;
+            }
+
+            /* Page header */
+            .text-3xl {
+                font-size: 1.5rem;
+            }
+
+            /* Hidden elements on mobile */
+            .hidden-mobile {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            /* Extra small devices */
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .stat-card,
+            .quick-action-card {
+                padding: 0.75rem;
+            }
+
+            /* Make form inputs more touch-friendly */
+            .input-field {
+                padding: 0.875rem;
+                min-height: 48px;
+                /* Better touch target */
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                min-height: 48px;
+                /* Better touch target */
+            }
+
+            /* Adjust bill card layout */
+            .bill-card .flex.items-center.justify-between {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.75rem;
+            }
+
+            /* Smaller person tags */
+            .people-tag {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.5rem;
+            }
+
+            /* Adjust floating action button */
+            .floating-action-btn {
+                width: 44px;
+                height: 44px;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+
+            /* Modal improvements for very small screens */
+            .modal-content {
+                width: 98%;
+                margin: 0.5rem;
+                padding: 1rem;
+                border-radius: 12px;
+            }
+
+            /* Text size adjustments */
+            h1,
+            .text-3xl {
+                font-size: 1.375rem;
+            }
+
+            h2,
+            .text-xl {
+                font-size: 1.125rem;
+            }
+
+            h3,
+            .text-lg {
+                font-size: 1rem;
+            }
+        }
+
+        /* Fix for iOS Safari form zoom */
+        @media (max-width: 768px) {
+
+            input[type="text"],
+            input[type="number"],
+            select,
+            textarea {
+                font-size: 16px !important;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .micro-interaction:hover {
+                transform: none;
+            }
+
+            .morphic-card:hover {
+                transform: none;
+            }
+
+            .people-tag-remove,
+            .payment-btn,
+            button,
+            [onclick] {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            /* Increase tap targets */
+            .people-tag-remove {
+                width: 24px;
+                height: 24px;
+            }
+
+            .modal-close {
+                padding: 12px;
+            }
+        }
+
+        /* Landscape orientation fixes */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .max-h-60 {
+                max-height: 120px;
+            }
+
+            #recentActivity,
+            #savedContactsSidebar {
+                max-height: 100px;
+            }
+
+            .modal-content {
+                max-height: 70vh;
+            }
+
+            .quick-actions {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Fix for very tall phones */
+        @media (max-width: 768px) and (min-height: 700px) {
+            .modal-content {
+                max-height: 75vh;
+            }
+
+            #recentActivity,
+            #savedContactsSidebar {
+                max-height: 150px;
+            }
+        }
+
+        /* Prevent horizontal scrolling */
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            .max-w-7xl {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        /* Mobile menu improvements */
+        #mobile-menu {
+            padding-bottom: 0.5rem;
+        }
+
+        #mobile-menu .space-y-1>*+* {
+            margin-top: 0.25rem;
+        }
+
+        #mobile-menu a {
+            padding: 0.75rem 1rem;
+        }
+
+                @media (max-width: 768px) {
+
+            /* Fix untuk scroll horizontal */
+            html,
+            body {
+                overflow-x: hidden;
+                position: relative;
+            }
+
+            /* Perbaikan layout untuk konten yang panjang */
+            .custom-scrollbar {
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Touch-friendly buttons */
+            button,
+            .btn-primary,
+            .btn-secondary,
+            .payment-btn {
+                touch-action: manipulation;
             }
         }
     </style>
@@ -2154,3 +2603,4 @@
 </body>
 
 </html>
+
