@@ -7,7 +7,6 @@
     <title>SplitMate - GenZ Finance Hub</title>
     <link rel="stylesheet" href="../css/main.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         /* Animasi Smooth */
@@ -21,10 +20,6 @@
 
         .spring-bounce {
             animation: springBounce 0.8s ease-out;
-        }
-
-        .pulse-subtle {
-            animation: pulseSubtle 3s ease-in-out infinite;
         }
 
         @keyframes fadeIn {
@@ -68,44 +63,28 @@
             }
         }
 
-        @keyframes pulseSubtle {
-
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.1);
-            }
-
-            50% {
-                box-shadow: 0 0 0 8px rgba(99, 102, 241, 0);
-            }
-        }
-
         /* Micro interactions */
         .micro-interaction {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
         }
 
         .micro-interaction:hover {
             transform: translateY(-2px);
         }
 
-        /* Layout yang berbeda - Sidebar style */
+        /* Morphic card */
         .morphic-card {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow:
-                0 4px 20px rgba(0, 0, 0, 0.08),
-                0 2px 8px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             border-radius: 16px;
         }
 
         .morphic-card:hover {
             transform: translateY(-4px);
-            box-shadow:
-                0 8px 30px rgba(0, 0, 0, 0.12),
-                0 4px 12px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
         }
 
         /* Text gradient */
@@ -123,11 +102,13 @@
             border: 1.5px solid #e2e8f0;
             background: #ffffff;
             padding: 12px 16px;
+            width: 100%;
         }
 
         .input-field:focus {
             border-color: #6366f1;
             box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            outline: none;
         }
 
         /* Button styles */
@@ -139,6 +120,7 @@
             font-weight: 600;
             color: white;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .btn-primary:hover {
@@ -154,6 +136,7 @@
             font-weight: 600;
             color: #475569;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .btn-secondary:hover {
@@ -171,7 +154,7 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            color: white;
+            color: rgb(43, 37, 46);
             font-size: 14px;
         }
 
@@ -183,7 +166,6 @@
             margin-bottom: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             border-left: 4px solid;
-            z-index: 1000;
         }
 
         @keyframes slideInRight {
@@ -198,295 +180,7 @@
             }
         }
 
-        /* Stagger animations */
-        .stagger-item {
-            opacity: 0;
-            animation: staggerFade 0.6s ease-out forwards;
-        }
-
-        @keyframes staggerFade {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .stagger-1 {
-            animation-delay: 0.1s;
-        }
-
-        .stagger-2 {
-            animation-delay: 0.2s;
-        }
-
-        .stagger-3 {
-            animation-delay: 0.3s;
-        }
-
-        .stagger-4 {
-            animation-delay: 0.4s;
-        }
-
-        /* Custom scrollbar */
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 3px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 3px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-
-        /* Tambahkan di bagian style */
-        @media (max-width: 640px) {
-            .morphic-card {
-                margin: 0 -0.5rem;
-                border-radius: 12px;
-            }
-
-            .input-field {
-                padding: 10px 14px;
-                font-size: 16px;
-                /* Prevent zoom on iOS */
-            }
-
-            .btn-primary,
-            .btn-secondary {
-                padding: 12px 20px;
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .person-avatar {
-                width: 32px;
-                height: 32px;
-                font-size: 12px;
-            }
-        }
-
-        /* Ensure images are responsive */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Tambahkan di bagian style */
-        .people-tag {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            animation: springBounce 0.3s ease-out;
-        }
-
-        .people-tag-remove {
-            background: rgba(255, 255, 255, 0.3);
-            border: none;
-            border-radius: 50%;
-            width: 16px;
-            height: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .people-tag-remove:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: scale(1.1);
-        }
-
-        /* Hover effects untuk cards */
-        .feature-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Loading animation */
-        .loading-dots {
-            display: inline-block;
-            position: relative;
-            width: 80px;
-            height: 80px;
-        }
-
-        .loading-dots div {
-            position: absolute;
-            top: 33px;
-            width: 13px;
-            height: 13px;
-            border-radius: 50%;
-            background: #6366f1;
-            animation-timing-function: cubic-bezier(0, 1, 1, 0);
-        }
-
-        .loading-dots div:nth-child(1) {
-            left: 8px;
-            animation: loading-dots1 0.6s infinite;
-        }
-
-        .loading-dots div:nth-child(2) {
-            left: 8px;
-            animation: loading-dots2 0.6s infinite;
-        }
-
-        .loading-dots div:nth-child(3) {
-            left: 32px;
-            animation: loading-dots2 0.6s infinite;
-        }
-
-        .loading-dots div:nth-child(4) {
-            left: 56px;
-            animation: loading-dots3 0.6s infinite;
-        }
-
-        @keyframes loading-dots1 {
-            0% {
-                transform: scale(0);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes loading-dots3 {
-            0% {
-                transform: scale(1);
-            }
-
-            100% {
-                transform: scale(0);
-            }
-        }
-
-        @keyframes loading-dots2 {
-            0% {
-                transform: translate(0, 0);
-            }
-
-            100% {
-                transform: translate(24px, 0);
-            }
-        }
-
-        /* Confetti animation */
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #f00;
-            opacity: 0;
-            z-index: 1000;
-            animation: confetti-fall 2s ease-in-out forwards;
-        }
-
-        @keyframes confetti-fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Tambahkan di bagian style */
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-        }
-
-        .hover-lift {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .hover-lift:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .gradient-border {
-            position: relative;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 2px;
-            border-radius: 16px;
-        }
-
-        .gradient-border::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            padding: 2px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: xor;
-            mask-composite: exclude;
-        }
-
-        /* Animation untuk stats cards */
-        @keyframes countUp {
-            from {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .count-up {
-            animation: countUp 0.6s ease-out;
-        }
-
-        /* Improved button styles */
-        .btn-gradient {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
-            background-size: 200% 200%;
-            animation: gradientShift 3s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* Tag styles improvement */
+        /* People tag styles */
         .people-tag {
             background: linear-gradient(135deg, #6366f1, #8b5cf6);
             color: white;
@@ -494,11 +188,10 @@
             border-radius: 25px;
             font-size: 14px;
             font-weight: 500;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            animation: springBounce 0.4s ease-out;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            margin: 4px;
         }
 
         .people-tag-remove {
@@ -519,89 +212,7 @@
             transform: scale(1.1);
         }
 
-        /* Skill dan monetization styles */
-        .skill-card {
-            transition: all 0.3s ease;
-            border-left: 4px solid transparent;
-        }
-
-        .skill-card:hover {
-            border-left-color: #6366f1;
-            transform: translateX(5px);
-        }
-
-        .monetization-opportunity {
-            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-            border: 1px solid #bae6fd;
-        }
-
-        .notification-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .notification-modal {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        /* New styles for improved UI */
-        .feature-highlight {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-        }
-
-        .progress-ring {
-            transform: rotate(-90deg);
-        }
-
-        .progress-ring-circle {
-            transition: stroke-dashoffset 0.5s ease;
-        }
-
-        .skill-progress {
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-            background-color: #e5e7eb;
-        }
-
-        .skill-progress-bar {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.5s ease;
-        }
-
-        .monetization-card {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            border: 1px solid #f59e0b;
-            border-radius: 12px;
-            padding: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .monetization-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.15);
-        }
-
+        /* Stats cards */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -635,6 +246,7 @@
             color: #6b7280;
         }
 
+        /* Floating action button */
         .floating-action-btn {
             position: fixed;
             bottom: 30px;
@@ -651,6 +263,7 @@
             cursor: pointer;
             z-index: 100;
             transition: all 0.3s ease;
+            border: none;
         }
 
         .floating-action-btn:hover {
@@ -658,37 +271,9 @@
             box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
         }
 
+        /* Bill card categories */
         .bill-card {
             border-left: 4px solid;
-            transition: all 0.3s ease;
-        }
-
-        .bill-card.food {
-            border-left-color: #10b981;
-        }
-
-        .bill-card.transport {
-            border-left-color: #3b82f6;
-        }
-
-        .bill-card.shopping {
-            border-left-color: #f59e0b;
-        }
-
-        .bill-card.entertainment {
-            border-left-color: #8b5cf6;
-        }
-
-        .bill-card.travel {
-            border-left-color: #ef4444;
-        }
-
-        .bill-card.utilities {
-            border-left-color: #6b7280;
-        }
-
-        .bill-card.other {
-            border-left-color: #9ca3af;
         }
 
         .category-badge {
@@ -699,71 +284,108 @@
             font-weight: 500;
         }
 
-        .category-badge.food {
-            background: #d1fae5;
-            color: #065f46;
-        }
-
-        .category-badge.transport {
-            background: #dbeafe;
-            color: #1e40af;
-        }
-
-        .category-badge.shopping {
-            background: #fef3c7;
-            color: #92400e;
-        }
-
-        .category-badge.entertainment {
-            background: #ede9fe;
-            color: #5b21b6;
-        }
-
-        .category-badge.travel {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-
-        .category-badge.utilities {
-            background: #f3f4f6;
-            color: #374151;
-        }
-
-        .category-badge.other {
-            background: #f9fafb;
-            color: #6b7280;
-        }
-
+        /* Empty state */
         .empty-state {
             text-align: center;
             padding: 40px 20px;
             color: #6b7280;
         }
 
-        .empty-state-icon {
-            font-size: 3rem;
-            margin-bottom: 16px;
-            color: #d1d5db;
+        /* Payment button */
+        .payment-btn {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .feature-section {
-            margin-bottom: 40px;
+        .payment-btn:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
+            transform: translateY(-1px);
         }
 
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #1f2937;
-            display: flex;
+        .payment-btn.paid {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        /* MODAL STYLES - FIXED */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
             align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .section-title i {
-            margin-right: 10px;
-            color: #6366f1;
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+            animation: fadeIn 0.3s ease;
         }
 
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6b7280;
+            padding: 8px;
+            line-height: 1;
+            position: absolute;
+            right: -8px;
+            top: -8px;
+        }
+
+        .modal-close:hover {
+            color: #1f2937;
+        }
+
+        /* Quick actions */
         .quick-actions {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -786,29 +408,46 @@
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .quick-action-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-            color: #6366f1;
+        /* Custom scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
         }
 
-        .quick-action-title {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1f2937;
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 3px;
         }
 
-        .quick-action-desc {
-            font-size: 0.875rem;
-            color: #6b7280;
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 16px;
+            }
         }
     </style>
 </head>
 
 <body class="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50">
     <!-- Navigation Header -->
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50 transition-all duration-300">
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
@@ -852,23 +491,23 @@
                     </div>
                 </div>
 
-                <!-- User Profile & Mobile Menu -->
+                <!-- User Profile -->
                 <div class="flex items-center space-x-4">
-
-                    <!-- User Profile -->
-                    <div class="flex items-center space-x-3">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="User profile picture" class="w-8 h-8 rounded-full object-cover micro-interaction"
-                            id="userAvatar">
-                        <span class="hidden md:block text-sm font-medium text-gray-700" id="userName">Loading...</span>
+                    <div class="relative">
+                        <button
+                            class="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-all duration-300 micro-interaction">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="User profile picture" class="w-8 h-8 rounded-full object-cover">
+                            <span class="text-sm font-medium" id="userName">Loading...</span>
+                        </button>
                     </div>
+                </div>
 
-                    <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-button"
-                        class="md:hidden text-gray-600 hover:text-purple-600 p-2 micro-interaction">
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-purple-600 p-2 micro-interaction">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
-
                 </div>
             </div>
         </div>
@@ -900,11 +539,6 @@
                     class="text-gray-600 hover:text-purple-600 block px-3 py-2 text-base font-medium rounded-md transition-all duration-300 micro-interaction">
                     <i class="fas fa-chart-line mr-2"></i>SmartDebt
                 </a>
-                <button onclick="logout()"
-                    class="block w-full text-left px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors micro-interaction">
-                    <i class="fas fa-sign-out-alt mr-2"></i>
-                    Keluar
-                </button>
             </div>
         </div>
     </nav>
@@ -921,51 +555,51 @@
 
         <!-- Quick Actions Section -->
         <div class="quick-actions mb-8">
-            <div class="quick-action-card" onclick="showAddBillForm()">
+            <div class="quick-action-card micro-interaction" onclick="showAddBillForm()">
                 <div class="quick-action-icon">
-                    <i class="fas fa-receipt"></i>
+                    <i class="fas fa-receipt text-purple-600 text-2xl mb-2"></i>
                 </div>
                 <div class="quick-action-title">Buat Tagihan</div>
                 <div class="quick-action-desc">Buat tagihan baru untuk dibagi</div>
             </div>
-            <div class="quick-action-card" onclick="showAddPersonModal()">
+            <div class="quick-action-card micro-interaction" onclick="showAddPersonModal()">
                 <div class="quick-action-icon">
-                    <i class="fas fa-user-plus"></i>
+                    <i class="fas fa-user-plus text-blue-600 text-2xl mb-2"></i>
                 </div>
                 <div class="quick-action-title">Tambah Kontak</div>
                 <div class="quick-action-desc">Tambah teman ke daftar kontak</div>
             </div>
-            <div class="quick-action-card" onclick="showAddSkillModal()">
+            <div class="quick-action-card micro-interaction" onclick="showHistoryModal()">
                 <div class="quick-action-icon">
-                    <i class="fas fa-graduation-cap"></i>
+                    <i class="fas fa-history text-purple-600 text-2xl mb-2"></i>
                 </div>
-                <div class="quick-action-title">Tambah Skill</div>
-                <div class="quick-action-desc">Tingkatkan kemampuan finansial</div>
+                <div class="quick-action-title">Riwayat</div>
+                <div class="quick-action-desc">Lihat riwayat tagihan</div>
             </div>
-            <div class="quick-action-card" onclick="showMonetizationModal()">
+            <div class="quick-action-card micro-interaction" onclick="exportReport()">
                 <div class="quick-action-icon">
-                    <i class="fas fa-coins"></i>
+                    <i class="fas fa-file-export text-blue-600 text-2xl mb-2"></i>
                 </div>
-                <div class="quick-action-title">Peluang Monetisasi</div>
-                <div class="quick-action-desc">Temukan cara menghasilkan uang</div>
+                <div class="quick-action-title">Export Laporan</div>
+                <div class="quick-action-desc">Download laporan tagihan</div>
             </div>
         </div>
 
         <!-- Statistics Cards -->
         <div class="stats-grid mb-8">
-            <div class="stat-card">
+            <div class="stat-card micro-interaction">
                 <div class="stat-value" id="totalBills">Rp 0</div>
                 <div class="stat-label">Total Tagihan</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card micro-interaction">
                 <div class="stat-value" id="activeBills">0</div>
                 <div class="stat-label">Tagihan Aktif</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card micro-interaction">
                 <div class="stat-value" id="completedBills">0</div>
                 <div class="stat-label">Selesai</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card micro-interaction">
                 <div class="stat-value" id="totalPeople">0</div>
                 <div class="stat-label">Total Kontak</div>
             </div>
@@ -984,12 +618,11 @@
                     <div class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Total Tagihan</label>
-                            <input type="number" id="quickAmount" class="input-field w-full" placeholder="100.000">
+                            <input type="number" id="quickAmount" class="input-field" placeholder="100.000">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Jumlah Orang</label>
-                            <input type="number" id="quickPeople" class="input-field w-full" placeholder="4" min="2"
-                                max="10">
+                            <input type="number" id="quickPeople" class="input-field" placeholder="4" min="2" max="10">
                         </div>
                         <button id="quickCalculate" class="btn-primary w-full micro-interaction">
                             <i class="fas fa-calculator mr-2"></i>
@@ -1021,40 +654,18 @@
                     </div>
                 </div>
 
-                <!-- Skills & Monetization Summary -->
+                <!-- Kontak Tersimpan -->
                 <div class="morphic-card p-6 fade-in">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-chart-line text-green-500 mr-2"></i>
-                        Ringkasan Pengembangan
+                        <i class="fas fa-users text-green-500 mr-2"></i>
+                        Kontak Tersimpan
                     </h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-gray-700">Skills</span>
-                                <span class="text-sm font-medium text-gray-700" id="skillsCount">0/5</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div id="skillsProgress" class="skill-progress-bar bg-blue-500" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-gray-700">Peluang Monetisasi</span>
-                                <span class="text-sm font-medium text-gray-700" id="monetizationCount">0/4</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div id="monetizationProgress" class="skill-progress-bar bg-yellow-500" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button onclick="showAddSkillModal()" class="btn-secondary flex-1 text-sm micro-interaction">
-                                <i class="fas fa-plus mr-1"></i> Skill
-                            </button>
-                            <button onclick="showMonetizationModal()" class="btn-secondary flex-1 text-sm micro-interaction">
-                                <i class="fas fa-search mr-1"></i> Peluang
-                            </button>
-                        </div>
+                    <div id="savedContactsSidebar" class="space-y-2 max-h-60 overflow-y-auto custom-scrollbar">
+                        <!-- Kontak akan diisi oleh JavaScript -->
                     </div>
+                    <button onclick="showAddPersonModal()" class="btn-secondary w-full mt-4 micro-interaction">
+                        <i class="fas fa-user-plus mr-2"></i>Tambah Kontak
+                    </button>
                 </div>
             </div>
 
@@ -1081,7 +692,7 @@
                                     <i class="fas fa-heading text-blue-500 mr-2 text-xs"></i>
                                     Judul Tagihan
                                 </label>
-                                <input type="text" id="billTitle" class="input-field w-full"
+                                <input type="text" id="billTitle" class="input-field"
                                     placeholder="Makan malam, belanja, dll." required>
                             </div>
 
@@ -1091,8 +702,8 @@
                                     <i class="fas fa-money-bill-wave text-green-500 mr-2 text-xs"></i>
                                     Total Tagihan
                                 </label>
-                                <input type="number" id="billAmount" class="input-field w-full" placeholder="100.000"
-                                    required>
+                                <input type="number" id="billAmount" class="input-field" placeholder="100.000" required
+                                    min="1">
                             </div>
                         </div>
 
@@ -1102,7 +713,7 @@
                                 <i class="fas fa-tag text-orange-500 mr-2 text-xs"></i>
                                 Kategori
                             </label>
-                            <select id="billCategory" class="input-field w-full" required>
+                            <select id="billCategory" class="input-field" required>
                                 <option value="">Pilih kategori</option>
                                 <option value="food">🍔 Makanan & Minuman</option>
                                 <option value="transport">🚗 Transportasi</option>
@@ -1121,7 +732,7 @@
                                 Orang yang Terlibat
                             </label>
                             <div class="mb-3">
-                                <input type="text" id="peopleInput" class="input-field w-full"
+                                <input type="text" id="peopleInput" class="input-field"
                                     placeholder="Masukkan nama dipisahkan koma, contoh: Yusuf, Krisna, Andi">
                                 <p class="text-xs text-gray-500 mt-2 flex items-center">
                                     <i class="fas fa-info-circle text-blue-500 mr-1"></i>
@@ -1138,8 +749,8 @@
                             </button>
                         </div>
 
-                        <button type="submit" class="btn-primary w-full py-4 micro-interaction pulse-subtle group">
-                            <i class="fas fa-users mr-2 group-hover:scale-110 transition-transform"></i>
+                        <button type="submit" class="btn-primary w-full py-4 micro-interaction">
+                            <i class="fas fa-users mr-2"></i>
                             Buat Pembagian Tagihan
                         </button>
                     </form>
@@ -1150,11 +761,11 @@
                     <div class="flex items-center justify-between mb-6">
                         <h2 class="text-xl font-semibold text-gray-800">Tagihan Aktif</h2>
                         <div class="flex items-center space-x-2">
-                            <button id="filterBillsBtn"
+                            <button onclick="showFilterOptions()"
                                 class="text-gray-500 hover:text-purple-600 p-2 rounded-lg transition-all duration-300 micro-interaction">
                                 <i class="fas fa-filter text-sm"></i>
                             </button>
-                            <button id="sortBillsBtn"
+                            <button onclick="showSortOptions()"
                                 class="text-gray-500 hover:text-purple-600 p-2 rounded-lg transition-all duration-300 micro-interaction">
                                 <i class="fas fa-sort text-sm"></i>
                             </button>
@@ -1180,29 +791,31 @@
                 </div>
 
                 <!-- Balance Overview -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- You Owe -->
                     <div class="morphic-card p-6 slide-up">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Kamu Berutang</h3>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Yang Harus Anda Bayar</h3>
                         <div id="youOweList" class="space-y-3">
                             <!-- You owe items will be generated here -->
                         </div>
                         <div id="emptyYouOwe" class="text-center py-4">
-                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                                <i class="fas fa-check text-green-500"></i>
+                            <div
+                                class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-users text-gray-400"></i>
                             </div>
-                            <p class="text-sm text-gray-500">Tidak ada utang</p>
+                            <p class="text-sm text-gray-500">Tidak ada tagihan yang harus dibayar</p>
                         </div>
                     </div>
 
                     <!-- You Are Owed -->
                     <div class="morphic-card p-6 slide-up">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Yang Harus Bayar Kamu</h3>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Yang Harus Di Bayar Kepada Anda</h3>
                         <div id="owedYouList" class="space-y-3">
                             <!-- Owed you items will be generated here -->
                         </div>
                         <div id="emptyOwedYou" class="text-center py-4">
-                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <div
+                                class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2">
                                 <i class="fas fa-users text-gray-400"></i>
                             </div>
                             <p class="text-sm text-gray-500">Tidak ada yang berutang</p>
@@ -1217,407 +830,129 @@
     </main>
 
     <!-- Floating Action Button -->
-    <div class="floating-action-btn" onclick="showAddBillForm()">
+    <button class="floating-action-btn" onclick="showAddBillForm()">
         <i class="fas fa-plus text-xl"></i>
-    </div>
+    </button>
 
-    <!-- Add Person Modal -->
-    <div id="addPersonModal"
-        class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
-        <div class="morphic-card max-w-md w-full">
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-6">
-                    <h3 class="text-xl font-semibold text-gray-800">Tambah Kontak</h3>
-                    <button onclick="closeAddPersonModal()" class="text-gray-500 hover:text-gray-700 micro-interaction">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Tambah Kontak Baru</label>
-                        <input type="text" id="personName" class="input-field w-full" placeholder="Nama teman" required>
-                    </div>
-
-                    <div class="flex space-x-3 pt-2">
-                        <button onclick="addSinglePerson()" class="btn-primary flex-1 micro-interaction">
-                            <i class="fas fa-plus mr-2"></i>
-                            Tambah Kontak
-                        </button>
-                        <button type="button" onclick="closeAddPersonModal()" class="btn-secondary flex-1 micro-interaction">
-                            Batal
-                        </button>
-                    </div>
-
-                    <!-- Daftar Kontak Tersimpan -->
-                    <div class="mt-6">
-                        <h4 class="text-sm font-medium text-gray-700 mb-3">Kontak Tersimpan</h4>
-                        <div id="savedContacts" class="space-y-2 max-h-40 overflow-y-auto custom-scrollbar">
-                            <!-- Kontak akan diisi oleh JavaScript -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add Skill Modal -->
-    <div id="addSkillModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
-        <div class="morphic-card max-w-md w-full">
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-6">
-                    <h3 class="text-xl font-semibold text-gray-800">Tambah Skill Baru</h3>
-                    <button onclick="closeAddSkillModal()" class="text-gray-500 hover:text-gray-700 micro-interaction">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Nama Skill</label>
-                        <input type="text" id="skillName" class="input-field w-full" placeholder="Contoh: Analisis Keuangan" required>
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Level</label>
-                        <select id="skillLevel" class="input-field w-full" required>
-                            <option value="">Pilih level</option>
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="advanced">Advanced</option>
-                            <option value="expert">Expert</option>
-                        </select>
-                    </div>
-
-                    <div class="flex space-x-3 pt-2">
-                        <button onclick="addNewSkill()" class="btn-primary flex-1 micro-interaction">
-                            <i class="fas fa-plus mr-2"></i>
-                            Tambah Skill
-                        </button>
-                        <button type="button" onclick="closeAddSkillModal()" class="btn-secondary flex-1 micro-interaction">
-                            Batal
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Monetization Opportunities Modal -->
-    <div id="monetizationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
-        <div class="morphic-card max-w-2xl w-full">
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-6">
-                    <h3 class="text-xl font-semibold text-gray-800">Peluang Monetisasi</h3>
-                    <button onclick="closeMonetizationModal()" class="text-gray-500 hover:text-gray-700 micro-interaction">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-
-                <div class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="monetization-card">
-                            <h3 class="font-medium text-gray-800">Affiliate Marketing</h3>
-                            <p class="text-sm text-gray-600 mt-1">Dapatkan komisi dengan merekomendasikan produk keuangan</p>
-                            <button class="text-blue-600 text-sm font-medium mt-2 micro-interaction">
-                                Daftar Sekarang →
-                            </button>
-                        </div>
-                        
-                        <div class="monetization-card">
-                            <h3 class="font-medium text-gray-800">Content Creation</h3>
-                            <p class="text-sm text-gray-600 mt-1">Buat konten edukasi keuangan dan dapatkan penghasilan</p>
-                            <button class="text-blue-600 text-sm font-medium mt-2 micro-interaction">
-                                Pelajari Lebih Lanjut →
-                            </button>
-                        </div>
-                        
-                        <div class="monetization-card">
-                            <h3 class="font-medium text-gray-800">Financial Consulting</h3>
-                            <p class="text-sm text-gray-600 mt-1">Tawarkan jasa konsultasi keuangan untuk individu/bisnis</p>
-                            <button class="text-blue-600 text-sm font-medium mt-2 micro-interaction">
-                                Mulai Konsultasi →
-                            </button>
-                        </div>
-                        
-                        <div class="monetization-card">
-                            <h3 class="font-medium text-gray-800">Premium Features</h3>
-                            <p class="text-sm text-gray-600 mt-1">Akses fitur premium untuk pengalaman lebih baik</p>
-                            <button class="text-blue-600 text-sm font-medium mt-2 micro-interaction">
-                                Upgrade Sekarang →
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="flex justify-center pt-4">
-                        <button onclick="closeMonetizationModal()" class="btn-secondary micro-interaction">
-                            Tutup
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- MODALS (Semua modal dalam satu container) -->
+    <div id="modalContainer"></div>
 
     <script>
-        // Data management
+        // ==================== DATA MANAGEMENT ====================
         let bills = [];
         let people = [];
-        let currentUserId = null;
         let activities = [];
-        let skills = [];
-        let monetizationOpportunities = [];
+        let currentUser = null;
+        let currentUserId = null;
 
-        // Initialize the application
+        // Storage keys
+        const STORAGE_KEYS = {
+            BILLS: 'splitmate_bills',
+            PEOPLE: 'splitmate_people',
+            ACTIVITIES: 'splitmate_activities',
+            USER_SESSION: 'userSession'
+        };
+
+        // ==================== INITIALIZATION ====================
         document.addEventListener('DOMContentLoaded', function () {
+            initializeApp();
+        });
+
+        function initializeApp() {
+            // Load user data first
             loadUserData();
-            loadBills();
-            loadPeople();
-            loadActivities();
-            loadSkills();
-            loadMonetizationOpportunities();
+
+            // Initialize data and UI
+            loadAllData();
             initializeEventListeners();
+
+            // Update UI
             updateDashboard();
             renderBills();
             updateBalanceOverview();
             updateRecentActivity();
-            updateSkillsDisplay();
-            updateMonetizationDisplay();
-        });
+            updateContactsSidebar();
+        }
 
-        // Load user data
+        // ==================== USER MANAGEMENT ====================
         function loadUserData() {
-            const userSession = localStorage.getItem('userSession');
-
-            if (!userSession) {
-                // Redirect ke login jika tidak ada session
-                window.location.href = 'authentication_portal.html';
-                return;
-            }
-
             try {
-                const session = JSON.parse(userSession);
-                currentUserId = session.userId;
-
-                // Update UI dengan data user
-                document.getElementById('userName').textContent = session.username || 'User';
-                if (session.avatar) {
-                    document.getElementById('userAvatar').src = session.avatar;
+                const userSession = localStorage.getItem(STORAGE_KEYS.USER_SESSION);
+                if (!userSession) {
+                    // Redirect to login if no session
+                    window.location.href = 'authentication_portal.html';
+                    return;
                 }
 
-                // Load user-specific data
-                loadUserSpecificData();
+                const session = JSON.parse(userSession);
+                currentUser = session.username || 'User';
+                currentUserId = session.userId || 'default_user';
 
+                // Update UI
+                document.getElementById('userName').textContent = currentUser;
             } catch (error) {
                 console.error('Error loading user data:', error);
-                // Fallback ke default user
-                setupDefaultUser();
+                // Fallback
+                currentUser = 'Guest User';
+                currentUserId = 'default_user';
+                document.getElementById('userName').textContent = currentUser;
             }
         }
 
-        // Fungsi untuk load data spesifik user
-        function loadUserSpecificData() {
-            const userKey = `splitmate_data_${currentUserId}`;
-
+        // ==================== DATA PERSISTENCE ====================
+        function loadAllData() {
             // Load bills
-            const savedBills = localStorage.getItem(`${userKey}_bills`);
-            if (savedBills) {
-                bills = JSON.parse(savedBills);
-            } else {
-                bills = [];
-            }
+            const savedBills = localStorage.getItem(STORAGE_KEYS.BILLS);
+            bills = savedBills ? JSON.parse(savedBills) : [];
 
             // Load people
-            const savedPeople = localStorage.getItem(`${userKey}_people`);
+            const savedPeople = localStorage.getItem(STORAGE_KEYS.PEOPLE);
             if (savedPeople) {
                 people = JSON.parse(savedPeople);
             } else {
-                // Default people untuk user baru
+                // Default contacts
                 people = [
                     { id: 1, name: 'Andi', color: 'bg-blue-500' },
                     { id: 2, name: 'Budi', color: 'bg-green-500' },
                     { id: 3, name: 'Citra', color: 'bg-purple-500' },
                     { id: 4, name: 'Dian', color: 'bg-yellow-500' }
                 ];
-                savePeople();
+                saveData(STORAGE_KEYS.PEOPLE, people);
             }
 
             // Load activities
-            const savedActivities = localStorage.getItem(`${userKey}_activities`);
-            if (savedActivities) {
-                activities = JSON.parse(savedActivities);
-            } else {
-                activities = [];
-            }
+            const savedActivities = localStorage.getItem(STORAGE_KEYS.ACTIVITIES);
+            activities = savedActivities ? JSON.parse(savedActivities) : [];
+        }
 
-            // Load skills
-            const savedSkills = localStorage.getItem(`${userKey}_skills`);
-            if (savedSkills) {
-                skills = JSON.parse(savedSkills);
-            } else {
-                skills = [
-                    { id: 1, name: 'Manajemen Keuangan', level: 'intermediate', progress: 65 },
-                    { id: 2, name: 'Negosiasi', level: 'beginner', progress: 30 }
-                ];
-                saveSkills();
-            }
-
-            // Load monetization opportunities
-            const savedMonetization = localStorage.getItem(`${userKey}_monetization`);
-            if (savedMonetization) {
-                monetizationOpportunities = JSON.parse(savedMonetization);
-            } else {
-                monetizationOpportunities = [
-                    { id: 1, name: 'Affiliate Marketing', description: 'Dapatkan komisi dengan merekomendasikan produk keuangan', active: true },
-                    { id: 2, name: 'Content Creation', description: 'Buat konten edukasi keuangan dan dapatkan penghasilan', active: true },
-                    { id: 3, name: 'Financial Consulting', description: 'Tawarkan jasa konsultasi keuangan untuk individu/bisnis', active: true },
-                    { id: 4, name: 'Premium Features', description: 'Akses fitur premium untuk pengalaman lebih baik', active: true }
-                ];
-                saveMonetizationOpportunities();
+        function saveData(key, data) {
+            try {
+                localStorage.setItem(key, JSON.stringify(data));
+            } catch (error) {
+                console.error('Error saving data:', error);
+                showNotification('Gagal menyimpan data!', 'error');
             }
         }
 
-        // Save functions
         function saveBills() {
-            const userKey = `splitmate_data_${currentUserId}`;
-            localStorage.setItem(`${userKey}_bills`, JSON.stringify(bills));
-            syncWithDashboard();
+            saveData(STORAGE_KEYS.BILLS, bills);
+            updateDashboard();
         }
 
         function savePeople() {
-            const userKey = `splitmate_data_${currentUserId}`;
-            localStorage.setItem(`${userKey}_people`, JSON.stringify(people));
+            saveData(STORAGE_KEYS.PEOPLE, people);
         }
 
         function saveActivities() {
-            const userKey = `splitmate_data_${currentUserId}`;
-            localStorage.setItem(`${userKey}_activities`, JSON.stringify(activities));
+            saveData(STORAGE_KEYS.ACTIVITIES, activities);
         }
 
-        function saveSkills() {
-            const userKey = `splitmate_data_${currentUserId}`;
-            localStorage.setItem(`${userKey}_skills`, JSON.stringify(skills));
-        }
-
-        function saveMonetizationOpportunities() {
-            const userKey = `splitmate_data_${currentUserId}`;
-            localStorage.setItem(`${userKey}_monetization`, JSON.stringify(monetizationOpportunities));
-        }
-
-        // Fungsi logout
-        function logout() {
-            if (confirm('Apakah Anda yakin ingin keluar?')) {
-                localStorage.removeItem('userSession');
-                window.location.href = 'authentication_portal.html';
-            }
-        }
-
-        // Fallback untuk user default
-        function setupDefaultUser() {
-            currentUserId = 'default_user';
-            document.getElementById('userName').textContent = 'Guest User';
-            loadUserSpecificData();
-        }
-
-        // Load data functions
-        function loadBills() {
-            // For new users, don't load any data
-            if (currentUserId === 'new_user') {
-                bills = [];
-                return;
-            }
-
-            const saved = localStorage.getItem('splitmate_bills');
-            if (saved) {
-                bills = JSON.parse(saved);
-            } else {
-                bills = [];
-            }
-        }
-
-        function loadPeople() {
-            const saved = localStorage.getItem('splitmate_people');
-            if (saved) {
-                people = JSON.parse(saved);
-            } else {
-                // Default people for new users
-                people = [
-                    { id: 1, name: 'Andi', color: 'bg-blue-500' },
-                    { id: 2, name: 'Budi', color: 'bg-green-500' },
-                    { id: 3, name: 'Citra', color: 'bg-purple-500' },
-                    { id: 4, name: 'Dian', color: 'bg-yellow-500' }
-                ];
-                savePeople();
-            }
-        }
-
-        function loadActivities() {
-            const saved = localStorage.getItem('splitmate_activities');
-            if (saved) {
-                activities = JSON.parse(saved);
-            } else {
-                activities = [];
-            }
-        }
-
-        function loadSkills() {
-            const saved = localStorage.getItem('splitmate_skills');
-            if (saved) {
-                skills = JSON.parse(saved);
-            } else {
-                skills = [
-                    { id: 1, name: 'Manajemen Keuangan', level: 'intermediate', progress: 65 },
-                    { id: 2, name: 'Negosiasi', level: 'beginner', progress: 30 }
-                ];
-                saveSkills();
-            }
-        }
-
-        function loadMonetizationOpportunities() {
-            const saved = localStorage.getItem('splitmate_monetization');
-            if (saved) {
-                monetizationOpportunities = JSON.parse(saved);
-            } else {
-                monetizationOpportunities = [
-                    { id: 1, name: 'Affiliate Marketing', description: 'Dapatkan komisi dengan merekomendasikan produk keuangan', active: true },
-                    { id: 2, name: 'Content Creation', description: 'Buat konten edukasi keuangan dan dapatkan penghasilan', active: true },
-                    { id: 3, name: 'Financial Consulting', description: 'Tawarkan jasa konsultasi keuangan untuk individu/bisnis', active: true },
-                    { id: 4, name: 'Premium Features', description: 'Akses fitur premium untuk pengalaman lebih baik', active: true }
-                ];
-                saveMonetizationOpportunities();
-            }
-        }
-
-        // Add activity
-        function addActivity(message, type = 'info') {
-            const activity = {
-                id: Date.now(),
-                message: message,
-                type: type,
-                timestamp: new Date().toISOString(),
-                read: false
-            };
-
-            activities.unshift(activity);
-            // Keep only last 10 activities
-            activities = activities.slice(0, 10);
-            saveActivities();
-            updateRecentActivity();
-        }
-
-        // Initialize event listeners
+        // ==================== EVENT LISTENERS ====================
         function initializeEventListeners() {
-            // Initialize people input
-            initializePeopleInput();
-
-            // Sync dengan dashboard saat load
-            syncWithDashboard();
-            
-            // Mobile menu toggle
+            // Mobile menu
             document.getElementById('mobile-menu-button').addEventListener('click', function () {
                 const mobileMenu = document.getElementById('mobile-menu');
                 mobileMenu.classList.toggle('hidden');
-                mobileMenu.classList.toggle('slide-up');
             });
 
             // Quick calculator
@@ -1626,114 +961,12 @@
             // Create bill form
             document.getElementById('createBillForm').addEventListener('submit', handleCreateBill);
 
-            // Quick actions
-            document.getElementById('createGroupBtn').addEventListener('click', createGroup);
-            document.getElementById('settleAllBtn').addEventListener('click', settleAllBills);
-            document.getElementById('exportBillsBtn').addEventListener('click', exportBills);
+            // People input
+            initializePeopleInput();
         }
 
-        // Handle quick calculate
-        function handleQuickCalculate() {
-            const amount = parseFloat(document.getElementById('quickAmount').value);
-            const peopleCount = parseInt(document.getElementById('quickPeople').value);
-
-            if (!amount || !peopleCount || peopleCount < 2) {
-                showNotification('Masukkan jumlah dan orang yang valid!', 'error');
-                return;
-            }
-
-            const perPerson = Math.round(amount / peopleCount);
-            document.getElementById('quickResultAmount').textContent = formatCurrency(perPerson);
-            document.getElementById('quickResult').classList.remove('hidden');
-
-            showNotification(`Per orang: ${formatCurrency(perPerson)}`, 'success');
-        }
-
-        // Handle create bill
-        function handleCreateBill(e) {
-            e.preventDefault();
-
-            const billTitle = document.getElementById('billTitle').value;
-            const billAmount = parseFloat(document.getElementById('billAmount').value);
-            const billCategory = document.getElementById('billCategory').value;
-
-            // Get people from tags
-            const peopleTags = document.querySelectorAll('#peopleTags .people-tag');
-            const selectedPeople = [];
-
-            peopleTags.forEach(tag => {
-                const personName = tag.querySelector('span').textContent;
-                if (personName.trim()) {
-                    // Cari atau buat person baru
-                    let person = people.find(p => p.name === personName);
-                    if (!person) {
-                        const colors = ['bg-blue-500', 'bg-green-500', 'bg-purple-500', 'bg-yellow-500', 'bg-red-500', 'bg-indigo-500'];
-                        const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-                        person = {
-                            id: Date.now() + Math.random(),
-                            name: personName,
-                            color: randomColor
-                        };
-                        people.push(person);
-                        savePeople();
-                    }
-                    selectedPeople.push(person);
-                }
-            });
-
-            if (selectedPeople.length === 0) {
-                showNotification('Tambahkan setidaknya satu orang!', 'error');
-                return;
-            }
-
-            if (!billTitle || !billAmount || !billCategory) {
-                showNotification('Lengkapi semua field yang diperlukan!', 'error');
-                return;
-            }
-
-            // Calculate split amounts
-            const splitAmount = Math.round(billAmount / selectedPeople.length);
-            const splits = selectedPeople.map(person => ({
-                personId: person.id,
-                personName: person.name,
-                amount: splitAmount,
-                paid: false
-            }));
-
-            // Create bill
-            const bill = {
-                id: Date.now(),
-                title: billTitle,
-                amount: billAmount,
-                category: billCategory,
-                createdBy: currentUserId,
-                createdAt: new Date().toISOString(),
-                splits: splits,
-                status: 'active'
-            };
-
-            bills.push(bill);
-            saveBills();
-
-            // Add activity
-            addActivity(`Tagihan "${billTitle}" dibuat sebesar ${formatCurrency(billAmount)}`, 'success');
-
-            updateDashboard();
-            renderBills();
-            updateBalanceOverview();
-
-            // Reset form dengan animasi
-            resetFormWithAnimation();
-
-            showNotification('Tagihan berhasil dibuat! 🎉', 'success');
-            createConfetti();
-        }
-
-        // Fungsi baru untuk input orang
         function initializePeopleInput() {
             const peopleInput = document.getElementById('peopleInput');
-            const peopleTags = document.getElementById('peopleTags');
 
             peopleInput.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter' || e.key === ',') {
@@ -1747,21 +980,123 @@
             });
         }
 
+        // ==================== BILL MANAGEMENT ====================
+        function handleCreateBill(e) {
+            e.preventDefault();
+
+            const billTitle = document.getElementById('billTitle').value.trim();
+            const billAmount = parseFloat(document.getElementById('billAmount').value);
+            const billCategory = document.getElementById('billCategory').value;
+
+            // Validate inputs
+            if (!billTitle) {
+                showNotification('Masukkan judul tagihan!', 'error');
+                return;
+            }
+
+            if (!billAmount || billAmount <= 0) {
+                showNotification('Masukkan jumlah tagihan yang valid!', 'error');
+                return;
+            }
+
+            if (!billCategory) {
+                showNotification('Pilih kategori tagihan!', 'error');
+                return;
+            }
+
+            // Get people from tags
+            const peopleTags = document.querySelectorAll('#peopleTags .people-tag');
+            const selectedPeople = [];
+
+            if (peopleTags.length === 0) {
+                showNotification('Tambahkan setidaknya satu orang!', 'error');
+                return;
+            }
+
+            peopleTags.forEach(tag => {
+                const personName = tag.querySelector('span').textContent.trim();
+                if (personName) {
+                    // Find or create person
+                    let person = people.find(p => p.name.toLowerCase() === personName.toLowerCase());
+                    if (!person) {
+                        const colors = ['bg-blue-500', 'bg-green-500', 'bg-purple-500', 'bg-yellow-500', 'bg-red-500', 'bg-indigo-500'];
+                        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+                        person = {
+                            id: Date.now(),
+                            name: personName,
+                            color: randomColor
+                        };
+                        people.push(person);
+                        savePeople();
+                    }
+                    selectedPeople.push(person);
+                }
+            });
+
+            // Calculate split amounts
+            const splitAmount = Math.round(billAmount / selectedPeople.length);
+            const splits = selectedPeople.map(person => ({
+                personId: person.id,
+                personName: person.name,
+                amount: splitAmount,
+                paid: false
+            }));
+
+            // Create bill object
+            const bill = {
+                id: Date.now(),
+                title: billTitle,
+                amount: billAmount,
+                category: billCategory,
+                createdBy: currentUserId,
+                createdAt: new Date().toISOString(),
+                splits: splits,
+                status: 'active'
+            };
+
+            // Add to bills array
+            bills.push(bill);
+            saveBills();
+
+            // Add activity
+            addActivity(`Tagihan "${billTitle}" dibuat sebesar ${formatCurrency(billAmount)}`, 'success');
+
+            // Update UI
+            renderBills();
+            updateBalanceOverview();
+            updateContactsSidebar();
+
+            // Reset form
+            resetFormWithAnimation();
+
+            // Show success message
+            showNotification('Tagihan berhasil dibuat! 🎉', 'success');
+        }
+
         function addPersonFromInput() {
             const input = document.getElementById('peopleInput');
-            const names = input.value.split(',').map(name => name.trim()).filter(name => name);
+            const names = input.value.split(',')
+                .map(name => name.trim())
+                .filter(name => name.length > 0);
 
             names.forEach(name => {
-                if (name) {
-                    addPersonTag(name);
-                }
+                addPersonTag(name);
             });
 
             input.value = '';
         }
 
         function addPersonTag(personName) {
+            if (!personName.trim()) return;
+
             const tagsContainer = document.getElementById('peopleTags');
+
+            // Check if tag already exists
+            const existingTags = Array.from(tagsContainer.querySelectorAll('.people-tag span'));
+            if (existingTags.some(span => span.textContent === personName)) {
+                return;
+            }
 
             const tag = document.createElement('div');
             tag.className = 'people-tag micro-interaction';
@@ -1785,39 +1120,470 @@
             }, 300);
         }
 
-        // Fungsi untuk modal kontak
-        function showAddPersonModal() {
-            document.getElementById('addPersonModal').classList.remove('hidden');
-            loadSavedContacts();
+        function resetFormWithAnimation() {
+            const form = document.getElementById('createBillForm');
+            form.style.transform = 'scale(0.95)';
+            form.style.opacity = '0.5';
+
+            setTimeout(() => {
+                form.reset();
+                document.getElementById('peopleTags').innerHTML = '';
+                form.style.transform = 'scale(1)';
+                form.style.opacity = '1';
+            }, 300);
         }
 
-        function loadSavedContacts() {
-            const container = document.getElementById('savedContacts');
-            container.innerHTML = '';
+        // ==================== RENDER FUNCTIONS ====================
+        function renderBills() {
+            const container = document.getElementById('billsList');
+            const emptyState = document.getElementById('emptyState');
 
-            people.forEach(person => {
-                const contact = document.createElement('div');
-                contact.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-lg micro-interaction';
-                contact.innerHTML = `
-                    <div class="flex items-center space-x-3">
-                        <div class="person-avatar ${person.color}">
-                            ${person.name.charAt(0)}
+            if (!bills || bills.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            // Filter active bills
+            const activeBills = bills.filter(bill => bill.status === 'active');
+
+            if (activeBills.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center py-4">Tidak ada tagihan aktif</p>';
+                return;
+            }
+
+            container.innerHTML = activeBills.map(bill => {
+                const paidCount = bill.splits ? bill.splits.filter(split => split.paid).length : 0;
+                const totalSplits = bill.splits ? bill.splits.length : 0;
+                const progressPercentage = totalSplits > 0 ? (paidCount / totalSplits) * 100 : 0;
+
+                return `
+                    <div class="morphic-card p-4 slide-up micro-interaction bill-card" data-bill-id="${bill.id}">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-600 rounded-xl flex items-center justify-center">
+                                    <i class="fas ${getCategoryIcon(bill.category)} text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 cursor-pointer hover:text-purple-600" onclick="viewBillDetails(${bill.id})">${bill.title}</h3>
+                                    <div class="flex items-center space-x-2 mt-1">
+                                        <span class="category-badge">${getCategoryName(bill.category)}</span>
+                                        <span class="text-xs text-gray-500">${formatDate(bill.createdAt)}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-gray-800">${formatCurrency(bill.amount)}</p>
+                                <span class="px-2 py-1 text-xs font-medium ${progressPercentage === 100 ? 'bg-green-100 text-green-600' :
+                        progressPercentage > 0 ? 'bg-yellow-100 text-yellow-600' :
+                            'bg-purple-100 text-purple-600'
+                    } rounded-full">
+                                    ${progressPercentage === 100 ? 'Lunas' : progressPercentage > 0 ? 'Sebagian' : 'Aktif'}
+                                </span>
+                            </div>
                         </div>
-                        <span class="font-medium">${person.name}</span>
+                        
+                        <div class="mb-3">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm font-medium text-gray-600">Progress Pembayaran</span>
+                                <span class="text-sm font-medium text-gray-800">${Math.round(progressPercentage)}%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-purple-500 to-blue-500 h-2 rounded-full transition-all duration-500" 
+                                     style="width: ${progressPercentage}%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-1">
+                                ${bill.splits ? bill.splits.map(split => `
+                                    <div class="relative" title="${split.personName}: ${formatCurrency(split.amount)}">
+                                        <div class="person-avatar ${getPersonColor(split.personId)} micro-interaction">
+                                            ${split.personName ? split.personName.charAt(0) : '?'}
+                                        </div>
+                                        ${split.paid ? '<div class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>' : ''}
+                                    </div>
+                                `).join('') : ''}
+                            </div>
+                            
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-gray-500">${paidCount}/${totalSplits} bayar</span>
+                                <button onclick="showPaymentModal(${bill.id})" 
+                                        class="payment-btn micro-interaction ${paidCount === totalSplits ? 'paid' : ''}">
+                                    ${paidCount === totalSplits ? '✓ Lunas' : 'Bayar'}
+                                </button>
+                                <button onclick="settleBill(${bill.id})" class="text-sm px-3 py-1 bg-green-100 text-green-600 rounded-lg hover:bg-green-200 transition-all duration-300 micro-interaction">
+                                    <i class="fas fa-check mr-1"></i>Selesaikan
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="addPersonTag('${person.name}')" class="text-purple-600 hover:text-purple-700 micro-interaction">
-                        <i class="fas fa-plus"></i>
-                    </button>
                 `;
-                container.appendChild(contact);
+            }).join('');
+        }
+
+        function updateDashboard() {
+            const activeBills = bills.filter(bill => bill.status === 'active');
+            const completedBills = bills.filter(bill => bill.status === 'completed');
+            const totalAmount = bills.reduce((sum, bill) => sum + bill.amount, 0);
+
+            // Update statistics
+            document.getElementById('totalBills').textContent = formatCurrency(totalAmount);
+            document.getElementById('activeBills').textContent = activeBills.length;
+            document.getElementById('completedBills').textContent = completedBills.length;
+            document.getElementById('totalPeople').textContent = people.length;
+        }
+
+        function updateBalanceOverview() {
+            const youOweList = document.getElementById('youOweList');
+            const owedYouList = document.getElementById('owedYouList');
+            const emptyYouOwe = document.getElementById('emptyYouOwe');
+            const emptyOwedYou = document.getElementById('emptyOwedYou');
+
+            // Calculate balances (simplified - assuming current user is the creator)
+            let youOweTotal = 0;
+            let owedYouTotal = 0;
+
+            const youOweItems = [];
+            const owedYouItems = [];
+
+            bills.forEach(bill => {
+                if (bill.status === 'active' && bill.splits) {
+                    // User is the creator, so others owe user
+                    bill.splits.forEach(split => {
+                        if (!split.paid) {
+                            owedYouTotal += split.amount;
+                            owedYouItems.push({
+                                person: split.personName,
+                                amount: split.amount,
+                                bill: bill.title
+                            });
+                        }
+                    });
+                }
+            });
+
+            // Update You Owe section
+            if (youOweItems.length === 0) {
+                youOweList.classList.add('hidden');
+                emptyYouOwe.classList.remove('hidden');
+            } else {
+                youOweList.classList.remove('hidden');
+                emptyYouOwe.classList.add('hidden');
+                youOweList.innerHTML = youOweItems.map(item => `
+                    <div class="flex items-center justify-between p-3 bg-red-50 rounded-lg micro-interaction">
+                        <div class="flex items-center space-x-3">
+                            <div class="person-avatar bg-red-500">
+                                ${item.person.charAt(0)}
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">${item.person}</p>
+                                <p class="text-xs text-gray-500">${item.bill}</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-semibold text-red-600">${formatCurrency(item.amount)}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Update Owed You section
+            if (owedYouItems.length === 0) {
+                owedYouList.classList.add('hidden');
+                emptyOwedYou.classList.remove('hidden');
+            } else {
+                owedYouList.classList.remove('hidden');
+                emptyOwedYou.classList.add('hidden');
+                owedYouList.innerHTML = owedYouItems.map(item => `
+                    <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg micro-interaction">
+                        <div class="flex items-center space-x-3">
+                            <div class="person-avatar bg-green-500">
+                                ${item.person.charAt(0)}
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">${item.person}</p>
+                                <p class="text-xs text-gray-500">${item.bill}</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-semibold text-green-600">${formatCurrency(item.amount)}</p>
+                            <button onclick="remindPayment('${item.person}', ${item.amount})" 
+                                    class="payment-btn micro-interaction">
+                                Ingatkan
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // ==================== BILL OPERATIONS ====================
+        function showPaymentModal(billId) {
+            const bill = bills.find(b => b.id === billId);
+            if (!bill) return;
+
+            createModal({
+                title: `Pembayaran: ${bill.title}`,
+                content: getPaymentModalContent(bill)
             });
         }
 
-        function addSinglePerson() {
-            const personName = document.getElementById('personName').value;
+        function getPaymentModalContent(bill) {
+            const paidCount = bill.splits ? bill.splits.filter(split => split.paid).length : 0;
+            const totalSplits = bill.splits ? bill.splits.length : 0;
+
+            return `
+                <div class="space-y-4">
+                    <div class="p-3 bg-blue-50 rounded-lg">
+                        <p class="text-sm text-gray-600">Total Tagihan:</p>
+                        <p class="text-xl font-bold text-blue-600">${formatCurrency(bill.amount)}</p>
+                        <p class="text-xs text-gray-500 mt-1">Per orang: ${formatCurrency(bill.amount / totalSplits)}</p>
+                        <p class="text-xs text-gray-500">Status: ${bill.status === 'completed' ? 'Selesai' : 'Aktif'}</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <h4 class="font-medium text-gray-700">Daftar Pembayaran (${paidCount}/${totalSplits}):</h4>
+                        ${bill.splits ? bill.splits.map((split, index) => `
+                            <div class="flex items-center justify-between p-3 ${split.paid ? 'bg-green-50' : 'bg-gray-50'} rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <div class="person-avatar ${getPersonColor(split.personId)}">
+                                        ${split.personName ? split.personName.charAt(0) : '?'}
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">${split.personName || 'Unknown'}</p>
+                                        <p class="text-sm text-gray-500">${formatCurrency(split.amount)}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    ${split.paid ?
+                    `<span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">
+                                            <i class="fas fa-check mr-1"></i>Lunas
+                                        </span>` :
+                    `<button type="button" onclick="payIndividualSplit(${bill.id}, ${index})" class="payment-btn micro-interaction">
+                                            <i class="fas fa-money-bill-wave mr-1"></i>Bayar
+                                        </button>`
+                }
+                                </div>
+                            </div>
+                        `).join('') : '<p class="text-gray-500">Tidak ada data pembayaran</p>'}
+                    </div>
+                    
+                    <div class="flex space-x-3 pt-4">
+                        ${paidCount === totalSplits && totalSplits > 0 && bill.status === 'active' ?
+                    `<button type="button" onclick="settleBill(${bill.id})" class="btn-primary flex-1">
+                                <i class="fas fa-check-circle mr-2"></i>Tandai Selesai
+                            </button>` :
+                    ''
+                }
+                        <button type="button" onclick="closeModal()" class="btn-secondary flex-1">Tutup</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function payIndividualSplit(billId, splitIndex) {
+            const bill = bills.find(b => b.id === billId);
+            if (!bill || !bill.splits || !bill.splits[splitIndex]) return;
+
+            const split = bill.splits[splitIndex];
+            split.paid = true;
+
+            // Check if all splits are paid
+            const allPaid = bill.splits.every(s => s.paid);
+            if (allPaid && bill.status === 'active') {
+                bill.status = 'ready_to_close';
+            }
+
+            saveBills();
+            renderBills();
+            updateBalanceOverview();
+
+            // Close and reopen modal to refresh content
+            closeModal();
+            setTimeout(() => {
+                showPaymentModal(billId);
+            }, 300);
+
+            addActivity(`${split.personName} membayar ${formatCurrency(split.amount)} untuk "${bill.title}"`, 'success');
+            showNotification(`${split.personName} berhasil membayar!`, 'success');
+        }
+
+        function settleBill(billId) {
+            const bill = bills.find(b => b.id === billId);
+            if (!bill) return;
+
+            bill.status = 'completed';
+            if (bill.splits) {
+                bill.splits.forEach(split => {
+                    split.paid = true;
+                });
+            }
+
+            saveBills();
+            closeModal();
+
+            // Update UI
+            setTimeout(() => {
+                renderBills();
+                updateBalanceOverview();
+                updateDashboard();
+            }, 100);
+
+            addActivity(`Tagihan "${bill.title}" diselesaikan`, 'success');
+            showNotification('Tagihan berhasil diselesaikan!', 'success');
+        }
+
+        function viewBillDetails(billId) {
+            const bill = bills.find(b => b.id === billId);
+            if (!bill) return;
+
+            createModal({
+                title: `Detail Tagihan: ${bill.title}`,
+                content: getBillDetailsContent(bill)
+            });
+        }
+
+        function getBillDetailsContent(bill) {
+            const paidCount = bill.splits ? bill.splits.filter(split => split.paid).length : 0;
+            const totalSplits = bill.splits ? bill.splits.length : 0;
+
+            return `
+                <div class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-gray-500">Judul</p>
+                            <p class="font-semibold text-lg">${bill.title}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Total</p>
+                            <p class="font-semibold text-lg text-purple-600">${formatCurrency(bill.amount)}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Kategori</p>
+                            <p class="font-semibold">${getCategoryName(bill.category)}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Status</p>
+                            <p class="font-semibold ${bill.status === 'completed' ? 'text-green-600' : 'text-blue-600'}">
+                                ${bill.status === 'completed' ? 'Selesai' : 'Aktif'}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Tanggal Dibuat</p>
+                            <p class="font-semibold">${formatDate(bill.createdAt)}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Jumlah Orang</p>
+                            <p class="font-semibold">${totalSplits} orang</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-medium text-gray-700 mb-3">Detail Pembagian (${paidCount}/${totalSplits} bayar):</h4>
+                        <div class="space-y-3">
+                            ${bill.splits ? bill.splits.map(split => `
+                                <div class="flex items-center justify-between p-3 ${split.paid ? 'bg-green-50' : 'bg-gray-50'} rounded-lg">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="person-avatar ${getPersonColor(split.personId)}">
+                                            ${split.personName ? split.personName.charAt(0) : '?'}
+                                        </div>
+                                        <div>
+                                            <p class="font-medium">${split.personName || 'Unknown'}</p>
+                                            <p class="text-xs text-gray-500">${split.paid ? 'Sudah bayar' : 'Belum bayar'}</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold">${formatCurrency(split.amount)}</p>
+                                        <p class="text-xs ${split.paid ? 'text-green-600' : 'text-red-600'}">
+                                            ${split.paid ? '✓ Lunas' : 'Belum Lunas'}
+                                        </p>
+                                    </div>
+                                </div>
+                            `).join('') : '<p class="text-gray-500">Tidak ada data pembagian</p>'}
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-3 pt-4">
+                        <button type="button" onclick="showPaymentModal(${bill.id})" class="btn-primary flex-1">
+                            <i class="fas fa-money-bill-wave mr-2"></i>Kelola Pembayaran
+                        </button>
+                        <button type="button" onclick="deleteBill(${bill.id})" class="btn-secondary flex-1 bg-red-100 text-red-600 hover:bg-red-200">
+                            <i class="fas fa-trash mr-2"></i>Hapus
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function deleteBill(billId) {
+            if (!confirm('Apakah Anda yakin ingin menghapus tagihan ini?')) return;
+
+            bills = bills.filter(b => b.id !== billId);
+            saveBills();
+            renderBills();
+            updateDashboard();
+            updateBalanceOverview();
+            closeModal();
+
+            showNotification('Tagihan berhasil dihapus!', 'success');
+            addActivity('Tagihan dihapus', 'info');
+        }
+
+        // ==================== PEOPLE MANAGEMENT ====================
+        function showAddPersonModal() {
+            createModal({
+                title: 'Tambah Kontak',
+                content: getAddPersonModalContent()
+            });
+        }
+
+        function getAddPersonModalContent() {
+            return `
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nama Kontak</label>
+                        <input type="text" id="newPersonName" class="input-field w-full" placeholder="Nama teman">
+                    </div>
+                    
+                    <button type="button" onclick="addNewPerson()" class="btn-primary w-full micro-interaction">
+                        <i class="fas fa-plus mr-2"></i>Tambah Kontak
+                    </button>
+                    
+                    <div class="mt-6">
+                        <h4 class="text-sm font-medium text-gray-700 mb-3">Kontak Tersimpan</h4>
+                        <div id="modalContactsList" class="space-y-2 max-h-40 overflow-y-auto custom-scrollbar">
+                            ${people.map(person => `
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="person-avatar ${person.color}">
+                                            ${person.name.charAt(0)}
+                                        </div>
+                                        <span class="font-medium">${person.name}</span>
+                                    </div>
+                                    <button type="button" onclick="removeContact(${person.id})" class="text-red-500 hover:text-red-700 micro-interaction p-1">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="pt-4">
+                        <button type="button" onclick="closeModal()" class="btn-secondary w-full">Tutup</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function addNewPerson() {
+            const input = document.getElementById('newPersonName');
+            const personName = input.value.trim();
 
             if (!personName) {
-                showNotification('Masukkan nama!', 'error');
+                showNotification('Masukkan nama kontak!', 'error');
                 return;
             }
 
@@ -1838,354 +1604,104 @@
 
             people.push(person);
             savePeople();
-            loadSavedContacts();
-            document.getElementById('personName').value = '';
-            
+            updateContactsSidebar();
+            updateDashboard();
+
+            // Update modal content
+            const modalContent = document.querySelector('.modal-content');
+            if (modalContent) {
+                modalContent.querySelector('#modalContactsList').innerHTML = people.map(person => `
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="person-avatar ${person.color}">
+                                ${person.name.charAt(0)}
+                            </div>
+                            <span class="font-medium">${person.name}</span>
+                        </div>
+                        <button type="button" onclick="removeContact(${person.id})" class="text-red-500 hover:text-red-700 micro-interaction p-1">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            input.value = '';
             showNotification(`${personName} ditambahkan!`, 'success');
             addActivity(`Kontak "${personName}" ditambahkan`, 'info');
         }
 
-        function closeAddPersonModal() {
-            document.getElementById('addPersonModal').classList.add('hidden');
-            document.getElementById('personName').value = '';
-        }
+        function removeContact(personId) {
+            if (!confirm('Apakah Anda yakin ingin menghapus kontak ini?')) return;
 
-        // Fungsi reset form dengan animasi
-        function resetFormWithAnimation() {
-            const form = document.getElementById('createBillForm');
-            form.style.transform = 'scale(0.95)';
-            form.style.opacity = '0.5';
+            people = people.filter(p => p.id !== personId);
+            savePeople();
+            updateContactsSidebar();
+            updateDashboard();
 
-            setTimeout(() => {
-                form.reset();
-                document.getElementById('peopleTags').innerHTML = '';
-                form.style.transform = 'scale(1)';
-                form.style.opacity = '1';
-            }, 300);
-        }
-
-        // Fungsi confetti celebration
-        function createConfetti() {
-            const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981'];
-
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDelay = Math.random() * 2 + 's';
-
-                document.body.appendChild(confetti);
-
-                setTimeout(() => {
-                    confetti.remove();
-                }, 2000);
-            }
-        }
-
-        // Create group
-        function createGroup() {
-            showNotification('Fitur buat grup akan segera hadir!', 'info');
-        }
-
-        // Settle all bills
-        function settleAllBills() {
-            if (bills.length === 0) {
-                showNotification('Tidak ada tagihan untuk diselesaikan!', 'info');
-                return;
-            }
-
-            if (confirm('Tandai semua tagihan sebagai selesai?')) {
-                bills.forEach(bill => {
-                    if (bill.status === 'active') {
-                        bill.status = 'completed';
-                        bill.splits.forEach(split => {
-                            split.paid = true;
-                        });
-                    }
-                });
-
-                saveBills();
-                updateDashboard();
-                renderBills();
-                updateBalanceOverview();
-
-                addActivity('Semua tagihan ditandai sebagai selesai', 'success');
-                showNotification('Semua tagihan berhasil diselesaikan!', 'success');
-            }
-        }
-
-        // Export bills
-        function exportBills() {
-            if (bills.length === 0) {
-                showNotification('Tidak ada data untuk diekspor!', 'error');
-                return;
-            }
-
-            showNotification('Data berhasil diekspor!', 'success');
-        }
-
-        // Update dashboard statistics
-        function updateDashboard() {
-            const activeBills = bills.filter(bill => bill.status === 'active');
-            const completedBills = bills.filter(bill => bill.status === 'completed');
-            const totalAmount = bills.reduce((sum, bill) => sum + bill.amount, 0);
-            const totalBills = bills.length;
-
-            // Update elements
-            document.getElementById('totalBills').textContent = formatCurrency(totalAmount);
-            document.getElementById('activeBills').textContent = activeBills.length;
-            document.getElementById('completedBills').textContent = completedBills.length;
-            document.getElementById('totalPeople').textContent = people.length;
-
-            // Update skills and monetization progress
-            document.getElementById('skillsCount').textContent = `${skills.length}/5`;
-            document.getElementById('skillsProgress').style.width = `${Math.min(skills.length / 5 * 100, 100)}%`;
-            
-            const activeMonetization = monetizationOpportunities.filter(opp => opp.active).length;
-            document.getElementById('monetizationCount').textContent = `${activeMonetization}/4`;
-            document.getElementById('monetizationProgress').style.width = `${Math.min(activeMonetization / 4 * 100, 100)}%`;
-        }
-
-        // Render bills
-        function renderBills() {
-            const container = document.getElementById('billsList');
-            const emptyState = document.getElementById('emptyState');
-
-            if (bills.length === 0) {
-                container.innerHTML = '';
-                emptyState.classList.remove('hidden');
-                return;
-            }
-
-            emptyState.classList.add('hidden');
-
-            container.innerHTML = bills.map(bill => {
-                const paidCount = bill.splits.filter(split => split.paid).length;
-                const totalSplits = bill.splits.length;
-                const progressPercentage = (paidCount / totalSplits) * 100;
-
-                let statusBadge = '';
-                if (bill.status === 'completed') {
-                    statusBadge = '<span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-600 rounded-full">Lunas</span>';
-                } else if (progressPercentage === 100) {
-                    statusBadge = '<span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-600 rounded-full">Siap Ditutup</span>';
-                } else if (progressPercentage > 0) {
-                    statusBadge = '<span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-600 rounded-full">Sebagian</span>';
-                } else {
-                    statusBadge = '<span class="px-2 py-1 text-xs font-medium bg-purple-100 text-purple-600 rounded-full">Aktif</span>';
-                }
-
-                return `
-                    <div class="morphic-card p-4 slide-up micro-interaction bill-card ${bill.category}" data-bill-id="${bill.id}">
-                        <div class="flex items-center justify-between mb-3">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-600 rounded-xl flex items-center justify-center">
-                                    <i class="fas ${getCategoryIcon(bill.category)} text-white text-lg"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-semibold text-gray-800">${bill.title}</h3>
-                                    <div class="flex items-center space-x-2 mt-1">
-                                        <span class="category-badge ${bill.category}">${getCategoryName(bill.category)}</span>
-                                        <span class="text-xs text-gray-500">${formatDate(bill.createdAt)}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <p class="font-semibold text-gray-800">${formatCurrency(bill.amount)}</p>
-                                ${statusBadge}
-                            </div>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-medium text-gray-600">Progress Pembayaran</span>
-                                <span class="text-sm font-medium text-gray-800">${Math.round(progressPercentage)}%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-gradient-to-r from-purple-500 to-blue-500 h-2 rounded-full transition-all duration-500" style="width: ${progressPercentage}%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-1">
-                                ${bill.splits.slice(0, 3).map(split => `
-                                    <div class="person-avatar ${getPersonColor(split.personId)} micro-interaction" title="${split.personName}">
-                                        ${split.personName.charAt(0)}
-                                    </div>
-                                `).join('')}
-                                ${bill.splits.length > 3 ? `
-                                    <div class="person-avatar bg-gray-400 text-xs">
-                                        +${bill.splits.length - 3}
-                                    </div>
-                                ` : ''}
-                            </div>
-                            
-                            <div class="flex items-center space-x-2">
-                                <span class="text-sm text-gray-500">${paidCount}/${totalSplits} bayar</span>
-                                ${bill.status === 'active' ? `
-                                    <button onclick="settleBill(${bill.id})" class="text-sm px-3 py-1 bg-green-100 text-green-600 rounded-lg hover:bg-green-200 transition-all duration-300 micro-interaction">
-                                        <i class="fas fa-check mr-1"></i>Selesaikan
-                                    </button>
-                                ` : ''}
-                                <button onclick="deleteBill(${bill.id})" class="text-red-500 hover:text-red-700 micro-interaction">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // Settle individual bill
-        function settleBill(billId) {
-            const bill = bills.find(b => b.id === billId);
-            if (bill) {
-                bill.status = 'completed';
-                bill.splits.forEach(split => {
-                    split.paid = true;
-                });
-
-                saveBills();
-                updateDashboard();
-                renderBills();
-                updateBalanceOverview();
-
-                addActivity(`Tagihan "${bill.title}" diselesaikan`, 'success');
-                showNotification('Tagihan berhasil diselesaikan!', 'success');
-            }
-        }
-
-        // Delete bill
-        function deleteBill(billId) {
-            if (confirm('Apakah Anda yakin ingin menghapus tagihan ini?')) {
-                const bill = bills.find(b => b.id === billId);
-                bills = bills.filter(b => b.id !== billId);
-                saveBills();
-                updateDashboard();
-                renderBills();
-                updateBalanceOverview();
-
-                addActivity(`Tagihan "${bill.title}" dihapus`, 'info');
-                showNotification('Tagihan berhasil dihapus!', 'success');
-            }
-        }
-
-        // Update balance overview
-        function updateBalanceOverview() {
-            const youOweList = document.getElementById('youOweList');
-            const owedYouList = document.getElementById('owedYouList');
-            const emptyYouOwe = document.getElementById('emptyYouOwe');
-            const emptyOwedYou = document.getElementById('emptyOwedYou');
-
-            // Calculate balances (simplified for demo)
-            const youOwe = [];
-            const owedYou = [];
-
-            // Calculate actual balances from bills
-            bills.forEach(bill => {
-                if (bill.status === 'active') {
-                    bill.splits.forEach(split => {
-                        if (split.personName !== 'Andi' && !split.paid) { // Assuming current user is 'Andi'
-                            youOwe.push({
-                                person: split.personName,
-                                amount: split.amount,
-                                bill: bill.title
-                            });
-                        } else if (split.personName === 'Andi' && !split.paid) {
-                            // This would require tracking who should pay the current user
-                            // For demo purposes, we'll add some sample data
-                            owedYou.push({
-                                person: 'Budi',
-                                amount: 50000,
-                                bill: bill.title
-                            });
-                        }
-                    });
-                }
-            });
-
-            // Add some sample data for demo
-            if (youOwe.length === 0 && bills.length > 0) {
-                youOwe.push(
-                    { person: 'Budi', amount: 50000, bill: 'Makan Siang' },
-                    { person: 'Citra', amount: 75000, bill: 'Tiket Bioskop' }
-                );
-            }
-
-            if (owedYou.length === 0 && bills.length > 0) {
-                owedYou.push(
-                    { person: 'Dian', amount: 100000, bill: 'Belanja Bulanan' },
-                    { person: 'Eka', amount: 25000, bill: 'Ongkos Travel' }
-                );
-            }
-
-            // Update You Owe section
-            if (youOwe.length === 0) {
-                youOweList.classList.add('hidden');
-                emptyYouOwe.classList.remove('hidden');
-            } else {
-                youOweList.classList.remove('hidden');
-                emptyYouOwe.classList.add('hidden');
-
-                youOweList.innerHTML = youOwe.map(item => `
-                    <div class="flex items-center justify-between p-3 bg-red-50 rounded-lg micro-interaction">
+            // Update modal content
+            const modalContent = document.querySelector('.modal-content');
+            if (modalContent) {
+                modalContent.querySelector('#modalContactsList').innerHTML = people.map(person => `
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                         <div class="flex items-center space-x-3">
-                            <div class="person-avatar bg-red-500">
-                                ${item.person.charAt(0)}
+                            <div class="person-avatar ${person.color}">
+                                ${person.name.charAt(0)}
                             </div>
-                            <div>
-                                <p class="font-medium text-gray-800">${item.person}</p>
-                                <p class="text-xs text-gray-500">${item.bill}</p>
-                            </div>
+                            <span class="font-medium">${person.name}</span>
                         </div>
-                        <div class="text-right">
-                            <p class="font-semibold text-red-600">${formatCurrency(item.amount)}</p>
-                            <button class="text-xs text-purple-600 hover:text-purple-700 micro-interaction">
-                                Bayar
-                            </button>
-                        </div>
+                        <button type="button" onclick="removeContact(${person.id})" class="text-red-500 hover:text-red-700 micro-interaction p-1">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </div>
                 `).join('');
             }
 
-            // Update Owed You section
-            if (owedYou.length === 0) {
-                owedYouList.classList.add('hidden');
-                emptyOwedYou.classList.remove('hidden');
-            } else {
-                owedYouList.classList.remove('hidden');
-                emptyOwedYou.classList.add('hidden');
-
-                owedYouList.innerHTML = owedYou.map(item => `
-                    <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg micro-interaction">
-                        <div class="flex items-center space-x-3">
-                            <div class="person-avatar bg-green-500">
-                                ${item.person.charAt(0)}
-                            </div>
-                            <div>
-                                <p class="font-medium text-gray-800">${item.person}</p>
-                                <p class="text-xs text-gray-500">${item.bill}</p>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <p class="font-semibold text-green-600">${formatCurrency(item.amount)}</p>
-                            <button class="text-xs text-purple-600 hover:text-purple-700 micro-interaction">
-                                Ingatkan
-                            </button>
-                        </div>
-                    </div>
-                `).join('');
-            }
+            showNotification('Kontak berhasil dihapus!', 'success');
         }
 
-        // Update recent activity
+        function updateContactsSidebar() {
+            const container = document.getElementById('savedContactsSidebar');
+            if (!container) return;
+
+            container.innerHTML = people.map(person => `
+                <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg micro-interaction">
+                    <div class="flex items-center space-x-3">
+                        <div class="person-avatar ${person.color}">
+                            ${person.name.charAt(0)}
+                        </div>
+                        <span class="font-medium text-sm">${person.name}</span>
+                    </div>
+                    <button type="button" onclick="addPersonTag('${person.name}')" class="text-purple-600 hover:text-purple-700 text-xs micro-interaction">
+                        Tambah
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // ==================== ACTIVITY MANAGEMENT ====================
+        function addActivity(message, type = 'info') {
+            const activity = {
+                id: Date.now(),
+                message: message,
+                type: type,
+                timestamp: new Date().toISOString(),
+                read: false
+            };
+
+            activities.unshift(activity);
+            // Keep only last 10 activities
+            activities = activities.slice(0, 10);
+            saveActivities();
+            updateRecentActivity();
+        }
+
         function updateRecentActivity() {
             const recentActivity = document.getElementById('recentActivity');
             const emptyActivity = document.getElementById('emptyActivity');
 
-            if (activities.length === 0) {
+            if (!recentActivity || !emptyActivity) return;
+
+            if (!activities || activities.length === 0) {
                 recentActivity.classList.add('hidden');
                 emptyActivity.classList.remove('hidden');
                 return;
@@ -2213,87 +1729,326 @@
             }).join('');
         }
 
-        // Skill functions
-        function showAddSkillModal() {
-            document.getElementById('addSkillModal').classList.remove('hidden');
-        }
+        // ==================== UTILITY FUNCTIONS ====================
+        function handleQuickCalculate() {
+            const amount = parseFloat(document.getElementById('quickAmount').value);
+            const peopleCount = parseInt(document.getElementById('quickPeople').value);
 
-        function closeAddSkillModal() {
-            document.getElementById('addSkillModal').classList.add('hidden');
-            document.getElementById('skillName').value = '';
-            document.getElementById('skillLevel').value = '';
-        }
-
-        function addNewSkill() {
-            const skillName = document.getElementById('skillName').value;
-            const skillLevel = document.getElementById('skillLevel').value;
-
-            if (!skillName || !skillLevel) {
-                showNotification('Lengkapi semua field!', 'error');
+            if (!amount || !peopleCount || peopleCount < 2) {
+                showNotification('Masukkan jumlah dan orang yang valid!', 'error');
                 return;
             }
 
-            // Check if skill already exists
-            if (skills.find(s => s.name.toLowerCase() === skillName.toLowerCase())) {
-                showNotification('Skill sudah ada!', 'error');
-                return;
+            const perPerson = Math.round(amount / peopleCount);
+            document.getElementById('quickResultAmount').textContent = formatCurrency(perPerson);
+            document.getElementById('quickResult').classList.remove('hidden');
+
+            showNotification(`Per orang: ${formatCurrency(perPerson)}`, 'success');
+        }
+
+        function showAddBillForm() {
+            document.getElementById('createBillSection').scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+            document.getElementById('billTitle').focus();
+        }
+
+        function remindPayment(personName, amount) {
+            showNotification(`Pengingat terkirim ke ${personName} untuk ${formatCurrency(amount)}`, 'info');
+            addActivity(`${personName} diingatkan untuk membayar ${formatCurrency(amount)}`, 'info');
+        }
+
+        // ==================== MODAL SYSTEM - FIXED ====================
+        function createModal({ title, content }) {
+            // Remove existing modal
+            const existingModal = document.querySelector('.modal-overlay');
+            if (existingModal) {
+                existingModal.remove();
             }
 
-            const newSkill = {
-                id: Date.now(),
-                name: skillName,
-                level: skillLevel,
-                progress: getProgressByLevel(skillLevel)
+            // Create modal HTML
+            const modalHTML = `
+                <div class="modal-overlay fade-in">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title">${title}</h2>
+                            <button type="button" class="modal-close" onclick="closeModal()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ${content}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Add to modal container
+            document.getElementById('modalContainer').innerHTML = modalHTML;
+
+            // Activate modal with animation
+            setTimeout(() => {
+                const modal = document.querySelector('.modal-overlay');
+                modal.classList.add('active');
+            }, 10);
+
+            // Add ESC key listener
+            document.addEventListener('keydown', handleEscKey);
+        }
+
+        function closeModal() {
+            const modal = document.querySelector('.modal-overlay');
+            if (modal) {
+                modal.classList.remove('active');
+
+                // Wait for animation to complete
+                setTimeout(() => {
+                    modal.remove();
+                    // Remove ESC key listener
+                    document.removeEventListener('keydown', handleEscKey);
+                }, 300);
+            }
+        }
+
+        function handleEscKey(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function (e) {
+            const modalOverlay = document.querySelector('.modal-overlay');
+            if (modalOverlay && e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        // ==================== HISTORY MODAL ====================
+        function showHistoryModal() {
+            const completedBills = bills.filter(bill => bill.status === 'completed');
+            const activeBills = bills.filter(bill => bill.status === 'active');
+
+            createModal({
+                title: 'Riwayat Tagihan',
+                content: getHistoryModalContent(completedBills, activeBills)
+            });
+        }
+
+        function getHistoryModalContent(completedBills, activeBills) {
+            return `
+                <div class="space-y-4">
+                    <div class="flex space-x-2 mb-4">
+                        <button type="button" onclick="switchHistoryTab('completed')" class="px-4 py-2 bg-purple-100 text-purple-600 rounded-lg text-sm font-medium">
+                            Selesai (${completedBills.length})
+                        </button>
+                        <button type="button" onclick="switchHistoryTab('active')" class="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium">
+                            Aktif (${activeBills.length})
+                        </button>
+                    </div>
+                    
+                    <div id="historyContent" class="space-y-4 max-h-60 overflow-y-auto custom-scrollbar">
+                        ${renderHistoryBills(completedBills)}
+                    </div>
+                    
+                    <div class="pt-4 border-t border-gray-200">
+                        <button type="button" onclick="exportReport()" class="btn-primary w-full mb-2">
+                            <i class="fas fa-file-export mr-2"></i>Export Laporan
+                        </button>
+                        <button type="button" onclick="closeModal()" class="btn-secondary w-full">Tutup</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function switchHistoryTab(tab) {
+            let filteredBills = [];
+            if (tab === 'completed') {
+                filteredBills = bills.filter(bill => bill.status === 'completed');
+            } else {
+                filteredBills = bills.filter(bill => bill.status === 'active');
+            }
+
+            const historyContent = document.getElementById('historyContent');
+            if (historyContent) {
+                historyContent.innerHTML = renderHistoryBills(filteredBills);
+            }
+        }
+
+        function renderHistoryBills(billsToRender) {
+            if (!billsToRender || billsToRender.length === 0) {
+                return '<p class="text-gray-500 text-center py-4">Tidak ada tagihan</p>';
+            }
+
+            return billsToRender.map(bill => {
+                const paidCount = bill.splits ? bill.splits.filter(split => split.paid).length : 0;
+                const totalSplits = bill.splits ? bill.splits.length : 0;
+
+                return `
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="font-medium text-gray-800">${bill.title}</h4>
+                                <p class="text-sm text-gray-500">${formatDate(bill.createdAt)}</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-purple-600">${formatCurrency(bill.amount)}</p>
+                                <p class="text-xs text-gray-500">${paidCount}/${totalSplits} bayar</p>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-600">
+                            <p class="mb-1">Peserta:</p>
+                            <div class="flex flex-wrap gap-2">
+                                ${bill.splits ? bill.splits.map(split => `
+                                    <span class="px-2 py-1 bg-white rounded text-xs">
+                                        ${split.personName} (${formatCurrency(split.amount)})
+                                    </span>
+                                `).join('') : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ==================== FILTER & SORT ====================
+        function showFilterOptions() {
+            const filterContent = `
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-700 mb-3">Filter Status</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <button type="button" onclick="applyFilter('all')" class="px-3 py-2 bg-purple-100 text-purple-600 rounded-lg text-sm">
+                                Semua
+                            </button>
+                            <button type="button" onclick="applyFilter('active')" class="px-3 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm">
+                                Aktif
+                            </button>
+                            <button type="button" onclick="applyFilter('completed')" class="px-3 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm">
+                                Selesai
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-700 mb-3">Kategori</h4>
+                        <div class="flex flex-wrap gap-2">
+                            ${getUniqueCategories().map(category => `
+                                <button type="button" onclick="applyCategoryFilter('${category}')" class="px-3 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm">
+                                    ${getCategoryName(category)}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="pt-4 border-t border-gray-200">
+                        <button type="button" onclick="resetFilter()" class="btn-secondary w-full mb-2">
+                            Reset Filter
+                        </button>
+                        <button type="button" onclick="closeModal()" class="btn-primary w-full">Terapkan</button>
+                    </div>
+                </div>
+            `;
+
+            createModal({
+                title: 'Filter Tagihan',
+                content: filterContent
+            });
+        }
+
+        function applyFilter(status) {
+            // Close modal and apply filter
+            closeModal();
+            // In a real implementation, you would filter the bills here
+            showNotification(`Filter diterapkan: ${status}`, 'success');
+        }
+
+        function applyCategoryFilter(category) {
+            closeModal();
+            showNotification(`Filter kategori: ${getCategoryName(category)}`, 'success');
+        }
+
+        function resetFilter() {
+            closeModal();
+            renderBills();
+            showNotification('Filter direset', 'success');
+        }
+
+        function getUniqueCategories() {
+            const categories = bills.map(bill => bill.category).filter(Boolean);
+            return [...new Set(categories)];
+        }
+
+        function showSortOptions() {
+            const sortContent = `
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-700 mb-3">Urutkan Berdasarkan</h4>
+                        <div class="space-y-2">
+                            <button type="button" onclick="applySort('date_desc')" class="w-full text-left px-3 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm hover:bg-gray-200">
+                                <i class="fas fa-calendar-alt mr-2"></i>Tanggal (Terbaru)
+                            </button>
+                            <button type="button" onclick="applySort('date_asc')" class="w-full text-left px-3 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm hover:bg-gray-200">
+                                <i class="fas fa-calendar mr-2"></i>Tanggal (Terlama)
+                            </button>
+                            <button type="button" onclick="applySort('amount_desc')" class="w-full text-left px-3 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm hover:bg-gray-200">
+                                <i class="fas fa-sort-amount-down mr-2"></i>Jumlah (Besar ke Kecil)
+                            </button>
+                            <button type="button" onclick="applySort('amount_asc')" class="w-full text-left px-3 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm hover:bg-gray-200">
+                                <i class="fas fa-sort-amount-up mr-2"></i>Jumlah (Kecil ke Besar)
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-4 border-t border-gray-200">
+                        <button type="button" onclick="closeModal()" class="btn-primary w-full">Terapkan</button>
+                    </div>
+                </div>
+            `;
+
+            createModal({
+                title: 'Urutkan Tagihan',
+                content: sortContent
+            });
+        }
+
+        function applySort(sortType) {
+            closeModal();
+            showNotification(`Diurutkan berdasarkan ${sortType}`, 'success');
+            // In a real implementation, you would sort the bills here
+        }
+
+        // ==================== EXPORT REPORT ====================
+        function exportReport() {
+            const data = {
+                totalBills: bills.length,
+                activeBills: bills.filter(b => b.status === 'active').length,
+                completedBills: bills.filter(b => b.status === 'completed').length,
+                totalAmount: bills.reduce((sum, b) => sum + b.amount, 0),
+                bills: bills,
+                people: people,
+                exportDate: new Date().toISOString(),
+                exportedBy: currentUser
             };
 
-            skills.push(newSkill);
-            saveSkills();
-            updateSkillsDisplay();
-            closeAddSkillModal();
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `splitmate-report-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
 
-            showNotification(`Skill "${skillName}" berhasil ditambahkan!`, 'success');
-            addActivity(`Skill baru ditambahkan: ${skillName}`, 'info');
+            showNotification('Laporan berhasil diexport!', 'success');
+            addActivity('Laporan tagihan diexport', 'info');
         }
 
-        function getProgressByLevel(level) {
-            switch(level) {
-                case 'beginner': return 30;
-                case 'intermediate': return 65;
-                case 'advanced': return 80;
-                case 'expert': return 95;
-                default: return 30;
-            }
-        }
-
-        function updateSkillsDisplay() {
-            // Update the skills progress in the sidebar
-            document.getElementById('skillsCount').textContent = `${skills.length}/5`;
-            document.getElementById('skillsProgress').style.width = `${Math.min(skills.length / 5 * 100, 100)}%`;
-            
-            // Update dashboard
-            updateDashboard();
-        }
-
-        // Monetization functions
-        function showMonetizationModal() {
-            document.getElementById('monetizationModal').classList.remove('hidden');
-        }
-
-        function closeMonetizationModal() {
-            document.getElementById('monetizationModal').classList.add('hidden');
-        }
-
-        function updateMonetizationDisplay() {
-            const activeMonetization = monetizationOpportunities.filter(opp => opp.active).length;
-            document.getElementById('monetizationCount').textContent = `${activeMonetization}/4`;
-            document.getElementById('monetizationProgress').style.width = `${Math.min(activeMonetization / 4 * 100, 100)}%`;
-            
-            // Update dashboard
-            updateDashboard();
-        }
-
-        // Utility functions
+        // ==================== FORMATTING FUNCTIONS ====================
         function formatCurrency(amount) {
+            if (amount === undefined || amount === null) return 'Rp 0';
             return new Intl.NumberFormat('id-ID', {
                 style: 'currency',
                 currency: 'IDR',
@@ -2303,7 +2058,9 @@
         }
 
         function formatDate(dateString) {
-            return new Date(dateString).toLocaleDateString('id-ID', {
+            if (!dateString) return '-';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('id-ID', {
                 day: 'numeric',
                 month: 'short',
                 year: 'numeric'
@@ -2311,6 +2068,7 @@
         }
 
         function getTimeAgo(timestamp) {
+            if (!timestamp) return '-';
             const now = new Date();
             const time = new Date(timestamp);
             const diffInMinutes = Math.floor((now - time) / (1000 * 60));
@@ -2348,12 +2106,16 @@
         }
 
         function getPersonColor(personId) {
+            if (!personId) return 'bg-gray-500';
             const person = people.find(p => p.id === personId);
             return person ? person.color : 'bg-gray-500';
         }
 
+        // ==================== NOTIFICATION SYSTEM ====================
         function showNotification(message, type = 'info') {
             const container = document.getElementById('notificationContainer');
+            if (!container) return;
+
             const notification = document.createElement('div');
 
             const colors = {
@@ -2367,7 +2129,10 @@
             notification.innerHTML = `
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                        <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle'} mr-3"></i>
+                        <i class="fas ${type === 'success' ? 'fa-check-circle' :
+                    type === 'error' ? 'fa-exclamation-circle' :
+                        type === 'warning' ? 'fa-exclamation-triangle' :
+                            'fa-info-circle'} mr-3"></i>
                         <span class="text-sm">${message}</span>
                     </div>
                     <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-gray-400 hover:text-gray-600 micro-interaction">
@@ -2384,55 +2149,6 @@
                     notification.remove();
                 }
             }, 5000);
-        }
-
-        // Fungsi untuk sinkronisasi data dengan dashboard
-        function syncWithDashboard() {
-            // Simpan data ke localStorage dengan key yang sama dengan dashboard
-            const dashboardData = {
-                totalSavings: 0,
-                totalDebt: 0,
-                splitBills: bills,
-                lastUpdated: new Date().toISOString()
-            };
-
-            localStorage.setItem('dashboardFinanceData', JSON.stringify(dashboardData));
-
-            // Update stats untuk dashboard
-            updateDashboardStats();
-        }
-
-        function updateDashboardStats() {
-            const totalActiveBills = bills.filter(bill => bill.status === 'active').length;
-            const totalBillAmount = bills.reduce((sum, bill) => sum + bill.amount, 0);
-
-            const stats = {
-                activeBills: totalActiveBills,
-                totalBillAmount: totalBillAmount,
-                pendingPayments: calculatePendingPayments()
-            };
-
-            localStorage.setItem('splitmateStats', JSON.stringify(stats));
-        }
-
-        function calculatePendingPayments() {
-            let totalPending = 0;
-            bills.forEach(bill => {
-                if (bill.status === 'active') {
-                    bill.splits.forEach(split => {
-                        if (!split.paid) {
-                            totalPending += split.amount;
-                        }
-                    });
-                }
-            });
-            return totalPending;
-        }
-
-        // Helper function to show add bill form
-        function showAddBillForm() {
-            document.getElementById('createBillSection').scrollIntoView({ behavior: 'smooth' });
-            document.getElementById('billTitle').focus();
         }
     </script>
 </body>
