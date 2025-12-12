@@ -1017,6 +1017,330 @@
             color: #1f2937;
             font-weight: 500;
         }
+
+        /* ===== RESPONSIVE MOBILE SIMPLE ===== */
+        @media (max-width: 768px) {
+
+            /* Fix untuk header sticky di mobile */
+            body {
+                padding-top: 64px;
+            }
+
+            .sticky-nav {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+            }
+
+            /* Main content spacing */
+            main {
+                padding-top: 0;
+            }
+
+            /* Mobile menu better spacing */
+            #mobileMenu {
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: white;
+                max-height: 70vh;
+                overflow-y: auto;
+            }
+
+            /* Layout grid menjadi 1 kolom */
+            .grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Skill grid sederhana */
+            .skill-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .skill-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .skill-icon {
+                margin-right: 0;
+                margin-bottom: 12px;
+            }
+
+            /* Modal lebih kecil di mobile */
+            .modal-content {
+                margin: 20px;
+                max-height: 80vh;
+            }
+
+            /* Tab navigation scrollable */
+            .tab-container {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 8px;
+            }
+
+            .tab {
+                display: inline-block;
+                padding: 12px 20px;
+            }
+
+            /* Card tanpa margin negatif */
+            .morphic-card {
+                margin: 0;
+                border-radius: 12px;
+            }
+
+            /* Button full width di mobile */
+            .btn-primary,
+            .btn-outline {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            /* Text smaller di mobile */
+            .text-xl,
+            .text-2xl,
+            .text-3xl {
+                font-size: 1.25rem !important;
+            }
+
+            /* Hide some elements on mobile */
+            .hidden-mobile {
+                display: none;
+            }
+
+            /* Quick stats stacking */
+            .flex.flex-col.lg\:flex-row {
+                flex-direction: column;
+            }
+
+            /* Fix untuk form input */
+            input,
+            select,
+            textarea {
+                font-size: 16px !important;
+                /* Prevent iOS zoom */
+            }
+
+            /* Opportunity cards full width */
+            .opportunity-card {
+                margin-bottom: 16px;
+            }
+        }
+
+        /* Untuk tablet kecil */
+        @media (max-width: 640px) {
+
+            /* Skill card mobile */
+            .skill-card {
+                padding: 20px;
+            }
+
+            /* Stats grid 1 kolom */
+            .grid.grid-cols-2,
+            .grid.grid-cols-4,
+            .grid.grid-cols-3 {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px;
+            }
+
+            /* Modal padding lebih kecil */
+            .modal-body {
+                padding: 16px;
+            }
+
+            /* Learning path 1 kolom */
+            .learning-path {
+                grid-template-columns: 1fr;
+            }
+
+            /* Resources grid 1 kolom */
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Earnings Chart Improvements */
+        .earning-chart {
+            height: 220px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 0 10px;
+            margin-bottom: 20px;
+        }
+
+        .chart-bar {
+            position: relative;
+            width: 35px;
+            background: linear-gradient(to top, #3b82f6, #60a5fa);
+            border-radius: 4px 4px 0 0;
+            transition: height 0.5s ease;
+            margin: 0 2px;
+        }
+
+        .chart-bar:hover {
+            background: linear-gradient(to top, #2563eb, #3b82f6);
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .chart-bar-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: #6b7280;
+            white-space: nowrap;
+        }
+
+        .chart-bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            font-weight: 600;
+            color: #1f2937;
+            background: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .chart-bar:hover .chart-bar-value {
+            opacity: 1;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 100%;
+        }
+
+        .chart-axis-y {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 30px;
+            width: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-right: 8px;
+            font-size: 11px;
+            color: #6b7280;
+        }
+
+        .chart-axis-x {
+            position: absolute;
+            left: 40px;
+            right: 0;
+            bottom: 0;
+            height: 30px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .chart-bars-container {
+            position: absolute;
+            left: 40px;
+            right: 0;
+            top: 0;
+            bottom: 30px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+        }
+
+        @media (max-width: 768px) {
+            .chart-bar {
+                width: 28px;
+            }
+
+            .earning-chart {
+                height: 200px;
+            }
+
+            .chart-bar-value {
+                font-size: 10px;
+                padding: 1px 4px;
+            }
+        }
+
+        .chart-tooltip {
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .chart-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: #1f2937 transparent transparent transparent;
+        }
+
+        /* Chart Styles */
+        .earning-chart {
+            height: 250px;
+            width: 100%;
+            overflow: visible;
+        }
+
+        .earning-chart svg {
+            overflow: visible;
+        }
+
+        .chart-bar {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .chart-bar:hover {
+            opacity: 0.8;
+            transform: scaleY(1.05);
+            transform-origin: bottom;
+        }
+
+        .chart-value {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .chart-bar:hover+.chart-value,
+        .chart-bar:hover~.chart-value {
+            opacity: 1;
+        }
+
+        /* Responsive chart */
+        @media (max-width: 768px) {
+            .earning-chart {
+                height: 200px;
+            }
+
+            .earning-chart svg {
+                font-size: 9px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .earning-chart {
+                height: 180px;
+            }
+        }
     </style>
 </head>
 
@@ -1058,15 +1382,6 @@
                     <a href="investify_zero_game.html"
                         class="nav-link text-gray-600 hover:text-primary-600 transition-colors">InvestifyZero</a>
                 </nav>
-
-                <!-- Notifications -->
-                <button id="notificationBtn"
-                    class="relative p-2 text-gray-600 hover:text-primary-600 transition-colors">
-                    <i class="fas fa-bell text-lg"></i>
-                    <span
-                        class="absolute -top-1 -right-1 w-5 h-5 bg-secondary-500 text-white text-xs rounded-full flex items-center justify-center"
-                        id="notificationCount">0</span>
-                </button>
 
                 <!-- User Profile -->
                 <div class="flex items-center space-x-3">
@@ -1200,8 +1515,8 @@
                                 <p class="text-sm text-gray-600">Permintaan tinggi dengan rata-rata penghasilan Rp
                                     5-15jt/bulan</p>
                             </div>
-                            <button class="btn-primary text-sm learn-skill-btn"
-                                data-skill="Web Development" data-skill-id="1">Pelajari</button>
+                            <button class="btn-primary text-sm learn-skill-btn" data-skill="Web Development"
+                                data-skill-id="1">Pelajari</button>
                         </div>
                         <div class="flex items-center justify-between p-4 bg-green-50 rounded-lg">
                             <div>
@@ -1209,16 +1524,16 @@
                                 <p class="text-sm text-gray-600">Peluang freelance luas dengan penghasilan Rp
                                     3-10jt/bulan</p>
                             </div>
-                            <button class="btn-primary text-sm learn-skill-btn"
-                                data-skill="Digital Marketing" data-skill-id="2">Pelajari</button>
+                            <button class="btn-primary text-sm learn-skill-btn" data-skill="Digital Marketing"
+                                data-skill-id="2">Pelajari</button>
                         </div>
                         <div class="flex items-center justify-between p-4 bg-purple-50 rounded-lg">
                             <div>
                                 <h4 class="font-medium text-gray-900">Content Creation</h4>
                                 <p class="text-sm text-gray-600">Potensi penghasilan pasif melalui platform konten</p>
                             </div>
-                            <button class="btn-primary text-sm learn-skill-btn"
-                                data-skill="Content Creation" data-skill-id="3">Pelajari</button>
+                            <button class="btn-primary text-sm learn-skill-btn" data-skill="Content Creation"
+                                data-skill-id="3">Pelajari</button>
                         </div>
                     </div>
                 </div>
@@ -2323,6 +2638,48 @@
             }
         };
 
+        // Mobile menu auto close on click
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', function () {
+                const mobileMenu = document.getElementById('mobileMenu');
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const icon = mobileMenuBtn.querySelector('i');
+
+                mobileMenu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Smooth scroll for anchor links on mobile
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (window.innerWidth < 768) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Close modals on mobile when clicking outside
+        document.addEventListener('click', function (e) {
+            if (window.innerWidth < 768) {
+                if (e.target.classList.contains('modal-overlay')) {
+                    e.target.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+
         // Initialize Skill2Money
         document.addEventListener('DOMContentLoaded', function () {
             initializeSkill2Money();
@@ -2364,6 +2721,15 @@
                     // Show corresponding tab content
                     const tabId = this.getAttribute('data-tab');
                     document.getElementById(`${tabId}-tab`).classList.add('active');
+
+                    document.addEventListener('projectUpdated', function () {
+                        renderEarningsChart();
+                        updateStats();
+                    });
+
+                    document.addEventListener('skillUpdated', function () {
+                        renderTopSkills();
+                    });
                 });
             });
 
@@ -2488,7 +2854,7 @@
             // Marketplace modal
             document.getElementById('closeMarketplaceModal').addEventListener('click', hideMarketplaceModal);
             document.getElementById('cancelMarketplace').addEventListener('click', hideMarketplaceModal);
-            document.getElementById('visitPlatformBtn').addEventListener('click', function() {
+            document.getElementById('visitPlatformBtn').addEventListener('click', function () {
                 const modal = document.getElementById('marketplaceModal');
                 const platformType = modal.dataset.platformType;
                 const mainUrl = getMainPlatformUrl(platformType);
@@ -2505,24 +2871,24 @@
             document.getElementById('previewApplication').addEventListener('click', previewApplication);
             document.getElementById('submitApplication').addEventListener('click', submitApplication);
             document.getElementById('portfolioFile').addEventListener('change', handleFileUpload);
-            document.getElementById('browseFiles').addEventListener('click', function() {
+            document.getElementById('browseFiles').addEventListener('click', function () {
                 document.getElementById('portfolioFile').click();
             });
 
             // Drag and drop for portfolio upload
             const uploadArea = document.getElementById('portfolioUploadArea');
             if (uploadArea) {
-                uploadArea.addEventListener('dragover', function(e) {
+                uploadArea.addEventListener('dragover', function (e) {
                     e.preventDefault();
                     this.classList.add('dragover');
                 });
 
-                uploadArea.addEventListener('dragleave', function(e) {
+                uploadArea.addEventListener('dragleave', function (e) {
                     e.preventDefault();
                     this.classList.remove('dragover');
                 });
 
-                uploadArea.addEventListener('drop', function(e) {
+                uploadArea.addEventListener('drop', function (e) {
                     e.preventDefault();
                     this.classList.remove('dragover');
                     const files = e.dataTransfer.files;
@@ -2804,28 +3170,454 @@
             });
         }
 
+        // Ganti fungsi renderEarningsChart() dengan ini:
+        // GANTI fungsi renderEarningsChart() dengan kode ini:
+
         function renderEarningsChart() {
             const container = document.getElementById('earningChart');
-            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            const earnings = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            if (!container) return;
 
-            // Add some sample data for demonstration
+            // Hapus konten sebelumnya
+            container.innerHTML = '';
+
+            // Generate data bulanan
+            const monthlyData = calculateMonthlyEarnings();
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+
+            // Find maximum value for scaling
+            const maxValue = Math.max(...monthlyData, 1000000);
+
+            // Create chart container
+            const chartHeight = 180;
+            const barWidth = 40;
+            const spacing = 20;
+            const totalWidth = (barWidth + spacing) * monthlyData.length;
+
+            // Create SVG container
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("width", "100%");
+            svg.setAttribute("height", chartHeight + 60);
+            svg.setAttribute("viewBox", `0 0 ${totalWidth} ${chartHeight + 60}`);
+
+            // Add gradient definition
+            const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+            const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+            gradient.setAttribute("id", "chartGradient");
+            gradient.setAttribute("x1", "0%");
+            gradient.setAttribute("y1", "100%");
+            gradient.setAttribute("x2", "0%");
+            gradient.setAttribute("y2", "0%");
+
+            const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+            stop1.setAttribute("offset", "0%");
+            stop1.setAttribute("style", "stop-color:#3b82f6");
+
+            const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+            stop2.setAttribute("offset", "100%");
+            stop2.setAttribute("style", "stop-color:#60a5fa");
+
+            gradient.appendChild(stop1);
+            gradient.appendChild(stop2);
+            defs.appendChild(gradient);
+            svg.appendChild(defs);
+
+            // Create bars
+            monthlyData.forEach((value, index) => {
+                const barHeight = (value / maxValue) * chartHeight;
+                const x = index * (barWidth + spacing) + spacing;
+                const y = chartHeight - barHeight;
+
+                // Create bar group
+                const barGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+                // Create bar rectangle
+                const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                rect.setAttribute("x", x);
+                rect.setAttribute("y", y);
+                rect.setAttribute("width", barWidth);
+                rect.setAttribute("height", barHeight);
+                rect.setAttribute("fill", "url(#chartGradient)");
+                rect.setAttribute("rx", "4");
+                rect.setAttribute("ry", "4");
+                rect.setAttribute("class", "chart-bar");
+                rect.setAttribute("data-month", index);
+                rect.setAttribute("data-value", value);
+
+                // Add hover effect
+                rect.addEventListener('mouseenter', function (e) {
+                    this.style.opacity = '0.8';
+                    showBarTooltip(e, value, months[index]);
+                });
+
+                rect.addEventListener('mouseleave', function () {
+                    this.style.opacity = '1';
+                    hideTooltip();
+                });
+
+                // Add click event
+                rect.addEventListener('click', function () {
+                    showMonthlyDetails(index, value);
+                });
+
+                barGroup.appendChild(rect);
+
+                // Create value text
+                const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                text.setAttribute("x", x + barWidth / 2);
+                text.setAttribute("y", y - 5);
+                text.setAttribute("text-anchor", "middle");
+                text.setAttribute("font-size", "10");
+                text.setAttribute("fill", "#374151");
+                text.setAttribute("font-weight", "600");
+                text.textContent = formatRupiahShort(value);
+                text.setAttribute("class", "chart-value");
+
+                barGroup.appendChild(text);
+
+                // Create month label
+                const monthLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                monthLabel.setAttribute("x", x + barWidth / 2);
+                monthLabel.setAttribute("y", chartHeight + 25);
+                monthLabel.setAttribute("text-anchor", "middle");
+                monthLabel.setAttribute("font-size", "11");
+                monthLabel.setAttribute("fill", "#6b7280");
+                monthLabel.textContent = months[index];
+
+                barGroup.appendChild(monthLabel);
+
+                svg.appendChild(barGroup);
+            });
+
+            // Create y-axis labels
+            const yAxisValues = [0, maxValue * 0.25, maxValue * 0.5, maxValue * 0.75, maxValue];
+
+            yAxisValues.forEach((value, index) => {
+                const y = chartHeight - (index * chartHeight / 4);
+
+                const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                line.setAttribute("x1", 0);
+                line.setAttribute("y1", y);
+                line.setAttribute("x2", totalWidth);
+                line.setAttribute("y2", y);
+                line.setAttribute("stroke", "#e5e7eb");
+                line.setAttribute("stroke-width", "1");
+                line.setAttribute("stroke-dasharray", "2,2");
+                svg.appendChild(line);
+
+                const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                label.setAttribute("x", 0);
+                label.setAttribute("y", y - 5);
+                label.setAttribute("font-size", "10");
+                label.setAttribute("fill", "#6b7280");
+                label.textContent = formatRupiahShort(value);
+                svg.appendChild(label);
+            });
+
+            container.appendChild(svg);
+        }
+
+        // TAMBAH fungsi untuk tooltip:
+        function showBarTooltip(event, value, month) {
+            // Remove existing tooltip
+            hideTooltip();
+
+            // Create tooltip
+            const tooltip = document.createElement('div');
+            tooltip.className = 'chart-tooltip';
+            tooltip.innerHTML = `
+        <div class="bg-gray-900 text-white text-xs rounded-lg py-2 px-3">
+            <div class="font-semibold">${month}</div>
+            <div>${formatRupiah(value)}</div>
+        </div>
+    `;
+
+            // Position tooltip
+            const rect = event.target.getBoundingClientRect();
+            tooltip.style.position = 'fixed';
+            tooltip.style.left = `${rect.left + rect.width / 2}px`;
+            tooltip.style.top = `${rect.top - 50}px`;
+            tooltip.style.transform = 'translateX(-50%)';
+            tooltip.style.zIndex = '10000';
+
+            document.body.appendChild(tooltip);
+        }
+
+        function hideTooltip() {
+            const tooltip = document.querySelector('.chart-tooltip');
+            if (tooltip) {
+                tooltip.remove();
+            }
+        }
+
+        // GANTI fungsi calculateMonthlyEarnings() untuk data yang lebih akurat:
+        function calculateMonthlyEarnings() {
+            const monthlyEarnings = new Array(12).fill(0);
+            const currentYear = new Date().getFullYear();
             const currentMonth = new Date().getMonth();
-            for (let i = 0; i <= currentMonth; i++) {
-                earnings[i] = Math.floor(Math.random() * 8000000) + 2000000;
+
+            // Count earnings from completed projects
+            userProjects.forEach(project => {
+                if (project.status === 'completed') {
+                    const projectDate = new Date(project.createdAt);
+
+                    // Only count projects from current year
+                    if (projectDate.getFullYear() === currentYear) {
+                        const monthIndex = projectDate.getMonth();
+                        monthlyEarnings[monthIndex] += project.value;
+                    }
+                }
+            });
+
+            // Add some demo data if no earnings exist
+            if (monthlyEarnings.every(val => val === 0)) {
+                // Generate realistic monthly data
+                for (let i = 0; i <= currentMonth; i++) {
+                    // Start low, grow over months
+                    const baseEarning = 1000000; // 1 juta
+                    const growth = i * 500000; // Tumbuh 500rb per bulan
+                    const randomFactor = Math.random() * 500000; // Variasi acak
+                    monthlyEarnings[i] = baseEarning + growth + randomFactor;
+                }
             }
 
-            container.innerHTML = `
-                <div class="flex items-end justify-between h-full" style="padding: 0 10px;">
-                    ${months.map((month, index) => `
-                        <div class="flex flex-col items-center" style="height: 100%;">
-                            <div class="chart-bar" style="height: ${(earnings[index] / 8000000) * 100}%"></div>
-                            <div class="text-xs text-gray-500 mt-2">${month}</div>
-                            <div class="text-xs font-medium mt-1">${formatRupiahShort(earnings[index])}</div>
-                        </div>
-                    `).join('')}
+            return monthlyEarnings;
+        }
+
+        // TAMBAH fungsi untuk memperbarui chart ketika data berubah:
+        function updateEarningsChart() {
+            // Hitung ulang data
+            const monthlyData = calculateMonthlyEarnings();
+
+            // Update chart jika tab Analytics aktif
+            const analyticsTab = document.getElementById('analytics-tab');
+            if (analyticsTab.classList.contains('active')) {
+                renderEarningsChart();
+            }
+        }
+
+        // Panggil updateEarningsChart() setelah menambah/mengubah proyek:
+        function addNewProject() {
+            // ... existing code ...
+
+            // After adding project, update chart
+            saveProjectsData();
+            renderProjects();
+            updateStats();
+            updateEarningsChart(); // <-- TAMBAH INI
+            hideAddProjectModal();
+
+            showNotification('Proyek berhasil ditambahkan! 🎉', 'success');
+        }
+
+        // Juga untuk updateProjectStatus:
+        function updateProjectStatus(projectId, newStatus) {
+            const project = userProjects.find(p => p.id === projectId);
+            if (!project) return;
+
+            const oldStatus = project.status;
+            project.status = newStatus;
+
+            // ... existing code ...
+
+            saveProjectsData();
+            saveEarningsData();
+            updateStats();
+            updateEarningsChart(); // <-- TAMBAH INI
+            showNotification(`Status proyek berhasil diubah menjadi: ${getProjectStatusText(newStatus)}`, 'success');
+        }
+        // Fungsi untuk menampilkan detail bulanan
+        function showMonthlyDetails(monthIndex, earnings) {
+            const months = [
+                'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+            ];
+
+            const monthName = months[monthIndex];
+            const projectsThisMonth = getProjectsByMonth(monthIndex);
+
+            const modalContent = `
+        <div class="mb-4">
+            <h4 class="text-lg font-bold text-gray-900 mb-2">Detail Penghasilan ${monthName}</h4>
+            <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-700">Total Penghasilan:</span>
+                    <span class="text-2xl font-bold text-blue-600">${formatRupiah(earnings)}</span>
                 </div>
-            `;
+                <div class="text-sm text-gray-600 mt-2">
+                    ${projectsThisMonth.length} proyek selesai
+                </div>
+            </div>
+            
+            ${projectsThisMonth.length > 0 ? `
+                <div class="mt-4">
+                    <h5 class="font-semibold text-gray-900 mb-2">Proyek di ${monthName}:</h5>
+                    <div class="space-y-2">
+                        ${projectsThisMonth.map(project => `
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <div>
+                                    <div class="font-medium">${project.name}</div>
+                                    <div class="text-xs text-gray-500">${project.skillName}</div>
+                                </div>
+                                <div class="text-green-600 font-semibold">${formatRupiah(project.value)}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            ` : `
+                <div class="text-center py-4 text-gray-500">
+                    <i class="fas fa-chart-line text-3xl mb-2 text-gray-300"></i>
+                    <p>Tidak ada proyek selesai di ${monthName}</p>
+                </div>
+            `}
+        </div>
+    `;
+
+            // Create a simple modal for showing details
+            showCustomModal(`Detail ${monthName}`, modalContent);
+        }
+
+        // Fungsi untuk mendapatkan proyek berdasarkan bulan
+        function getProjectsByMonth(monthIndex) {
+            const currentYear = new Date().getFullYear();
+
+            return userProjects.filter(project => {
+                if (project.status !== 'completed') return false;
+
+                const projectDate = new Date(project.createdAt);
+                return projectDate.getFullYear() === currentYear &&
+                    projectDate.getMonth() === monthIndex;
+            });
+        }
+
+        // Fungsi untuk modal custom sederhana
+        function showCustomModal(title, content) {
+            // Remove existing custom modal if any
+            const existingModal = document.getElementById('customDetailsModal');
+            if (existingModal) {
+                existingModal.remove();
+            }
+
+            // Create modal
+            const modalHTML = `
+        <div id="customDetailsModal" class="modal-overlay active">
+            <div class="modal-content" style="max-width: 500px;">
+                <div class="modal-header">
+                    <h3 class="modal-title">${title}</h3>
+                    <button class="modal-close" onclick="closeCustomModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ${content}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline" onclick="closeCustomModal()">Tutup</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+            // Add to body
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Fungsi untuk menutup modal custom
+        function closeCustomModal() {
+            const modal = document.getElementById('customDetailsModal');
+            if (modal) {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.remove();
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+        }
+
+        // Tambahkan event listener untuk modal custom di document
+        document.addEventListener('click', function (e) {
+            if (e.target.id === 'customDetailsModal') {
+                closeCustomModal();
+            }
+        });
+
+        // Perbarui fungsi updateStats() untuk menyertakan data chart:
+        function updateStats() {
+            // Update total earnings
+            document.getElementById('totalEarnings').textContent = formatRupiah(userEarnings.total);
+
+            // Update active projects count
+            const activeProjects = userProjects.filter(p => p.status === 'ongoing').length;
+            document.getElementById('activeProjects').textContent = activeProjects;
+
+            // Update skill level based on highest skill level
+            const skillLevels = {
+                'beginner': 1,
+                'intermediate': 2,
+                'advanced': 3,
+                'expert': 4
+            };
+
+            let highestLevel = 'beginner';
+            userSkills.forEach(skill => {
+                if (skillLevels[skill.level] > skillLevels[highestLevel]) {
+                    highestLevel = skill.level;
+                }
+            });
+
+            document.getElementById('skillLevel').textContent = getLevelText(highestLevel);
+
+            // Update project stats
+            document.getElementById('totalProjects').textContent = userProjects.length;
+            document.getElementById('completedProjects').textContent = userProjects.filter(p => p.status === 'completed').length;
+            document.getElementById('ongoingProjects').textContent = userProjects.filter(p => p.status === 'ongoing').length;
+            document.getElementById('pendingProjects').textContent = userProjects.filter(p => p.status === 'pending').length;
+
+            // Update earnings distribution
+            const freelanceEarnings = userProjects
+                .filter(p => p.status === 'completed' && p.type === 'freelance')
+                .reduce((sum, p) => sum + p.value, 0);
+
+            const productEarnings = userProjects
+                .filter(p => p.status === 'completed' && p.type === 'product')
+                .reduce((sum, p) => sum + p.value, 0);
+
+            const contentEarnings = userProjects
+                .filter(p => p.status === 'completed' && p.type === 'content')
+                .reduce((sum, p) => sum + p.value, 0);
+
+            const otherEarnings = userProjects
+                .filter(p => p.status === 'completed' && p.type === 'other')
+                .reduce((sum, p) => sum + p.value, 0);
+
+            // Update display
+            document.getElementById('freelanceEarnings').textContent = formatRupiah(freelanceEarnings);
+            document.getElementById('productEarnings').textContent = formatRupiah(productEarnings);
+            document.getElementById('contentEarnings').textContent = formatRupiah(contentEarnings);
+
+            // Update progress bars
+            const total = freelanceEarnings + productEarnings + contentEarnings + otherEarnings;
+            if (total > 0) {
+                document.getElementById('freelanceBar').style.width = `${(freelanceEarnings / total) * 100}%`;
+                document.getElementById('productBar').style.width = `${(productEarnings / total) * 100}%`;
+                document.getElementById('contentBar').style.width = `${(contentEarnings / total) * 100}%`;
+            } else {
+                document.getElementById('freelanceBar').style.width = '0%';
+                document.getElementById('productBar').style.width = '0%';
+                document.getElementById('contentBar').style.width = '0%';
+            }
+
+            // Update userEarnings object
+            userEarnings = {
+                total: freelanceEarnings + productEarnings + contentEarnings + otherEarnings,
+                freelance: freelanceEarnings,
+                product: productEarnings,
+                content: contentEarnings,
+                other: otherEarnings
+            };
+
+            // Render chart dengan data terbaru
+            renderEarningsChart();
         }
 
         function renderTopSkills() {
@@ -2949,12 +3741,12 @@
         function showLearnSkillModal(skillName, skillId) {
             const modal = document.getElementById('learnSkillModal');
             const content = document.getElementById('learnSkillContent');
-            
+
             const skillData = learningResources[skillName] || getDefaultLearningData(skillName);
             const currentProgress = learningProgress[skillId] ? learningProgress[skillId].progress : 0;
-            
+
             document.getElementById('learnSkillTitle').textContent = skillData.title;
-            
+
             content.innerHTML = `
                 <div class="mb-6">
                     <p class="text-gray-600 mb-6 text-base leading-relaxed">${skillData.description}</p>
@@ -3041,10 +3833,10 @@
                     </div>
                 </div>
             `;
-            
+
             modal.dataset.skillName = skillName;
             modal.dataset.skillId = skillId;
-            
+
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -3059,7 +3851,7 @@
             const modal = document.getElementById('learnSkillModal');
             const skillName = modal.dataset.skillName;
             const skillId = modal.dataset.skillId;
-            
+
             // Track learning progress
             if (!learningProgress[skillId]) {
                 learningProgress[skillId] = {
@@ -3073,14 +3865,14 @@
                 learningProgress[skillId].progress = Math.min(learningProgress[skillId].progress + 10, 100);
                 learningProgress[skillId].lastAccessed = new Date().toISOString();
             }
-            
+
             saveLearningProgress();
-            
+
             showNotification(`🎉 Berhasil memulai pembelajaran ${skillName}! Progress: ${learningProgress[skillId].progress}%`, 'success');
-            
+
             // Update skills display
             renderSkills();
-            
+
             hideLearnSkillModal();
         }
 
@@ -3178,11 +3970,11 @@
         function showMarketplaceModal(platformType) {
             const modal = document.getElementById('marketplaceModal');
             const content = document.getElementById('marketplaceContent');
-            
+
             const platformData = marketplaceData[platformType];
-            
+
             document.getElementById('marketplaceTitle').textContent = platformData.title;
-            
+
             content.innerHTML = `
                 <div class="mb-6">
                     <p class="text-gray-600 mb-8 text-base leading-relaxed">${platformData.description}</p>
@@ -3252,9 +4044,9 @@
                     </div>
                 </div>
             `;
-            
+
             modal.dataset.platformType = platformType;
-            
+
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -3281,23 +4073,23 @@
                 showNotification('Opportunity tidak ditemukan', 'error');
                 return;
             }
-            
+
             currentApplyingOpportunity = opportunity;
-            
+
             const modal = document.getElementById('applyOpportunityModal');
             const title = document.getElementById('applyOpportunityTitle');
-            
+
             title.textContent = `Apply: ${opportunity.title}`;
-            
+
             // Reset form
             document.getElementById('applicationForm').reset();
             document.getElementById('fileName').textContent = '';
             document.getElementById('applicationPreview').classList.add('hidden');
             uploadedFiles = [];
-            
+
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            
+
             // Pre-fill user data if available
             const userSession = localStorage.getItem('userSession');
             if (userSession) {
@@ -3322,7 +4114,7 @@
             const form = document.getElementById('applicationForm');
             const previewContent = document.getElementById('previewContent');
             const previewSection = document.getElementById('applicationPreview');
-            
+
             // Validate required fields
             const requiredFields = ['applicantName', 'applicantEmail', 'estimatedTime'];
             for (const fieldId of requiredFields) {
@@ -3333,7 +4125,7 @@
                     return;
                 }
             }
-            
+
             const applicationData = {
                 opportunity: currentApplyingOpportunity.title,
                 name: document.getElementById('applicantName').value,
@@ -3344,7 +4136,7 @@
                 additionalNotes: document.getElementById('additionalNotes').value,
                 portfolioFile: uploadedFiles.length > 0 ? uploadedFiles[0].name : 'Tidak ada file'
             };
-            
+
             previewContent.innerHTML = `
                 <div class="preview-item">
                     <span class="preview-label">Opportunity:</span>
@@ -3371,14 +4163,14 @@
                     <span class="preview-value">${getEstimatedTimeText(applicationData.estimatedTime)}</span>
                 </div>
             `;
-            
+
             previewSection.classList.remove('hidden');
             showNotification('Preview application berhasil dibuat', 'success');
         }
 
         function submitApplication() {
             const form = document.getElementById('applicationForm');
-            
+
             // Validate required fields
             const requiredFields = ['applicantName', 'applicantEmail', 'estimatedTime'];
             for (const fieldId of requiredFields) {
@@ -3389,7 +4181,7 @@
                     return;
                 }
             }
-            
+
             // Simulate API call
             setTimeout(() => {
                 // Save application to localStorage
@@ -3404,24 +4196,24 @@
                     status: 'pending',
                     portfolioFile: uploadedFiles.length > 0 ? uploadedFiles[0].name : null
                 };
-                
+
                 applications.push(newApplication);
                 localStorage.setItem('jobApplications', JSON.stringify(applications));
-                
+
                 // Update opportunity count
                 const opportunityStats = JSON.parse(localStorage.getItem('opportunityStats') || '{}');
                 opportunityStats[newApplication.opportunityId] = (opportunityStats[newApplication.opportunityId] || 0) + 1;
                 localStorage.setItem('opportunityStats', JSON.stringify(opportunityStats));
-                
+
                 showNotification(`🎉 Success! Application untuk "${currentApplyingOpportunity.title}" berhasil dikirim!`, 'success');
-                
+
                 // Reset and close
                 form.reset();
                 hideApplyOpportunityModal();
-                
+
                 // Send notification email (simulated)
                 simulateEmailNotification(newApplication);
-                
+
             }, 1500);
         }
 
@@ -3432,24 +4224,24 @@
 
         function handleDroppedFiles(file) {
             if (!file) return;
-            
+
             // Validate file type
-            const validTypes = ['application/pdf', 'application/msword', 
-                               'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-                               'application/zip'];
-            if (!validTypes.includes(file.type) && !file.name.endsWith('.pdf') && 
-                !file.name.endsWith('.doc') && !file.name.endsWith('.docx') && 
+            const validTypes = ['application/pdf', 'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'application/zip'];
+            if (!validTypes.includes(file.type) && !file.name.endsWith('.pdf') &&
+                !file.name.endsWith('.doc') && !file.name.endsWith('.docx') &&
                 !file.name.endsWith('.zip')) {
                 showNotification('File harus berupa PDF, DOC, DOCX, atau ZIP', 'error');
                 return;
             }
-            
+
             // Validate file size (10MB)
             if (file.size > 10 * 1024 * 1024) {
                 showNotification('File terlalu besar. Maksimum 10MB', 'error');
                 return;
             }
-            
+
             uploadedFiles = [file];
             document.getElementById('fileName').textContent = `📎 ${file.name} (${formatFileSize(file.size)})`;
             showNotification(`File "${file.name}" berhasil diupload`, 'success');
@@ -3531,6 +4323,9 @@
                 updateEarningsFromProject(newProject);
             }
 
+            saveProjectsData();
+            renderEarningsChart(); // Langsung panggil
+
             renderProjects();
             updateStats();
             hideAddProjectModal();
@@ -3554,9 +4349,10 @@
             else if (oldStatus === 'completed' && newStatus !== 'completed') {
                 removeEarningsFromProject(project);
             }
-
             saveProjectsData();
             saveEarningsData();
+            renderEarningsChart(); // Langsung panggil
+
             updateStats();
             showNotification(`Status proyek berhasil diubah menjadi: ${getProjectStatusText(newStatus)}`, 'success');
         }
@@ -3596,6 +4392,8 @@
 
                 userProjects = userProjects.filter(project => project.id !== projectId);
                 saveProjectsData();
+                renderEarningsChart(); // Langsung panggil
+
                 renderProjects();
                 updateStats();
                 showNotification('Proyek berhasil dihapus', 'success');
