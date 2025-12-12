@@ -288,12 +288,6 @@
             display: flex;
             border-bottom: 1px solid #e5e7eb;
             margin-bottom: 24px;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .tab-container::-webkit-scrollbar {
-            display: none;
         }
 
         .tab {
@@ -301,8 +295,6 @@
             cursor: pointer;
             border-bottom: 2px solid transparent;
             transition: all 0.3s;
-            white-space: nowrap;
-            flex-shrink: 0;
         }
 
         .tab.active {
@@ -324,6 +316,12 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .skill-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .skill-item {
@@ -351,20 +349,15 @@
             justify-content: center;
             margin-right: 16px;
             font-size: 1.5rem;
-            flex-shrink: 0;
         }
 
         .skill-details {
             flex: 1;
-            min-width: 0;
         }
 
         .skill-name {
             font-weight: 600;
             margin-bottom: 4px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
 
         .skill-level {
@@ -375,7 +368,6 @@
         .earning-potential {
             font-weight: 600;
             color: #10b981;
-            font-size: 0.875rem;
         }
 
         .opportunity-card {
@@ -397,14 +389,11 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 12px;
-            gap: 10px;
         }
 
         .opportunity-title {
             font-weight: 600;
             font-size: 1.125rem;
-            flex: 1;
-            min-width: 0;
         }
 
         .opportunity-badge {
@@ -412,16 +401,12 @@
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 600;
-            white-space: nowrap;
-            flex-shrink: 0;
         }
 
         .opportunity-details {
             display: flex;
             justify-content: space-between;
             margin-top: 12px;
-            flex-wrap: wrap;
-            gap: 10px;
         }
 
         .opportunity-price {
@@ -447,7 +432,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             transform: translateX(120%);
             transition: transform 0.3s ease;
-            max-width: 90%;
         }
 
         .notification.show {
@@ -756,6 +740,221 @@
             transition: width 0.5s ease;
         }
 
+        /* New Styles for Marketplace Feature - OPTIMIZED */
+        .marketplace-modal .modal-content {
+            max-width: 850px;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .platform-card {
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+            border-color: #3b82f6;
+        }
+
+        .platform-card:hover .platform-icon {
+            transform: translateY(-5px);
+        }
+
+        .platform-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-size: 1.75rem;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .platform-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .platform-description {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .platform-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .platform-stats span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .success-stories {
+            background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 100%);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            margin-top: 2.5rem;
+            border: 1px solid #dbeafe;
+        }
+
+        .success-stories h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .success-stories h4 i {
+            color: #f59e0b;
+        }
+
+        .story-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .story-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .story-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .story-content h5 {
+            margin: 0;
+            font-weight: 700;
+            color: #1f2937;
+            font-size: 1rem;
+        }
+
+        .story-role {
+            color: #6b7280;
+            font-size: 0.85rem;
+            margin: 0.25rem 0;
+        }
+
+        .story-content p {
+            margin: 0.5rem 0 0;
+            font-size: 0.9rem;
+            color: #4b5563;
+            line-height: 1.5;
+        }
+
+        .story-earnings {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981, #34d399);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Tips section */
+        .tips-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            margin-top: 2rem;
+            border: 1px solid #fcd34d;
+        }
+
+        .tips-section h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1.25rem;
+            color: #92400e;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .tips-section h4 i {
+            color: #d97706;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .tip-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid #f59e0b;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .tip-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: #f59e0b;
+            color: white;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .tip-text {
+            display: inline;
+            font-size: 0.9rem;
+            color: #78350f;
+            line-height: 1.5;
+        }
+
         /* Apply Opportunity Modal */
         .apply-modal .modal-content {
             max-width: 600px;
@@ -807,7 +1006,6 @@
             margin-bottom: 0.75rem;
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
         }
 
         .preview-label {
@@ -820,336 +1018,292 @@
             font-weight: 500;
         }
 
-        /* ===== RESPONSIVE MOBILE OPTIMIZED ===== */
+        /* ===== RESPONSIVE MOBILE SIMPLE ===== */
         @media (max-width: 768px) {
-            /* Body padding untuk fixed navbar */
+
+            /* Fix untuk header sticky di mobile */
             body {
-                padding-top: 60px;
+                padding-top: 64px;
             }
 
-            /* Header Mobile Sticky */
             .sticky-nav {
                 position: fixed;
                 top: 0;
-                left: 0;
-                right: 0;
+                width: 100%;
                 z-index: 1000;
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(10px);
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             }
 
-            .sticky-nav .max-w-7xl {
-                padding: 0 1rem;
+            /* Main content spacing */
+            main {
+                padding-top: 0;
             }
 
-            /* Logo mobile */
-            .flex.items-center h1 {
-                font-size: 1rem;
-            }
-
-            /* User profile mobile */
-            .flex.items-center.space-x-3 {
-                margin-left: auto;
-            }
-
-            #userAvatar {
-                width: 32px;
-                height: 32px;
-            }
-
-            /* Mobile menu button */
-            #mobileMenuBtn {
-                padding: 8px;
-                margin-left: 8px;
-                background: #f3f4f6;
-                border-radius: 8px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            /* Mobile menu */
+            /* Mobile menu better spacing */
             #mobileMenu {
                 position: fixed;
-                top: 60px;
+                top: 64px;
                 left: 0;
                 right: 0;
                 background: white;
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-                max-height: calc(100vh - 60px);
+                max-height: 70vh;
                 overflow-y: auto;
-                z-index: 999;
             }
 
-            #mobileMenu .px-4 {
-                padding: 1rem;
+            /* Layout grid menjadi 1 kolom */
+            .grid {
+                grid-template-columns: 1fr !important;
             }
 
-            #mobileMenu a,
-            #mobileMenu button {
-                padding: 12px 16px;
-                display: block;
-                width: 100%;
-                text-align: left;
-                border-radius: 8px;
-                margin: 4px 0;
-            }
-
-            /* Main content mobile */
-            main {
-                padding: 1rem;
-                padding-top: 0.5rem;
-            }
-
-            main .max-w-7xl {
-                padding: 0;
-            }
-
-            /* Skill card mobile */
-            .skill-card {
-                padding: 1.25rem;
-                margin: 0 -1rem;
-                border-radius: 0 0 16px 16px;
-            }
-
-            .skill-card .flex.flex-col {
-                gap: 1.5rem;
-            }
-
-            /* Quick stats mobile */
-            .skill-card .grid {
-                grid-template-columns: repeat(3, 1fr) !important;
-                gap: 0.75rem;
-            }
-
-            .skill-card .text-center {
-                padding: 0.5rem;
-            }
-
-            .skill-card .w-12.h-12 {
-                width: 40px;
-                height: 40px;
-            }
-
-            /* Skill grid mobile */
+            /* Skill grid sederhana */
             .skill-grid {
                 grid-template-columns: 1fr;
-                gap: 0.75rem;
+                gap: 12px;
             }
 
             .skill-item {
-                padding: 1rem;
-                flex-direction: row;
-                align-items: center;
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             .skill-icon {
-                width: 40px;
-                height: 40px;
-                margin-right: 12px;
-                margin-bottom: 0;
+                margin-right: 0;
+                margin-bottom: 12px;
             }
 
-            .skill-details {
-                flex: 1;
-                overflow: hidden;
+            /* Modal lebih kecil di mobile */
+            .modal-content {
+                margin: 20px;
+                max-height: 80vh;
             }
 
-            .skill-name {
-                font-size: 0.95rem;
-            }
-
-            .skill-level,
-            .earning-potential {
-                font-size: 0.8rem;
-            }
-
-            /* Tab container mobile */
+            /* Tab navigation scrollable */
             .tab-container {
-                margin: 0 -1rem 1.5rem -1rem;
-                padding: 0 1rem;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 8px;
             }
 
             .tab {
-                padding: 12px 16px;
-                font-size: 0.9rem;
+                display: inline-block;
+                padding: 12px 20px;
             }
 
-            /* Modal mobile */
-            .modal-content {
-                margin: 16px;
-                max-height: 85vh;
+            /* Card tanpa margin negatif */
+            .morphic-card {
+                margin: 0;
+                border-radius: 12px;
             }
 
-            .modal-header,
-            .modal-body,
-            .modal-footer {
-                padding: 1rem;
-            }
-
-            /* Buttons mobile */
+            /* Button full width di mobile */
             .btn-primary,
             .btn-outline {
                 width: 100%;
-                justify-content: center;
                 margin-bottom: 8px;
             }
 
-            /* Grid layouts mobile */
-            .grid {
-                grid-template-columns: 1fr !important;
-                gap: 1rem !important;
+            /* Text smaller di mobile */
+            .text-xl,
+            .text-2xl,
+            .text-3xl {
+                font-size: 1.25rem !important;
             }
 
-            .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
-                grid-template-columns: 1fr !important;
+            /* Hide some elements on mobile */
+            .hidden-mobile {
+                display: none;
             }
 
-            /* Marketplace cards mobile */
-            .morphic-card.p-6 {
-                padding: 1.25rem !important;
+            /* Quick stats stacking */
+            .flex.flex-col.lg\:flex-row {
+                flex-direction: column;
             }
 
-            /* Form inputs mobile */
+            /* Fix untuk form input */
             input,
             select,
             textarea {
                 font-size: 16px !important;
+                /* Prevent iOS zoom */
             }
 
-            .form-input,
-            .form-select {
-                padding: 0.875rem 1rem;
-            }
-
-            /* Quick amounts mobile */
-            .quick-amounts {
-                flex-wrap: wrap;
-            }
-
-            .quick-amount {
-                flex: 1 0 calc(33.333% - 0.5rem);
-                font-size: 0.7rem;
-                padding: 0.5rem 0.25rem;
-            }
-
-            /* Project cards mobile */
-            #projectsContainer {
-                gap: 1rem;
-            }
-
-            /* Analytics tab mobile */
-            #analytics-tab .grid-cols-1.lg\:grid-cols-2 {
-                gap: 1rem;
-            }
-
-            /* Earning chart mobile */
-            .earning-chart {
-                height: 180px;
-                margin-bottom: 1rem;
-            }
-
-            /* Notification mobile */
-            .notification {
-                left: 16px;
-                right: 16px;
-                top: 80px;
-                max-width: calc(100% - 32px);
-                transform: translateY(-20px);
-            }
-
-            .notification.show {
-                transform: translateY(0);
-            }
-
-            /* Footer mobile */
-            footer .flex {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-
-            /* Learning path mobile */
-            .learning-path {
-                grid-template-columns: 1fr;
-            }
-
-            /* Resources grid mobile */
-            .resources-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* Hide desktop elements */
-            .hidden-mobile {
-                display: none !important;
-            }
-
-            /* Show mobile elements */
-            .show-mobile {
-                display: block !important;
+            /* Opportunity cards full width */
+            .opportunity-card {
+                margin-bottom: 16px;
             }
         }
 
         /* Untuk tablet kecil */
         @media (max-width: 640px) {
-            .skill-card .grid {
+
+            /* Skill card mobile */
+            .skill-card {
+                padding: 20px;
+            }
+
+            /* Stats grid 1 kolom */
+            .grid.grid-cols-2,
+            .grid.grid-cols-4,
+            .grid.grid-cols-3 {
                 grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px;
             }
 
-            .skill-card .col-span-2.lg\:col-span-1 {
-                grid-column: span 2;
-                margin-top: 0.5rem;
+            /* Modal padding lebih kecil */
+            .modal-body {
+                padding: 16px;
             }
 
-            .tab {
-                padding: 10px 14px;
-                font-size: 0.85rem;
+            /* Learning path 1 kolom */
+            .learning-path {
+                grid-template-columns: 1fr;
             }
 
-            .modal-content {
-                margin: 8px;
-                border-radius: 12px;
+            /* Resources grid 1 kolom */
+            .resources-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* Untuk perangkat sangat kecil */
-        @media (max-width: 375px) {
-            .skill-card .grid {
-                grid-template-columns: 1fr !important;
+        /* Earnings Chart Improvements */
+        .earning-chart {
+            height: 220px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 0 10px;
+            margin-bottom: 20px;
+        }
+
+        .chart-bar {
+            position: relative;
+            width: 35px;
+            background: linear-gradient(to top, #3b82f6, #60a5fa);
+            border-radius: 4px 4px 0 0;
+            transition: height 0.5s ease;
+            margin: 0 2px;
+        }
+
+        .chart-bar:hover {
+            background: linear-gradient(to top, #2563eb, #3b82f6);
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .chart-bar-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: #6b7280;
+            white-space: nowrap;
+        }
+
+        .chart-bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            font-weight: 600;
+            color: #1f2937;
+            background: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .chart-bar:hover .chart-bar-value {
+            opacity: 1;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 100%;
+        }
+
+        .chart-axis-y {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 30px;
+            width: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-right: 8px;
+            font-size: 11px;
+            color: #6b7280;
+        }
+
+        .chart-axis-x {
+            position: absolute;
+            left: 40px;
+            right: 0;
+            bottom: 0;
+            height: 30px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .chart-bars-container {
+            position: absolute;
+            left: 40px;
+            right: 0;
+            top: 0;
+            bottom: 30px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+        }
+
+        @media (max-width: 768px) {
+            .chart-bar {
+                width: 28px;
             }
 
-            .skill-item {
-                flex-wrap: wrap;
+            .earning-chart {
+                height: 200px;
             }
 
-            .skill-details {
-                width: 100%;
-                margin-top: 0.5rem;
-            }
-
-            .tab {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-            }
-
-            .morphic-card.p-6 {
-                padding: 1rem !important;
+            .chart-bar-value {
+                font-size: 10px;
+                padding: 1px 4px;
             }
         }
 
-        /* Fix untuk iOS Safari */
-        @supports (-webkit-touch-callout: none) {
-            .min-h-screen {
-                min-height: -webkit-fill-available;
-            }
+        .chart-tooltip {
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
 
-            #mobileMenu {
-                max-height: -webkit-fill-available;
-            }
+        .chart-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: #1f2937 transparent transparent transparent;
         }
 
         /* Chart Styles */
+        .earning-chart {
+            height: 250px;
+            width: 100%;
+            overflow: visible;
+        }
+
+        .earning-chart svg {
+            overflow: visible;
+        }
+
         .chart-bar {
             transition: all 0.3s ease;
             cursor: pointer;
@@ -1161,17 +1315,30 @@
             transform-origin: bottom;
         }
 
-        /* Hide desktop logout button on mobile */
+        .chart-value {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .chart-bar:hover+.chart-value,
+        .chart-bar:hover~.chart-value {
+            opacity: 1;
+        }
+
+        /* Responsive chart */
         @media (max-width: 768px) {
-            #logoutBtn {
-                display: none !important;
+            .earning-chart {
+                height: 200px;
+            }
+
+            .earning-chart svg {
+                font-size: 9px;
             }
         }
 
-        /* Show mobile logout button */
-        @media (min-width: 769px) {
-            #mobileLogoutBtn {
-                display: none !important;
+        @media (max-width: 640px) {
+            .earning-chart {
+                height: 180px;
             }
         }
     </style>
@@ -1187,7 +1354,8 @@
     </div>
 
     <!-- Header -->
-    <header class="sticky-nav relative z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
+    <header
+        class="sticky-nav relative z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
@@ -1196,8 +1364,7 @@
                         class="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl">
                         <i class="fas fa-wallet text-white text-lg"></i>
                     </div>
-                    <h1 class="ml-3 text-xl font-bold text-gradient hidden sm:block">GenZ Finance Hub</h1>
-                    <h1 class="ml-3 text-lg font-bold text-gradient sm:hidden">GenZ Finance</h1>
+                    <h1 class="ml-3 text-xl font-bold text-gradient">GenZ Finance Hub</h1>
                 </div>
 
                 <!-- Desktop Navigation -->
@@ -1228,7 +1395,7 @@
                     <i class="fas fa-bars text-lg"></i>
                 </button>
 
-                <!-- Logout Button (Desktop) -->
+                <!-- Logout Button -->
                 <button id="logoutBtn"
                     class="hidden md:block px-4 py-2 text-sm font-medium text-gray-600 hover:text-error-600 transition-colors">
                     <i class="fas fa-sign-out-alt mr-2"></i>
@@ -1271,9 +1438,9 @@
                         <h2 class="text-2xl lg:text-3xl font-bold text-white mb-2">
                             Halo, <span id="welcomeName" class="text-white">User Demo</span>! 🚀
                         </h2>
-                        <p class="text-white/80 mb-4 text-sm lg:text-base">Monetisasi skill digital kamu jadi cuan nyata
-                            dengan Skill2Money</p>
-                        <div class="text-xs lg:text-sm text-white/70">
+                        <p class="text-white/80 mb-4">Monetisasi skill digital kamu jadi cuan nyata dengan Skill2Money
+                        </p>
+                        <div class="text-sm text-white/70">
                             <i class="fas fa-lightbulb mr-2"></i>
                             <span id="currentDate">Selasa, 19 November 2025</span>
                         </div>
@@ -1343,7 +1510,7 @@
                     <h3 class="text-lg font-bold text-gray-900 mb-4">Rekomendasi Pengembangan Skill</h3>
                     <div class="space-y-4">
                         <div class="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
-                            <div class="flex-1">
+                            <div>
                                 <h4 class="font-medium text-gray-900">Web Development</h4>
                                 <p class="text-sm text-gray-600">Permintaan tinggi dengan rata-rata penghasilan Rp
                                     5-15jt/bulan</p>
@@ -1352,7 +1519,7 @@
                                 data-skill-id="1">Pelajari</button>
                         </div>
                         <div class="flex items-center justify-between p-4 bg-green-50 rounded-lg">
-                            <div class="flex-1">
+                            <div>
                                 <h4 class="font-medium text-gray-900">Digital Marketing</h4>
                                 <p class="text-sm text-gray-600">Peluang freelance luas dengan penghasilan Rp
                                     3-10jt/bulan</p>
@@ -1361,7 +1528,7 @@
                                 data-skill-id="2">Pelajari</button>
                         </div>
                         <div class="flex items-center justify-between p-4 bg-purple-50 rounded-lg">
-                            <div class="flex-1">
+                            <div>
                                 <h4 class="font-medium text-gray-900">Content Creation</h4>
                                 <p class="text-sm text-gray-600">Potensi penghasilan pasif melalui platform konten</p>
                             </div>
@@ -1697,7 +1864,7 @@
         </div>
     </div>
 
-    <!-- Learn Skill Modal -->
+    <!-- Learn Skill Modal - OPTIMIZED -->
     <div id="learnSkillModal" class="modal-overlay">
         <div class="modal-content learn-skill-modal">
             <div class="modal-header">
@@ -1722,6 +1889,115 @@
         </div>
     </div>
 
+    <!-- Marketplace Modal - OPTIMIZED -->
+    <div id="marketplaceModal" class="modal-overlay">
+        <div class="modal-content marketplace-modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="marketplaceTitle">Marketplace</h3>
+                <button class="modal-close" id="closeMarketplaceModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div id="marketplaceContent">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" id="cancelMarketplace">Tutup</button>
+                <button type="button" class="btn btn-primary" id="visitPlatformBtn">
+                    <i class="fas fa-external-link-alt mr-2"></i>Kunjungi Platform
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Apply Opportunity Modal -->
+    <div id="applyOpportunityModal" class="modal-overlay">
+        <div class="modal-content apply-modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="applyOpportunityTitle">Apply Opportunity</h3>
+                <button class="modal-close" id="closeApplyModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="applicationForm">
+                    <div class="form-group">
+                        <label class="form-label">Nama Lengkap</label>
+                        <input type="text" id="applicantName" class="form-input" required
+                            placeholder="Masukkan nama lengkap">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="applicantEmail" class="form-input" required
+                            placeholder="email@contoh.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Portfolio/LinkedIn Profile</label>
+                        <input type="url" id="applicantPortfolio" class="form-input"
+                            placeholder="https://linkedin.com/in/nama-anda">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Pengalaman Relevan</label>
+                        <textarea id="applicantExperience" class="form-input" rows="4"
+                            placeholder="Ceritakan pengalaman yang relevan dengan opportunity ini"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Portfolio (Upload)</label>
+                        <div class="portfolio-upload" id="portfolioUploadArea">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop file portfolio atau <span class="text-blue-600 cursor-pointer"
+                                    id="browseFiles">browse</span></p>
+                            <p class="text-sm text-gray-500 mt-2">PDF, DOC, atau ZIP (max 10MB)</p>
+                            <input type="file" id="portfolioFile" class="hidden" accept=".pdf,.doc,.docx,.zip">
+                        </div>
+                        <div class="mt-2 text-sm text-gray-600" id="fileName"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Estimasi Waktu Penyelesaian</label>
+                        <select id="estimatedTime" class="form-select" required>
+                            <option value="">Pilih waktu</option>
+                            <option value="1week">1 Minggu</option>
+                            <option value="2weeks">2 Minggu</option>
+                            <option value="1month">1 Bulan</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Pertanyaan atau Catatan Tambahan</label>
+                        <textarea id="additionalNotes" class="form-input" rows="3"
+                            placeholder="Pertanyaan atau informasi tambahan"></textarea>
+                    </div>
+
+                    <div id="applicationPreview" class="application-preview hidden">
+                        <h4 class="font-semibold mb-3">Preview Application</h4>
+                        <div id="previewContent"></div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" id="cancelApply">Batal</button>
+                <button type="button" class="btn btn-outline" id="previewApplication">
+                    <i class="fas fa-eye mr-2"></i>Preview
+                </button>
+                <button type="submit" form="applicationForm" class="btn btn-primary" id="submitApplication">
+                    <i class="fas fa-paper-plane mr-2"></i>Kirim Application
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Notification Container -->
     <div id="notificationContainer"></div>
 
@@ -1739,6 +2015,7 @@
 
         let currentApplyingOpportunity = null;
         let learningProgress = {};
+        let uploadedFiles = [];
 
         let opportunities = [
             {
@@ -1783,6 +2060,626 @@
             }
         ];
 
+        // Data untuk fitur Pelajari Skill - DIOPTIMALKAN
+        const learningResources = {
+            "Web Development": {
+                title: "Pelajari Web Development",
+                description: "Kuasi dunia web development dengan roadmap terstruktur dari pemula sampai expert. Pelajari HTML, CSS, JavaScript, dan framework modern untuk karir yang cemerlang.",
+                steps: [
+                    {
+                        title: "Dasar HTML, CSS & JavaScript",
+                        duration: "4-6 minggu",
+                        description: "Fundamental web development"
+                    },
+                    {
+                        title: "Framework Modern (React/Vue)",
+                        duration: "8-12 minggu",
+                        description: "Frontend development dengan framework populer"
+                    },
+                    {
+                        title: "Backend & Database",
+                        duration: "6-8 minggu",
+                        description: "Node.js, Express, MongoDB, PostgreSQL"
+                    },
+                    {
+                        title: "Deployment & DevOps",
+                        duration: "4-6 minggu",
+                        description: "Docker, CI/CD, Cloud Deployment"
+                    }
+                ],
+                resources: [
+                    {
+                        title: "FreeCodeCamp",
+                        description: "Kursus gratis web development lengkap dengan sertifikasi",
+                        icon: "fas fa-code",
+                        color: "bg-green-100 text-green-600",
+                        url: "https://www.freecodecamp.org/learn",
+                        free: true,
+                        rating: "4.8/5"
+                    },
+                    {
+                        title: "The Odin Project",
+                        description: "Roadmap full-stack development dengan proyek nyata",
+                        icon: "fas fa-graduation-cap",
+                        color: "bg-blue-100 text-blue-600",
+                        url: "https://www.theodinproject.com",
+                        free: true,
+                        rating: "4.9/5"
+                    },
+                    {
+                        title: "Codecademy Pro",
+                        description: "Interactive coding lessons dengan feedback langsung",
+                        icon: "fas fa-laptop-code",
+                        color: "bg-yellow-100 text-yellow-600",
+                        url: "https://www.codecademy.com/catalog/subject/web-development",
+                        free: false,
+                        rating: "4.7/5"
+                    },
+                    {
+                        title: "Scrimba Frontend Path",
+                        description: "Belajar dengan video interaktif yang bisa langsung dicoding",
+                        icon: "fas fa-play-circle",
+                        color: "bg-purple-100 text-purple-600",
+                        url: "https://scrimba.com/learn/frontend",
+                        free: true,
+                        rating: "4.8/5"
+                    },
+                    {
+                        title: "Frontend Masters",
+                        description: "Video course dari industry experts",
+                        icon: "fas fa-star",
+                        color: "bg-red-100 text-red-600",
+                        url: "https://frontendmasters.com",
+                        free: false,
+                        rating: "4.9/5"
+                    },
+                    {
+                        title: "MDN Web Docs",
+                        description: "Dokumentasi resmi dan tutorial web technologies",
+                        icon: "fas fa-book",
+                        color: "bg-indigo-100 text-indigo-600",
+                        url: "https://developer.mozilla.org/en-US/docs/Learn",
+                        free: true,
+                        rating: "5.0/5"
+                    }
+                ],
+                timeEstimate: "6-9 bulan",
+                difficulty: "Menengah",
+                earningPotential: "Rp 8-25 juta/bulan",
+                jobMarket: "Sangat tinggi",
+                averageSalary: "Rp 15 juta/bulan"
+            },
+            "Digital Marketing": {
+                title: "Pelajari Digital Marketing",
+                description: "Jadi digital marketing expert dengan skill lengkap: SEO, social media, content marketing, dan analytics. Tingkatkan karir di era digital.",
+                steps: [
+                    {
+                        title: "Dasar Pemasaran Digital",
+                        duration: "3-4 minggu",
+                        description: "Fundamental digital marketing"
+                    },
+                    {
+                        title: "SEO & Content Strategy",
+                        duration: "6-8 minggu",
+                        description: "Optimasi website dan content planning"
+                    },
+                    {
+                        title: "Social Media Marketing",
+                        duration: "4-6 minggu",
+                        description: "Facebook, Instagram, TikTok ads"
+                    },
+                    {
+                        title: "Analytics & Optimization",
+                        duration: "4-5 minggu",
+                        description: "Google Analytics, conversion optimization"
+                    }
+                ],
+                resources: [
+                    {
+                        title: "Google Digital Garage",
+                        description: "Sertifikasi gratis digital marketing dari Google",
+                        icon: "fas fa-search",
+                        color: "bg-red-100 text-red-600",
+                        url: "https://learndigital.withgoogle.com/digitalgarage/course/digital-marketing",
+                        free: true,
+                        rating: "4.7/5"
+                    },
+                    {
+                        title: "HubSpot Academy",
+                        description: "Kursus inbound marketing & sales certification",
+                        icon: "fas fa-chart-line",
+                        color: "bg-orange-100 text-orange-600",
+                        url: "https://academy.hubspot.com/courses/inbound-marketing",
+                        free: true,
+                        rating: "4.8/5"
+                    },
+                    {
+                        title: "SEMrush Academy",
+                        description: "Pelajari SEO, SEM, dan content marketing",
+                        icon: "fas fa-chart-bar",
+                        color: "bg-teal-100 text-teal-600",
+                        url: "https://www.semrush.com/academy/",
+                        free: true,
+                        rating: "4.6/5"
+                    },
+                    {
+                        title: "Facebook Blueprint",
+                        description: "Pelajari Facebook & Instagram Ads dari Facebook",
+                        icon: "fab fa-facebook",
+                        color: "bg-blue-100 text-blue-600",
+                        url: "https://www.facebook.com/business/learn",
+                        free: true,
+                        rating: "4.5/5"
+                    },
+                    {
+                        title: "Coursera Digital Marketing",
+                        description: "Kursus dari University of Illinois dan Google",
+                        icon: "fas fa-university",
+                        color: "bg-indigo-100 text-indigo-600",
+                        url: "https://www.coursera.org/specializations/digital-marketing",
+                        free: false,
+                        rating: "4.7/5"
+                    },
+                    {
+                        title: "Neil Patel Academy",
+                        description: "Video course dari digital marketing expert",
+                        icon: "fas fa-video",
+                        color: "bg-purple-100 text-purple-600",
+                        url: "https://neilpatel.com/training/",
+                        free: false,
+                        rating: "4.8/5"
+                    }
+                ],
+                timeEstimate: "4-6 bulan",
+                difficulty: "Pemula-Menengah",
+                earningPotential: "Rp 5-20 juta/bulan",
+                jobMarket: "Tinggi",
+                averageSalary: "Rp 12 juta/bulan"
+            },
+            "Content Creation": {
+                title: "Pelajari Content Creation",
+                description: "Jadi content creator sukses dengan belajar storytelling, video editing, platform optimization, dan monetization strategy.",
+                steps: [
+                    {
+                        title: "Dasar Storytelling",
+                        duration: "3-4 minggu",
+                        description: "Cara bercerita yang menarik"
+                    },
+                    {
+                        title: "Video & Audio Editing",
+                        duration: "5-7 minggu",
+                        description: "Adobe Premiere, After Effects, Audition"
+                    },
+                    {
+                        title: "Platform Optimization",
+                        duration: "4-5 minggu",
+                        description: "YouTube SEO, TikTok algorithm, Instagram strategy"
+                    },
+                    {
+                        title: "Monetization Strategy",
+                        duration: "3-4 minggu",
+                        description: "Brand deals, affiliate marketing, merchandise"
+                    }
+                ],
+                resources: [
+                    {
+                        title: "YouTube Creator Academy",
+                        description: "Pelajari langsung dari YouTube cara jadi creator sukses",
+                        icon: "fab fa-youtube",
+                        color: "bg-red-100 text-red-600",
+                        url: "https://creatoracademy.youtube.com",
+                        free: true,
+                        rating: "4.8/5"
+                    },
+                    {
+                        title: "Skillshare Creative Classes",
+                        description: "Kelas video editing, graphic design, dan photography",
+                        icon: "fas fa-paint-brush",
+                        color: "bg-pink-100 text-pink-600",
+                        url: "https://www.skillshare.com/browse/creative",
+                        free: false,
+                        rating: "4.7/5"
+                    },
+                    {
+                        title: "Canva Design School",
+                        description: "Belajar desain visual untuk social media content",
+                        icon: "fas fa-palette",
+                        color: "bg-blue-100 text-blue-600",
+                        url: "https://www.canva.com/learn/design-school/",
+                        free: true,
+                        rating: "4.6/5"
+                    },
+                    {
+                        title: "Adobe Creative Cloud Tutorials",
+                        description: "Tutorial resmi Adobe untuk semua software creative",
+                        icon: "fas fa-camera",
+                        color: "bg-purple-100 text-purple-600",
+                        url: "https://helpx.adobe.com/creative-cloud/tutorials-explore.html",
+                        free: true,
+                        rating: "4.9/5"
+                    },
+                    {
+                        title: "VidIQ YouTube Channel",
+                        description: "Tips YouTube growth, SEO, dan monetization",
+                        icon: "fas fa-chart-line",
+                        color: "bg-indigo-100 text-indigo-600",
+                        url: "https://www.youtube.com/c/vidiq",
+                        free: true,
+                        rating: "4.8/5"
+                    },
+                    {
+                        title: "Later Social Media Blog",
+                        description: "Tips dan strategi social media marketing",
+                        icon: "fas fa-share-alt",
+                        color: "bg-green-100 text-green-600",
+                        url: "https://later.com/blog/",
+                        free: true,
+                        rating: "4.5/5"
+                    }
+                ],
+                timeEstimate: "3-5 bulan",
+                difficulty: "Pemula",
+                earningPotential: "Rp 3-50 juta/bulan",
+                jobMarket: "Sangat tinggi",
+                averageSalary: "Rp 8 juta/bulan"
+            }
+        };
+
+        // Data untuk fitur Marketplace - DIOPTIMALKAN
+        const marketplaceData = {
+            "freelance": {
+                title: "Platform Freelance Terbaik",
+                description: "Temukan platform terbaik untuk menawarkan jasa freelance kamu. Mulai dari proyek kecil sampai kontrak jangka panjang.",
+                platforms: [
+                    {
+                        name: "Upwork",
+                        icon: "fas fa-briefcase",
+                        color: "bg-green-100 text-green-600",
+                        description: "Global freelance platform dengan berbagai proyek",
+                        avgEarnings: "Rp 5-50 juta/project",
+                        successRate: "85%",
+                        url: "https://www.upwork.com",
+                        fees: "20% (turun sampai 5%)",
+                        bestFor: "Professionals dengan portfolio"
+                    },
+                    {
+                        name: "Fiverr",
+                        icon: "fas fa-rocket",
+                        color: "bg-green-100 text-green-600",
+                        description: "Gig-based marketplace untuk quick projects",
+                        avgEarnings: "Rp 1-20 juta/gig",
+                        successRate: "78%",
+                        url: "https://www.fiverr.com",
+                        fees: "20%",
+                        bestFor: "Creative services & digital products"
+                    },
+                    {
+                        name: "Projects.co.id",
+                        icon: "fas fa-home",
+                        color: "bg-red-100 text-red-600",
+                        description: "Freelance platform Indonesia #1",
+                        avgEarnings: "Rp 2-30 juta/project",
+                        successRate: "90%",
+                        url: "https://www.projects.co.id",
+                        fees: "15%",
+                        bestFor: "Lokal clients & bahasa Indonesia"
+                    },
+                    {
+                        name: "Toptal",
+                        icon: "fas fa-star",
+                        color: "bg-blue-100 text-blue-600",
+                        description: "Top 3% talent platform untuk premium projects",
+                        avgEarnings: "Rp 10-100 juta/project",
+                        successRate: "95%",
+                        url: "https://www.toptal.com",
+                        fees: "Variatif",
+                        bestFor: "Expert developers & designers"
+                    },
+                    {
+                        name: "Freelancer",
+                        icon: "fas fa-users",
+                        color: "bg-purple-100 text-purple-600",
+                        description: "Competitive bidding platform global",
+                        avgEarnings: "Rp 3-25 juta/project",
+                        successRate: "75%",
+                        url: "https://www.freelancer.com",
+                        fees: "10-20%",
+                        bestFor: "Entry-level & competitive pricing"
+                    },
+                    {
+                        name: "Guru",
+                        icon: "fas fa-lightbulb",
+                        color: "bg-yellow-100 text-yellow-600",
+                        description: "Flexible work platform dengan berbagai payment options",
+                        avgEarnings: "Rp 4-40 juta/project",
+                        successRate: "82%",
+                        url: "https://www.guru.com",
+                        fees: "9-15%",
+                        bestFor: "Long-term projects & retainers"
+                    }
+                ],
+                successStories: [
+                    {
+                        name: "Rina Sari",
+                        role: "Web Developer",
+                        story: "Mulai dari proyek Rp 500rb di Upwork, sekarang punya agency dengan 10 karyaman dan revenue Rp 2M/bulan",
+                        earnings: "Rp 200 juta/tahun",
+                        platform: "Upwork"
+                    },
+                    {
+                        name: "Andi Pratama",
+                        role: "Graphic Designer",
+                        story: "Dari Fiverr gig Rp 100rb, sekarang dapat klien international tetap dengan retainers $5,000/bulan",
+                        earnings: "Rp 150 juta/tahun",
+                        platform: "Fiverr"
+                    },
+                    {
+                        name: "Sari Dewi",
+                        role: "Digital Marketer",
+                        story: "Bangun portfolio di Projects.co.id, sekarang handle social media untuk 5 brand besar Indonesia",
+                        earnings: "Rp 120 juta/tahun",
+                        platform: "Projects.co.id"
+                    }
+                ],
+                tips: [
+                    "Buat portfolio yang spesifik dan menarik",
+                    "Mulai dengan harga kompetitif untuk bangun review",
+                    "Specialize pada niche tertentu (jadi expert)",
+                    "Respon cepat ke client messages",
+                    "Under promise, over deliver",
+                    "Build long-term relationships, bukan one-time projects"
+                ]
+            },
+            "digital-product": {
+                title: "Marketplace Produk Digital",
+                description: "Jual produk digital kamu dan dapatkan passive income. Template, ebook, course, software - semua bisa dijual di platform ini.",
+                platforms: [
+                    {
+                        name: "Gumroad",
+                        icon: "fas fa-shopping-cart",
+                        color: "bg-blue-100 text-blue-600",
+                        description: "Platform jual produk digital termudah",
+                        avgEarnings: "Passive income unlimited",
+                        successRate: "70%",
+                        url: "https://gumroad.com",
+                        fees: "10% + payment processing",
+                        bestFor: "Digital products of any type"
+                    },
+                    {
+                        name: "Udemy",
+                        icon: "fas fa-chalkboard-teacher",
+                        color: "bg-purple-100 text-purple-600",
+                        description: "Marketplace course online terbesar",
+                        avgEarnings: "Rp 1-100 juta/course",
+                        successRate: "65%",
+                        url: "https://www.udemy.com",
+                        fees: "50% revenue share",
+                        bestFor: "Video courses & tutorials"
+                    },
+                    {
+                        name: "Creative Market",
+                        icon: "fas fa-paint-brush",
+                        color: "bg-pink-100 text-pink-600",
+                        description: "Design assets marketplace premium",
+                        avgEarnings: "Passive income (avg $500-5000/month)",
+                        successRate: "60%",
+                        url: "https://creativemarket.com",
+                        fees: "40% commission",
+                        bestFor: "Design templates & assets"
+                    },
+                    {
+                        name: "Envato Market",
+                        icon: "fas fa-code",
+                        color: "bg-green-100 text-green-600",
+                        description: "Digital assets platform untuk developers & designers",
+                        avgEarnings: "Passive income (avg $1000-10000/month)",
+                        successRate: "75%",
+                        url: "https://envato.com",
+                        fees: "50-70% author share",
+                        bestFor: "WordPress themes, code scripts"
+                    },
+                    {
+                        name: "Seluler",
+                        icon: "fas fa-mobile-alt",
+                        color: "bg-red-100 text-red-600",
+                        description: "Platform produk digital Indonesia terpercaya",
+                        avgEarnings: "Rp 500k-10 juta/produk",
+                        successRate: "85%",
+                        url: "https://www.seluler.com",
+                        fees: "20% commission",
+                        bestFor: "Local Indonesian products"
+                    },
+                    {
+                        name: "Etsy Digital",
+                        icon: "fas fa-store",
+                        color: "bg-orange-100 text-orange-600",
+                        description: "Handmade & digital products marketplace",
+                        avgEarnings: "Passive income (avg $500-3000/month)",
+                        successRate: "68%",
+                        url: "https://www.etsy.com",
+                        fees: "6.5% + payment processing",
+                        bestFor: "Creative & craft digital products"
+                    }
+                ],
+                successStories: [
+                    {
+                        name: "Budi Santoso",
+                        role: "Course Creator",
+                        story: "Course Excel di Udemy terjual 10,000+ copy dengan rating 4.8/5. Sekarang passive income Rp 50 juta/bulan",
+                        earnings: "Rp 500 juta/tahun",
+                        platform: "Udemy"
+                    },
+                    {
+                        name: "Maya Wijaya",
+                        role: "Template Designer",
+                        story: "Template Canva & social media kit passive income Rp 20 juta/bulan dari Creative Market",
+                        earnings: "Rp 240 juta/tahun",
+                        platform: "Creative Market"
+                    },
+                    {
+                        name: "Ahmad Fauzi",
+                        role: "WordPress Developer",
+                        story: "WordPress theme di ThemeForest menghasilkan $30,000 dalam 6 bulan pertama",
+                        earnings: "Rp 500 juta/tahun",
+                        platform: "Envato Market"
+                    }
+                ],
+                tips: [
+                    "Buat produk yang solve real problem (bukan cuma bagus)",
+                    "Invest di packaging & presentation",
+                    "Update produk secara berkala dengan new features",
+                    "Bangun email list untuk future product launches",
+                    "Gunakan social media untuk marketing produk",
+                    "Tawarkan free samples atau preview"
+                ]
+            },
+            "content": {
+                title: "Platform Content Creation",
+                description: "Monetisasi konten di platform terpopuler. Dari YouTube sampai TikTok, pelajari cara menghasilkan uang dari konten kreatif.",
+                platforms: [
+                    {
+                        name: "YouTube",
+                        icon: "fab fa-youtube",
+                        color: "bg-red-100 text-red-600",
+                        description: "Video content platform #1 di dunia",
+                        avgEarnings: "Rp 1-100 juta/bulan",
+                        successRate: "15%",
+                        url: "https://www.youtube.com",
+                        fees: "45% revenue share",
+                        bestFor: "Long-form video content"
+                    },
+                    {
+                        name: "TikTok",
+                        icon: "fas fa-music",
+                        color: "bg-black text-black",
+                        description: "Short video platform dengan growth cepat",
+                        avgEarnings: "Rp 500k-50 juta/bulan",
+                        successRate: "20%",
+                        url: "https://www.tiktok.com",
+                        fees: "Variatif",
+                        bestFor: "Short-form viral content"
+                    },
+                    {
+                        name: "Instagram",
+                        icon: "fab fa-instagram",
+                        color: "bg-pink-100 text-pink-600",
+                        description: "Visual content platform untuk brands",
+                        avgEarnings: "Rp 1-30 juta/bulan",
+                        successRate: "25%",
+                        url: "https://www.instagram.com",
+                        fees: "None (brand deals)",
+                        bestFor: "Visual storytelling & brand collabs"
+                    },
+                    {
+                        name: "Medium",
+                        icon: "fas fa-pen",
+                        color: "bg-gray-100 text-gray-600",
+                        description: "Writing platform untuk articles & stories",
+                        avgEarnings: "Rp 500k-10 juta/bulan",
+                        successRate: "30%",
+                        url: "https://medium.com",
+                        fees: "Member subscription share",
+                        bestFor: "Writers & bloggers"
+                    },
+                    {
+                        name: "Twitch",
+                        icon: "fab fa-twitch",
+                        color: "bg-purple-100 text-purple-600",
+                        description: "Live streaming platform untuk gamers & creators",
+                        avgEarnings: "Rp 2-50 juta/bulan",
+                        successRate: "10%",
+                        url: "https://www.twitch.tv",
+                        fees: "50% subscription revenue",
+                        bestFor: "Live streaming & gaming"
+                    },
+                    {
+                        name: "Patreon",
+                        icon: "fas fa-heart",
+                        color: "bg-orange-100 text-orange-600",
+                        description: "Membership platform untuk exclusive content",
+                        avgEarnings: "Rp 1-100 juta/bulan",
+                        successRate: "40%",
+                        url: "https://www.patreon.com",
+                        fees: "5-12% platform fee",
+                        bestFor: "Exclusive content & community"
+                    }
+                ],
+                successStories: [
+                    {
+                        name: "Gita Savitri",
+                        role: "YouTuber",
+                        story: "Channel pendidikan 'Gita Savitri' dengan 2 juta subscriber, monetize dari ads, brand deals, dan merchandise",
+                        earnings: "Rp 50 juta/bulan",
+                        platform: "YouTube"
+                    },
+                    {
+                        name: "Ria Ricis",
+                        role: "Content Creator",
+                        story: "Multi-platform creator dengan 20M+ followers. Monetize dari TikTok, Instagram, YouTube, dan brand partnerships",
+                        earnings: "Rp 100 juta+/bulan",
+                        platform: "Multi-platform"
+                    },
+                    {
+                        name: "Jerome Polin",
+                        role: "YouTuber & Educator",
+                        story: "Channel 'Nihongo Mantappu' menghasilkan dari YouTube ads, online courses, dan book sales",
+                        earnings: "Rp 80 juta/bulan",
+                        platform: "YouTube & digital products"
+                    }
+                ],
+                tips: [
+                    "Consistency is key - upload regularly",
+                    "Find your niche and dominate it",
+                    "Engage with your audience daily",
+                    "Diversify income streams (ads, merch, courses, brand deals)",
+                    "Study analytics to optimize content",
+                    "Collaborate with other creators"
+                ]
+            }
+        };
+
+        // Mobile menu auto close on click
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', function () {
+                const mobileMenu = document.getElementById('mobileMenu');
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const icon = mobileMenuBtn.querySelector('i');
+
+                mobileMenu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Smooth scroll for anchor links on mobile
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (window.innerWidth < 768) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Close modals on mobile when clicking outside
+        document.addEventListener('click', function (e) {
+            if (window.innerWidth < 768) {
+                if (e.target.classList.contains('modal-overlay')) {
+                    e.target.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+
         // Initialize Skill2Money
         document.addEventListener('DOMContentLoaded', function () {
             initializeSkill2Money();
@@ -1790,9 +2687,6 @@
             checkUserSession();
             setupEventListeners();
             loadUserData();
-            
-            // Initialize mobile specific features
-            initMobileFeatures();
         });
 
         // Initialize Skill2Money Functions
@@ -1827,6 +2721,15 @@
                     // Show corresponding tab content
                     const tabId = this.getAttribute('data-tab');
                     document.getElementById(`${tabId}-tab`).classList.add('active');
+
+                    document.addEventListener('projectUpdated', function () {
+                        renderEarningsChart();
+                        updateStats();
+                    });
+
+                    document.addEventListener('skillUpdated', function () {
+                        renderTopSkills();
+                    });
                 });
             });
 
@@ -1837,28 +2740,15 @@
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileMenu = document.getElementById('mobileMenu');
 
-            mobileMenuBtn.addEventListener('click', function (e) {
-                e.stopPropagation();
+            mobileMenuBtn.addEventListener('click', function () {
                 mobileMenu.classList.toggle('hidden');
                 const icon = this.querySelector('i');
                 if (mobileMenu.classList.contains('hidden')) {
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
-                    document.body.style.overflow = '';
                 } else {
                     icon.classList.remove('fa-bars');
                     icon.classList.add('fa-times');
-                    document.body.style.overflow = 'hidden';
-                }
-            });
-
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function (e) {
-                if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-                    document.body.style.overflow = '';
                 }
             });
 
@@ -1896,6 +2786,26 @@
                     setTimeout(() => {
                         e.target.classList.remove('animated');
                     }, 300);
+                }
+
+                // Resource card click - langsung buka link
+                if (e.target.closest('.resource-card')) {
+                    const resourceCard = e.target.closest('.resource-card');
+                    const url = resourceCard.getAttribute('data-url');
+                    if (url) {
+                        window.open(url, '_blank', 'noopener,noreferrer');
+                        showNotification('Membuka resource belajar di tab baru', 'info');
+                    }
+                }
+
+                // Platform card click - langsung buka link
+                if (e.target.closest('.platform-card')) {
+                    const platformCard = e.target.closest('.platform-card');
+                    const url = platformCard.getAttribute('data-url');
+                    if (url) {
+                        window.open(url, '_blank', 'noopener,noreferrer');
+                        showNotification('Membuka platform di tab baru', 'info');
+                    }
                 }
 
                 // Apply opportunity buttons
@@ -1936,11 +2846,83 @@
                 addNewProject();
             });
 
+            // Learn skill modal
+            document.getElementById('closeLearnSkillModal').addEventListener('click', hideLearnSkillModal);
+            document.getElementById('cancelLearnSkill').addEventListener('click', hideLearnSkillModal);
+            document.getElementById('startLearningBtn').addEventListener('click', startLearning);
+
+            // Marketplace modal
+            document.getElementById('closeMarketplaceModal').addEventListener('click', hideMarketplaceModal);
+            document.getElementById('cancelMarketplace').addEventListener('click', hideMarketplaceModal);
+            document.getElementById('visitPlatformBtn').addEventListener('click', function () {
+                const modal = document.getElementById('marketplaceModal');
+                const platformType = modal.dataset.platformType;
+                const mainUrl = getMainPlatformUrl(platformType);
+                if (mainUrl) {
+                    window.open(mainUrl, '_blank', 'noopener,noreferrer');
+                    showNotification('Membuka platform utama di tab baru', 'info');
+                }
+                hideMarketplaceModal();
+            });
+
+            // Apply opportunity modal
+            document.getElementById('closeApplyModal').addEventListener('click', hideApplyOpportunityModal);
+            document.getElementById('cancelApply').addEventListener('click', hideApplyOpportunityModal);
+            document.getElementById('previewApplication').addEventListener('click', previewApplication);
+            document.getElementById('submitApplication').addEventListener('click', submitApplication);
+            document.getElementById('portfolioFile').addEventListener('change', handleFileUpload);
+            document.getElementById('browseFiles').addEventListener('click', function () {
+                document.getElementById('portfolioFile').click();
+            });
+
+            // Drag and drop for portfolio upload
+            const uploadArea = document.getElementById('portfolioUploadArea');
+            if (uploadArea) {
+                uploadArea.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                    this.classList.add('dragover');
+                });
+
+                uploadArea.addEventListener('dragleave', function (e) {
+                    e.preventDefault();
+                    this.classList.remove('dragover');
+                });
+
+                uploadArea.addEventListener('drop', function (e) {
+                    e.preventDefault();
+                    this.classList.remove('dragover');
+                    const files = e.dataTransfer.files;
+                    if (files.length > 0) {
+                        handleDroppedFiles(files[0]);
+                    }
+                });
+            }
+
             // Close modals when clicking outside
             document.addEventListener('click', function (e) {
-                if (e.target.classList.contains('modal-overlay')) {
-                    e.target.classList.remove('active');
-                    document.body.style.overflow = '';
+                const skillModal = document.getElementById('addSkillModal');
+                if (skillModal && e.target === skillModal) {
+                    hideAddSkillModal();
+                }
+
+                const projectModal = document.getElementById('addProjectModal');
+                if (projectModal && e.target === projectModal) {
+                    hideAddProjectModal();
+                }
+
+                const learnSkillModal = document.getElementById('learnSkillModal');
+                if (learnSkillModal && e.target === learnSkillModal) {
+                    hideLearnSkillModal();
+                }
+
+                const marketplaceModal = document.getElementById('marketplaceModal');
+                if (marketplaceModal && e.target === marketplaceModal) {
+                    hideMarketplaceModal();
+                }
+
+                const applyModal = document.getElementById('applyOpportunityModal');
+                if (applyModal && e.target === applyModal) {
+                    hideApplyOpportunityModal();
                 }
             });
 
@@ -1950,59 +2932,9 @@
                     hideAddSkillModal();
                     hideAddProjectModal();
                     hideLearnSkillModal();
+                    hideMarketplaceModal();
+                    hideApplyOpportunityModal();
                 }
-            });
-        }
-
-        // Mobile specific features
-        function initMobileFeatures() {
-            // Prevent zoom on input focus in iOS
-            document.addEventListener('touchstart', function () { }, { passive: true });
-
-            // Fix for iOS viewport height
-            function setViewportHeight() {
-                const vh = window.innerHeight * 0.01;
-                document.documentElement.style.setProperty('--vh', `${vh}px`);
-            }
-
-            setViewportHeight();
-            window.addEventListener('resize', setViewportHeight);
-            window.addEventListener('orientationchange', setViewportHeight);
-
-            // Smooth scroll for anchor links on mobile
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    if (window.innerWidth < 768) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        if (targetId === '#') return;
-
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            const headerHeight = document.querySelector('.sticky-nav').offsetHeight;
-                            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-
-                            window.scrollTo({
-                                top: targetPosition - headerHeight,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                });
-            });
-
-            // Close mobile menu when clicking links
-            document.querySelectorAll('#mobileMenu a').forEach(link => {
-                link.addEventListener('click', function () {
-                    const mobileMenu = document.getElementById('mobileMenu');
-                    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-                    const icon = mobileMenuBtn.querySelector('i');
-
-                    mobileMenu.classList.add('hidden');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                    document.body.style.overflow = '';
-                });
             });
         }
 
@@ -2238,6 +3170,9 @@
             });
         }
 
+        // Ganti fungsi renderEarningsChart() dengan ini:
+        // GANTI fungsi renderEarningsChart() dengan kode ini:
+
         function renderEarningsChart() {
             const container = document.getElementById('earningChart');
             if (!container) return;
@@ -2249,132 +3184,172 @@
             const monthlyData = calculateMonthlyEarnings();
             const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
 
-            // Create simple chart for mobile
-            if (window.innerWidth < 768) {
-                // Mobile chart - simpler version
-                const maxValue = Math.max(...monthlyData, 1000000);
-                const chartHeight = 150;
-                const barWidth = 20;
-                const spacing = 10;
-                
-                monthlyData.forEach((value, index) => {
-                    if (index > 5) return; // Show only last 6 months on mobile
-                    
-                    const barHeight = (value / maxValue) * chartHeight;
-                    const bar = document.createElement('div');
-                    bar.className = 'chart-bar';
-                    bar.style.cssText = `
-                        position: absolute;
-                        bottom: 0;
-                        left: ${(barWidth + spacing) * index + 10}px;
-                        width: ${barWidth}px;
-                        height: ${barHeight}px;
-                        background: linear-gradient(to top, #3b82f6, #60a5fa);
-                        border-radius: 4px 4px 0 0;
-                        transition: height 0.5s ease;
-                    `;
-                    
-                    const label = document.createElement('div');
-                    label.className = 'chart-bar-label';
-                    label.style.cssText = `
-                        position: absolute;
-                        bottom: -25px;
-                        left: ${(barWidth + spacing) * index + 10}px;
-                        width: ${barWidth}px;
-                        text-align: center;
-                        font-size: 10px;
-                        color: #6b7280;
-                    `;
-                    label.textContent = months[index];
-                    
-                    const valueLabel = document.createElement('div');
-                    valueLabel.className = 'chart-bar-value';
-                    valueLabel.style.cssText = `
-                        position: absolute;
-                        top: -25px;
-                        left: ${(barWidth + spacing) * index + 10}px;
-                        width: ${barWidth}px;
-                        text-align: center;
-                        font-size: 10px;
-                        font-weight: 600;
-                        color: #1f2937;
-                    `;
-                    valueLabel.textContent = formatRupiahShort(value);
-                    
-                    container.appendChild(bar);
-                    container.appendChild(label);
-                    container.appendChild(valueLabel);
+            // Find maximum value for scaling
+            const maxValue = Math.max(...monthlyData, 1000000);
+
+            // Create chart container
+            const chartHeight = 180;
+            const barWidth = 40;
+            const spacing = 20;
+            const totalWidth = (barWidth + spacing) * monthlyData.length;
+
+            // Create SVG container
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("width", "100%");
+            svg.setAttribute("height", chartHeight + 60);
+            svg.setAttribute("viewBox", `0 0 ${totalWidth} ${chartHeight + 60}`);
+
+            // Add gradient definition
+            const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+            const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+            gradient.setAttribute("id", "chartGradient");
+            gradient.setAttribute("x1", "0%");
+            gradient.setAttribute("y1", "100%");
+            gradient.setAttribute("x2", "0%");
+            gradient.setAttribute("y2", "0%");
+
+            const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+            stop1.setAttribute("offset", "0%");
+            stop1.setAttribute("style", "stop-color:#3b82f6");
+
+            const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+            stop2.setAttribute("offset", "100%");
+            stop2.setAttribute("style", "stop-color:#60a5fa");
+
+            gradient.appendChild(stop1);
+            gradient.appendChild(stop2);
+            defs.appendChild(gradient);
+            svg.appendChild(defs);
+
+            // Create bars
+            monthlyData.forEach((value, index) => {
+                const barHeight = (value / maxValue) * chartHeight;
+                const x = index * (barWidth + spacing) + spacing;
+                const y = chartHeight - barHeight;
+
+                // Create bar group
+                const barGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+                // Create bar rectangle
+                const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                rect.setAttribute("x", x);
+                rect.setAttribute("y", y);
+                rect.setAttribute("width", barWidth);
+                rect.setAttribute("height", barHeight);
+                rect.setAttribute("fill", "url(#chartGradient)");
+                rect.setAttribute("rx", "4");
+                rect.setAttribute("ry", "4");
+                rect.setAttribute("class", "chart-bar");
+                rect.setAttribute("data-month", index);
+                rect.setAttribute("data-value", value);
+
+                // Add hover effect
+                rect.addEventListener('mouseenter', function (e) {
+                    this.style.opacity = '0.8';
+                    showBarTooltip(e, value, months[index]);
                 });
-            } else {
-                // Desktop chart - full version
-                const maxValue = Math.max(...monthlyData, 1000000);
-                const chartHeight = 180;
-                const barWidth = 35;
-                const spacing = 15;
-                
-                monthlyData.forEach((value, index) => {
-                    const barHeight = (value / maxValue) * chartHeight;
-                    const bar = document.createElement('div');
-                    bar.className = 'chart-bar';
-                    bar.style.cssText = `
-                        position: absolute;
-                        bottom: 0;
-                        left: ${(barWidth + spacing) * index + 20}px;
-                        width: ${barWidth}px;
-                        height: ${barHeight}px;
-                        background: linear-gradient(to top, #3b82f6, #60a5fa);
-                        border-radius: 4px 4px 0 0;
-                        transition: height 0.5s ease;
-                    `;
-                    
-                    const label = document.createElement('div');
-                    label.className = 'chart-bar-label';
-                    label.style.cssText = `
-                        position: absolute;
-                        bottom: -25px;
-                        left: ${(barWidth + spacing) * index + 20}px;
-                        width: ${barWidth}px;
-                        text-align: center;
-                        font-size: 11px;
-                        color: #6b7280;
-                    `;
-                    label.textContent = months[index];
-                    
-                    const valueLabel = document.createElement('div');
-                    valueLabel.className = 'chart-bar-value';
-                    valueLabel.style.cssText = `
-                        position: absolute;
-                        top: -25px;
-                        left: ${(barWidth + spacing) * index + 20}px;
-                        width: ${barWidth}px;
-                        text-align: center;
-                        font-size: 11px;
-                        font-weight: 600;
-                        color: #1f2937;
-                        background: white;
-                        padding: 2px 4px;
-                        border-radius: 4px;
-                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                        opacity: 0;
-                        transition: opacity 0.3s;
-                    `;
-                    valueLabel.textContent = formatRupiahShort(value);
-                    
-                    bar.addEventListener('mouseenter', () => {
-                        valueLabel.style.opacity = '1';
-                    });
-                    
-                    bar.addEventListener('mouseleave', () => {
-                        valueLabel.style.opacity = '0';
-                    });
-                    
-                    container.appendChild(bar);
-                    container.appendChild(label);
-                    container.appendChild(valueLabel);
+
+                rect.addEventListener('mouseleave', function () {
+                    this.style.opacity = '1';
+                    hideTooltip();
                 });
+
+                // Add click event
+                rect.addEventListener('click', function () {
+                    showMonthlyDetails(index, value);
+                });
+
+                barGroup.appendChild(rect);
+
+                // Create value text
+                const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                text.setAttribute("x", x + barWidth / 2);
+                text.setAttribute("y", y - 5);
+                text.setAttribute("text-anchor", "middle");
+                text.setAttribute("font-size", "10");
+                text.setAttribute("fill", "#374151");
+                text.setAttribute("font-weight", "600");
+                text.textContent = formatRupiahShort(value);
+                text.setAttribute("class", "chart-value");
+
+                barGroup.appendChild(text);
+
+                // Create month label
+                const monthLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                monthLabel.setAttribute("x", x + barWidth / 2);
+                monthLabel.setAttribute("y", chartHeight + 25);
+                monthLabel.setAttribute("text-anchor", "middle");
+                monthLabel.setAttribute("font-size", "11");
+                monthLabel.setAttribute("fill", "#6b7280");
+                monthLabel.textContent = months[index];
+
+                barGroup.appendChild(monthLabel);
+
+                svg.appendChild(barGroup);
+            });
+
+            // Create y-axis labels
+            const yAxisValues = [0, maxValue * 0.25, maxValue * 0.5, maxValue * 0.75, maxValue];
+
+            yAxisValues.forEach((value, index) => {
+                const y = chartHeight - (index * chartHeight / 4);
+
+                const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                line.setAttribute("x1", 0);
+                line.setAttribute("y1", y);
+                line.setAttribute("x2", totalWidth);
+                line.setAttribute("y2", y);
+                line.setAttribute("stroke", "#e5e7eb");
+                line.setAttribute("stroke-width", "1");
+                line.setAttribute("stroke-dasharray", "2,2");
+                svg.appendChild(line);
+
+                const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                label.setAttribute("x", 0);
+                label.setAttribute("y", y - 5);
+                label.setAttribute("font-size", "10");
+                label.setAttribute("fill", "#6b7280");
+                label.textContent = formatRupiahShort(value);
+                svg.appendChild(label);
+            });
+
+            container.appendChild(svg);
+        }
+
+        // TAMBAH fungsi untuk tooltip:
+        function showBarTooltip(event, value, month) {
+            // Remove existing tooltip
+            hideTooltip();
+
+            // Create tooltip
+            const tooltip = document.createElement('div');
+            tooltip.className = 'chart-tooltip';
+            tooltip.innerHTML = `
+        <div class="bg-gray-900 text-white text-xs rounded-lg py-2 px-3">
+            <div class="font-semibold">${month}</div>
+            <div>${formatRupiah(value)}</div>
+        </div>
+    `;
+
+            // Position tooltip
+            const rect = event.target.getBoundingClientRect();
+            tooltip.style.position = 'fixed';
+            tooltip.style.left = `${rect.left + rect.width / 2}px`;
+            tooltip.style.top = `${rect.top - 50}px`;
+            tooltip.style.transform = 'translateX(-50%)';
+            tooltip.style.zIndex = '10000';
+
+            document.body.appendChild(tooltip);
+        }
+
+        function hideTooltip() {
+            const tooltip = document.querySelector('.chart-tooltip');
+            if (tooltip) {
+                tooltip.remove();
             }
         }
 
+        // GANTI fungsi calculateMonthlyEarnings() untuk data yang lebih akurat:
         function calculateMonthlyEarnings() {
             const monthlyEarnings = new Array(12).fill(0);
             const currentYear = new Date().getFullYear();
@@ -2406,6 +3381,243 @@
             }
 
             return monthlyEarnings;
+        }
+
+        // TAMBAH fungsi untuk memperbarui chart ketika data berubah:
+        function updateEarningsChart() {
+            // Hitung ulang data
+            const monthlyData = calculateMonthlyEarnings();
+
+            // Update chart jika tab Analytics aktif
+            const analyticsTab = document.getElementById('analytics-tab');
+            if (analyticsTab.classList.contains('active')) {
+                renderEarningsChart();
+            }
+        }
+
+        // Panggil updateEarningsChart() setelah menambah/mengubah proyek:
+        function addNewProject() {
+            // ... existing code ...
+
+            // After adding project, update chart
+            saveProjectsData();
+            renderProjects();
+            updateStats();
+            updateEarningsChart(); // <-- TAMBAH INI
+            hideAddProjectModal();
+
+            showNotification('Proyek berhasil ditambahkan! 🎉', 'success');
+        }
+
+        // Juga untuk updateProjectStatus:
+        function updateProjectStatus(projectId, newStatus) {
+            const project = userProjects.find(p => p.id === projectId);
+            if (!project) return;
+
+            const oldStatus = project.status;
+            project.status = newStatus;
+
+            // ... existing code ...
+
+            saveProjectsData();
+            saveEarningsData();
+            updateStats();
+            updateEarningsChart(); // <-- TAMBAH INI
+            showNotification(`Status proyek berhasil diubah menjadi: ${getProjectStatusText(newStatus)}`, 'success');
+        }
+        // Fungsi untuk menampilkan detail bulanan
+        function showMonthlyDetails(monthIndex, earnings) {
+            const months = [
+                'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+            ];
+
+            const monthName = months[monthIndex];
+            const projectsThisMonth = getProjectsByMonth(monthIndex);
+
+            const modalContent = `
+        <div class="mb-4">
+            <h4 class="text-lg font-bold text-gray-900 mb-2">Detail Penghasilan ${monthName}</h4>
+            <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-700">Total Penghasilan:</span>
+                    <span class="text-2xl font-bold text-blue-600">${formatRupiah(earnings)}</span>
+                </div>
+                <div class="text-sm text-gray-600 mt-2">
+                    ${projectsThisMonth.length} proyek selesai
+                </div>
+            </div>
+            
+            ${projectsThisMonth.length > 0 ? `
+                <div class="mt-4">
+                    <h5 class="font-semibold text-gray-900 mb-2">Proyek di ${monthName}:</h5>
+                    <div class="space-y-2">
+                        ${projectsThisMonth.map(project => `
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <div>
+                                    <div class="font-medium">${project.name}</div>
+                                    <div class="text-xs text-gray-500">${project.skillName}</div>
+                                </div>
+                                <div class="text-green-600 font-semibold">${formatRupiah(project.value)}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            ` : `
+                <div class="text-center py-4 text-gray-500">
+                    <i class="fas fa-chart-line text-3xl mb-2 text-gray-300"></i>
+                    <p>Tidak ada proyek selesai di ${monthName}</p>
+                </div>
+            `}
+        </div>
+    `;
+
+            // Create a simple modal for showing details
+            showCustomModal(`Detail ${monthName}`, modalContent);
+        }
+
+        // Fungsi untuk mendapatkan proyek berdasarkan bulan
+        function getProjectsByMonth(monthIndex) {
+            const currentYear = new Date().getFullYear();
+
+            return userProjects.filter(project => {
+                if (project.status !== 'completed') return false;
+
+                const projectDate = new Date(project.createdAt);
+                return projectDate.getFullYear() === currentYear &&
+                    projectDate.getMonth() === monthIndex;
+            });
+        }
+
+        // Fungsi untuk modal custom sederhana
+        function showCustomModal(title, content) {
+            // Remove existing custom modal if any
+            const existingModal = document.getElementById('customDetailsModal');
+            if (existingModal) {
+                existingModal.remove();
+            }
+
+            // Create modal
+            const modalHTML = `
+        <div id="customDetailsModal" class="modal-overlay active">
+            <div class="modal-content" style="max-width: 500px;">
+                <div class="modal-header">
+                    <h3 class="modal-title">${title}</h3>
+                    <button class="modal-close" onclick="closeCustomModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ${content}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline" onclick="closeCustomModal()">Tutup</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+            // Add to body
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Fungsi untuk menutup modal custom
+        function closeCustomModal() {
+            const modal = document.getElementById('customDetailsModal');
+            if (modal) {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.remove();
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+        }
+
+        // Tambahkan event listener untuk modal custom di document
+        document.addEventListener('click', function (e) {
+            if (e.target.id === 'customDetailsModal') {
+                closeCustomModal();
+            }
+        });
+
+        // Perbarui fungsi updateStats() untuk menyertakan data chart:
+        function updateStats() {
+            // Update total earnings
+            document.getElementById('totalEarnings').textContent = formatRupiah(userEarnings.total);
+
+            // Update active projects count
+            const activeProjects = userProjects.filter(p => p.status === 'ongoing').length;
+            document.getElementById('activeProjects').textContent = activeProjects;
+
+            // Update skill level based on highest skill level
+            const skillLevels = {
+                'beginner': 1,
+                'intermediate': 2,
+                'advanced': 3,
+                'expert': 4
+            };
+
+            let highestLevel = 'beginner';
+            userSkills.forEach(skill => {
+                if (skillLevels[skill.level] > skillLevels[highestLevel]) {
+                    highestLevel = skill.level;
+                }
+            });
+
+            document.getElementById('skillLevel').textContent = getLevelText(highestLevel);
+
+            // Update project stats
+            document.getElementById('totalProjects').textContent = userProjects.length;
+            document.getElementById('completedProjects').textContent = userProjects.filter(p => p.status === 'completed').length;
+            document.getElementById('ongoingProjects').textContent = userProjects.filter(p => p.status === 'ongoing').length;
+            document.getElementById('pendingProjects').textContent = userProjects.filter(p => p.status === 'pending').length;
+
+            // Update earnings distribution
+            const freelanceEarnings = userProjects
+                .filter(p => p.status === 'completed' && p.type === 'freelance')
+                .reduce((sum, p) => sum + p.value, 0);
+
+            const productEarnings = userProjects
+                .filter(p => p.status === 'completed' && p.type === 'product')
+                .reduce((sum, p) => sum + p.value, 0);
+
+            const contentEarnings = userProjects
+                .filter(p => p.status === 'completed' && p.type === 'content')
+                .reduce((sum, p) => sum + p.value, 0);
+
+            const otherEarnings = userProjects
+                .filter(p => p.status === 'completed' && p.type === 'other')
+                .reduce((sum, p) => sum + p.value, 0);
+
+            // Update display
+            document.getElementById('freelanceEarnings').textContent = formatRupiah(freelanceEarnings);
+            document.getElementById('productEarnings').textContent = formatRupiah(productEarnings);
+            document.getElementById('contentEarnings').textContent = formatRupiah(contentEarnings);
+
+            // Update progress bars
+            const total = freelanceEarnings + productEarnings + contentEarnings + otherEarnings;
+            if (total > 0) {
+                document.getElementById('freelanceBar').style.width = `${(freelanceEarnings / total) * 100}%`;
+                document.getElementById('productBar').style.width = `${(productEarnings / total) * 100}%`;
+                document.getElementById('contentBar').style.width = `${(contentEarnings / total) * 100}%`;
+            } else {
+                document.getElementById('freelanceBar').style.width = '0%';
+                document.getElementById('productBar').style.width = '0%';
+                document.getElementById('contentBar').style.width = '0%';
+            }
+
+            // Update userEarnings object
+            userEarnings = {
+                total: freelanceEarnings + productEarnings + contentEarnings + otherEarnings,
+                freelance: freelanceEarnings,
+                product: productEarnings,
+                content: contentEarnings,
+                other: otherEarnings
+            };
+
+            // Render chart dengan data terbaru
+            renderEarningsChart();
         }
 
         function renderTopSkills() {
@@ -2525,33 +3737,36 @@
             document.getElementById('projectForm').reset();
         }
 
+        // FITUR PELAJARI SKILL - OPTIMIZED
         function showLearnSkillModal(skillName, skillId) {
             const modal = document.getElementById('learnSkillModal');
             const content = document.getElementById('learnSkillContent');
+
+            const skillData = learningResources[skillName] || getDefaultLearningData(skillName);
             const currentProgress = learningProgress[skillId] ? learningProgress[skillId].progress : 0;
 
-            document.getElementById('learnSkillTitle').textContent = `Pelajari ${skillName}`;
+            document.getElementById('learnSkillTitle').textContent = skillData.title;
 
             content.innerHTML = `
                 <div class="mb-6">
-                    <p class="text-gray-600 mb-6 text-base leading-relaxed">Mulai belajar ${skillName} dengan roadmap yang terstruktur untuk meningkatkan karir dan penghasilan kamu.</p>
+                    <p class="text-gray-600 mb-6 text-base leading-relaxed">${skillData.description}</p>
                     
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                         <div class="text-center p-4 bg-blue-50 rounded-xl border border-blue-100">
                             <div class="text-sm text-gray-600 font-medium mb-1">Waktu Belajar</div>
-                            <div class="font-bold text-lg text-blue-700">4-8 bulan</div>
+                            <div class="font-bold text-lg text-blue-700">${skillData.timeEstimate}</div>
                         </div>
                         <div class="text-center p-4 bg-green-50 rounded-xl border border-green-100">
                             <div class="text-sm text-gray-600 font-medium mb-1">Tingkat Kesulitan</div>
-                            <div class="font-bold text-lg text-green-700">Menyesuaikan</div>
+                            <div class="font-bold text-lg text-green-700">${skillData.difficulty}</div>
                         </div>
                         <div class="text-center p-4 bg-purple-50 rounded-xl border border-purple-100">
                             <div class="text-sm text-gray-600 font-medium mb-1">Potensi Penghasilan</div>
-                            <div class="font-bold text-lg text-purple-700">Tergantung skill</div>
+                            <div class="font-bold text-lg text-purple-700">${skillData.earningPotential}</div>
                         </div>
                         <div class="text-center p-4 bg-orange-50 rounded-xl border border-orange-100">
                             <div class="text-sm text-gray-600 font-medium mb-1">Permintaan Pasar</div>
-                            <div class="font-bold text-lg text-orange-700">Tinggi</div>
+                            <div class="font-bold text-lg text-orange-700">${skillData.jobMarket}</div>
                         </div>
                     </div>
                     
@@ -2571,58 +3786,50 @@
                     <div class="mb-8">
                         <h4 class="font-semibold text-gray-900 mb-4 text-lg">Roadmap Pembelajaran</h4>
                         <div class="learning-path">
-                            <div class="learning-step active">
-                                <div class="step-number">1</div>
-                                <div class="step-title">Dasar-dasar skill</div>
-                                <div class="step-duration">4-6 minggu</div>
-                                <div class="text-xs text-gray-500 mt-2">Fundamental dan basic concepts</div>
-                            </div>
-                            <div class="learning-step">
-                                <div class="step-number">2</div>
-                                <div class="step-title">Praktik dan latihan</div>
-                                <div class="step-duration">6-8 minggu</div>
-                                <div class="text-xs text-gray-500 mt-2">Hands-on projects dan exercises</div>
-                            </div>
-                            <div class="learning-step">
-                                <div class="step-number">3</div>
-                                <div class="step-title">Proyek nyata</div>
-                                <div class="step-duration">4-6 minggu</div>
-                                <div class="text-xs text-gray-500 mt-2">Real-world projects dan portfolio building</div>
-                            </div>
-                            <div class="learning-step">
-                                <div class="step-number">4</div>
-                                <div class="step-title">Pengembangan lanjutan</div>
-                                <div class="step-duration">4-8 minggu</div>
-                                <div class="text-xs text-gray-500 mt-2">Advanced topics dan specialization</div>
-                            </div>
+                            ${skillData.steps.map((step, index) => `
+                                <div class="learning-step ${index === 0 ? 'active' : ''}">
+                                    <div class="step-number">${index + 1}</div>
+                                    <div class="step-title">${step.title}</div>
+                                    <div class="step-duration">${step.duration}</div>
+                                    <div class="text-xs text-gray-500 mt-2">${step.description}</div>
+                                </div>
+                            `).join('')}
                         </div>
                     </div>
                     
                     <div class="mb-4">
                         <div class="flex justify-between items-center mb-4">
                             <h4 class="font-semibold text-gray-900 text-lg">Resources Belajar Terbaik</h4>
+                            <span class="text-sm text-gray-500">Klik card untuk membuka website</span>
                         </div>
-                        <div class="text-sm text-gray-600 mb-4">
-                            Gunakan resources berikut untuk memulai pembelajaran ${skillName}:
+                        <div class="resources-grid">
+                            ${skillData.resources.map(resource => `
+                                <div class="resource-card" data-url="${resource.url}" title="Klik untuk membuka ${resource.title}">
+                                    <div class="resource-icon ${resource.color}">
+                                        <i class="${resource.icon}"></i>
+                                    </div>
+                                    <div class="flex justify-between items-start mb-2">
+                                        <div class="resource-title">${resource.title}</div>
+                                        <span class="text-xs font-medium px-2 py-1 rounded-full ${resource.free ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'}">
+                                            ${resource.free ? 'GRATIS' : 'PREMIUM'}
+                                        </span>
+                                    </div>
+                                    <div class="resource-desc">${resource.description}</div>
+                                    <div class="flex justify-between items-center mt-3">
+                                        <div class="text-xs text-yellow-600">
+                                            <i class="fas fa-star"></i> ${resource.rating}
+                                        </div>
+                                        <div class="resource-link">
+                                            <i class="fas fa-external-link-alt"></i>
+                                            <span>Kunjungi Website</span>
+                                        </div>
+                                    </div>
+                                    <div class="external-link-indicator">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </div>
+                                </div>
+                            `).join('')}
                         </div>
-                        <ul class="space-y-2 text-gray-600">
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                <span>Google: "belajar ${skillName} tutorial Indonesia"</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                <span>YouTube: "${skillName} tutorial bahasa Indonesia"</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                <span>Coursera dan Udemy untuk kursus terstruktur</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                                <span>Komunitas online untuk bertanya dan berdiskusi</span>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             `;
@@ -2650,7 +3857,7 @@
                 learningProgress[skillId] = {
                     skillName: skillName,
                     startedAt: new Date().toISOString(),
-                    progress: 10,
+                    progress: 10, // Start with 10% progress
                     lastAccessed: new Date().toISOString(),
                     resourcesAccessed: []
                 };
@@ -2669,12 +3876,383 @@
             hideLearnSkillModal();
         }
 
-        function showMarketplaceModal(platform) {
-            showNotification(`Fitur marketplace ${platform} akan segera hadir!`, 'info');
+        function getDefaultLearningData(skillName) {
+            return {
+                title: `Pelajari ${skillName}`,
+                description: `Mulai belajar ${skillName} dengan roadmap yang terstruktur untuk meningkatkan karir dan penghasilan kamu.`,
+                steps: [
+                    {
+                        title: "Dasar-dasar skill",
+                        duration: "4-6 minggu",
+                        description: "Fundamental dan basic concepts"
+                    },
+                    {
+                        title: "Praktik dan latihan",
+                        duration: "6-8 minggu",
+                        description: "Hands-on projects dan exercises"
+                    },
+                    {
+                        title: "Proyek nyata",
+                        duration: "4-6 minggu",
+                        description: "Real-world projects dan portfolio building"
+                    },
+                    {
+                        title: "Pengembangan lanjutan",
+                        duration: "4-8 minggu",
+                        description: "Advanced topics dan specialization"
+                    }
+                ],
+                resources: [
+                    {
+                        title: "Google Search",
+                        description: "Cari tutorial, dokumentasi, dan resources terkini",
+                        icon: "fas fa-search",
+                        color: "bg-blue-100 text-blue-600",
+                        url: `https://www.google.com/search?q=belajar+${encodeURIComponent(skillName)}+tutorial+indonesia`,
+                        free: true,
+                        rating: "5.0/5"
+                    },
+                    {
+                        title: "YouTube Tutorials",
+                        description: "Video pembelajaran gratis dari expert",
+                        icon: "fas fa-video",
+                        color: "bg-red-100 text-red-600",
+                        url: `https://www.youtube.com/results?search_query=${encodeURIComponent(skillName)}+tutorial+bahasa+indonesia`,
+                        free: true,
+                        rating: "4.8/5"
+                    },
+                    {
+                        title: "Coursera",
+                        description: "Kursus online dari universitas top dunia",
+                        icon: "fas fa-graduation-cap",
+                        color: "bg-green-100 text-green-600",
+                        url: `https://www.coursera.org/courses?query=${encodeURIComponent(skillName)}`,
+                        free: false,
+                        rating: "4.7/5"
+                    },
+                    {
+                        title: "Udemy",
+                        description: "Kursus berbayar dengan diskon reguler",
+                        icon: "fas fa-laptop",
+                        color: "bg-purple-100 text-purple-600",
+                        url: `https://www.udemy.com/courses/search/?q=${encodeURIComponent(skillName)}&lang=id`,
+                        free: false,
+                        rating: "4.6/5"
+                    },
+                    {
+                        title: "Medium Articles",
+                        description: "Artikel dan tutorial dari praktisi",
+                        icon: "fas fa-newspaper",
+                        color: "bg-gray-100 text-gray-600",
+                        url: `https://medium.com/search?q=${encodeURIComponent(skillName)}`,
+                        free: true,
+                        rating: "4.5/5"
+                    },
+                    {
+                        title: "GitHub Learning",
+                        description: "Open source projects dan code examples",
+                        icon: "fab fa-github",
+                        color: "bg-black text-black",
+                        url: `https://github.com/topics/${encodeURIComponent(skillName.toLowerCase().replace(/ /g, '-'))}-learning`,
+                        free: true,
+                        rating: "4.9/5"
+                    }
+                ],
+                timeEstimate: "4-8 bulan",
+                difficulty: "Menyesuaikan",
+                earningPotential: "Tergantung pengembangan skill",
+                jobMarket: "Tinggi",
+                averageSalary: "Competitive"
+            };
         }
 
+        // FITUR MARKETPLACE - OPTIMIZED
+        function showMarketplaceModal(platformType) {
+            const modal = document.getElementById('marketplaceModal');
+            const content = document.getElementById('marketplaceContent');
+
+            const platformData = marketplaceData[platformType];
+
+            document.getElementById('marketplaceTitle').textContent = platformData.title;
+
+            content.innerHTML = `
+                <div class="mb-6">
+                    <p class="text-gray-600 mb-8 text-base leading-relaxed">${platformData.description}</p>
+                    
+                    <div class="mb-8">
+                        <h4 class="font-semibold text-gray-900 mb-5 text-lg">Platform Terbaik untuk ${platformType === 'freelance' ? 'Freelance' : platformType === 'digital-product' ? 'Produk Digital' : 'Content Creation'}</h4>
+                        <div class="platform-grid">
+                            ${platformData.platforms.map(platform => `
+                                <div class="platform-card" data-url="${platform.url}" title="Klik untuk membuka ${platform.name}">
+                                    <div class="platform-icon ${platform.color}">
+                                        <i class="${platform.icon}"></i>
+                                    </div>
+                                    <div class="platform-name">${platform.name}</div>
+                                    <div class="platform-description">${platform.description}</div>
+                                    <div class="platform-stats">
+                                        <span title="Rata-rata penghasilan">
+                                            <i class="fas fa-money-bill-wave"></i>
+                                            ${platform.avgEarnings}
+                                        </span>
+                                        <span title="Tingkat keberhasilan">
+                                            <i class="fas fa-chart-line"></i>
+                                            ${platform.successRate}
+                                        </span>
+                                    </div>
+                                    <div class="text-xs text-gray-500 mt-3 pt-3 border-t border-gray-100">
+                                        <div class="mb-1"><strong>Best for:</strong> ${platform.bestFor}</div>
+                                        <div><strong>Fees:</strong> ${platform.fees}</div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="success-stories">
+                        <h4>
+                            <i class="fas fa-trophy"></i>
+                            Success Stories
+                        </h4>
+                        ${platformData.successStories.map(story => `
+                            <div class="story-item">
+                                <div class="story-avatar">
+                                    ${story.name.split(' ').map(n => n[0]).join('')}
+                                </div>
+                                <div class="story-content">
+                                    <h5>${story.name}</h5>
+                                    <div class="story-role">${story.role} • ${story.platform}</div>
+                                    <p>${story.story}</p>
+                                    <div class="story-earnings">${story.earnings}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="tips-section">
+                        <h4>
+                            <i class="fas fa-lightbulb"></i>
+                            Tips Sukses di ${platformType === 'freelance' ? 'Platform Freelance' : platformType === 'digital-product' ? 'Marketplace Produk Digital' : 'Platform Content Creation'}
+                        </h4>
+                        <div class="tips-grid">
+                            ${platformData.tips.map((tip, index) => `
+                                <div class="tip-item">
+                                    <span class="tip-number">${index + 1}</span>
+                                    <span class="tip-text">${tip}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.dataset.platformType = platformType;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideMarketplaceModal() {
+            const modal = document.getElementById('marketplaceModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function getMainPlatformUrl(platformType) {
+            const platforms = {
+                'freelance': 'https://www.upwork.com',
+                'digital-product': 'https://www.udemy.com',
+                'content': 'https://www.youtube.com'
+            };
+            return platforms[platformType] || null;
+        }
+
+        // FITUR APPLY OPPORTUNITY - BARU
         function showApplyOpportunityModal(oppId) {
-            showNotification(`Fitur apply opportunity akan segera hadir!`, 'info');
+            const opportunity = opportunities.find(opp => opp.id === oppId);
+            if (!opportunity) {
+                showNotification('Opportunity tidak ditemukan', 'error');
+                return;
+            }
+
+            currentApplyingOpportunity = opportunity;
+
+            const modal = document.getElementById('applyOpportunityModal');
+            const title = document.getElementById('applyOpportunityTitle');
+
+            title.textContent = `Apply: ${opportunity.title}`;
+
+            // Reset form
+            document.getElementById('applicationForm').reset();
+            document.getElementById('fileName').textContent = '';
+            document.getElementById('applicationPreview').classList.add('hidden');
+            uploadedFiles = [];
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Pre-fill user data if available
+            const userSession = localStorage.getItem('userSession');
+            if (userSession) {
+                try {
+                    const userData = JSON.parse(userSession);
+                    document.getElementById('applicantName').value = userData.name || '';
+                    document.getElementById('applicantEmail').value = userData.email || '';
+                } catch (error) {
+                    console.error('Error parsing user session:', error);
+                }
+            }
+        }
+
+        function hideApplyOpportunityModal() {
+            const modal = document.getElementById('applyOpportunityModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            currentApplyingOpportunity = null;
+        }
+
+        function previewApplication() {
+            const form = document.getElementById('applicationForm');
+            const previewContent = document.getElementById('previewContent');
+            const previewSection = document.getElementById('applicationPreview');
+
+            // Validate required fields
+            const requiredFields = ['applicantName', 'applicantEmail', 'estimatedTime'];
+            for (const fieldId of requiredFields) {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    showNotification(`Harap isi field ${field.previousElementSibling.textContent}`, 'error');
+                    field.focus();
+                    return;
+                }
+            }
+
+            const applicationData = {
+                opportunity: currentApplyingOpportunity.title,
+                name: document.getElementById('applicantName').value,
+                email: document.getElementById('applicantEmail').value,
+                portfolio: document.getElementById('applicantPortfolio').value,
+                experience: document.getElementById('applicantExperience').value,
+                estimatedTime: document.getElementById('estimatedTime').value,
+                additionalNotes: document.getElementById('additionalNotes').value,
+                portfolioFile: uploadedFiles.length > 0 ? uploadedFiles[0].name : 'Tidak ada file'
+            };
+
+            previewContent.innerHTML = `
+                <div class="preview-item">
+                    <span class="preview-label">Opportunity:</span>
+                    <span class="preview-value">${applicationData.opportunity}</span>
+                </div>
+                <div class="preview-item">
+                    <span class="preview-label">Nama Lengkap:</span>
+                    <span class="preview-value">${applicationData.name}</span>
+                </div>
+                <div class="preview-item">
+                    <span class="preview-label">Email:</span>
+                    <span class="preview-value">${applicationData.email}</span>
+                </div>
+                <div class="preview-item">
+                    <span class="preview-label">Portfolio:</span>
+                    <span class="preview-value">${applicationData.portfolio || 'Tidak diisi'}</span>
+                </div>
+                <div class="preview-item">
+                    <span class="preview-label">File Portfolio:</span>
+                    <span class="preview-value">${applicationData.portfolioFile}</span>
+                </div>
+                <div class="preview-item">
+                    <span class="preview-label">Estimasi Waktu:</span>
+                    <span class="preview-value">${getEstimatedTimeText(applicationData.estimatedTime)}</span>
+                </div>
+            `;
+
+            previewSection.classList.remove('hidden');
+            showNotification('Preview application berhasil dibuat', 'success');
+        }
+
+        function submitApplication() {
+            const form = document.getElementById('applicationForm');
+
+            // Validate required fields
+            const requiredFields = ['applicantName', 'applicantEmail', 'estimatedTime'];
+            for (const fieldId of requiredFields) {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    showNotification(`Harap isi field ${field.previousElementSibling.textContent}`, 'error');
+                    field.focus();
+                    return;
+                }
+            }
+
+            // Simulate API call
+            setTimeout(() => {
+                // Save application to localStorage
+                const applications = JSON.parse(localStorage.getItem('jobApplications') || '[]');
+                const newApplication = {
+                    id: Date.now(),
+                    opportunityId: currentApplyingOpportunity.id,
+                    opportunityTitle: currentApplyingOpportunity.title,
+                    applicantName: document.getElementById('applicantName').value,
+                    applicantEmail: document.getElementById('applicantEmail').value,
+                    appliedAt: new Date().toISOString(),
+                    status: 'pending',
+                    portfolioFile: uploadedFiles.length > 0 ? uploadedFiles[0].name : null
+                };
+
+                applications.push(newApplication);
+                localStorage.setItem('jobApplications', JSON.stringify(applications));
+
+                // Update opportunity count
+                const opportunityStats = JSON.parse(localStorage.getItem('opportunityStats') || '{}');
+                opportunityStats[newApplication.opportunityId] = (opportunityStats[newApplication.opportunityId] || 0) + 1;
+                localStorage.setItem('opportunityStats', JSON.stringify(opportunityStats));
+
+                showNotification(`🎉 Success! Application untuk "${currentApplyingOpportunity.title}" berhasil dikirim!`, 'success');
+
+                // Reset and close
+                form.reset();
+                hideApplyOpportunityModal();
+
+                // Send notification email (simulated)
+                simulateEmailNotification(newApplication);
+
+            }, 1500);
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            handleDroppedFiles(file);
+        }
+
+        function handleDroppedFiles(file) {
+            if (!file) return;
+
+            // Validate file type
+            const validTypes = ['application/pdf', 'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'application/zip'];
+            if (!validTypes.includes(file.type) && !file.name.endsWith('.pdf') &&
+                !file.name.endsWith('.doc') && !file.name.endsWith('.docx') &&
+                !file.name.endsWith('.zip')) {
+                showNotification('File harus berupa PDF, DOC, DOCX, atau ZIP', 'error');
+                return;
+            }
+
+            // Validate file size (10MB)
+            if (file.size > 10 * 1024 * 1024) {
+                showNotification('File terlalu besar. Maksimum 10MB', 'error');
+                return;
+            }
+
+            uploadedFiles = [file];
+            document.getElementById('fileName').textContent = `📎 ${file.name} (${formatFileSize(file.size)})`;
+            showNotification(`File "${file.name}" berhasil diupload`, 'success');
+        }
+
+        function simulateEmailNotification(application) {
+            console.log('Simulating email notification:', {
+                to: application.applicantEmail,
+                subject: `Application Received: ${application.opportunityTitle}`,
+                body: `Halo ${application.applicantName},\n\nTerima kasih telah mengapply untuk "${application.opportunityTitle}".\n\nKami telah menerima application kamu dan akan meninjau portfolio serta pengalaman kamu.\n\nKami akan menghubungi kamu dalam 3-5 hari kerja.\n\nSalam,\nSkill2Money Team`
+            });
         }
 
         // Add new skill
@@ -2746,6 +4324,8 @@
             }
 
             saveProjectsData();
+            renderEarningsChart(); // Langsung panggil
+
             renderProjects();
             updateStats();
             hideAddProjectModal();
@@ -2771,6 +4351,8 @@
             }
             saveProjectsData();
             saveEarningsData();
+            renderEarningsChart(); // Langsung panggil
+
             updateStats();
             showNotification(`Status proyek berhasil diubah menjadi: ${getProjectStatusText(newStatus)}`, 'success');
         }
@@ -2810,6 +4392,8 @@
 
                 userProjects = userProjects.filter(project => project.id !== projectId);
                 saveProjectsData();
+                renderEarningsChart(); // Langsung panggil
+
                 renderProjects();
                 updateStats();
                 showNotification('Proyek berhasil dihapus', 'success');
@@ -2889,6 +4473,16 @@
             return statuses[status] || status;
         }
 
+        function getEstimatedTimeText(timeValue) {
+            const times = {
+                '1week': '1 Minggu',
+                '2weeks': '2 Minggu',
+                '1month': '1 Bulan',
+                'custom': 'Custom'
+            };
+            return times[timeValue] || timeValue;
+        }
+
         function formatRupiah(amount) {
             if (amount >= 1000000) {
                 return 'Rp ' + (amount / 1000000).toFixed(1).replace('.', ',') + ' jt';
@@ -2910,6 +4504,14 @@
         function formatDate(dateString) {
             const options = { day: 'numeric', month: 'short', year: 'numeric' };
             return new Date(dateString).toLocaleDateString('id-ID', options);
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
         }
 
         function updateDateTime() {
