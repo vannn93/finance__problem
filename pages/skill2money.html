@@ -1341,6 +1341,459 @@
                 height: 180px;
             }
         }
+
+                /* ===== RESPONSIVE MOBILE IMPROVED ===== */
+        @media (max-width: 768px) {
+
+            /* Fix untuk header sticky di mobile */
+            body {
+                padding-top: 64px;
+            }
+
+            .sticky-nav {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+                backdrop-filter: blur(10px);
+                background: rgba(255, 255, 255, 0.95);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Main content spacing */
+            main {
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+            /* Mobile menu better spacing */
+            #mobileMenu {
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: white;
+                max-height: calc(100vh - 64px);
+                overflow-y: auto;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid #e5e7eb;
+            }
+
+            #mobileMenu .px-4 {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            #mobileMenu a,
+            #mobileMenu button {
+                padding: 0.75rem 1rem;
+                margin: 0.25rem 0;
+                border-radius: 0.5rem;
+                font-size: 0.95rem;
+            }
+
+            /* Logo adjustment */
+            .flex.items-center h1 {
+                font-size: 1.1rem;
+            }
+
+            /* User profile in mobile */
+            .flex.items-center.space-x-3 {
+                margin-left: auto;
+                margin-right: 1rem;
+            }
+
+            #userAvatar {
+                width: 32px;
+                height: 32px;
+            }
+
+            /* Mobile menu button styling */
+            #mobileMenuBtn {
+                padding: 0.5rem;
+                background: #f3f4f6;
+                border-radius: 0.375rem;
+                z-index: 1001;
+            }
+
+            /* Mobile menu animation */
+            #mobileMenu {
+                transform: translateY(-10px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+
+            #mobileMenu:not(.hidden) {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            /* Layout grid menjadi 1 kolom */
+            .grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Skill grid sederhana */
+            .skill-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .skill-item {
+                flex-direction: row;
+                align-items: center;
+                padding: 12px;
+                margin-bottom: 8px;
+            }
+
+            .skill-icon {
+                margin-right: 12px;
+                margin-bottom: 0;
+                min-width: 40px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .skill-details {
+                flex: 1;
+                min-width: 0;
+                /* Prevent overflow */
+            }
+
+            .skill-name {
+                font-size: 0.95rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .skill-level,
+            .earning-potential {
+                font-size: 0.8rem;
+            }
+
+            /* Modal lebih kecil di mobile */
+            .modal-content {
+                margin: 16px;
+                max-height: 85vh;
+                border-radius: 12px;
+            }
+
+            .modal-header,
+            .modal-body,
+            .modal-footer {
+                padding: 1rem;
+            }
+
+            /* Tab navigation scrollable */
+            .tab-container {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 8px;
+                margin-bottom: 1rem;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .tab-container::-webkit-scrollbar {
+                display: none;
+            }
+
+            .tab {
+                display: inline-block;
+                padding: 12px 16px;
+                font-size: 0.9rem;
+                min-width: max-content;
+            }
+
+            /* Card tanpa margin negatif */
+            .morphic-card {
+                margin: 0 0 16px 0;
+                border-radius: 12px;
+                padding: 1rem !important;
+            }
+
+            /* Button full width di mobile */
+            .btn-primary,
+            .btn-outline {
+                width: 100%;
+                margin-bottom: 8px;
+                justify-content: center;
+            }
+
+            /* Text smaller di mobile */
+            .text-xl,
+            .text-2xl,
+            .text-3xl {
+                font-size: 1.25rem !important;
+            }
+
+            .text-lg {
+                font-size: 1.1rem !important;
+            }
+
+            /* Hide some elements on mobile */
+            .hidden-mobile {
+                display: none !important;
+            }
+
+            /* Quick stats stacking */
+            .flex.flex-col.lg\:flex-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            /* Stats grid */
+            .grid.grid-cols-2,
+            .grid.grid-cols-4,
+            .grid.grid-cols-3 {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px;
+            }
+
+            .grid.grid-cols-2>div,
+            .grid.grid-cols-4>div,
+            .grid.grid-cols-3>div {
+                padding: 12px !important;
+            }
+
+            /* Fix untuk form input */
+            input,
+            select,
+            textarea {
+                font-size: 16px !important;
+                /* Prevent iOS zoom */
+                max-width: 100%;
+            }
+
+            .form-input,
+            .form-select {
+                padding: 0.875rem 1rem;
+            }
+
+            /* Opportunity cards full width */
+            .opportunity-card {
+                margin-bottom: 16px;
+                padding: 1rem;
+            }
+
+            .opportunity-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .opportunity-badge {
+                align-self: flex-start;
+            }
+
+            /* Learning path mobile */
+            .learning-path {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .learning-step {
+                padding: 1rem;
+            }
+
+            /* Resources grid mobile */
+            .resources-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .resource-card {
+                padding: 1rem;
+            }
+
+            /* Platform grid mobile */
+            .platform-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .platform-card {
+                padding: 1rem;
+            }
+
+            /* Success stories mobile */
+            .success-stories {
+                padding: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .story-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .story-avatar {
+                margin-right: 0;
+            }
+
+            /* Tips section mobile */
+            .tips-section {
+                padding: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Application form mobile */
+            .application-form .form-group {
+                margin-bottom: 1rem;
+            }
+
+            .portfolio-upload {
+                padding: 1.5rem 1rem;
+            }
+
+            /* Chart responsive */
+            .earning-chart {
+                height: 200px;
+            }
+
+            .chart-bar {
+                width: 24px;
+            }
+
+            .chart-bar-value {
+                font-size: 9px;
+            }
+
+            /* Footer mobile */
+            footer .flex {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            /* Notification position */
+            .notification {
+                left: 16px;
+                right: 16px;
+                top: 80px;
+                transform: translateX(0) translateY(-20px);
+            }
+
+            .notification.show {
+                transform: translateX(0) translateY(0);
+            }
+        }
+
+        /* Untuk tablet kecil */
+        @media (max-width: 640px) {
+
+            /* Skill card mobile */
+            .skill-card {
+                padding: 1.25rem;
+            }
+
+            /* Stats grid 1 kolom */
+            .grid.grid-cols-2 {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Header stats */
+            .grid.grid-cols-2.lg\:grid-cols-3 {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem;
+            }
+
+            .grid.grid-cols-2.lg\:grid-cols-3>div {
+                padding: 0.75rem;
+            }
+
+            /* Modal padding lebih kecil */
+            .modal-body {
+                padding: 1rem;
+            }
+
+            /* Project grid mobile */
+            #projectsContainer {
+                gap: 12px;
+            }
+
+            /* Analytics tab mobile */
+            #analytics-tab .grid-cols-1.lg\:grid-cols-2 {
+                gap: 1rem;
+            }
+
+            /* Quick amounts buttons */
+            .quick-amounts {
+                flex-wrap: wrap;
+            }
+
+            .quick-amount {
+                flex: 1 0 calc(33.333% - 0.5rem);
+                margin-bottom: 0.25rem;
+                font-size: 0.7rem;
+                padding: 0.5rem 0.25rem;
+            }
+        }
+
+        /* Untuk perangkat sangat kecil */
+        @media (max-width: 375px) {
+            .skill-item {
+                flex-wrap: wrap;
+            }
+
+            .skill-details {
+                min-width: 100%;
+                margin-top: 8px;
+            }
+
+            .grid.grid-cols-2.lg\:grid-cols-3 {
+                grid-template-columns: 1fr !important;
+            }
+
+            .tab {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+
+            .modal-content {
+                margin: 8px;
+                border-radius: 10px;
+            }
+        }
+
+        /* Fix untuk iOS Safari */
+        @supports (-webkit-touch-callout: none) {
+            .min-h-screen {
+                min-height: -webkit-fill-available;
+            }
+
+            #mobileMenu {
+                max-height: -webkit-fill-available;
+            }
+        }
+
+        /* Scrollbar styling untuk mobile */
+        @media (max-width: 768px) {
+            ::-webkit-scrollbar {
+                width: 4px;
+                height: 4px;
+            }
+
+            ::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 2px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+        }
     </style>
 </head>
 
@@ -2637,6 +3090,173 @@
                 ]
             }
         };
+
+               // Mobile menu auto close on click
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', function () {
+                const mobileMenu = document.getElementById('mobileMenu');
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const icon = mobileMenuBtn.querySelector('i');
+
+                mobileMenu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Mobile navbar scroll behavior
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.sticky-nav');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        window.addEventListener('scroll', function () {
+            if (window.innerWidth <= 768px) {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scroll down - hide navbar
+                navbar.style.transform = 'translateY(-100%)';
+                navbar.style.transition = 'transform 0.3s ease';
+
+                // Also hide mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    const icon = document.querySelector('#mobileMenuBtn i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            } else {
+                // Scroll up - show navbar
+                navbar.style.transform = 'translateY(0)';
+            }
+
+            lastScrollTop = scrollTop;
+
+            // Add shadow when scrolled
+            if (scrollTop > 10) {
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        }
+});
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (e) {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (!mobileMenu.classList.contains('hidden') &&
+                !mobileMenu.contains(e.target) &&
+                !mobileMenuBtn.contains(e.target)) {
+
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Prevent body scroll when mobile menu is open
+        document.getElementById('mobileMenuBtn').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const icon = this.querySelector('i');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Restore body scroll when mobile menu closes
+        const observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                if (mutation.attributeName === 'class') {
+                    const mobileMenu = document.getElementById('mobileMenu');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        });
+
+        observer.observe(document.getElementById('mobileMenu'), {
+            attributes: true
+        });
+
+        // Smooth scroll for anchor links on mobile
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (window.innerWidth < 768) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close mobile menu first
+                        const mobileMenu = document.getElementById('mobileMenu');
+                        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                        const icon = mobileMenuBtn.querySelector('i');
+
+                        mobileMenu.classList.add('hidden');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+
+                        // Smooth scroll to target
+                        setTimeout(() => {
+                            const headerHeight = 64; // Height of sticky header
+                            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+
+                            window.scrollTo({
+                                top: targetPosition - headerHeight,
+                                behavior: 'smooth'
+                            });
+                        }, 300);
+                    }
+                }
+            });
+        });
+
+        // Fix untuk input focus di iOS
+        document.addEventListener('focusin', function (e) {
+            if (window.innerWidth <= 768 &&
+                (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT')) {
+
+                // Scroll ke input dengan offset untuk header
+                setTimeout(() => {
+                    const inputRect = e.target.getBoundingClientRect();
+                    const isInputInView = (
+                        inputRect.top >= 0 &&
+                        inputRect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+                    );
+
+                    if (!isInputInView) {
+                        const headerHeight = 64;
+                        window.scrollTo({
+                            top: window.pageYOffset + inputRect.top - headerHeight - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 300);
+            }
+        });
+
+        // Touch improvements for mobile
+        document.addEventListener('touchstart', function () { }, { passive: true });
+
+        // Fix viewport height on mobile
+        function setVH() {
+            if (window.innerWidth <= 768) {
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            }
+        }
+
+        setVH();
+        window.addEventListener('resize', setVH);
+        window.addEventListener('orientationchange', setVH);
 
         // Mobile menu auto close on click
         document.querySelectorAll('#mobileMenu a').forEach(link => {
@@ -4584,3 +5204,4 @@
 </body>
 
 </html>
+
