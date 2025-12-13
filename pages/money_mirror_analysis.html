@@ -7,936 +7,419 @@
     <title>MoneyMirror Analysis - GenZ Finance Hub</title>
     <link rel="stylesheet" href="../css/main.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-    <script type="module" async
-        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fgenzfinan7345back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.10"></script>
-    <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+    
     <style>
-        /* Share Modal Animations */
-        .fade-in {
-            animation: fadeIn 0.3s ease-in-out;
+        /* ========================================= */
+        /* NAVBAR RESPONSIF FIX */
+        /* ========================================= */
+        
+        /* Fix navbar untuk sticky dan responsif */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
-
-        .bounce-in {
-            animation: bounceIn 0.5s ease-out;
+        
+        /* Scrolled state */
+        nav.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+        
+        /* Container navbar */
+        .nav-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
         }
-
-        @keyframes bounceIn {
-            0% {
-                transform: scale(0.3);
-                opacity: 0;
-            }
-
-            50% {
-                transform: scale(1.05);
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+        
+        /* Logo fix */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
         }
-
-        /* Micro celebration effect */
-        .micro-celebrate {
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-icon i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Desktop menu */
+        .desktop-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .desktop-menu a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-radius: 8px;
             transition: all 0.2s ease;
         }
-
-        .micro-celebrate:active {
-            transform: scale(0.95);
+        
+        .desktop-menu a:hover {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
         }
-
+        
+        .desktop-menu a.active {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+        }
+        
+        /* Profile desktop */
+        .profile-desktop {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .profile-img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #2d3748;
+        }
+        
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-btn:hover {
+            background: rgba(99, 102, 241, 0.2);
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            padding: 1rem;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 1rem;
+        }
+        
+        .mobile-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #4a5568;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mobile-close-btn:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        .mobile-nav-links {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .mobile-nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            text-decoration: none;
+            color: #4a5568;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+        }
+        
+        .mobile-nav-links a:hover,
+        .mobile-nav-links a.active {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+        }
+        
+        .mobile-profile {
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .mobile-profile .profile-img {
+            width: 48px;
+            height: 48px;
+        }
+        
+        .mobile-profile-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        /* Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            display: none;
+        }
+        
+        .menu-overlay.active {
+            display: block;
+        }
+        
+        /* Responsive breakpoints */
+        @media (min-width: 1024px) {
+            .nav-container {
+                max-width: 1200px;
+                padding: 0 2rem;
+            }
+            
+            .desktop-menu {
+                gap: 1rem;
+            }
+            
+            .desktop-menu a {
+                padding: 0.75rem 1.25rem;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+            
+            .desktop-menu a {
+                padding: 0.5rem 0.875rem;
+                font-size: 0.875rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-menu,
+            .profile-desktop {
+                display: none !important;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .logo-text {
+                font-size: 1.1rem;
+            }
+            
+            .logo-icon {
+                width: 36px;
+                height: 36px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+                height: 60px;
+            }
+            
+            .logo-text {
+                font-size: 1rem;
+            }
+            
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .mobile-menu-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
+        }
+        
         /* ========================================= */
-        /* MOBILE OPTIMIZATION (≤ 768px) - FIX SEMUA */
+        /* FIX UNTUK QUICK ACTIONS & CHART */
         /* ========================================= */
-
-        @media only screen and (max-width: 768px) {
-
-            /* 1. RESET LAYOUT UTAMA */
+        
+        /* Fix untuk chart container */
+        #moodExpenseChart {
+            width: 100% !important;
+            height: 320px !important;
+        }
+        
+        @media (max-width: 768px) {
+            #moodExpenseChart {
+                height: 250px !important;
+            }
+        }
+        
+        /* Fix untuk quick actions buttons */
+        #exportDataBtn,
+        #shareProgressBtn,
+        #setReminderBtn {
+            min-height: 60px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+        
+        #exportDataBtn:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        #shareProgressBtn:hover {
+            background: rgba(236, 72, 153, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        #setReminderBtn:hover {
+            background: rgba(245, 158, 11, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Fix untuk form input pada mobile */
+        @media (max-width: 768px) {
+            .input-field {
+                font-size: 16px !important; /* Mencegah zoom di iOS */
+            }
+            
+            .mood-btn {
+                padding: 12px 8px !important;
+            }
+            
+            .mood-btn .text-3xl {
+                font-size: 1.75rem !important;
+            }
+        }
+        
+        /* Fix untuk overflow pada mobile */
+        @media (max-width: 768px) {
             body {
-                overflow-x: hidden !important;
-                width: 100% !important;
+                overflow-x: hidden;
             }
-
+            
             main {
-                padding: 1rem !important;
-                max-width: 100% !important;
-                margin: 0 !important;
-            }
-
-            .max-w-7xl {
-                max-width: 100% !important;
                 padding-left: 1rem !important;
                 padding-right: 1rem !important;
             }
-
-            /* 2. HEADER & TITLE */
-            .mb-8.fade-in {
-                margin-bottom: 1.5rem !important;
-            }
-
-            .mb-8.fade-in .flex {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 1rem !important;
-            }
-
-            h1.text-3xl {
-                font-size: 1.5rem !important;
-                line-height: 2rem !important;
-                margin-bottom: 0.5rem !important;
-            }
-
-            .text-text-secondary {
-                font-size: 0.875rem !important;
-            }
-
-            /* Sembunyikan total expense di mobile header */
-            .hidden.sm\:flex {
-                display: none !important;
-            }
-
-            /* 3. STATS CARDS - 2 KOLOM */
-            .grid.grid-cols-1.md\:grid-cols-4 {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.75rem !important;
-                margin-bottom: 1.5rem !important;
-            }
-
-            .morphic-card.p-6 {
-                padding: 1rem !important;
-                margin: 0 !important;
-            }
-
-            .morphic-card .flex.items-center {
-                align-items: flex-start !important;
-                flex-direction: row !important;
-            }
-
-            .morphic-card .p-3 {
-                padding: 0.75rem !important;
-                min-width: 48px !important;
-                height: 48px !important;
-            }
-
-            .morphic-card .ml-4 {
-                margin-left: 0.75rem !important;
-            }
-
-            .morphic-card .text-xl {
-                font-size: 1.125rem !important;
-            }
-
-            .morphic-card .text-sm {
-                font-size: 0.75rem !important;
-            }
-
-            /* 4. MOOD & EXPENSE SECTION - STACK */
-            .grid.grid-cols-1.lg\:grid-cols-2 {
-                grid-template-columns: 1fr !important;
-                gap: 1rem !important;
-                margin-bottom: 1.5rem !important;
-            }
-
-            /* 5. MOOD BUTTONS - 3 KOLOM */
-            .grid.grid-cols-5 {
-                grid-template-columns: repeat(3, 1fr) !important;
-                gap: 0.5rem !important;
-                margin-bottom: 1rem !important;
-            }
-
-            .mood-btn {
-                padding: 0.75rem 0.5rem !important;
-                min-height: auto !important;
-            }
-
-            .mood-btn .text-3xl {
-                font-size: 1.5rem !important;
-                margin-bottom: 0.25rem !important;
-            }
-
-            .mood-btn .text-xs {
-                font-size: 0.625rem !important;
-                line-height: 1.2 !important;
-            }
-
-            /* 6. FORM INPUT MOBILE */
-            .input-field {
-                padding: 0.75rem !important;
-                font-size: 16px !important;
-                width: 100% !important;
-            }
-
-            textarea.input-field.h-20 {
-                height: 80px !important;
-                min-height: 80px !important;
-            }
-
-            .relative .absolute.left-3 {
-                left: 0.75rem !important;
-            }
-
-            .pl-10 {
-                padding-left: 2.5rem !important;
-            }
-
-            /* 7. CHART SECTION */
-            .morphic-card.p-6.mb-8 {
-                margin-bottom: 1.5rem !important;
-            }
-
-            .morphic-card.p-6.mb-8 .flex.items-center.justify-between.mb-6 {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 1rem !important;
-                margin-bottom: 1rem !important;
-            }
-
-            .flex.items-center.space-x-4 {
-                width: 100% !important;
-                justify-content: space-between !important;
-            }
-
-            .h-80 {
-                height: 250px !important;
-            }
-
-            /* 8. HISTORICAL DATA SECTION */
-            .grid.grid-cols-1.lg\:grid-cols-3 {
-                grid-template-columns: 1fr !important;
-                gap: 1rem !important;
-            }
-
-            .lg\:col-span-2 {
-                grid-column: 1 !important;
-            }
-
-            .morphic-card.p-6 .flex.items-center.justify-between.mb-6 {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 1rem !important;
-                margin-bottom: 1rem !important;
-            }
-
-            .flex.items-center.space-x-2 {
-                width: 100% !important;
-                flex-wrap: wrap !important;
-                gap: 0.5rem !important;
-            }
-
-            /* 9. TABLE MOBILE FIX */
-            .hidden.md\:block {
-                display: none !important;
-            }
-
-            .md\:hidden {
-                display: block !important;
-            }
-
-            /* Mobile cards styling */
-            .morphic-card.p-4 {
-                padding: 1rem !important;
-                margin-bottom: 0.75rem !important;
-            }
-
-            .morphic-card.p-4 .flex.justify-between.items-start.mb-2 {
-                margin-bottom: 0.75rem !important;
-            }
-
-            /* 10. INSIGHTS & PROGRESS CARDS */
-            .space-y-6 {
-                gap: 1rem !important;
-            }
-
-            .space-y-4>*+* {
-                margin-top: 1rem !important;
-            }
-
-            /* 11. BUTTONS MOBILE */
-            .btn-primary,
-            .btn-secondary {
-                padding: 0.875rem 1rem !important;
-                font-size: 0.875rem !important;
-                width: 100% !important;
-                min-height: 44px !important;
-            }
-
-            /* ========================================= */
-            /* NAVBAR MOBILE FIX */
-            /* ========================================= */
-
-            @media only screen and (max-width: 768px) {
-
-                /* 1. FIX NAVBAR CONTAINER */
-                nav .max-w-7xl.mx-auto.px-4.sm\:px-6.lg\:px-8 {
-                    padding-left: 1rem !important;
-                    padding-right: 1rem !important;
-                    width: 100% !important;
-                }
-
-                /* 2. FIX NAVBAR HEIGHT DAN LAYOUT */
-                nav .flex.justify-between.items-center.h-16 {
-                    height: 60px !important;
-                    padding: 0.5rem 0 !important;
-                }
-
-                /* 3. LOGO SIZE MOBILE */
-                .text-xl.font-bold.text-gradient {
-                    font-size: 1.125rem !important;
-                }
-
-                .inline-flex.items-center.justify-center.w-10.h-10 {
-                    width: 36px !important;
-                    height: 36px !important;
-                }
-
-                /* 4. HAMBURGER BUTTON FIX */
-                .md\:hidden button {
-                    padding: 0.5rem !important;
-                    margin-left: 0.5rem !important;
-                }
-
-                .md\:hidden button i {
-                    font-size: 1.25rem !important;
-                }
-
-                /* 5. MOBILE MENU FIX (YANG INI YANG PALING PENTING) */
-                #mobileMenu {
-                    position: fixed !important;
-                    top: 60px !important;
-                    left: 0 !important;
-                    right: 0 !important;
-                    bottom: 0 !important;
-                    background: rgba(255, 255, 255, 0.98) !important;
-                    backdrop-filter: blur(20px) !important;
-                    -webkit-backdrop-filter: blur(20px) !important;
-                    z-index: 9999 !important;
-                    padding: 1.5rem 1rem !important;
-                    overflow-y: auto !important;
-                    transform: translateX(-100%) !important;
-                    transition: transform 0.3s ease-in-out !important;
-                    border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
-                }
-
-                /* Menu aktif state */
-                #mobileMenu:not(.hidden) {
-                    transform: translateX(0) !important;
-                    display: block !important;
-                    visibility: visible !important;
-                }
-
-                /* Menu hidden state */
-                #mobileMenu.hidden {
-                    display: none !important;
-                    visibility: hidden !important;
-                }
-
-                /* 6. MOBILE MENU ITEMS STYLING */
-                #mobileMenu .px-2.pt-2.pb-3.space-y-1 {
-                    padding: 0 !important;
-                }
-
-                #mobileMenu a {
-                    display: flex !important;
-                    align-items: center !important;
-                    padding: 1rem 1.25rem !important;
-                    margin: 0.25rem 0 !important;
-                    border-radius: 0.75rem !important;
-                    background: rgba(255, 255, 255, 0.9) !important;
-                    border: 1px solid rgba(0, 0, 0, 0.08) !important;
-                    font-size: 1rem !important;
-                    font-weight: 500 !important;
-                    transition: all 0.2s ease !important;
-                }
-
-                #mobileMenu a:hover {
-                    background: rgba(99, 102, 241, 0.1) !important;
-                    transform: translateX(4px) !important;
-                }
-
-                #mobileMenu a.bg-primary-100 {
-                    background: rgba(99, 102, 241, 0.15) !important;
-                    border-color: rgba(99, 102, 241, 0.3) !important;
-                    color: #4f46e5 !important;
-                }
-
-                #mobileMenu a i {
-                    width: 24px !important;
-                    margin-right: 0.75rem !important;
-                    font-size: 1.125rem !important;
-                }
-
-                /* 7. PREVENT BODY SCROLL WHEN MENU IS OPEN */
-                body.menu-open {
-                    overflow: hidden !important;
-                    position: fixed !important;
-                    width: 100% !important;
-                    height: 100% !important;
-                }
-
-                /* 8. OVERLAY BACKGROUND WHEN MENU IS OPEN */
-                .menu-overlay {
-                    position: fixed !important;
-                    top: 60px !important;
-                    left: 0 !important;
-                    right: 0 !important;
-                    bottom: 0 !important;
-                    background: rgba(0, 0, 0, 0.5) !important;
-                    z-index: 9998 !important;
-                    opacity: 0;
-                    visibility: hidden;
-                    transition: all 0.3s ease !important;
-                }
-
-                .menu-overlay.active {
-                    opacity: 1 !important;
-                    visibility: visible !important;
-                }
-
-                /* 9. CLOSE BUTTON FOR MOBILE MENU */
-                .menu-close-btn {
-                    position: absolute !important;
-                    top: 1rem !important;
-                    right: 1rem !important;
-                    width: 40px !important;
-                    height: 40px !important;
-                    border-radius: 50% !important;
-                    background: rgba(0, 0, 0, 0.05) !important;
-                    display: flex !important;
-                    align-items: center !important;
-                    justify-content: center !important;
-                    border: none !important;
-                    font-size: 1.25rem !important;
-                    color: #666 !important;
-                    z-index: 10000 !important;
-                }
-
-                /* 10. MENU HEADER */
-                .menu-header {
-                    padding: 1rem 1.25rem !important;
-                    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-                    margin-bottom: 1rem !important;
-                }
-
-                .menu-title {
-                    font-size: 1.25rem !important;
-                    font-weight: 700 !important;
-                    color: #1f2937 !important;
-                }
-
-                /* ========================================= */
-                /* VERY SMALL MOBILE (≤ 480px) */
-                /* ========================================= */
-
-                @media only screen and (max-width: 480px) {
-
-                    /* Navbar lebih kompak */
-                    nav .flex.justify-between.items-center.h-16 {
-                        height: 56px !important;
-                    }
-
-                    #mobileMenu {
-                        top: 56px !important;
-                    }
-
-                    .menu-overlay {
-                        top: 56px !important;
-                    }
-
-                    /* Logo lebih kecil */
-                    .text-xl.font-bold.text-gradient {
-                        font-size: 1rem !important;
-                    }
-
-                    .inline-flex.items-center.justify-center.w-10.h-10 {
-                        width: 32px !important;
-                        height: 32px !important;
-                    }
-
-                    .mr-3 {
-                        margin-right: 0.5rem !important;
-                    }
-                }
-
-                /* Mobile menu fix */
-                #mobileMenu.md\:hidden.hidden {
-                    position: fixed !important;
-                    top: 3.5rem !important;
-                    left: 0 !important;
-                    right: 0 !important;
-                    background: white !important;
-                    z-index: 1000 !important;
-                    padding: 1rem !important;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-                }
-
-                /* 13. PAGINATION MOBILE */
-                .flex.items-center.justify-between.mt-6 {
-                    flex-direction: column !important;
-                    gap: 1rem !important;
-                    align-items: center !important;
-                }
-
-                /* 14. BACKGROUND PATTERN SCALE DOWN */
-                .absolute.inset-0.opacity-10 .absolute {
-                    transform: scale(0.5) !important;
-                }
-            }
-
-            /* ========================================= */
-            /* VERY SMALL MOBILE (≤ 480px) */
-            /* ========================================= */
-
-            @media only screen and (max-width: 480px) {
-
-                /* Stats cards jadi 1 kolom */
-                .grid.grid-cols-1.md\:grid-cols-4 {
-                    grid-template-columns: 1fr !important;
-                }
-
-                /* Mood buttons jadi 2 kolom */
-                .grid.grid-cols-5 {
-                    grid-template-columns: repeat(2, 1fr) !important;
-                }
-
-                /* Font lebih kecil */
-                h1.text-3xl {
-                    font-size: 1.25rem !important;
-                }
-
-                .text-xl {
-                    font-size: 1rem !important;
-                }
-
-                /* Card padding lebih kecil */
-                .morphic-card.p-6 {
-                    padding: 0.875rem !important;
-                }
-
-                /* Chart lebih kecil */
-                .h-80 {
-                    height: 200px !important;
-                }
-
-                /* Form elements lebih kompak */
-                .input-field {
-                    padding: 0.625rem !important;
-                }
-            }
-
-            /* ========================================= */
-            /* TOUCH OPTIMIZATION */
-            /* ========================================= */
-
-            @media (max-width: 768px) {
-
-                /* Touch friendly elements */
-                button,
-                .btn,
-                .mood-btn,
-                select,
-                [role="button"] {
-                    min-height: 44px !important;
-                    min-width: 44px !important;
-                    -webkit-tap-highlight-color: transparent !important;
-                }
-
-                /* Touch feedback */
-                button:active,
-                .btn:active,
-                .mood-btn:active {
-                    opacity: 0.7 !important;
-                    transform: scale(0.98) !important;
-                }
-            }
         }
-
+        
         /* ========================================= */
-        /* iOS SPECIFIC FIXES */
+        /* ANIMASI DAN EFFECT */
         /* ========================================= */
-
-        @supports (-webkit-touch-callout: none) {
-            @media (max-width: 768px) {
-
-                /* Prevent zoom on input focus */
-                input[type="text"],
-                input[type="number"],
-                input[type="email"],
-                input[type="tel"],
-                input[type="url"],
-                input[type="search"],
-                textarea {
-                    font-size: 16px !important;
-                }
-
-                /* Fix 100vh issue */
-                .min-h-screen {
-                    min-height: -webkit-fill-available !important;
-                }
-            }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
         }
-
-        /* ========================================= */
-        /* MOBILE PERFORMANCE */
-        /* ========================================= */
-
-        @media (max-width: 768px) {
-
-            /* Reduce animations */
-            * {
-                animation-duration: 0.2s !important;
-            }
-
-            /* Smooth scrolling */
-            html {
-                scroll-behavior: smooth;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            /* Optimize images */
-            img {
-                max-width: 100%;
-                height: auto;
-            }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        /* ========================================= */
-        /* FORM RESPONSIF MOBILE FIX */
-        /* ========================================= */
-
-        @media only screen and (max-width: 768px) {
-
-            /* 1. FORM CONTAINER FIX */
-            .morphic-card.p-6.fade-in {
-                padding: 1.25rem !important;
-                margin: 0.5rem 0 !important;
-            }
-
-            /* 2. FORM TITLE */
-            .morphic-card.p-6.fade-in h2.text-xl {
-                font-size: 1.125rem !important;
-                margin-bottom: 1.25rem !important;
-                padding-bottom: 0.75rem !important;
-                border-bottom: 2px solid #f3f4f6 !important;
-            }
-
-            /* 3. FORM GROUP SPACING */
-            #expenseForm.space-y-4>* {
-                margin-bottom: 1rem !important;
-            }
-
-            /* 4. LABEL STYLING */
-            .block.text-sm.font-medium.text-gray-700.mb-2 {
-                font-size: 0.875rem !important;
-                margin-bottom: 0.5rem !important;
-                display: block !important;
-                width: 100% !important;
-            }
-
-            /* 5. INPUT FIELD FIX (TERMASUK YANG ADA Rp) */
-            .input-field {
-                width: 100% !important;
-                padding: 0.875rem !important;
-                font-size: 16px !important;
-                border: 2px solid #e5e7eb !important;
-                border-radius: 0.75rem !important;
-                background: #ffffff !important;
-                transition: all 0.2s ease !important;
-            }
-
-            .input-field:focus {
-                border-color: #6366f1 !important;
-                box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
-                outline: none !important;
-            }
-
-            /* 6. FIX UNTUK INPUT DENGAN Rp (CURRENCY) */
-            .relative .absolute.left-3 {
-                left: 0.875rem !important;
-                top: 50% !important;
-                transform: translateY(-50%) !important;
-                font-size: 1rem !important;
-                font-weight: 500 !important;
-                color: #4b5563 !important;
-                z-index: 10 !important;
-            }
-
-            .pl-10 {
-                padding-left: 3rem !important;
-            }
-
-            /* 7. SELECT DROPDOWN FIX */
-            select.input-field {
-                appearance: none !important;
-                -webkit-appearance: none !important;
-                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") !important;
-                background-repeat: no-repeat !important;
-                background-position: right 0.875rem center !important;
-                background-size: 1.25em !important;
-                padding-right: 2.5rem !important;
-            }
-
-            /* 8. DATETIME INPUT FIX */
-            input[type="datetime-local"].input-field {
-                min-height: 48px !important;
-            }
-
-            /* 9. TEXTAREA FIX */
-            textarea.input-field {
-                min-height: 100px !important;
-                resize: vertical !important;
-                line-height: 1.5 !important;
-            }
-
-            /* 10. BUTTON FORM FIX */
-            #expenseForm button[type="submit"] {
-                width: 100% !important;
-                padding: 1rem !important;
-                font-size: 1rem !important;
-                font-weight: 600 !important;
-                border-radius: 0.75rem !important;
-                margin-top: 0.5rem !important;
-            }
-
-            /* 11. FORM GRID LAYOUT FIX */
-            .grid.grid-cols-1.lg\:grid-cols-2 {
-                grid-template-columns: 1fr !important;
-                gap: 1.25rem !important;
-            }
-
-            /* 12. FIX UNTUK SPACE ANTAR ELEMEN FORM */
-            #expenseForm .space-y-4>*+* {
-                margin-top: 1.25rem !important;
-            }
-
-            /* 13. FIX ICON DI FORM TITLE */
-            .morphic-card.p-6.fade-in h2 i {
-                font-size: 1.125rem !important;
-                margin-right: 0.5rem !important;
-            }
-
-            /* 14. FIX UNTUK MOBILE KEYBOARD */
-            @supports (-webkit-touch-callout: none) {
-                .input-field {
-                    font-size: 16px !important;
-                }
-
-                input[type="datetime-local"] {
-                    min-height: 44px !important;
-                }
-            }
-
-            /* 15. PLACEHOLDER STYLING */
-            .input-field::placeholder {
-                color: #9ca3af !important;
-                font-size: 0.875rem !important;
-            }
-
-            /* 16. ERROR STATE */
-            .input-field:invalid:not(:focus) {
-                border-color: #ef4444 !important;
-            }
-
-            /* 17. SUCCESS STATE */
-            .input-field:valid:not(:focus) {
-                border-color: #10b981 !important;
-            }
-
-            /* 18. DISABLED STATE */
-            .input-field:disabled {
-                background-color: #f9fafb !important;
-                cursor: not-allowed !important;
-                opacity: 0.7 !important;
-            }
+        
+        .slide-up {
+            animation: slideUp 0.5s ease-out;
         }
-
-        /* ========================================= */
-        /* VERY SMALL MOBILE (≤ 480px) */
-        /* ========================================= */
-
-        @media only screen and (max-width: 480px) {
-
-            /* Form lebih kompak untuk layar kecil */
-            .morphic-card.p-6.fade-in {
-                padding: 1rem !important;
-            }
-
-            .input-field {
-                padding: 0.75rem !important;
-                font-size: 15px !important;
-            }
-
-            .relative .absolute.left-3 {
-                left: 0.75rem !important;
-                font-size: 0.875rem !important;
-            }
-
-            .pl-10 {
-                padding-left: 2.75rem !important;
-            }
-
-            textarea.input-field {
-                min-height: 90px !important;
-            }
-
-            #expenseForm button[type="submit"] {
-                padding: 0.875rem !important;
-                font-size: 0.9375rem !important;
-            }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        /* ========================================= */
-        /* LANDSCAPE MODE FIX */
-        /* ========================================= */
-
-        @media only screen and (max-width: 768px) and (orientation: landscape) {
-
-            /* Optimalkan form untuk landscape */
-            .morphic-card.p-6.fade-in {
-                padding: 1rem !important;
-            }
-
-            .input-field {
-                padding: 0.625rem 0.875rem !important;
-                font-size: 14px !important;
-            }
-
-            textarea.input-field {
-                min-height: 60px !important;
-            }
-
-            /* Grid 2 kolom untuk landscape */
-            .grid.grid-cols-1.lg\:grid-cols-2 {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 1rem !important;
-            }
+        
+        .micro-celebrate {
+            transition: all 0.2s ease;
         }
-
-        /* ========================================= */
-        /* TABLET (768px - 1024px) */
-        /* ========================================= */
-
-        @media only screen and (min-width: 769px) and (max-width: 1024px) {
-
-            /* Tablet optimization */
-            .morphic-card.p-6.fade-in {
-                padding: 1.5rem !important;
-            }
-
-            .input-field {
-                padding: 0.875rem !important;
-            }
-
-            /* Grid tetap 2 kolom untuk tablet */
-            .grid.grid-cols-1.lg\:grid-cols-2 {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
+        
+        .micro-celebrate:active {
+            transform: scale(0.95);
         }
-
-        /* ========================================= */
-        /* ANIMASI DAN TRANSISI */
-        /* ========================================= */
-
-        @media only screen and (max-width: 768px) {
-            .input-field {
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            }
-
-            /* Animasi focus ring */
-            .input-field:focus {
-                animation: focusPulse 0.3s ease-in-out !important;
-            }
-
-            @keyframes focusPulse {
-                0% {
-                    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
-                }
-
-                70% {
-                    box-shadow: 0 0 0 6px rgba(99, 102, 241, 0);
-                }
-
-                100% {
-                    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
-                }
-            }
-
-            /* Animasi button hover */
-            #expenseForm button[type="submit"] {
-                transition: all 0.2s ease !important;
-            }
-
-            #expenseForm button[type="submit"]:active {
-                transform: scale(0.98) !important;
-            }
-        }
-
-        /* ========================================= */
-        /* DARK MODE SUPPORT */
-        /* ========================================= */
-
-        @media (prefers-color-scheme: dark) and (max-width: 768px) {
-            .input-field {
-                background-color: #ffffff !important;
-                border-color: #2e2b2b !important;
-                color: #1e1e1f !important;
-            }
-
-            .input-field::placeholder {
-                color: #1c1c1d !important;
-            }
-
-            .block.text-sm.font-medium.text-gray-700.mb-2 {
-                color: #212223 !important;
-            }
-
-            .relative .absolute.left-3 {
-                color: #313232 !important;
-            }
-        }
-
-        /* ========================================= */
-        /* HIGH CONTRAST MODE */
-        /* ========================================= */
-
-        @media (prefers-contrast: high) and (max-width: 768px) {
-            .input-field {
-                border-width: 3px !important;
-            }
-
-            .input-field:focus {
-                border-color: #0000ff !important;
-                box-shadow: 0 0 0 4px rgba(0, 0, 255, 0.5) !important;
-            }
-        }
-
-        /* ========================================= */
-        /* REDUCED MOTION */
-        /* ========================================= */
-
-        @media (prefers-reduced-motion: reduce) and (max-width: 768px) {
-
-            .input-field,
-            #expenseForm button[type="submit"] {
-                transition: none !important;
-            }
-
-            .input-field:focus {
-                animation: none !important;
-            }
-        }
-
     </style>
 </head>
 
@@ -949,92 +432,104 @@
         <div class="absolute bottom-40 right-10 w-28 h-28 bg-primary-400 rounded-full blur-lg"></div>
     </div>
 
-    <!-- Navigation Header -->
-    <nav class="relative z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <div class="flex items-center">
-                        <div
-                            class="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl mr-3">
-                            <i class="fas fa-wallet text-white text-lg"></i>
-                        </div>
-                        <span class="text-xl font-bold text-gradient">GenZ Finance Hub</span>
+    <!-- Navigation Header - VERSI BARU -->
+    <nav id="mainNavbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="main_dashboard.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <span class="logo-text">GenZ Finance Hub</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="desktop-menu">
+                <a href="main_dashboard.html">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+                <a href="money_mirror_analysis.html" class="active">
+                    <i class="fas fa-mirror"></i>
+                    MoneyMirror
+                </a>
+                <a href="zero_budget_tracker.html">
+                    <i class="fas fa-piggy-bank"></i>
+                    ZeroBudget
+                </a>
+                <a href="subs_tracker_manager.html">
+                    <i class="fas fa-credit-card"></i>
+                    SubsTracker
+                </a>
+                <a href="investify_zero_game.html">
+                    <i class="fas fa-chart-line"></i>
+                    InvestifyZero
+                </a>
+            </div>
+
+            <!-- Profile Desktop -->
+            <div class="profile-desktop">
+                <img src="https://images.unsplash.com/photo-1719735903589-2012c168d128" 
+                     alt="Profile" 
+                     class="profile-img"
+                     onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                <span class="profile-name" id="currentUserName">User Demo</span>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-wallet"></i>
                     </div>
+                    <span class="logo-text">GenZ Finance Hub</span>
                 </div>
+                <button class="mobile-close-btn" id="mobileCloseBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
 
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="main_dashboard.html"
-                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                        <i class="fas fa-home mr-2"></i>Dashboard
-                    </a>
-                    <a href="money_mirror_analysis.html"
-                        class="bg-primary-100 text-primary-700 px-3 py-2 rounded-md text-sm font-medium">
-                        <i class="fas fa-mirror mr-2"></i>MoneyMirror
-                    </a>
-                    <a href="zero_budget_tracker.html"
-                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                        <i class="fas fa-piggy-bank mr-2"></i>ZeroBudget
-                    </a>
-                    <a href="subs_tracker_manager.html"
-                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                        <i class="fas fa-credit-card mr-2"></i>SubsTracker
-                    </a>
-                    <a href="investify_zero_game.html"
-                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                        <i class="fas fa-chart-line mr-2"></i>InvestifyZero
-                    </a>
-                </div>
+            <div class="mobile-nav-links">
+                <a href="main_dashboard.html">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+                <a href="money_mirror_analysis.html" class="active">
+                    <i class="fas fa-mirror"></i>
+                    MoneyMirror
+                </a>
+                <a href="zero_budget_tracker.html">
+                    <i class="fas fa-piggy-bank"></i>
+                    ZeroBudget
+                </a>
+                <a href="subs_tracker_manager.html">
+                    <i class="fas fa-credit-card"></i>
+                    SubsTracker
+                </a>
+                <a href="investify_zero_game.html">
+                    <i class="fas fa-chart-line"></i>
+                    InvestifyZero
+                </a>
+            </div>
 
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="mobileMenuBtn" class="text-gray-600 hover:text-primary-600 p-2">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-
-                <!-- Profile -->
-                <div class="hidden md:flex items-center">
-                    <div class="relative">
-                        <button
-                            class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500">
-                            <img src="https://images.unsplash.com/photo-1719735903589-2012c168d128"
-                                alt="Profile picture" class="w-8 h-8 rounded-full"
-                                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
-                            <span class="ml-2 text-gray-700 font-medium" id="currentUserName">User Demo</span>
-                        </button>
-                    </div>
-                </div>
+            <div class="mobile-profile">
+                <img src="https://images.unsplash.com/photo-1719735903589-2012c168d128" 
+                     alt="Profile" 
+                     class="profile-img"
+                     onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                <span class="mobile-profile-name" id="mobileUserName">User Demo</span>
             </div>
         </div>
 
-        <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t border-gray-200/50">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="main_dashboard.html"
-                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
-                    <i class="fas fa-home mr-2"></i>Dashboard
-                </a>
-                <a href="money_mirror_analysis.html"
-                    class="bg-primary-100 text-primary-700 block px-3 py-2 rounded-md text-base font-medium">
-                    <i class="fas fa-mirror mr-2"></i>MoneyMirror
-                </a>
-                <a href="zero_budget_tracker.html"
-                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
-                    <i class="fas fa-piggy-bank mr-2"></i>ZeroBudget
-                </a>
-                <a href="subs_tracker_manager.html"
-                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
-                    <i class="fas fa-credit-card mr-2"></i>SubsTracker
-                </a>
-                <a href="investify_zero_game.html"
-                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
-                    <i class="fas fa-chart-line mr-2"></i>InvestifyZero
-                </a>
-            </div>
-        </div>
+        <!-- Overlay -->
+        <div class="menu-overlay" id="menuOverlay"></div>
     </nav>
 
     <!-- Main Content -->
@@ -1116,32 +611,27 @@
                 </h2>
 
                 <div class="grid grid-cols-5 gap-3 mb-6">
-                    <button
-                        class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
+                    <button class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
                         data-mood="1" data-label="Sangat Sedih">
                         <div class="text-3xl mb-2">😢</div>
                         <div class="text-xs text-gray-600">Sangat Sedih</div>
                     </button>
-                    <button
-                        class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
+                    <button class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
                         data-mood="2" data-label="Sedih">
                         <div class="text-3xl mb-2">😔</div>
                         <div class="text-xs text-gray-600">Sedih</div>
                     </button>
-                    <button
-                        class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
+                    <button class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
                         data-mood="3" data-label="Biasa">
                         <div class="text-3xl mb-2">😐</div>
                         <div class="text-xs text-gray-600">Biasa</div>
                     </button>
-                    <button
-                        class="mood-btn p-4 rounded-xl border-2 border-primary-300 bg-primary-50 transition-all duration-200 text-center selected"
+                    <button class="mood-btn p-4 rounded-xl border-2 border-primary-300 bg-primary-50 transition-all duration-200 text-center selected"
                         data-mood="4" data-label="Senang">
                         <div class="text-3xl mb-2">😊</div>
                         <div class="text-xs text-primary-600 font-medium">Senang</div>
                     </button>
-                    <button
-                        class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
+                    <button class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
                         data-mood="5" data-label="Sangat Senang">
                         <div class="text-3xl mb-2">😄</div>
                         <div class="text-xs text-gray-600">Sangat Senang</div>
@@ -1171,8 +661,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Jumlah Pengeluaran</label>
                         <div class="relative">
-                            <span
-                                class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 font-medium">Rp</span>
+                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 font-medium">Rp</span>
                             <input type="text" id="expenseAmount" class="input-field w-full pl-10" placeholder="0"
                                 required>
                         </div>
@@ -1224,7 +713,7 @@
                         <option value="30" selected>30 Hari Terakhir</option>
                         <option value="90">3 Bulan Terakhir</option>
                     </select>
-                    <button id="refreshChart" class="p-2 text-gray-500 hover:text-primary-600 transition-colors">
+                    <button id="refreshChart" class="p-2 text-gray-500 hover:text-primary-600 transition-colors micro-celebrate">
                         <i class="fas fa-refresh"></i>
                     </button>
                 </div>
@@ -1304,12 +793,12 @@
                     <p class="text-sm text-gray-600">Menampilkan <span id="showingCount">0</span> dari <span
                             id="totalCount">0</span> data</p>
                     <div class="flex items-center space-x-2">
-                        <button id="prevPage" class="p-2 text-gray-500 hover:text-primary-600 transition-colors">
+                        <button id="prevPage" class="p-2 text-gray-500 hover:text-primary-600 transition-colors micro-celebrate">
                             <i class="fas fa-chevron-left"></i>
                         </button>
                         <span class="px-3 py-1 bg-primary-100 text-primary-600 rounded-md text-sm font-medium"
                             id="currentPageNumber">1</span>
-                        <button id="nextPage" class="p-2 text-gray-500 hover:text-primary-600 transition-colors">
+                        <button id="nextPage" class="p-2 text-gray-500 hover:text-primary-600 transition-colors micro-celebrate">
                             <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
@@ -1448,7 +937,65 @@
     </div>
 
     <script>
-        // Mobile menu toggle
+        // =========================================
+        // NAVBAR FUNCTIONALITY
+        // =========================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('mainNavbar');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+            const menuOverlay = document.getElementById('menuOverlay');
+            
+            // Handle scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 10) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Toggle mobile menu
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            }
+            
+            // Open mobile menu
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            
+            // Close mobile menu
+            mobileCloseBtn.addEventListener('click', toggleMobileMenu);
+            menuOverlay.addEventListener('click', toggleMobileMenu);
+            
+            // Close menu when clicking on links
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (mobileMenu.classList.contains('active')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+            
+            // Update mobile username
+            const userName = document.getElementById('currentUserName').textContent;
+            document.getElementById('mobileUserName').textContent = userName;
+            
+            // Initialize scroll state
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            }
+        });
+        
+        // =========================================
+        // EXISTING MONEY MIRROR FUNCTIONALITY
+        // =========================================
+        
+        // Mobile menu toggle (old - keep for compatibility)
         document.getElementById('mobileMenuBtn').addEventListener('click', function () {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('hidden');
@@ -1468,6 +1015,7 @@
                 const session = JSON.parse(userSession);
                 currentUserId = session.userId;
                 document.getElementById('currentUserName').textContent = session.username || 'User Demo';
+                document.getElementById('mobileUserName').textContent = session.username || 'User Demo';
                 return session;
             }
             return null;
@@ -1613,20 +1161,6 @@
 
         // Initialize app
         document.addEventListener('DOMContentLoaded', function () {
-            initializeApp();
-            setupEventListeners();
-            renderChart();
-            renderHistoryTable();
-            setCurrentDateTime();
-            // Tambahkan di dalam function setupEventListeners() - cari bagian Quick Actions
-            document.getElementById('exportDataBtn').addEventListener('click', exportData);
-            document.getElementById('shareProgressBtn').addEventListener('click', shareProgress);
-            document.getElementById('setReminderBtn').addEventListener('click', setReminder);
-            // Tambahkan di dalam function initializeApp()
-            initializeReminders();
-        });
-
-        function initializeApp() {
             // Check if user is logged in
             const user = getCurrentUser();
             if (!user) {
@@ -1636,7 +1170,14 @@
 
             // Initialize user data
             initializeUserData();
-        }
+            
+            // Setup event listeners
+            setupEventListeners();
+            renderChart();
+            renderHistoryTable();
+            setCurrentDateTime();
+            initializeReminders();
+        });
 
         function setupEventListeners() {
             // Mood selection
@@ -1763,6 +1304,22 @@
             document.getElementById('exportDataBtn').addEventListener('click', exportData);
             document.getElementById('shareProgressBtn').addEventListener('click', shareProgress);
             document.getElementById('setReminderBtn').addEventListener('click', setReminder);
+            
+            // Pagination
+            document.getElementById('prevPage').addEventListener('click', function () {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderHistoryTable();
+                }
+            });
+
+            document.getElementById('nextPage').addEventListener('click', function () {
+                const totalPages = Math.ceil(moodExpenseData.length / itemsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderHistoryTable();
+                }
+            });
         }
 
         function setCurrentDateTime() {
@@ -1898,6 +1455,8 @@
 
         function renderChart() {
             const canvas = document.getElementById('moodExpenseChart');
+            if (!canvas) return;
+            
             const ctx = canvas.getContext('2d');
             const period = parseInt(document.getElementById('chartPeriod').value);
 
@@ -2181,42 +1740,13 @@
         }
 
         function exportData() {
-            showMessage('success', 'Fitur export data akan segera hadir! 📊');
-        }
-
-        function shareProgress() {
-            showMessage('success', 'Fitur share progress akan segera hadir! 📱');
-        }
-
-        function setReminder() {
-            showMessage('success', 'Fitur reminder akan segera hadir! ⏰');
-        }
-
-        // Pagination
-        document.getElementById('prevPage').addEventListener('click', function () {
-            if (currentPage > 1) {
-                currentPage--;
-                renderHistoryTable();
-            }
-        });
-
-        document.getElementById('nextPage').addEventListener('click', function () {
-            const totalPages = Math.ceil(moodExpenseData.length / itemsPerPage);
-            if (currentPage < totalPages) {
-                currentPage++;
-                renderHistoryTable();
-            }
-        });
-
-        // Export Data Function
-        function exportData() {
             if (moodExpenseData.length === 0) {
                 showMessage('error', 'Belum ada data untuk di-export!');
                 return;
             }
 
             // Create CSV content
-            let csvContent = "Tanggal,Mood,Pengeluaran,Kategori,Deskripsi,Waktu\\n";
+            let csvContent = "Tanggal,Mood,Pengeluaran,Kategori,Deskripsi,Waktu\n";
 
             moodExpenseData.forEach(entry => {
                 const row = [
@@ -2227,7 +1757,7 @@
                     entry.description || '',
                     entry.time || ''
                 ];
-                csvContent += row.join(',') + '\\n';
+                csvContent += row.join(',') + '\n';
             });
 
             // Create download link
@@ -2246,7 +1776,85 @@
             showMessage('success', 'Data berhasil di-export! 📊');
         }
 
-        // Set Reminder Function
+        function shareProgress() {
+            const stats = calculateUserStats();
+
+            // Create shareable content
+            const shareContent = {
+                title: "Progress MoneyMirror Saya 📊",
+                text: `Saya sudah tracking mood dan pengeluaran selama ${stats.trackingStreak} hari berturut-turut! 🎯\n\n` +
+                    `Total Pengeluaran Bulan Ini: Rp ${stats.totalExpenseMonth.toLocaleString('id-ID')}\n` +
+                    `Level: ${stats.userLevel} - ${stats.levelTitle}\n\n` +
+                    `Download GenZ Finance Hub untuk mulai tracking keuanganmu! 💰`,
+                url: window.location.origin
+            };
+
+            // Check if Web Share API is available
+            if (navigator.share) {
+                navigator.share(shareContent)
+                    .then(() => showMessage('success', 'Progress berhasil dibagikan! 🎉'))
+                    .catch(error => {
+                        console.log('Error sharing:', error);
+                        fallbackShare(shareContent);
+                    });
+            } else {
+                fallbackShare(shareContent);
+            }
+        }
+
+        function fallbackShare(shareContent) {
+            // Copy to clipboard as fallback
+            const textToCopy = `${shareContent.title}\n\n${shareContent.text}`;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showMessage('success', 'Progress berhasil disalin ke clipboard! 📋\nSekarang bisa paste di media sosial.');
+            }).catch(() => {
+                // Final fallback - show modal with shareable text
+                showShareModal(shareContent);
+            });
+        }
+
+        function showShareModal(shareContent) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 fade-in';
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl p-6 w-full max-w-md morphic-card bounce-in">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">Bagikan Progress</h3>
+                        <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-gray-600 transition-all duration-300 hover:scale-110">
+                            <i class="fas fa-times text-lg"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="mb-4 p-4 bg-gray-50 rounded-lg">
+                        <p class="text-sm text-gray-600 mb-2">Salin teks di bawah untuk dibagikan:</p>
+                        <textarea class="w-full h-32 p-3 text-sm border border-gray-300 rounded-lg resize-none" readonly>${shareContent.text}</textarea>
+                    </div>
+                    
+                    <div class="flex space-x-3">
+                        <button onclick="copyShareText()" class="flex-1 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105 micro-celebrate">
+                            <i class="fas fa-copy mr-2"></i>
+                            Salin Teks
+                        </button>
+                        <button onclick="this.closest('.fixed').remove()" class="flex-1 py-3 bg-gray-500 hover:bg-gray-600 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105">
+                            Tutup
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+        }
+
+        function copyShareText() {
+            const textarea = document.querySelector('.fixed textarea');
+            textarea.select();
+            document.execCommand('copy');
+
+            showMessage('success', 'Teks berhasil disalin ke clipboard! 📋');
+            document.querySelector('.fixed').remove();
+        }
+
         function setReminder() {
             // Check if browser supports notifications
             if (!("Notification" in window)) {
@@ -2279,97 +1887,13 @@
                         });
                     }
 
-                    showMessage('success', 'Reminder berhasil disetel! ⏰\\nKami akan mengingatkan jam 20:00 setiap hari.');
+                    showMessage('success', 'Reminder berhasil disetel! ⏰\nKami akan mengingatkan jam 20:00 setiap hari.');
                 } else {
                     showMessage('error', 'Izin notifikasi ditolak. Aktifkan notifikasi untuk reminder.');
                 }
             });
         }
 
-        // Share Progress Function
-        function shareProgress() {
-            const stats = calculateUserStats();
-
-            // Create shareable content
-            const shareContent = {
-                title: "Progress MoneyMirror Saya 📊",
-                text: `Saya sudah tracking mood dan pengeluaran selama ${stats.trackingStreak} hari berturut-turut! 🎯\\n\\n` +
-                    `Total Pengeluaran Bulan Ini: Rp ${stats.totalExpenseMonth.toLocaleString('id-ID')}\\n` +
-                    `Level: ${stats.userLevel} - ${stats.levelTitle}\\n\\n` +
-                    `Download GenZ Finance Hub untuk mulai tracking keuanganmu! 💰`,
-                url: window.location.origin
-            };
-
-            // Check if Web Share API is available
-            if (navigator.share) {
-                navigator.share(shareContent)
-                    .then(() => showMessage('success', 'Progress berhasil dibagikan! 🎉'))
-                    .catch(error => {
-                        console.log('Error sharing:', error);
-                        fallbackShare(shareContent);
-                    });
-            } else {
-                fallbackShare(shareContent);
-            }
-        }
-
-        // Fallback share for browsers without Web Share API
-        function fallbackShare(shareContent) {
-            // Copy to clipboard as fallback
-            const textToCopy = `${shareContent.title}\\n\\n${shareContent.text}`;
-
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                showMessage('success', 'Progress berhasil disalin ke clipboard! 📋\\nSekarang bisa paste di media sosial.');
-            }).catch(() => {
-                // Final fallback - show modal with shareable text
-                showShareModal(shareContent);
-            });
-        }
-
-        // Show share modal for manual sharing
-        function showShareModal(shareContent) {
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 fade-in';
-            modal.innerHTML = `
-        <div class="bg-white rounded-2xl p-6 w-full max-w-md morphic-card bounce-in">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-xl font-bold text-gray-900">Bagikan Progress</h3>
-                <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-gray-600 transition-all duration-300 hover:scale-110">
-                    <i class="fas fa-times text-lg"></i>
-                </button>
-            </div>
-            
-            <div class="mb-4 p-4 bg-gray-50 rounded-lg">
-                <p class="text-sm text-gray-600 mb-2">Salin teks di bawah untuk dibagikan:</p>
-                <textarea class="w-full h-32 p-3 text-sm border border-gray-300 rounded-lg resize-none" readonly>${shareContent.text}</textarea>
-            </div>
-            
-            <div class="flex space-x-3">
-                <button onclick="copyShareText()" class="flex-1 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105 micro-celebrate">
-                    <i class="fas fa-copy mr-2"></i>
-                    Salin Teks
-                </button>
-                <button onclick="this.closest('.fixed').remove()" class="flex-1 py-3 bg-gray-500 hover:bg-gray-600 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105">
-                    Tutup
-                </button>
-            </div>
-        </div>
-    `;
-
-            document.body.appendChild(modal);
-        }
-
-        // Copy share text to clipboard
-        function copyShareText() {
-            const textarea = document.querySelector('.fixed textarea');
-            textarea.select();
-            document.execCommand('copy');
-
-            showMessage('success', 'Teks berhasil disalin ke clipboard! 📋');
-            document.querySelector('.fixed').remove();
-        }
-
-        // Check and trigger daily reminders
         function checkDailyReminder() {
             const userStatsKey = getUserStatsKey();
             const currentStats = JSON.parse(localStorage.getItem(userStatsKey)) || getDefaultUserStats();
@@ -2394,7 +1918,6 @@
             }
         }
 
-        // Initialize reminder check
         function initializeReminders() {
             // Check reminder every minute
             setInterval(checkDailyReminder, 60000);
@@ -2402,371 +1925,6 @@
             // Initial check
             checkDailyReminder();
         }
-
-        // =========================================
-        // FORM RESPONSIF JAVASCRIPT
-        // =========================================
-
-        // Function untuk mengatur form responsif
-        function initResponsiveForm() {
-            if (window.innerWidth <= 768) {
-                setupMobileForm();
-                setupCurrencyInput();
-                setupFormValidation();
-            }
-        }
-
-        // Setup form untuk mobile
-        function setupMobileForm() {
-            const form = document.getElementById('expenseForm');
-            const inputs = form.querySelectorAll('.input-field');
-
-            inputs.forEach(input => {
-                // Tambahkan class untuk mobile
-                input.classList.add('mobile-input');
-
-                // Setup untuk input datetime-local
-                if (input.type === 'datetime-local') {
-                    setupDateTimeInput(input);
-                }
-
-                // Setup untuk currency input
-                if (input.id === 'expenseAmount') {
-                    setupCurrencyInputBehavior(input);
-                }
-
-                // Setup untuk select
-                if (input.tagName === 'SELECT') {
-                    setupSelectInput(input);
-                }
-
-                // Setup untuk textarea
-                if (input.tagName === 'TEXTAREA') {
-                    setupTextareaInput(input);
-                }
-            });
-
-            // Adjust form spacing
-            adjustFormSpacing();
-
-            // Handle form submission untuk mobile
-            setupMobileFormSubmit();
-        }
-
-        // Setup currency input behavior
-        function setupCurrencyInputBehavior(input) {
-            // Format currency on input
-            input.addEventListener('input', function (e) {
-                let value = this.value.replace(/[^\d]/g, '');
-
-                if (value) {
-                    // Format dengan titik sebagai pemisah ribuan
-                    value = parseInt(value, 10).toLocaleString('id-ID');
-                    this.value = value;
-                }
-            });
-
-            // Pastikan cursor berada di akhir
-            input.addEventListener('focus', function () {
-                setTimeout(() => {
-                    this.setSelectionRange(this.value.length, this.value.length);
-                }, 0);
-            });
-
-            // Validasi on blur
-            input.addEventListener('blur', function () {
-                let value = this.value.replace(/[^\d]/g, '');
-                if (!value || parseInt(value) <= 0) {
-                    this.style.borderColor = '#ef4444';
-                } else {
-                    this.style.borderColor = '#10b981';
-                }
-            });
-        }
-
-        // Setup datetime input untuk mobile
-        function setupDateTimeInput(input) {
-            // Set min date to today
-            const today = new Date().toISOString().slice(0, 16);
-            input.min = today;
-
-            // Add clear button untuk mobile
-            const wrapper = input.parentElement;
-            if (!wrapper.querySelector('.clear-datetime-btn')) {
-                const clearBtn = document.createElement('button');
-                clearBtn.type = 'button';
-                clearBtn.className = 'clear-datetime-btn';
-                clearBtn.innerHTML = '<i class="fas fa-times"></i>';
-                clearBtn.style.cssText = `
-                position: absolute;
-                right: 10px;
-                top: 50%;
-                transform: translateY(-50%);
-                background: transparent;
-                border: none;
-                color: #9ca3af;
-                font-size: 14px;
-                cursor: pointer;
-                display: none;
-            `;
-
-                wrapper.style.position = 'relative';
-                wrapper.appendChild(clearBtn);
-
-                // Show clear button when there's value
-                input.addEventListener('input', function () {
-                    clearBtn.style.display = this.value ? 'block' : 'none';
-                });
-
-                // Clear on click
-                clearBtn.addEventListener('click', function () {
-                    input.value = '';
-                    this.style.display = 'none';
-                });
-            }
-        }
-
-        // Setup select input untuk mobile
-        function setupSelectInput(select) {
-            // Add custom arrow untuk konsistensi
-            select.style.backgroundImage = "url(\"data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e\")";
-            select.style.backgroundRepeat = "no-repeat";
-            select.style.backgroundPosition = "right 12px center";
-            select.style.backgroundSize = "16px";
-            select.style.paddingRight = "36px";
-
-            // Add change feedback
-            select.addEventListener('change', function () {
-                if (this.value) {
-                    this.style.borderColor = '#10b981';
-                }
-            });
-        }
-
-        // Setup textarea input
-        function setupTextareaInput(textarea) {
-            // Auto resize
-            textarea.style.resize = 'vertical';
-            textarea.style.minHeight = '100px';
-            textarea.style.maxHeight = '300px';
-
-            // Character counter untuk mobile
-            const counter = document.createElement('div');
-            counter.className = 'char-counter';
-            counter.style.cssText = `
-            font-size: 12px;
-            color: #9ca3af;
-            text-align: right;
-            margin-top: 4px;
-            display: none;
-        `;
-
-            textarea.parentElement.appendChild(counter);
-
-            // Update counter
-            textarea.addEventListener('input', function () {
-                const count = this.value.length;
-                counter.textContent = `${count} karakter`;
-                counter.style.display = count > 0 ? 'block' : 'none';
-
-                // Change color based on length
-                if (count > 200) {
-                    counter.style.color = '#f59e0b';
-                } else if (count > 400) {
-                    counter.style.color = '#ef4444';
-                } else {
-                    counter.style.color = '#9ca3af';
-                }
-            });
-        }
-
-        // Adjust form spacing untuk mobile
-        function adjustFormSpacing() {
-            const formGroups = document.querySelectorAll('#expenseForm > div');
-            formGroups.forEach((group, index) => {
-                // Add bottom margin
-                group.style.marginBottom = '1.25rem';
-
-                // Add animation delay untuk visual feedback
-                group.style.animationDelay = `${index * 50}ms`;
-            });
-        }
-
-        // Setup mobile form submission
-        function setupMobileFormSubmit() {
-            const form = document.getElementById('expenseForm');
-            const submitBtn = form.querySelector('button[type="submit"]');
-
-            // Add loading state
-            submitBtn.addEventListener('click', function (e) {
-                if (form.checkValidity()) {
-                    // Show loading
-                    const originalText = this.innerHTML;
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Menyimpan...';
-                    this.disabled = true;
-
-                    // Reset setelah 2 detik (simulasi)
-                    setTimeout(() => {
-                        this.innerHTML = originalText;
-                        this.disabled = false;
-                    }, 2000);
-                }
-            });
-
-            // Handle keyboard submit
-            form.addEventListener('keydown', function (e) {
-                if (e.key === 'Enter' && !e.target.matches('textarea')) {
-                    e.preventDefault();
-                    submitBtn.click();
-                }
-            });
-        }
-
-        // Setup form validation
-        function setupFormValidation() {
-            const form = document.getElementById('expenseForm');
-            const inputs = form.querySelectorAll('[required]');
-
-            inputs.forEach(input => {
-                // Real-time validation
-                input.addEventListener('blur', function () {
-                    validateField(this);
-                });
-
-                // Instant feedback
-                input.addEventListener('input', function () {
-                    if (this.value.trim()) {
-                        this.style.borderColor = '#10b981';
-                    }
-                });
-            });
-
-            // Submit validation
-            form.addEventListener('submit', function (e) {
-                let isValid = true;
-
-                inputs.forEach(input => {
-                    if (!validateField(input)) {
-                        isValid = false;
-                    }
-                });
-
-                if (!isValid) {
-                    e.preventDefault();
-                    showFormError('Mohon periksa kembali data yang diisi');
-                }
-            });
-        }
-
-        // Validate individual field
-        function validateField(field) {
-            const value = field.value.trim();
-            const isValid = field.checkValidity();
-
-            if (!isValid || !value) {
-                field.style.borderColor = '#ef4444';
-
-                // Show error message
-                let errorMsg = field.parentElement.querySelector('.field-error');
-                if (!errorMsg) {
-                    errorMsg = document.createElement('div');
-                    errorMsg.className = 'field-error';
-                    errorMsg.style.cssText = `
-                    color: #ef4444;
-                    font-size: 12px;
-                    margin-top: 4px;
-                `;
-                    field.parentElement.appendChild(errorMsg);
-                }
-
-                if (field.type === 'datetime-local' && !value) {
-                    errorMsg.textContent = 'Waktu harus diisi';
-                } else if (field.id === 'expenseAmount' && (!value || parseInt(value.replace(/[^\d]/g, '')) <= 0)) {
-                    errorMsg.textContent = 'Jumlah harus lebih dari 0';
-                } else if (field.type === 'select-one' && !value) {
-                    errorMsg.textContent = 'Pilih salah satu kategori';
-                } else {
-                    errorMsg.textContent = field.validationMessage || 'Field ini wajib diisi';
-                }
-
-                return false;
-            } else {
-                field.style.borderColor = '#10b981';
-
-                // Remove error message
-                const errorMsg = field.parentElement.querySelector('.field-error');
-                if (errorMsg) {
-                    errorMsg.remove();
-                }
-
-                return true;
-            }
-        }
-
-        // Show form error
-        function showFormError(message) {
-            // Create error container
-            let errorContainer = document.getElementById('formErrorContainer');
-            if (!errorContainer) {
-                errorContainer = document.createElement('div');
-                errorContainer.id = 'formErrorContainer';
-                errorContainer.style.cssText = `
-                background: #fee2e2;
-                border: 1px solid #fecaca;
-                color: #dc2626;
-                padding: 12px;
-                border-radius: 8px;
-                margin-bottom: 16px;
-                font-size: 14px;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            `;
-
-                const form = document.getElementById('expenseForm');
-                form.insertBefore(errorContainer, form.firstChild);
-            }
-
-            errorContainer.innerHTML = `
-            <i class="fas fa-exclamation-circle"></i>
-            <span>${message}</span>
-        `;
-
-            // Auto hide setelah 5 detik
-            setTimeout(() => {
-                errorContainer.remove();
-            }, 5000);
-        }
-
-        // Initialize ketika DOM siap
-        document.addEventListener('DOMContentLoaded', function () {
-            initResponsiveForm();
-
-            // Re-initialize on resize
-            window.addEventListener('resize', function () {
-                initResponsiveForm();
-            });
-
-            // Re-initialize on orientation change
-            window.addEventListener('orientationchange', function () {
-                setTimeout(initResponsiveForm, 100);
-            });
-        });
-
-        // Handle virtual keyboard events
-        document.addEventListener('focusin', function (e) {
-            if (e.target.matches('.input-field') && window.innerWidth <= 768) {
-                // Scroll ke input
-                setTimeout(() => {
-                    e.target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center'
-                    });
-                }, 300);
-            }
-        });
     </script>
-    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
 </body>
-
 </html>
