@@ -1029,19 +1029,16 @@
                 const startDate = new Date();
                 startDate.setDate(startDate.getDate() - period);
 
-                const filteredData = moodExpenseData
-                    .filter(entry => {
-                        const entryDate = new Date(entry.date);
-                        return entryDate >= startDate && entryDate <= endDate && entry.amount > 0;
-                    })
-                    .slice(0, 10) // Max 10 data biar gak padat
-                    .reverse(); // Data terbaru di kanan
+                const filteredData = moodExpenseData.filter(entry => {
+                    const entryDate = new Date(entry.date);
+                    return entryDate >= startDate && entryDate <= endDate && entry.amount > 0;
+                }).slice(0, period);
 
                 // Clear canvas
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                 if (filteredData.length === 0) {
-                    ctx.fillStyle = '#9CA3AF';
+                    ctx.fillStyle = '#6B7280';
                     ctx.font = '16px Inter';
                     ctx.textAlign = 'center';
                     ctx.fillText('Belum ada data untuk ditampilkan', canvas.width / 2, canvas.height / 2);
@@ -1051,161 +1048,119 @@
 
                 // Set canvas size
                 const rect = canvas.getBoundingClientRect();
-                canvas.width = rect.width;
-                canvas.height = rect.height;
+                canvas.width = rect.width * window.devicePixelRatio;
+                canvas.height = rect.height * window.devicePixelRatio;
+                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 
-                const width = canvas.width;
-                const height = canvas.height;
-                const padding = 50;
+                const width = rect.width;
+                const height = rect.height;
+                const padding = 60;
                 const chartWidth = width - padding * 2;
                 const chartHeight = height - padding * 2;
-                const pointRadius = 8;
 
-                // Cari min/max
+                // Find min/max values
                 const maxAmount = Math.max(...filteredData.map(d => d.amount));
                 const minAmount = Math.min(...filteredData.map(d => d.amount));
+                const maxMood = 5;
+                const minMood = 1;
 
-                // Background putih
-                ctx.fillStyle = '#FFFFFF';
-                ctx.fillRect(0, 0, width, height);
-
-                // Gambar garis grid horizontal
+                // Draw grid
                 ctx.strokeStyle = '#E5E7EB';
                 ctx.lineWidth = 1;
+
+                // Vertical grid lines
+                for (let i = 0; i <= 10; i++) {
+                    const x = padding + (chartWidth / 10) * i;
+                    ctx.beginPath();
+                    ctx.moveTo(x, padding);
+                    ctx.lineTo(x, height - padding);
+                    ctx.stroke();
+                }
+
+                // Horizontal grid lines
                 for (let i = 0; i <= 5; i++) {
-                    const y = padding + (i * chartHeight / 5);
+                    const y = padding + (chartHeight / 5) * i;
                     ctx.beginPath();
                     ctx.moveTo(padding, y);
                     ctx.lineTo(width - padding, y);
                     ctx.stroke();
                 }
 
-                // Gambar titik data
-                filteredData.forEach((entry, index) => {
-                    const x = padding + (index * chartWidth / (filteredData.length - 1 || 1));
-                    const moodY = padding + ((5 - entry.mood) / 5) * chartHeight;
-                    const amountY = padding + ((maxAmount - entry.amount) / (maxAmount - minAmount || 1)) * chartHeight;
-
-                    // Lingkaran MOOD (Biru)
-                    ctx.fillStyle = '#4F46E5';
-                    ctx.beginPath();
-                    ctx.arc(x, moodY, pointRadius, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    // Label mood di dalam lingkaran
-                    ctx.fillStyle = '#FFFFFF';
-                    ctx.font = 'bold 10px Inter';
-                    ctx.textAlign = 'center';
-                    ctx.textBaseline = 'middle';
-                    ctx.fillText(entry.mood.toString(), x, moodY);
-
-                    // Lingkaran PENGELUARAN (Pink)
-                    ctx.fillStyle = '#EC4899';
-                    ctx.beginPath();
-                    ctx.arc(x, amountY, pointRadius, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    // Label pengeluaran di dalam lingkaran
-                    ctx.fillStyle = '#FFFFFF';
-                    ctx.fillText('$', x, amountY);
-
-                    // Tanggal di bawah
-                    const date = new Date(entry.date);
-                    const dateStr = `${date.getDate()}/${date.getMonth() + 1}`;
-                    ctx.fillStyle = '#6B7280';
-                    ctx.font = '10px Inter';
-                    ctx.fillText(dateStr, x, height - padding + 20);
-
-                    // Keterangan hover (simplified)
-                    // Mood label
-                    ctx.fillStyle = '#4F46E5';
-                    ctx.font = '9px Inter';
-                    ctx.textAlign = 'left';
-                    const moodLabels = ['', 'Sangat Sedih', 'Sedih', 'Biasa', 'Senang', 'Sangat Senang'];
-                    ctx.fillText(moodLabels[entry.mood], x + 10, moodY - 5);
-
-                    // Amount label
-                    ctx.fillStyle = '#EC4899';
-                    let amountText = '';
-                    if (entry.amount >= 1000000) {
-                        amountText = `Rp ${(entry.amount / 1000000).toFixed(1)}jt`;
-                    } else if (entry.amount >= 1000) {
-                        amountText = `Rp ${(entry.amount / 1000).toFixed(0)}rb`;
-                    } else {
-                        amountText = `Rp ${entry.amount}`;
-                    }
-                    ctx.fillText(amountText, x + 10, amountY + 10);
-                });
-
-                // Gambar garis penghubung mood (garis putus-putus)
-                ctx.strokeStyle = '#4F46E5';
+                // Draw axes
+                ctx.strokeStyle = '#374151';
                 ctx.lineWidth = 2;
-                ctx.setLineDash([5, 3]);
                 ctx.beginPath();
+                ctx.moveTo(padding, padding);
+                ctx.lineTo(padding, height - padding);
+                ctx.lineTo(width - padding, height - padding);
+                ctx.stroke();
 
+                // Draw data points
                 filteredData.forEach((entry, index) => {
-                    const x = padding + (index * chartWidth / (filteredData.length - 1 || 1));
-                    const moodY = padding + ((5 - entry.mood) / 5) * chartHeight;
+                    const x = padding + (chartWidth / (filteredData.length - 1)) * index;
+                    const moodY = height - padding - ((entry.mood - minMood) / (maxMood - minMood)) * chartHeight;
+                    const amountY = height - padding - ((entry.amount - minAmount) / (maxAmount - minAmount)) * chartHeight;
 
-                    if (index === 0) {
-                        ctx.moveTo(x, moodY);
-                    } else {
+                    // Mood point
+                    ctx.fillStyle = '#6366F1';
+                    ctx.beginPath();
+                    ctx.arc(x, moodY, 6, 0, 2 * Math.PI);
+                    ctx.fill();
+
+                    // Amount point
+                    ctx.fillStyle = '#EC4899';
+                    ctx.beginPath();
+                    ctx.arc(x, amountY, 6, 0, 2 * Math.PI);
+                    ctx.fill();
+
+                    // Connect mood points
+                    if (index > 0) {
+                        const prevX = padding + (chartWidth / (filteredData.length - 1)) * (index - 1);
+                        const prevMoodY = height - padding - ((filteredData[index - 1].mood - minMood) / (maxMood - minMood)) * chartHeight;
+                        const prevAmountY = height - padding - ((filteredData[index - 1].amount - minAmount) / (maxAmount - minAmount)) * chartHeight;
+
+                        // Mood line
+                        ctx.strokeStyle = '#6366F1';
+                        ctx.lineWidth = 2;
+                        ctx.beginPath();
+                        ctx.moveTo(prevX, prevMoodY);
                         ctx.lineTo(x, moodY);
-                    }
-                });
-                ctx.stroke();
-                ctx.setLineDash([]);
+                        ctx.stroke();
 
-                // Gambar garis penghubung pengeluaran (garis solid)
-                ctx.strokeStyle = '#EC4899';
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-
-                filteredData.forEach((entry, index) => {
-                    const x = padding + (index * chartWidth / (filteredData.length - 1 || 1));
-                    const amountY = padding + ((maxAmount - entry.amount) / (maxAmount - minAmount || 1)) * chartHeight;
-
-                    if (index === 0) {
-                        ctx.moveTo(x, amountY);
-                    } else {
+                        // Amount line
+                        ctx.strokeStyle = '#EC4899';
+                        ctx.lineWidth = 2;
+                        ctx.beginPath();
+                        ctx.moveTo(prevX, prevAmountY);
                         ctx.lineTo(x, amountY);
+                        ctx.stroke();
                     }
                 });
-                ctx.stroke();
 
-                // Label axis kiri (Mood 1-5)
-                ctx.fillStyle = '#4F46E5';
+                // Draw labels
+                ctx.fillStyle = '#6B7280';
                 ctx.font = '12px Inter';
-                ctx.textAlign = 'right';
-                ctx.textBaseline = 'middle';
+                ctx.textAlign = 'center';
 
+                // Y-axis labels (left - mood)
+                ctx.textAlign = 'right';
                 for (let i = 1; i <= 5; i++) {
-                    const y = padding + ((5 - i) / 5) * chartHeight;
-                    ctx.fillText(i.toString(), padding - 10, y);
+                    const y = height - padding - ((i - minMood) / (maxMood - minMood)) * chartHeight;
+                    ctx.fillText(i.toString(), padding - 10, y + 4);
                 }
 
-                // Label axis kiri
-                ctx.fillStyle = '#4F46E5';
-                ctx.font = 'bold 12px Inter';
-                ctx.save();
-                ctx.translate(20, height / 2);
-                ctx.rotate(-Math.PI / 2);
-                ctx.fillText('Mood (1-5)', 0, 0);
-                ctx.restore();
-
-                // Label axis kanan (Amount)
-                ctx.fillStyle = '#EC4899';
-                ctx.font = 'bold 12px Inter';
-                ctx.save();
-                ctx.translate(width - 20, height / 2);
-                ctx.rotate(-Math.PI / 2);
-                ctx.fillText('Pengeluaran', 0, 0);
-                ctx.restore();
+                // Y-axis labels (right - amount)
+                ctx.textAlign = 'left';
+                for (let i = 0; i <= 5; i++) {
+                    const amount = minAmount + ((maxAmount - minAmount) / 5) * i;
+                    const y = height - padding - (i / 5) * chartHeight;
+                    ctx.fillText((amount / 1000).toFixed(0) + 'k', width - padding + 10, y + 4);
+                }
 
                 document.getElementById('chartLoading').classList.add('hidden');
-            }, 500);
+            }, 1000);
         }
-        
+
         function renderHistoryTable() {
             const filterDate = document.getElementById('filterDate').value;
             const filterMood = document.getElementById('filterMood').value;
