@@ -862,32 +862,32 @@
                         <h3 class="text-sm font-medium text-gray-700 mb-3">Preset Cepat</h3>
                         <div class="grid grid-cols-3 gap-2">
                             <button
-                                class="py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
+                                class="preset-btn py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
                                 data-minutes="15">
                                 15m
                             </button>
                             <button
-                                class="py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
+                                class="preset-btn py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
                                 data-minutes="30">
                                 30m
                             </button>
                             <button
-                                class="py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
+                                class="preset-btn py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
                                 data-minutes="60">
                                 1j
                             </button>
                             <button
-                                class="py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
+                                class="preset-btn py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
                                 data-minutes="120">
                                 2j
                             </button>
                             <button
-                                class="py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
+                                class="preset-btn py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
                                 data-minutes="240">
                                 4j
                             </button>
                             <button
-                                class="py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
+                                class="preset-btn py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 micro-celebrate"
                                 data-minutes="1440">
                                 24j
                             </button>
@@ -899,10 +899,10 @@
                         <h3 class="text-sm font-medium text-gray-700 mb-3">Timer Kustom</h3>
                         <div class="flex space-x-2">
                             <input type="number" id="customHours" placeholder="Jam"
-                                class="input-field flex-1 text-center" min="0" max="24">
+                                class="input-field flex-1 text-center" min="0" max="24" value="24">
                             <span class="self-center text-gray-500">:</span>
                             <input type="number" id="customMinutes" placeholder="Menit"
-                                class="input-field flex-1 text-center" min="0" max="59">
+                                class="input-field flex-1 text-center" min="0" max="59" value="0">
                             <button id="setCustomTimer" class="btn-primary px-4 micro-celebrate">
                                 <i class="fas fa-check"></i>
                             </button>
@@ -984,10 +984,9 @@
                         </div>
                         <h3 class="text-lg font-medium text-gray-800 mb-2">Belum Ada Impuls</h3>
                         <p class="text-gray-500 mb-4">Mulai catat impuls belanja pertama kamu!</p>
-                        <button class="btn-primary micro-celebrate pulse-glow"
-                            onclick="document.getElementById('addImpulseBtn').click()">
+                        <button id="addFirstImpulseBtn" class="btn-primary micro-celebrate pulse-glow">
                             <i class="fas fa-plus mr-2"></i>
-                            Catat Impuls
+                            Catat Impuls Pertama
                         </button>
                     </div>
                 </div>
@@ -1056,12 +1055,13 @@
                             <label for="impulsePrice" class="block text-sm font-medium text-gray-700 mb-2">Harga
                                 (Rp)</label>
                             <input type="number" id="impulsePrice" class="input-field w-full" placeholder="500000"
-                                required>
+                                required min="1000">
                         </div>
                         <div>
                             <label for="impulseCategory"
                                 class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
                             <select id="impulseCategory" class="input-field w-full" required>
+                                <option value="">Pilih kategori</option>
                                 <option value="fashion">Fashion</option>
                                 <option value="electronics">Elektronik</option>
                                 <option value="entertainment">Hiburan</option>
@@ -1093,6 +1093,120 @@
         </div>
     </div>
 
+    <!-- Filter Modal -->
+    <div id="filterModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="morphic-card max-w-md w-full">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">Filter Impuls</h3>
+                    <button id="closeFilterModal" class="text-gray-500 hover:text-gray-700 micro-celebrate">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-medium text-gray-700 mb-2">Status:</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" class="rounded text-blue-600" id="filterResisted" checked>
+                                <span class="text-gray-600">Sudah Ditolak</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" class="rounded text-blue-600" id="filterPending" checked>
+                                <span class="text-gray-600">Masih Dipikirkan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-medium text-gray-700 mb-2">Urutkan Berdasarkan:</h4>
+                        <select id="sortOptions" class="input-field w-full">
+                            <option value="newest">Terbaru</option>
+                            <option value="oldest">Terlama</option>
+                            <option value="priceHigh">Harga Tertinggi</option>
+                            <option value="priceLow">Harga Terendah</option>
+                        </select>
+                    </div>
+
+                    <div class="flex space-x-3 pt-4">
+                        <button id="applyFiltersBtn" class="btn-primary flex-1 micro-celebrate">
+                            Terapkan Filter
+                        </button>
+                        <button id="resetFiltersBtn" class="btn-secondary flex-1 micro-celebrate">
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Target Tabungan Modal -->
+    <div id="savingsGoalModal"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="morphic-card max-w-md w-full">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">🎯 Target Tabungan</h3>
+                    <button id="closeSavingsGoalModal" class="text-gray-500 hover:text-gray-700 micro-celebrate">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nama Target</label>
+                        <input type="text" id="goalName" class="input-field w-full"
+                            placeholder="Contoh: Liburan ke Bali, DP Rumah">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Target (Rp)</label>
+                            <input type="number" id="goalAmount" class="input-field w-full" placeholder="5000000"
+                                min="100000">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Target Tanggal</label>
+                            <input type="date" id="goalDeadline" class="input-field w-full"
+                                min="${new Date().toISOString().split('T')[0]}">
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg border border-blue-100">
+                        <h4 class="font-medium text-blue-800 mb-2">Progress Saat Ini</h4>
+                        <div class="flex items-center justify-between mb-2">
+                            <div>
+                                <p class="text-xl font-bold text-blue-600" id="currentSavingsDisplay">Rp 0</p>
+                                <p class="text-xs text-blue-500">Terkumpul</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-bold text-gray-800" id="goalProgressDisplay">0%</p>
+                                <p class="text-xs text-gray-500">Progress</p>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <div class="progress-bar">
+                                <div id="goalProgressBar" class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-3 pt-4">
+                        <button id="saveSavingsGoalBtn" class="btn-primary flex-1 micro-celebrate">
+                            <i class="fas fa-save mr-2"></i>
+                            Simpan Target
+                        </button>
+                        <button id="cancelSavingsGoalBtn" class="btn-secondary flex-1 micro-celebrate">
+                            Batal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-white/95 backdrop-blur-xl border-t border-white/30 shadow-lg mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -1118,18 +1232,23 @@
     <script>
         // Data management
         let impulses = [];
-        let currentUserId = null;
+        let savingsGoal = null;
         let savingsChart = null;
         let categoriesChart = null;
         let timerInterval = null;
         let timerRunning = false;
         let timerPaused = false;
         let remainingTime = 24 * 60 * 60; // 24 hours in seconds
+        let currentFilters = {
+            status: ['resisted', 'pending'],
+            sortBy: 'newest'
+        };
 
         // Initialize the application
         document.addEventListener('DOMContentLoaded', function () {
             loadUserData();
             loadImpulses();
+            loadSavingsGoal();
             initializeEventListeners();
             updateDashboard();
             renderImpulses();
@@ -1138,82 +1257,101 @@
         });
 
         // Load user data
-        // Load user data
         function loadUserData() {
-            const userSession = localStorage.getItem('userSession');
-            if (userSession) {
-                try {
+            try {
+                const userSession = localStorage.getItem('userSession');
+                if (userSession) {
                     const session = JSON.parse(userSession);
-                    currentUserId = session.userId;
-
-                    // Ambil nama user dari localStorage atau session
                     const userName = session.username || session.name || 'User';
                     document.getElementById('userName').textContent = userName;
-
-                } catch (error) {
-                    console.error('Error parsing user session:', error);
-                    // Fallback ke data dari dashboard
+                } else {
                     const dashboardUser = localStorage.getItem('dashboardUserName');
                     if (dashboardUser) {
                         document.getElementById('userName').textContent = dashboardUser;
-                    } else {
-                        document.getElementById('userName').textContent = 'User';
                     }
                 }
-            } else {
-                // Jika tidak ada session, coba ambil dari dashboard
-                const dashboardUser = localStorage.getItem('dashboardUserName');
-                if (dashboardUser) {
-                    document.getElementById('userName').textContent = dashboardUser;
-                }
+            } catch (error) {
+                console.error('Error loading user data:', error);
             }
         }
 
-        // Load impulses from localStorage
+        // Load impulses
         function loadImpulses() {
-            const saved = localStorage.getItem('antifomo_impulses');
-            if (saved) {
-                impulses = JSON.parse(saved);
-            } else {
-                // Initialize with sample data
-                impulses = [
-                    {
-                        id: 1,
-                        name: 'Sepatu Sneakers',
-                        price: 750000,
-                        category: 'fashion',
-                        reason: 'Lagi trend di sosial media',
-                        createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-                        status: 'resisted',
-                        savings: 750000
-                    },
-                    {
-                        id: 2,
-                        name: 'Headphone Wireless',
-                        price: 1200000,
-                        category: 'electronics',
-                        reason: 'Pengen upgrade audio experience',
-                        createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
-                        status: 'resisted',
-                        savings: 1200000
-                    }
-                ];
+            try {
+                const saved = localStorage.getItem('antifomo_impulses');
+                impulses = saved ? JSON.parse(saved) : getSampleImpulses();
                 saveImpulses();
+            } catch (error) {
+                console.error('Error loading impulses:', error);
+                impulses = getSampleImpulses();
             }
         }
 
-        // Save impulses to localStorage
+        // Get sample impulses
+        function getSampleImpulses() {
+            return [
+                {
+                    id: 1,
+                    name: 'Sepatu Sneakers',
+                    price: 750000,
+                    category: 'fashion',
+                    reason: 'Lagi trend di sosial media',
+                    createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+                    status: 'resisted',
+                    savings: 750000,
+                    resistedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000 + 3600000).toISOString()
+                },
+                {
+                    id: 2,
+                    name: 'Headphone Wireless',
+                    price: 1200000,
+                    category: 'electronics',
+                    reason: 'Pengen upgrade audio experience',
+                    createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+                    status: 'resisted',
+                    savings: 1200000,
+                    resistedAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000 + 7200000).toISOString()
+                }
+            ];
+        }
+
+        // Save impulses
         function saveImpulses() {
-            localStorage.setItem('antifomo_impulses', JSON.stringify(impulses));
+            try {
+                localStorage.setItem('antifomo_impulses', JSON.stringify(impulses));
+            } catch (error) {
+                console.error('Error saving impulses:', error);
+            }
+        }
+
+        // Load savings goal
+        function loadSavingsGoal() {
+            try {
+                const saved = localStorage.getItem('savingsGoal');
+                savingsGoal = saved ? JSON.parse(saved) : null;
+            } catch (error) {
+                console.error('Error loading savings goal:', error);
+                savingsGoal = null;
+            }
+        }
+
+        // Save savings goal
+        function saveSavingsGoalToStorage() {
+            try {
+                if (savingsGoal) {
+                    localStorage.setItem('savingsGoal', JSON.stringify(savingsGoal));
+                } else {
+                    localStorage.removeItem('savingsGoal');
+                }
+            } catch (error) {
+                console.error('Error saving savings goal:', error);
+            }
         }
 
         // Initialize event listeners
         function initializeEventListeners() {
             // Mobile menu toggle
-            document.getElementById('mobile-menu-button').addEventListener('click', function () {
-                const mobileMenu = document.getElementById('mobile-menu');
-                mobileMenu.classList.toggle('hidden');
-            });
+            document.getElementById('mobile-menu-button').addEventListener('click', toggleMobileMenu);
 
             // Timer controls
             document.getElementById('startTimer').addEventListener('click', startTimer);
@@ -1221,7 +1359,7 @@
             document.getElementById('resetTimer').addEventListener('click', resetTimer);
 
             // Quick timer presets
-            document.querySelectorAll('[data-minutes]').forEach(button => {
+            document.querySelectorAll('.preset-btn').forEach(button => {
                 button.addEventListener('click', function () {
                     const minutes = parseInt(this.getAttribute('data-minutes'));
                     setTimer(minutes * 60);
@@ -1233,19 +1371,37 @@
 
             // Quick actions
             document.getElementById('addImpulseBtn').addEventListener('click', showAddImpulseModal);
-            document.getElementById('savingsGoalBtn').addEventListener('click', showSavingsGoal);
+            document.getElementById('addFirstImpulseBtn').addEventListener('click', showAddImpulseModal);
+            document.getElementById('savingsGoalBtn').addEventListener('click', showSavingsGoalModal);
             document.getElementById('exportReportBtn').addEventListener('click', exportReport);
+
+            // Filter and sort controls
+            document.getElementById('filterImpulsesBtn').addEventListener('click', showFilterModal);
+            document.getElementById('sortImpulsesBtn').addEventListener('click', toggleSortOptions);
 
             // Modal controls
             document.getElementById('closeImpulseModal').addEventListener('click', closeAddImpulseModal);
             document.getElementById('cancelImpulse').addEventListener('click', closeAddImpulseModal);
             document.getElementById('addImpulseForm').addEventListener('submit', handleAddImpulse);
 
-            // Filter and sort controls
-            document.getElementById('filterImpulsesBtn').addEventListener('click', toggleFilterOptions);
+            // Filter modal controls
+            document.getElementById('closeFilterModal').addEventListener('click', closeFilterModal);
+            document.getElementById('applyFiltersBtn').addEventListener('click', applyFilters);
+            document.getElementById('resetFiltersBtn').addEventListener('click', resetFilters);
 
-            // Set default timer to 24 hours
+            // Savings goal modal controls
+            document.getElementById('closeSavingsGoalModal').addEventListener('click', closeSavingsGoalModal);
+            document.getElementById('cancelSavingsGoalBtn').addEventListener('click', closeSavingsGoalModal);
+            document.getElementById('saveSavingsGoalBtn').addEventListener('click', saveSavingsGoal);
+
+            // Update timer display
             updateTimerDisplay();
+        }
+
+        // Mobile menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
         }
 
         // Timer functions
@@ -1261,12 +1417,11 @@
             document.getElementById('startTimer').disabled = true;
             document.getElementById('pauseTimer').disabled = false;
 
-            timerInterval = setInterval(function () {
+            timerInterval = setInterval(() => {
                 if (remainingTime > 0) {
                     remainingTime--;
                     updateTimerDisplay();
 
-                    // Check if timer completed
                     if (remainingTime === 0) {
                         timerCompleted();
                     }
@@ -1291,7 +1446,7 @@
             clearInterval(timerInterval);
             timerRunning = false;
             timerPaused = false;
-            remainingTime = 24 * 60 * 60; // Reset to 24 hours
+            remainingTime = 24 * 60 * 60;
             updateTimerDisplay();
 
             document.getElementById('startTimer').disabled = false;
@@ -1336,12 +1491,12 @@
             display.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
             // Change color based on time remaining
-            if (remainingTime < 3600) { // Less than 1 hour
+            if (remainingTime < 3600) {
                 display.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
                 display.style.webkitBackgroundClip = 'text';
                 display.style.webkitTextFillColor = 'transparent';
                 display.style.backgroundClip = 'text';
-            } else if (remainingTime < 7200) { // Less than 2 hours
+            } else if (remainingTime < 7200) {
                 display.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
                 display.style.webkitBackgroundClip = 'text';
                 display.style.webkitTextFillColor = 'transparent';
@@ -1362,40 +1517,41 @@
             document.getElementById('startTimer').disabled = false;
             document.getElementById('pauseTimer').disabled = true;
 
-            // Play completion sound (if implemented)
-            // Show celebration
             showNotification('Timer selesai! Apakah kamu masih ingin membeli?', 'success');
-
-            // Add micro celebration
             microCelebrate();
         }
 
-        // Show add impulse modal
+        // Impulse management
         function showAddImpulseModal() {
             document.getElementById('addImpulseModal').classList.remove('hidden');
+            document.getElementById('impulseName').focus();
         }
 
-        // Close add impulse modal
         function closeAddImpulseModal() {
             document.getElementById('addImpulseModal').classList.add('hidden');
+            document.getElementById('addImpulseForm').reset();
         }
 
-        // Handle add impulse
         function handleAddImpulse(e) {
             e.preventDefault();
 
             const impulse = {
                 id: Date.now(),
-                name: document.getElementById('impulseName').value,
-                price: parseFloat(document.getElementById('impulsePrice').value),
+                name: document.getElementById('impulseName').value.trim(),
+                price: parseInt(document.getElementById('impulsePrice').value),
                 category: document.getElementById('impulseCategory').value,
-                reason: document.getElementById('impulseReason').value,
+                reason: document.getElementById('impulseReason').value.trim(),
                 createdAt: new Date().toISOString(),
                 status: 'pending',
                 savings: 0
             };
 
-            impulses.push(impulse);
+            if (!impulse.name || !impulse.price || !impulse.category) {
+                showNotification('Harap isi semua field yang diperlukan!', 'error');
+                return;
+            }
+
+            impulses.unshift(impulse);
             saveImpulses();
             updateDashboard();
             renderImpulses();
@@ -1409,37 +1565,195 @@
             showNotification('Impuls berhasil dicatat! Timer dimulai.', 'success');
         }
 
-        // Show savings goal
-        function showSavingsGoal() {
-            // Implementation for savings goal
-            showNotification('Fitur Target Tabungan akan segera hadir!', 'info');
+        function resistImpulse(impulseId) {
+            const impulse = impulses.find(i => i.id === impulseId);
+            if (!impulse) return;
+
+            impulse.status = 'resisted';
+            impulse.savings = impulse.price;
+            impulse.resistedAt = new Date().toISOString();
+
+            saveImpulses();
+            updateDashboard();
+            renderImpulses();
+            updateCharts();
+            updateMotivationInsights();
+
+            showNotification(`Selamat! Kamu berhasil menolak impuls "${impulse.name}" dan menyelamatkan ${formatCurrency(impulse.price)}! 🎉`, 'success');
+            microCelebrate();
+        }
+
+        function deleteImpulse(impulseId) {
+            if (confirm('Apakah Anda yakin ingin menghapus impuls ini?')) {
+                impulses = impulses.filter(i => i.id !== impulseId);
+                saveImpulses();
+                updateDashboard();
+                renderImpulses();
+                updateCharts();
+                updateMotivationInsights();
+                showNotification('Impuls berhasil dihapus!', 'success');
+            }
+        }
+
+        // Filter and sort functions
+        function showFilterModal() {
+            document.getElementById('filterModal').classList.remove('hidden');
+        }
+
+        function closeFilterModal() {
+            document.getElementById('filterModal').classList.add('hidden');
+        }
+
+        function toggleSortOptions() {
+            const options = ['newest', 'oldest', 'priceHigh', 'priceLow'];
+            const currentIndex = options.indexOf(currentFilters.sortBy);
+            const nextIndex = (currentIndex + 1) % options.length;
+            currentFilters.sortBy = options[nextIndex];
+            renderImpulses();
+            showNotification(`Diurutkan berdasarkan: ${getSortLabel(currentFilters.sortBy)}`, 'info');
+        }
+
+        function getSortLabel(sortBy) {
+            const labels = {
+                'newest': 'Terbaru',
+                'oldest': 'Terlama',
+                'priceHigh': 'Harga Tertinggi',
+                'priceLow': 'Harga Terendah'
+            };
+            return labels[sortBy] || sortBy;
+        }
+
+        function applyFilters() {
+            const showResisted = document.getElementById('filterResisted').checked;
+            const showPending = document.getElementById('filterPending').checked;
+            const sortBy = document.getElementById('sortOptions').value;
+
+            currentFilters.status = [];
+            if (showResisted) currentFilters.status.push('resisted');
+            if (showPending) currentFilters.status.push('pending');
+            currentFilters.sortBy = sortBy;
+
+            renderImpulses();
+            closeFilterModal();
+            showNotification('Filter diterapkan!', 'success');
+        }
+
+        function resetFilters() {
+            currentFilters = {
+                status: ['resisted', 'pending'],
+                sortBy: 'newest'
+            };
+
+            document.getElementById('filterResisted').checked = true;
+            document.getElementById('filterPending').checked = true;
+            document.getElementById('sortOptions').value = 'newest';
+
+            renderImpulses();
+            showNotification('Filter direset!', 'info');
+        }
+
+        // Savings goal functions
+        function showSavingsGoalModal() {
+            const totalSavings = impulses
+                .filter(i => i.status === 'resisted')
+                .reduce((sum, i) => sum + i.price, 0);
+
+            document.getElementById('currentSavingsDisplay').textContent = formatCurrency(totalSavings);
+
+            if (savingsGoal) {
+                document.getElementById('goalName').value = savingsGoal.name || '';
+                document.getElementById('goalAmount').value = savingsGoal.targetAmount || '';
+                document.getElementById('goalDeadline').value = savingsGoal.deadline || '';
+
+                const progress = savingsGoal.targetAmount ? Math.min(Math.round((totalSavings / savingsGoal.targetAmount) * 100), 100) : 0;
+                document.getElementById('goalProgressDisplay').textContent = progress + '%';
+                document.getElementById('goalProgressBar').style.width = progress + '%';
+            } else {
+                document.getElementById('goalName').value = '';
+                document.getElementById('goalAmount').value = '';
+                document.getElementById('goalDeadline').value = '';
+                document.getElementById('goalProgressDisplay').textContent = '0%';
+                document.getElementById('goalProgressBar').style.width = '0%';
+            }
+
+            document.getElementById('savingsGoalModal').classList.remove('hidden');
+        }
+
+        function closeSavingsGoalModal() {
+            document.getElementById('savingsGoalModal').classList.add('hidden');
+        }
+
+        function saveSavingsGoal() {
+            const name = document.getElementById('goalName').value.trim();
+            const targetAmount = parseInt(document.getElementById('goalAmount').value);
+            const deadline = document.getElementById('goalDeadline').value;
+
+            if (!name || !targetAmount || targetAmount < 100000) {
+                showNotification('Harap isi nama target dan jumlah minimal Rp 100.000!', 'error');
+                return;
+            }
+
+            savingsGoal = {
+                id: Date.now(),
+                name,
+                targetAmount,
+                deadline,
+                createdAt: new Date().toISOString()
+            };
+
+            saveSavingsGoalToStorage();
+            closeSavingsGoalModal();
+            showNotification('Target tabungan berhasil disimpan!', 'success');
         }
 
         // Export report
         function exportReport() {
-            showNotification('Laporan Anti-FOMO berhasil diekspor!', 'success');
+            const totalSavings = impulses
+                .filter(i => i.status === 'resisted')
+                .reduce((sum, i) => sum + i.price, 0);
+
+            const resistedCount = impulses.filter(i => i.status === 'resisted').length;
+            const pendingCount = impulses.filter(i => i.status === 'pending').length;
+
+            const report = {
+                title: 'Laporan Anti-FOMO',
+                generatedAt: new Date().toISOString(),
+                stats: {
+                    totalSavings,
+                    resistedCount,
+                    pendingCount,
+                    successRate: impulses.length > 0 ? Math.round((resistedCount / impulses.length) * 100) : 0
+                },
+                impulses: impulses
+            };
+
+            // Create downloadable JSON file
+            const dataStr = JSON.stringify(report, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+
+            const exportFileDefaultName = `laporan-anti-fomo-${new Date().toISOString().split('T')[0]}.json`;
+
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+
+            showNotification('Laporan berhasil diekspor!', 'success');
         }
 
-        // Toggle filter options
-        function toggleFilterOptions() {
-            // Implementation for filter options
-            showNotification('Filter diterapkan!', 'info');
-        }
-
-        // Update dashboard statistics
+        // Dashboard functions
         function updateDashboard() {
-            const resistedImpulses = impulses.filter(impulse => impulse.status === 'resisted');
-            const totalSavings = resistedImpulses.reduce((sum, impulse) => sum + impulse.price, 0);
-            const resistedToday = resistedImpulses.filter(impulse => {
+            const resistedImpulses = impulses.filter(i => i.status === 'resisted');
+            const totalSavings = resistedImpulses.reduce((sum, i) => sum + i.price, 0);
+            const resistedToday = resistedImpulses.filter(i => {
                 const today = new Date();
-                const impulseDate = new Date(impulse.createdAt);
+                const impulseDate = new Date(i.resistedAt || i.createdAt);
                 return impulseDate.toDateString() === today.toDateString();
             }).length;
 
             const successRate = impulses.length > 0 ?
                 Math.round((resistedImpulses.length / impulses.length) * 100) : 0;
 
-            // Animate counter values
             animateCounter('totalSavings', totalSavings);
             animateCounter('totalSaved', totalSavings);
             animateCounter('impulsesResisted', resistedImpulses.length);
@@ -1449,10 +1763,19 @@
             document.getElementById('resistedToday').textContent = `${resistedToday} hari ini`;
         }
 
-        // Animate counter
         function animateCounter(elementId, targetValue) {
             const element = document.getElementById(elementId);
-            const currentValue = parseFloat(element.textContent.replace(/[^\d]/g, '') || 0);
+            const currentText = element.textContent;
+            let currentValue;
+
+            if (elementId.includes('Savings') || elementId.includes('Saved')) {
+                currentValue = parseFloat(currentText.replace(/[^\d]/g, '') || 0);
+            } else if (elementId === 'successRate') {
+                currentValue = parseFloat(currentText) || 0;
+            } else {
+                currentValue = parseInt(currentText) || 0;
+            }
+
             const duration = 1000;
             const steps = 60;
             const stepValue = (targetValue - currentValue) / steps;
@@ -1488,7 +1811,30 @@
             const container = document.getElementById('impulseList');
             const emptyState = document.getElementById('emptyState');
 
-            if (impulses.length === 0) {
+            if (!container || !emptyState) return;
+
+            // Filter impulses
+            let filteredImpulses = impulses.filter(i =>
+                currentFilters.status.includes(i.status)
+            );
+
+            // Sort impulses
+            filteredImpulses.sort((a, b) => {
+                switch (currentFilters.sortBy) {
+                    case 'newest':
+                        return new Date(b.createdAt) - new Date(a.createdAt);
+                    case 'oldest':
+                        return new Date(a.createdAt) - new Date(b.createdAt);
+                    case 'priceHigh':
+                        return b.price - a.price;
+                    case 'priceLow':
+                        return a.price - b.price;
+                    default:
+                        return 0;
+                }
+            });
+
+            if (filteredImpulses.length === 0) {
                 container.innerHTML = '';
                 emptyState.classList.remove('hidden');
                 return;
@@ -1496,7 +1842,7 @@
 
             emptyState.classList.add('hidden');
 
-            container.innerHTML = impulses.map(impulse => {
+            container.innerHTML = filteredImpulses.map(impulse => {
                 const createdDate = new Date(impulse.createdAt);
                 const timeAgo = getTimeAgo(createdDate);
                 const categoryIcons = {
@@ -1558,47 +1904,12 @@
             }).join('');
         }
 
-        // Resist impulse (mark as resisted)
-        function resistImpulse(impulseId) {
-            const impulse = impulses.find(i => i.id === impulseId);
-            if (impulse) {
-                impulse.status = 'resisted';
-                impulse.savings = impulse.price;
-                impulse.resistedAt = new Date().toISOString();
-
-                saveImpulses();
-                updateDashboard();
-                renderImpulses();
-                updateCharts();
-                updateMotivationInsights();
-
-                showNotification(`Selamat! Kamu berhasil menolak impuls "${impulse.name}" dan menyelamatkan ${formatCurrency(impulse.price)}! 🎉`, 'success');
-
-                // Add micro celebration
-                microCelebrate();
-            }
-        }
-
-        // Delete impulse
-        function deleteImpulse(impulseId) {
-            if (confirm('Apakah Anda yakin ingin menghapus impuls ini?')) {
-                impulses = impulses.filter(i => i.id !== impulseId);
-                saveImpulses();
-                updateDashboard();
-                renderImpulses();
-                updateCharts();
-                updateMotivationInsights();
-                showNotification('Impuls berhasil dihapus!', 'success');
-            }
-        }
-
-        // Initialize charts
+        // Charts functions
         function initializeCharts() {
             updateSavingsProgressChart();
             updateImpulseCategoriesChart();
         }
 
-        // Update savings progress chart
         function updateSavingsProgressChart() {
             const ctx = document.getElementById('savingsProgressChart').getContext('2d');
 
@@ -1610,6 +1921,13 @@
 
             if (resistedImpulses.length === 0) {
                 // Show empty state
+                const canvas = document.getElementById('savingsProgressChart');
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '12px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('Belum ada data tabungan', canvas.width / 2, canvas.height / 2);
                 return;
             }
 
@@ -1656,6 +1974,11 @@
                     plugins: {
                         legend: {
                             display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => `Tabungan: ${formatCurrency(context.raw)}`
+                            }
                         }
                     },
                     scales: {
@@ -1672,7 +1995,6 @@
             });
         }
 
-        // Update impulse categories chart
         function updateImpulseCategoriesChart() {
             const ctx = document.getElementById('impulseCategoriesChart').getContext('2d');
 
@@ -1684,6 +2006,13 @@
 
             if (resistedImpulses.length === 0) {
                 // Show empty state
+                const canvas = document.getElementById('impulseCategoriesChart');
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '12px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('Belum ada data kategori', canvas.width / 2, canvas.height / 2);
                 return;
             }
 
@@ -1732,6 +2061,11 @@
                                     size: 11
                                 }
                             }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => `${context.label}: ${formatCurrency(context.raw)}`
+                            }
                         }
                     },
                     animation: {
@@ -1742,7 +2076,6 @@
             });
         }
 
-        // Update charts
         function updateCharts() {
             updateSavingsProgressChart();
             updateImpulseCategoriesChart();
@@ -1800,7 +2133,6 @@
             `).join('');
         }
 
-        // Get random motivation tip
         function getRandomMotivationTip() {
             const tips = [
                 "Tunggu 24 jam sebelum membeli item yang diinginkan",
@@ -1839,7 +2171,14 @@
         }
 
         function showNotification(message, type = 'info') {
-            const container = document.getElementById('notificationContainer');
+            const container = document.getElementById('notificationContainer') || (() => {
+                const div = document.createElement('div');
+                div.id = 'notificationContainer';
+                div.className = 'fixed top-20 right-4 z-50 space-y-2';
+                document.body.appendChild(div);
+                return div;
+            })();
+
             const notification = document.createElement('div');
 
             const colors = {
