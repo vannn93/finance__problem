@@ -3,420 +3,56 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoneyMirror Analysis - GenZ Finance Hub</title>
     <link rel="stylesheet" href="../css/main.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
+
+    <script type="module" async
+        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fgenzfinan7345back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.10"></script>
+    <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
     <style>
-        /* ========================================= */
-        /* NAVBAR RESPONSIF FIX */
-        /* ========================================= */
-        
-        /* Fix navbar untuk sticky dan responsif */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        /* Scrolled state */
-        nav.scrolled {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-        
-        /* Container navbar */
-        .nav-container {
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 64px;
-        }
-        
-        /* Logo fix */
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-        }
-        
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .logo-icon i {
-            color: white;
-            font-size: 1.2rem;
-        }
-        
-        .logo-text {
-            font-size: 1.25rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Desktop menu */
-        .desktop-menu {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .desktop-menu a {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            color: #4a5568;
-            font-weight: 500;
-            font-size: 0.9rem;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-        
-        .desktop-menu a:hover {
-            background: rgba(99, 102, 241, 0.1);
-            color: #6366f1;
-        }
-        
-        .desktop-menu a.active {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            color: white;
-        }
-        
-        /* Profile desktop */
-        .profile-desktop {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        .profile-img {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .profile-name {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #2d3748;
-        }
-        
-        /* Mobile menu button */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background: rgba(99, 102, 241, 0.1);
-            color: #6366f1;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-menu-btn:hover {
-            background: rgba(99, 102, 241, 0.2);
-        }
-        
-        /* Mobile menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            z-index: 9999;
-            padding: 1rem;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-        
-        .mobile-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #e2e8f0;
-            margin-bottom: 1rem;
-        }
-        
-        .mobile-close-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #4a5568;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .mobile-close-btn:hover {
-            background: rgba(0, 0, 0, 0.05);
-        }
-        
-        .mobile-nav-links {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        
-        .mobile-nav-links a {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            text-decoration: none;
-            color: #4a5568;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            font-size: 1rem;
-        }
-        
-        .mobile-nav-links a:hover,
-        .mobile-nav-links a.active {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            color: white;
-        }
-        
-        .mobile-profile {
-            padding-top: 1rem;
-            border-top: 1px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .mobile-profile .profile-img {
-            width: 48px;
-            height: 48px;
-        }
-        
-        .mobile-profile-name {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #2d3748;
-        }
-        
-        /* Overlay */
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 9998;
-            display: none;
-        }
-        
-        .menu-overlay.active {
-            display: block;
-        }
-        
-        /* Responsive breakpoints */
-        @media (min-width: 1024px) {
-            .nav-container {
-                max-width: 1200px;
-                padding: 0 2rem;
-            }
-            
-            .desktop-menu {
-                gap: 1rem;
-            }
-            
-            .desktop-menu a {
-                padding: 0.75rem 1.25rem;
-                font-size: 1rem;
-            }
-        }
-        
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .nav-container {
-                padding: 0 1.5rem;
-            }
-            
-            .desktop-menu a {
-                padding: 0.5rem 0.875rem;
-                font-size: 0.875rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .desktop-menu,
-            .profile-desktop {
-                display: none !important;
-            }
-            
-            .mobile-menu-btn {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .logo-text {
-                font-size: 1.1rem;
-            }
-            
-            .logo-icon {
-                width: 36px;
-                height: 36px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .nav-container {
-                padding: 0 1rem;
-                height: 60px;
-            }
-            
-            .logo-text {
-                font-size: 1rem;
-            }
-            
-            .logo-icon {
-                width: 32px;
-                height: 32px;
-            }
-            
-            .mobile-menu-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 1.1rem;
-            }
-        }
-        
-        /* ========================================= */
-        /* FIX UNTUK QUICK ACTIONS & CHART */
-        /* ========================================= */
-        
-        /* Fix untuk chart container */
-        #moodExpenseChart {
-            width: 100% !important;
-            height: 320px !important;
-        }
-        
-        @media (max-width: 768px) {
-            #moodExpenseChart {
-                height: 250px !important;
-            }
-        }
-        
-        /* Fix untuk quick actions buttons */
-        #exportDataBtn,
-        #shareProgressBtn,
-        #setReminderBtn {
-            min-height: 60px;
-            border: none;
-            background: rgba(255, 255, 255, 0.9);
-            transition: all 0.3s ease;
-        }
-        
-        #exportDataBtn:hover {
-            background: rgba(99, 102, 241, 0.1);
-            transform: translateY(-2px);
-        }
-        
-        #shareProgressBtn:hover {
-            background: rgba(236, 72, 153, 0.1);
-            transform: translateY(-2px);
-        }
-        
-        #setReminderBtn:hover {
-            background: rgba(245, 158, 11, 0.1);
-            transform: translateY(-2px);
-        }
-        
-        /* Fix untuk form input pada mobile */
-        @media (max-width: 768px) {
-            .input-field {
-                font-size: 16px !important; /* Mencegah zoom di iOS */
-            }
-            
-            .mood-btn {
-                padding: 12px 8px !important;
-            }
-            
-            .mood-btn .text-3xl {
-                font-size: 1.75rem !important;
-            }
-        }
-        
-        /* Fix untuk overflow pada mobile */
-        @media (max-width: 768px) {
-            body {
-                overflow-x: hidden;
-            }
-            
-            main {
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
-            }
-        }
-        
-        /* ========================================= */
-        /* ANIMASI DAN EFFECT */
-        /* ========================================= */
-        
+        /* Share Modal Animations */
         .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 0.3s ease-in-out;
         }
-        
+
+        .bounce-in {
+            animation: bounceIn 0.5s ease-out;
+        }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
-        
-        .slide-up {
-            animation: slideUp 0.5s ease-out;
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
+
+        /* Micro celebration effect */
         .micro-celebrate {
             transition: all 0.2s ease;
         }
-        
+
         .micro-celebrate:active {
             transform: scale(0.95);
         }
@@ -432,104 +68,92 @@
         <div class="absolute bottom-40 right-10 w-28 h-28 bg-primary-400 rounded-full blur-lg"></div>
     </div>
 
-    <!-- Navigation Header - VERSI BARU -->
-    <nav id="mainNavbar">
-        <div class="nav-container">
-            <!-- Logo -->
-            <a href="main_dashboard.html" class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-wallet"></i>
-                </div>
-                <span class="logo-text">GenZ Finance Hub</span>
-            </a>
-
-            <!-- Desktop Menu -->
-            <div class="desktop-menu">
-                <a href="main_dashboard.html">
-                    <i class="fas fa-home"></i>
-                    Dashboard
-                </a>
-                <a href="money_mirror_analysis.html" class="active">
-                    <i class="fas fa-mirror"></i>
-                    MoneyMirror
-                </a>
-                <a href="zero_budget_tracker.html">
-                    <i class="fas fa-piggy-bank"></i>
-                    ZeroBudget
-                </a>
-                <a href="subs_tracker_manager.html">
-                    <i class="fas fa-credit-card"></i>
-                    SubsTracker
-                </a>
-                <a href="investify_zero_game.html">
-                    <i class="fas fa-chart-line"></i>
-                    InvestifyZero
-                </a>
-            </div>
-
-            <!-- Profile Desktop -->
-            <div class="profile-desktop">
-                <img src="https://images.unsplash.com/photo-1719735903589-2012c168d128" 
-                     alt="Profile" 
-                     class="profile-img"
-                     onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
-                <span class="profile-name" id="currentUserName">User Demo</span>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-            <div class="mobile-menu-header">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-wallet"></i>
+    <!-- Navigation Header -->
+    <nav class="relative z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex items-center">
+                        <div
+                            class="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-xl mr-3">
+                            <i class="fas fa-wallet text-white text-lg"></i>
+                        </div>
+                        <span class="text-xl font-bold text-gradient">GenZ Finance Hub</span>
                     </div>
-                    <span class="logo-text">GenZ Finance Hub</span>
                 </div>
-                <button class="mobile-close-btn" id="mobileCloseBtn">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
 
-            <div class="mobile-nav-links">
-                <a href="main_dashboard.html">
-                    <i class="fas fa-home"></i>
-                    Dashboard
-                </a>
-                <a href="money_mirror_analysis.html" class="active">
-                    <i class="fas fa-mirror"></i>
-                    MoneyMirror
-                </a>
-                <a href="zero_budget_tracker.html">
-                    <i class="fas fa-piggy-bank"></i>
-                    ZeroBudget
-                </a>
-                <a href="subs_tracker_manager.html">
-                    <i class="fas fa-credit-card"></i>
-                    SubsTracker
-                </a>
-                <a href="investify_zero_game.html">
-                    <i class="fas fa-chart-line"></i>
-                    InvestifyZero
-                </a>
-            </div>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="main_dashboard.html"
+                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-home mr-2"></i>Dashboard
+                    </a>
+                    <a href="money_mirror_analysis.html"
+                        class="bg-primary-100 text-primary-700 px-3 py-2 rounded-md text-sm font-medium">
+                        <i class="fas fa-mirror mr-2"></i>MoneyMirror
+                    </a>
+                    <a href="zero_budget_tracker.html"
+                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-piggy-bank mr-2"></i>ZeroBudget
+                    </a>
+                    <a href="subs_tracker_manager.html"
+                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-credit-card mr-2"></i>SubsTracker
+                    </a>
+                    <a href="investify_zero_game.html"
+                        class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-chart-line mr-2"></i>InvestifyZero
+                    </a>
+                </div>
 
-            <div class="mobile-profile">
-                <img src="https://images.unsplash.com/photo-1719735903589-2012c168d128" 
-                     alt="Profile" 
-                     class="profile-img"
-                     onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
-                <span class="mobile-profile-name" id="mobileUserName">User Demo</span>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-600 hover:text-primary-600 p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Profile -->
+                <div class="hidden md:flex items-center">
+                    <div class="relative">
+                        <button
+                            class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <img src="https://images.unsplash.com/photo-1719735903589-2012c168d128"
+                                alt="Profile picture" class="w-8 h-8 rounded-full"
+                                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                            <span class="ml-2 text-gray-700 font-medium" id="currentUserName">User Demo</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Overlay -->
-        <div class="menu-overlay" id="menuOverlay"></div>
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t border-gray-200/50">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="main_dashboard.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-home mr-2"></i>Dashboard
+                </a>
+                <a href="money_mirror_analysis.html"
+                    class="bg-primary-100 text-primary-700 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-mirror mr-2"></i>MoneyMirror
+                </a>
+                <a href="zero_budget_tracker.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-piggy-bank mr-2"></i>ZeroBudget
+                </a>
+                <a href="subs_tracker_manager.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-credit-card mr-2"></i>SubsTracker
+                </a>
+                <a href="investify_zero_game.html"
+                    class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-chart-line mr-2"></i>InvestifyZero
+                </a>
+            </div>
+        </div>
     </nav>
 
     <!-- Main Content -->
@@ -611,27 +235,32 @@
                 </h2>
 
                 <div class="grid grid-cols-5 gap-3 mb-6">
-                    <button class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
+                    <button
+                        class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
                         data-mood="1" data-label="Sangat Sedih">
                         <div class="text-3xl mb-2">😢</div>
                         <div class="text-xs text-gray-600">Sangat Sedih</div>
                     </button>
-                    <button class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
+                    <button
+                        class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
                         data-mood="2" data-label="Sedih">
                         <div class="text-3xl mb-2">😔</div>
                         <div class="text-xs text-gray-600">Sedih</div>
                     </button>
-                    <button class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
+                    <button
+                        class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
                         data-mood="3" data-label="Biasa">
                         <div class="text-3xl mb-2">😐</div>
                         <div class="text-xs text-gray-600">Biasa</div>
                     </button>
-                    <button class="mood-btn p-4 rounded-xl border-2 border-primary-300 bg-primary-50 transition-all duration-200 text-center selected"
+                    <button
+                        class="mood-btn p-4 rounded-xl border-2 border-primary-300 bg-primary-50 transition-all duration-200 text-center selected"
                         data-mood="4" data-label="Senang">
                         <div class="text-3xl mb-2">😊</div>
                         <div class="text-xs text-primary-600 font-medium">Senang</div>
                     </button>
-                    <button class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
+                    <button
+                        class="mood-btn p-4 rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-all duration-200 text-center micro-celebrate"
                         data-mood="5" data-label="Sangat Senang">
                         <div class="text-3xl mb-2">😄</div>
                         <div class="text-xs text-gray-600">Sangat Senang</div>
@@ -661,7 +290,8 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Jumlah Pengeluaran</label>
                         <div class="relative">
-                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 font-medium">Rp</span>
+                            <span
+                                class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 font-medium">Rp</span>
                             <input type="text" id="expenseAmount" class="input-field w-full pl-10" placeholder="0"
                                 required>
                         </div>
@@ -713,7 +343,7 @@
                         <option value="30" selected>30 Hari Terakhir</option>
                         <option value="90">3 Bulan Terakhir</option>
                     </select>
-                    <button id="refreshChart" class="p-2 text-gray-500 hover:text-primary-600 transition-colors micro-celebrate">
+                    <button id="refreshChart" class="p-2 text-gray-500 hover:text-primary-600 transition-colors">
                         <i class="fas fa-refresh"></i>
                     </button>
                 </div>
@@ -793,12 +423,12 @@
                     <p class="text-sm text-gray-600">Menampilkan <span id="showingCount">0</span> dari <span
                             id="totalCount">0</span> data</p>
                     <div class="flex items-center space-x-2">
-                        <button id="prevPage" class="p-2 text-gray-500 hover:text-primary-600 transition-colors micro-celebrate">
+                        <button id="prevPage" class="p-2 text-gray-500 hover:text-primary-600 transition-colors">
                             <i class="fas fa-chevron-left"></i>
                         </button>
                         <span class="px-3 py-1 bg-primary-100 text-primary-600 rounded-md text-sm font-medium"
                             id="currentPageNumber">1</span>
-                        <button id="nextPage" class="p-2 text-gray-500 hover:text-primary-600 transition-colors micro-celebrate">
+                        <button id="nextPage" class="p-2 text-gray-500 hover:text-primary-600 transition-colors">
                             <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
@@ -937,65 +567,7 @@
     </div>
 
     <script>
-        // =========================================
-        // NAVBAR FUNCTIONALITY
-        // =========================================
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbar = document.getElementById('mainNavbar');
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const mobileCloseBtn = document.getElementById('mobileCloseBtn');
-            const menuOverlay = document.getElementById('menuOverlay');
-            
-            // Handle scroll effect
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 10) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-            
-            // Toggle mobile menu
-            function toggleMobileMenu() {
-                mobileMenu.classList.toggle('active');
-                menuOverlay.classList.toggle('active');
-                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-            }
-            
-            // Open mobile menu
-            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-            
-            // Close mobile menu
-            mobileCloseBtn.addEventListener('click', toggleMobileMenu);
-            menuOverlay.addEventListener('click', toggleMobileMenu);
-            
-            // Close menu when clicking on links
-            const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (mobileMenu.classList.contains('active')) {
-                        toggleMobileMenu();
-                    }
-                });
-            });
-            
-            // Update mobile username
-            const userName = document.getElementById('currentUserName').textContent;
-            document.getElementById('mobileUserName').textContent = userName;
-            
-            // Initialize scroll state
-            if (window.scrollY > 10) {
-                navbar.classList.add('scrolled');
-            }
-        });
-        
-        // =========================================
-        // EXISTING MONEY MIRROR FUNCTIONALITY
-        // =========================================
-        
-        // Mobile menu toggle (old - keep for compatibility)
+        // Mobile menu toggle
         document.getElementById('mobileMenuBtn').addEventListener('click', function () {
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu.classList.toggle('hidden');
@@ -1015,7 +587,6 @@
                 const session = JSON.parse(userSession);
                 currentUserId = session.userId;
                 document.getElementById('currentUserName').textContent = session.username || 'User Demo';
-                document.getElementById('mobileUserName').textContent = session.username || 'User Demo';
                 return session;
             }
             return null;
@@ -1161,6 +732,20 @@
 
         // Initialize app
         document.addEventListener('DOMContentLoaded', function () {
+            initializeApp();
+            setupEventListeners();
+            renderChart();
+            renderHistoryTable();
+            setCurrentDateTime();
+            // Tambahkan di dalam function setupEventListeners() - cari bagian Quick Actions
+            document.getElementById('exportDataBtn').addEventListener('click', exportData);
+            document.getElementById('shareProgressBtn').addEventListener('click', shareProgress);
+            document.getElementById('setReminderBtn').addEventListener('click', setReminder);
+            // Tambahkan di dalam function initializeApp()
+            initializeReminders();
+        });
+
+        function initializeApp() {
             // Check if user is logged in
             const user = getCurrentUser();
             if (!user) {
@@ -1170,14 +755,7 @@
 
             // Initialize user data
             initializeUserData();
-            
-            // Setup event listeners
-            setupEventListeners();
-            renderChart();
-            renderHistoryTable();
-            setCurrentDateTime();
-            initializeReminders();
-        });
+        }
 
         function setupEventListeners() {
             // Mood selection
@@ -1304,22 +882,6 @@
             document.getElementById('exportDataBtn').addEventListener('click', exportData);
             document.getElementById('shareProgressBtn').addEventListener('click', shareProgress);
             document.getElementById('setReminderBtn').addEventListener('click', setReminder);
-            
-            // Pagination
-            document.getElementById('prevPage').addEventListener('click', function () {
-                if (currentPage > 1) {
-                    currentPage--;
-                    renderHistoryTable();
-                }
-            });
-
-            document.getElementById('nextPage').addEventListener('click', function () {
-                const totalPages = Math.ceil(moodExpenseData.length / itemsPerPage);
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    renderHistoryTable();
-                }
-            });
         }
 
         function setCurrentDateTime() {
@@ -1455,8 +1017,6 @@
 
         function renderChart() {
             const canvas = document.getElementById('moodExpenseChart');
-            if (!canvas) return;
-            
             const ctx = canvas.getContext('2d');
             const period = parseInt(document.getElementById('chartPeriod').value);
 
@@ -1740,13 +1300,42 @@
         }
 
         function exportData() {
+            showMessage('success', 'Fitur export data akan segera hadir! 📊');
+        }
+
+        function shareProgress() {
+            showMessage('success', 'Fitur share progress akan segera hadir! 📱');
+        }
+
+        function setReminder() {
+            showMessage('success', 'Fitur reminder akan segera hadir! ⏰');
+        }
+
+        // Pagination
+        document.getElementById('prevPage').addEventListener('click', function () {
+            if (currentPage > 1) {
+                currentPage--;
+                renderHistoryTable();
+            }
+        });
+
+        document.getElementById('nextPage').addEventListener('click', function () {
+            const totalPages = Math.ceil(moodExpenseData.length / itemsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderHistoryTable();
+            }
+        });
+
+        // Export Data Function
+        function exportData() {
             if (moodExpenseData.length === 0) {
                 showMessage('error', 'Belum ada data untuk di-export!');
                 return;
             }
 
             // Create CSV content
-            let csvContent = "Tanggal,Mood,Pengeluaran,Kategori,Deskripsi,Waktu\n";
+            let csvContent = "Tanggal,Mood,Pengeluaran,Kategori,Deskripsi,Waktu\\n";
 
             moodExpenseData.forEach(entry => {
                 const row = [
@@ -1757,7 +1346,7 @@
                     entry.description || '',
                     entry.time || ''
                 ];
-                csvContent += row.join(',') + '\n';
+                csvContent += row.join(',') + '\\n';
             });
 
             // Create download link
@@ -1776,85 +1365,7 @@
             showMessage('success', 'Data berhasil di-export! 📊');
         }
 
-        function shareProgress() {
-            const stats = calculateUserStats();
-
-            // Create shareable content
-            const shareContent = {
-                title: "Progress MoneyMirror Saya 📊",
-                text: `Saya sudah tracking mood dan pengeluaran selama ${stats.trackingStreak} hari berturut-turut! 🎯\n\n` +
-                    `Total Pengeluaran Bulan Ini: Rp ${stats.totalExpenseMonth.toLocaleString('id-ID')}\n` +
-                    `Level: ${stats.userLevel} - ${stats.levelTitle}\n\n` +
-                    `Download GenZ Finance Hub untuk mulai tracking keuanganmu! 💰`,
-                url: window.location.origin
-            };
-
-            // Check if Web Share API is available
-            if (navigator.share) {
-                navigator.share(shareContent)
-                    .then(() => showMessage('success', 'Progress berhasil dibagikan! 🎉'))
-                    .catch(error => {
-                        console.log('Error sharing:', error);
-                        fallbackShare(shareContent);
-                    });
-            } else {
-                fallbackShare(shareContent);
-            }
-        }
-
-        function fallbackShare(shareContent) {
-            // Copy to clipboard as fallback
-            const textToCopy = `${shareContent.title}\n\n${shareContent.text}`;
-
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                showMessage('success', 'Progress berhasil disalin ke clipboard! 📋\nSekarang bisa paste di media sosial.');
-            }).catch(() => {
-                // Final fallback - show modal with shareable text
-                showShareModal(shareContent);
-            });
-        }
-
-        function showShareModal(shareContent) {
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 fade-in';
-            modal.innerHTML = `
-                <div class="bg-white rounded-2xl p-6 w-full max-w-md morphic-card bounce-in">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold text-gray-900">Bagikan Progress</h3>
-                        <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-gray-600 transition-all duration-300 hover:scale-110">
-                            <i class="fas fa-times text-lg"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="mb-4 p-4 bg-gray-50 rounded-lg">
-                        <p class="text-sm text-gray-600 mb-2">Salin teks di bawah untuk dibagikan:</p>
-                        <textarea class="w-full h-32 p-3 text-sm border border-gray-300 rounded-lg resize-none" readonly>${shareContent.text}</textarea>
-                    </div>
-                    
-                    <div class="flex space-x-3">
-                        <button onclick="copyShareText()" class="flex-1 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105 micro-celebrate">
-                            <i class="fas fa-copy mr-2"></i>
-                            Salin Teks
-                        </button>
-                        <button onclick="this.closest('.fixed').remove()" class="flex-1 py-3 bg-gray-500 hover:bg-gray-600 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105">
-                            Tutup
-                        </button>
-                    </div>
-                </div>
-            `;
-
-            document.body.appendChild(modal);
-        }
-
-        function copyShareText() {
-            const textarea = document.querySelector('.fixed textarea');
-            textarea.select();
-            document.execCommand('copy');
-
-            showMessage('success', 'Teks berhasil disalin ke clipboard! 📋');
-            document.querySelector('.fixed').remove();
-        }
-
+        // Set Reminder Function
         function setReminder() {
             // Check if browser supports notifications
             if (!("Notification" in window)) {
@@ -1887,13 +1398,97 @@
                         });
                     }
 
-                    showMessage('success', 'Reminder berhasil disetel! ⏰\nKami akan mengingatkan jam 20:00 setiap hari.');
+                    showMessage('success', 'Reminder berhasil disetel! ⏰\\nKami akan mengingatkan jam 20:00 setiap hari.');
                 } else {
                     showMessage('error', 'Izin notifikasi ditolak. Aktifkan notifikasi untuk reminder.');
                 }
             });
         }
 
+        // Share Progress Function
+        function shareProgress() {
+            const stats = calculateUserStats();
+
+            // Create shareable content
+            const shareContent = {
+                title: "Progress MoneyMirror Saya 📊",
+                text: `Saya sudah tracking mood dan pengeluaran selama ${stats.trackingStreak} hari berturut-turut! 🎯\\n\\n` +
+                    `Total Pengeluaran Bulan Ini: Rp ${stats.totalExpenseMonth.toLocaleString('id-ID')}\\n` +
+                    `Level: ${stats.userLevel} - ${stats.levelTitle}\\n\\n` +
+                    `Download GenZ Finance Hub untuk mulai tracking keuanganmu! 💰`,
+                url: window.location.origin
+            };
+
+            // Check if Web Share API is available
+            if (navigator.share) {
+                navigator.share(shareContent)
+                    .then(() => showMessage('success', 'Progress berhasil dibagikan! 🎉'))
+                    .catch(error => {
+                        console.log('Error sharing:', error);
+                        fallbackShare(shareContent);
+                    });
+            } else {
+                fallbackShare(shareContent);
+            }
+        }
+
+        // Fallback share for browsers without Web Share API
+        function fallbackShare(shareContent) {
+            // Copy to clipboard as fallback
+            const textToCopy = `${shareContent.title}\\n\\n${shareContent.text}`;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showMessage('success', 'Progress berhasil disalin ke clipboard! 📋\\nSekarang bisa paste di media sosial.');
+            }).catch(() => {
+                // Final fallback - show modal with shareable text
+                showShareModal(shareContent);
+            });
+        }
+
+        // Show share modal for manual sharing
+        function showShareModal(shareContent) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 fade-in';
+            modal.innerHTML = `
+        <div class="bg-white rounded-2xl p-6 w-full max-w-md morphic-card bounce-in">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-gray-900">Bagikan Progress</h3>
+                <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-gray-600 transition-all duration-300 hover:scale-110">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+            
+            <div class="mb-4 p-4 bg-gray-50 rounded-lg">
+                <p class="text-sm text-gray-600 mb-2">Salin teks di bawah untuk dibagikan:</p>
+                <textarea class="w-full h-32 p-3 text-sm border border-gray-300 rounded-lg resize-none" readonly>${shareContent.text}</textarea>
+            </div>
+            
+            <div class="flex space-x-3">
+                <button onclick="copyShareText()" class="flex-1 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105 micro-celebrate">
+                    <i class="fas fa-copy mr-2"></i>
+                    Salin Teks
+                </button>
+                <button onclick="this.closest('.fixed').remove()" class="flex-1 py-3 bg-gray-500 hover:bg-gray-600 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    `;
+
+            document.body.appendChild(modal);
+        }
+
+        // Copy share text to clipboard
+        function copyShareText() {
+            const textarea = document.querySelector('.fixed textarea');
+            textarea.select();
+            document.execCommand('copy');
+
+            showMessage('success', 'Teks berhasil disalin ke clipboard! 📋');
+            document.querySelector('.fixed').remove();
+        }
+
+        // Check and trigger daily reminders
         function checkDailyReminder() {
             const userStatsKey = getUserStatsKey();
             const currentStats = JSON.parse(localStorage.getItem(userStatsKey)) || getDefaultUserStats();
@@ -1918,6 +1513,7 @@
             }
         }
 
+        // Initialize reminder check
         function initializeReminders() {
             // Check reminder every minute
             setInterval(checkDailyReminder, 60000);
@@ -1925,6 +1521,9 @@
             // Initial check
             checkDailyReminder();
         }
+
     </script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
 </body>
+
 </html>
