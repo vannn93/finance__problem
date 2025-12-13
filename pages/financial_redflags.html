@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
+        /* [ALL YOUR EXISTING STYLES REMAIN EXACTLY THE SAME] */
         /* Animasi Super Smooth */
         .fade-in {
             animation: fadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -87,7 +88,7 @@
             }
 
             70% {
-                transform: scale(0.95) rotate(-2deg);
+                transform: scale(0.9) rotate(-2deg);
                 opacity: 0.9;
             }
 
@@ -1163,9 +1164,11 @@
                         <div class="chat-bubble ai-bubble">
                             <div class="flex space-x-1">
                                 <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                                <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                                    style="animation-delay: 0.1s">
                                 </div>
-                                <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                                    style="animation-delay: 0.2s">
                                 </div>
                             </div>
                         </div>
@@ -1285,6 +1288,42 @@
         </div>
     </div>
 
+    <!-- Solutions Modal -->
+    <div id="solutionsModal"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="morphic-card max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">Library Solusi Keuangan</h3>
+                    <button id="closeSolutionsModal" class="text-gray-500 hover:text-gray-700 micro-celebrate">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div id="solutionsList" class="space-y-4">
+                    <!-- Solutions will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Report Modal -->
+    <div id="progressModal"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="morphic-card max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">Progress Report</h3>
+                    <button id="closeProgressModal" class="text-gray-500 hover:text-gray-700 micro-celebrate">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div id="progressReportContent" class="space-y-4">
+                    <!-- Progress report will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-white/95 backdrop-blur-xl border-t border-white/30 shadow-lg mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -1308,127 +1347,264 @@
     </footer>
 
     <script>
-        // Data management
+        // Data management - PERBAIKAN UTAMA: Data langsung muncul tanpa dipancing
         let issues = [];
         let currentUserId = null;
         let chatMessages = [];
         let selectedSeverity = 'medium';
+        let isInitialized = false;
 
-        // Initialize the application
+        // Initialize the application - Data langsung dimuat
         document.addEventListener('DOMContentLoaded', function () {
+            console.log("DOM Loaded - Initializing application");
+
+            // Langsung load data sebelum event listeners
             loadUserData();
-            loadIssues();
+            loadAllData();
+
+            // Setup event listeners
             initializeEventListeners();
+
+            // Update UI dengan data yang sudah dimuat
             updateDashboard();
             renderIssues();
             updatePersonalizedAdvice();
             initializeChat();
+
+            // Tandai sebagai initialized
+            isInitialized = true;
+
+            // Show notification jika ada data yang dimuat
+            if (issues.length > 0) {
+                setTimeout(() => {
+                    showNotification(`Data berhasil dimuat! Ada ${issues.length} masalah yang perlu perhatian.`, 'success');
+                }, 500);
+            }
         });
 
-        // Load user data
+        // Load user data dengan cara yang lebih reliable
         function loadUserData() {
-            // Coba ambil dari userSession terlebih dahulu
-            const userSession = localStorage.getItem('userSession');
-            if (userSession) {
-                try {
-                    const session = JSON.parse(userSession);
-                    currentUserId = session.userId;
+            console.log("Loading user data...");
 
-                    // Ambil nama user dari berbagai sumber yang mungkin
-                    const userName = session.username || session.name || 'User Demo';
-                    document.getElementById('userName').textContent = userName;
+            // Cari dari berbagai sumber secara berurutan
+            const userSources = [
+                // 1. userSession dari login
+                () => {
+                    const userSession = localStorage.getItem('userSession');
+                    if (userSession) {
+                        try {
+                            const session = JSON.parse(userSession);
+                            currentUserId = session.userId;
+                            const userName = session.username || session.name || 'User';
+                            document.getElementById('userName').textContent = userName;
+                            localStorage.setItem('currentUserName', userName);
+                            console.log("User data loaded from userSession");
+                            return true;
+                        } catch (e) {
+                            console.warn("Invalid userSession format");
+                            return false;
+                        }
+                    }
+                    return false;
+                },
 
-                    // Simpan juga di localStorage untuk backup
-                    localStorage.setItem('currentUserName', userName);
+                // 2. cached user data
+                () => {
+                    const cachedName = localStorage.getItem('currentUserName');
+                    if (cachedName) {
+                        document.getElementById('userName').textContent = cachedName;
+                        console.log("User data loaded from cache");
+                        return true;
+                    }
+                    return false;
+                },
 
-                } catch (error) {
-                    console.error('Error loading user data:', error);
-                    loadUserFromDashboard();
+                // 3. dari ZeroBudget Tracker (jika ada)
+                () => {
+                    try {
+                        const zeroBudgetData = localStorage.getItem('zeroBudgetData_default');
+                        if (zeroBudgetData) {
+                            const data = JSON.parse(zeroBudgetData);
+                            if (data.userName) {
+                                document.getElementById('userName').textContent = data.userName;
+                                localStorage.setItem('currentUserName', data.userName);
+                                console.log("User data loaded from ZeroBudget");
+                                return true;
+                            }
+                        }
+                    } catch (e) {
+                        // Silent fail
+                    }
+                    return false;
+                },
+
+                // 4. Fallback: Demo User
+                () => {
+                    document.getElementById('userName').textContent = 'User Demo';
+                    console.log("Using default user data");
+                    return true;
                 }
-            } else {
-                loadUserFromDashboard();
-            }
-        }
-
-        // Fallback function untuk mengambil data user dari dashboard
-        function loadUserFromDashboard() {
-            // Coba ambil dari berbagai sumber yang mungkin
-            const sources = [
-                'currentUserName',
-                'dashboardUserName',
-                'userName',
-                'welcomeName'
             ];
 
-            for (const source of sources) {
-                const savedName = localStorage.getItem(source);
-                if (savedName) {
-                    document.getElementById('userName').textContent = savedName;
-                    return;
+            // Coba setiap source
+            for (const source of userSources) {
+                if (source()) break;
+            }
+        }
+
+        // Load semua data dengan cara yang lebih reliable
+        function loadAllData() {
+            console.log("Loading all data...");
+
+            // Coba load dari berbagai storage key yang mungkin
+            const dataKeys = [
+                'redflags_issues',
+                'financial_redflags_data',
+                'redflags_data',
+                'financial_data'
+            ];
+
+            let dataLoaded = false;
+
+            // Coba dari setiap key
+            for (const key of dataKeys) {
+                const savedData = localStorage.getItem(key);
+                if (savedData) {
+                    try {
+                        const parsedData = JSON.parse(savedData);
+
+                        // Handle berbagai format data
+                        if (Array.isArray(parsedData)) {
+                            // Jika data langsung array issues
+                            issues = parsedData;
+                            console.log(`Loaded ${issues.length} issues from ${key}`);
+                            dataLoaded = true;
+                        } else if (parsedData.issues) {
+                            // Jika data adalah object dengan properti issues
+                            issues = parsedData.issues;
+                            if (parsedData.chat) chatMessages = parsedData.chat;
+                            console.log(`Loaded ${issues.length} issues from structured data in ${key}`);
+                            dataLoaded = true;
+                        }
+
+                        if (dataLoaded) break;
+                    } catch (error) {
+                        console.warn(`Failed to parse data from ${key}:`, error);
+                        continue;
+                    }
                 }
             }
 
-            // Default fallback
-            document.getElementById('userName').textContent = 'User Demo';
+            // Jika tidak ada data yang ditemukan, coba load sample data
+            if (!dataLoaded) {
+                console.log("No existing data found, loading sample data...");
+                loadSampleData();
+            }
+
+            // Load chat messages terpisah jika ada
+            const savedChat = localStorage.getItem('redflags_chat');
+            if (savedChat) {
+                try {
+                    chatMessages = JSON.parse(savedChat);
+                    console.log(`Loaded ${chatMessages.length} chat messages`);
+                } catch (error) {
+                    console.warn("Failed to load chat messages:", error);
+                }
+            }
+
+            // Tampilkan log data yang berhasil dimuat
+            console.log(`Data loaded successfully: ${issues.length} issues, ${chatMessages.length} chat messages`);
         }
 
-        // Load issues from localStorage
-        function loadIssues() {
-            const saved = localStorage.getItem('redflags_issues');
-            if (saved) {
-                issues = JSON.parse(saved);
-            } else {
-                // Initialize with sample data
-                issues = [
-                    {
-                        id: 1,
-                        category: 'debt',
-                        description: 'Hutang kartu kredit menumpuk dengan bunga tinggi',
-                        severity: 'high',
-                        status: 'active',
-                        createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-                        solutions: [
-                            'Prioritaskan pembayaran kartu kredit dengan bunga tertinggi',
-                            'Pertimbangkan konsolidasi hutang',
-                            'Buat rencana pembayaran yang realistis'
-                        ]
-                    },
-                    {
-                        id: 2,
-                        category: 'spending',
-                        description: 'Pengeluaran untuk makan di luar terlalu besar',
-                        severity: 'medium',
-                        status: 'resolved',
-                        createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
-                        solutions: [
-                            'Buat budget khusus untuk makan di luar',
-                            'Belajar masak makanan favorit di rumah',
-                            'Batasi makan di luar maksimal 2x seminggu'
-                        ]
-                    }
-                ];
-                saveIssues();
+        // Load sample data untuk user baru
+        function loadSampleData() {
+            console.log("Loading sample data for new user");
+
+            // Sample data yang realistis
+            issues = [
+                {
+                    id: Date.now() - 172800000, // 2 hari yang lalu
+                    category: 'debt',
+                    description: 'Hutang kartu kredit menumpuk dengan bunga tinggi',
+                    severity: 'high',
+                    status: 'active',
+                    createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+                    solutions: [
+                        'Prioritaskan pembayaran kartu kredit dengan bunga tertinggi',
+                        'Pertimbangkan konsolidasi hutang',
+                        'Buat rencana pembayaran yang realistis'
+                    ]
+                },
+                {
+                    id: Date.now() - 432000000, // 5 hari yang lalu
+                    category: 'spending',
+                    description: 'Pengeluaran untuk makan di luar terlalu besar',
+                    severity: 'medium',
+                    status: 'resolved',
+                    createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+                    resolvedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+                    solutions: [
+                        'Buat budget khusus untuk makan di luar',
+                        'Belajar masak makanan favorit di rumah',
+                        'Batasi makan di luar maksimal 2x seminggu'
+                    ]
+                }
+            ];
+
+            chatMessages = [{
+                sender: 'ai',
+                message: 'Halo! Saya di sini untuk membantu masalah keuanganmu. Ceritakan apa yang sedang kamu hadapi, dan saya akan memberikan saran yang praktis...',
+                timestamp: new Date().toISOString()
+            }];
+
+            // Save sample data agar langsung tersedia
+            saveAllData();
+        }
+
+        // Save semua data dengan auto-save feature
+        function saveAllData() {
+            try {
+                // Save issues
+                localStorage.setItem('redflags_issues', JSON.stringify(issues));
+
+                // Save chat messages
+                localStorage.setItem('redflags_chat', JSON.stringify(chatMessages));
+
+                // Save combined data untuk backup
+                const combinedData = {
+                    issues: issues,
+                    chat: chatMessages,
+                    lastUpdated: new Date().toISOString(),
+                    version: '1.0'
+                };
+                localStorage.setItem('financial_redflags_data', JSON.stringify(combinedData));
+
+                console.log("All data saved successfully");
+            } catch (error) {
+                console.error("Error saving data:", error);
+                showNotification('Gagal menyimpan data!', 'error');
             }
         }
 
-        // Save issues to localStorage
-        function saveIssues() {
-            localStorage.setItem('redflags_issues', JSON.stringify(issues));
+        // Setup auto-save mechanism
+        let saveTimeout;
+        function setupAutoSave() {
+            // Auto-save setiap 5 detik jika ada perubahan
+            setInterval(() => {
+                if (isInitialized) {
+                    saveAllData();
+                }
+            }, 5000);
+
+            // Save sebelum window unload
+            window.addEventListener('beforeunload', () => {
+                saveAllData();
+            });
         }
 
         // Initialize event listeners
         function initializeEventListeners() {
-            // Enter key support untuk chat input
-            document.getElementById('chatInput').addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') {
-                    sendChatMessage();
-                }
-            });
-
-            // Auto-focus chat input ketika card diklik
-            document.querySelector('.chat-main-card').addEventListener('click', function () {
-                document.getElementById('chatInput').focus();
-            });
+            console.log("Initializing event listeners...");
 
             // Mobile menu toggle
             document.getElementById('mobile-menu-button').addEventListener('click', function () {
@@ -1456,7 +1632,7 @@
             // Start assessment
             document.getElementById('startAssessment').addEventListener('click', startFullAssessment);
 
-            // Quick actions
+            // Quick actions - PERBAIKAN: Fungsi sudah benar
             document.getElementById('reportIssueBtn').addEventListener('click', showReportIssueModal);
             document.getElementById('solutionsBtn').addEventListener('click', showSolutions);
             document.getElementById('progressBtn').addEventListener('click', showProgress);
@@ -1467,7 +1643,14 @@
             document.getElementById('reportIssueForm').addEventListener('submit', handleReportIssue);
 
             // Solutions modal controls
-            document.getElementById('closeSolutionsModal').addEventListener('click', closeSolutionsModal);
+            if (document.getElementById('closeSolutionsModal')) {
+                document.getElementById('closeSolutionsModal').addEventListener('click', closeSolutionsModal);
+            }
+
+            // Progress modal controls
+            if (document.getElementById('closeProgressModal')) {
+                document.getElementById('closeProgressModal').addEventListener('click', closeProgressModal);
+            }
 
             // Severity buttons
             document.querySelectorAll('.severity-btn').forEach(btn => {
@@ -1495,6 +1678,18 @@
 
             // Chat functionality
             document.getElementById('sendMessage').addEventListener('click', sendChatMessage);
+
+            // Enter key support untuk chat input
+            document.getElementById('chatInput').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    sendChatMessage();
+                }
+            });
+
+            // Setup auto-save
+            setupAutoSave();
+
+            console.log("Event listeners initialized successfully");
         }
 
         // Show quick results
@@ -1529,7 +1724,7 @@
                 };
 
                 issues.push(newIssue);
-                saveIssues();
+                saveAllData();
                 updateDashboard();
                 renderIssues();
                 updatePersonalizedAdvice();
@@ -1563,7 +1758,7 @@
             };
 
             issues.push(issue);
-            saveIssues();
+            saveAllData();
             updateDashboard();
             renderIssues();
             updatePersonalizedAdvice();
@@ -1622,17 +1817,40 @@
             return solutions[category] || solutions['other'];
         }
 
-        // Show solutions
+        // PERBAIKAN: Fungsi showSolutions yang benar
         function showSolutions() {
-            const solutionsModal = document.getElementById('solutionsModal');
+            // Buat modal solusi jika belum ada
+            if (!document.getElementById('solutionsModal')) {
+                createSolutionsModal();
+            }
+
             const solutionsList = document.getElementById('solutionsList');
-            
+
             // Clear previous solutions
             solutionsList.innerHTML = '';
-            
-            // Add solutions for each issue
-            issues.forEach(issue => {
-                if (issue.status === 'active') {
+
+            // Add solutions for each active issue
+            const activeIssues = issues.filter(issue => issue.status === 'active');
+
+            if (activeIssues.length === 0) {
+                solutionsList.innerHTML = `
+                    <div class="solution-item">
+                        <h4 class="font-semibold text-gray-800 mb-2">🎉 Selamat!</h4>
+                        <p class="text-sm text-gray-600 mb-3">Tidak ada masalah aktif yang memerlukan solusi saat ini.</p>
+                        <div class="space-y-2">
+                            <div class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <p class="text-sm">Pertahankan kebiasaan keuangan yang baik</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <p class="text-sm">Lanjutkan dengan perencanaan keuangan rutin</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                activeIssues.forEach(issue => {
                     const solutionItem = document.createElement('div');
                     solutionItem.className = 'solution-item';
                     solutionItem.innerHTML = `
@@ -1648,22 +1866,253 @@
                         </div>
                     `;
                     solutionsList.appendChild(solutionItem);
-                }
-            });
-            
+                });
+            }
+
             // Show modal
-            solutionsModal.classList.remove('hidden');
+            document.getElementById('solutionsModal').classList.remove('hidden');
             showNotification('Membuka library solusi keuangan...', 'info');
+        }
+
+        // Fungsi untuk membuat modal solusi
+        function createSolutionsModal() {
+            const modalHTML = `
+                <div id="solutionsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+                    <div class="morphic-card max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-xl font-bold text-gray-800">Library Solusi Keuangan</h3>
+                                <button id="closeSolutionsModal" class="text-gray-500 hover:text-gray-700 micro-celebrate">
+                                    <i class="fas fa-times text-xl"></i>
+                                </button>
+                            </div>
+                            <div id="solutionsList" class="space-y-4">
+                                <!-- Solutions will be generated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+            // Add event listener untuk close button
+            document.getElementById('closeSolutionsModal').addEventListener('click', closeSolutionsModal);
         }
 
         // Close solutions modal
         function closeSolutionsModal() {
-            document.getElementById('solutionsModal').classList.add('hidden');
+            if (document.getElementById('solutionsModal')) {
+                document.getElementById('solutionsModal').classList.add('hidden');
+            }
         }
 
-        // Show progress
+        // PERBAIKAN: Fungsi showProgress yang benar
         function showProgress() {
-            showNotification('Membuka laporan progress...', 'info');
+            // Buat modal progress jika belum ada
+            if (!document.getElementById('progressModal')) {
+                createProgressModal();
+            }
+
+            const progressContent = document.getElementById('progressReportContent');
+
+            // Clear previous content
+            progressContent.innerHTML = '';
+
+            // Calculate statistics
+            const totalIssues = issues.length;
+            const activeIssues = issues.filter(issue => issue.status === 'active').length;
+            const resolvedIssues = issues.filter(issue => issue.status === 'resolved').length;
+            const resolutionRate = totalIssues > 0 ? Math.round((resolvedIssues / totalIssues) * 100) : 0;
+
+            // Get issues by severity
+            const highSeverity = issues.filter(issue => issue.severity === 'high').length;
+            const mediumSeverity = issues.filter(issue => issue.severity === 'medium').length;
+            const lowSeverity = issues.filter(issue => issue.severity === 'low').length;
+
+            // Get issues by category
+            const categories = {};
+            issues.forEach(issue => {
+                categories[issue.category] = (categories[issue.category] || 0) + 1;
+            });
+
+            // Calculate health score
+            const healthScore = Math.max(0, 100 - (activeIssues * 15 + highSeverity * 20));
+
+            // Create progress report
+            progressContent.innerHTML = `
+                <div class="space-y-4">
+                    <!-- Progress Summary -->
+                    <div class="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
+                        <h4 class="font-semibold text-gray-800 mb-3">📊 Ringkasan Progress</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="text-center">
+                                <p class="text-sm text-gray-600">Total Masalah</p>
+                                <p class="text-xl font-bold text-gray-800">${totalIssues}</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-sm text-gray-600">Terselesaikan</p>
+                                <p class="text-xl font-bold text-green-600">${resolvedIssues}</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-sm text-gray-600">Rate Penyelesaian</p>
+                                <p class="text-xl font-bold text-blue-600">${resolutionRate}%</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-sm text-gray-600">Skor Kesehatan</p>
+                                <p class="text-xl font-bold ${healthScore > 70 ? 'text-green-600' : healthScore > 40 ? 'text-yellow-600' : 'text-red-600'}">${healthScore}%</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Severity Distribution -->
+                    <div class="p-4 bg-gradient-to-r from-red-50 to-orange-50 rounded-xl">
+                        <h4 class="font-semibold text-gray-800 mb-3">⚠️ Distribusi Keparahan</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-700">Serius</span>
+                                <div class="flex items-center">
+                                    <div class="w-32 bg-gray-200 rounded-full h-2 mr-2">
+                                        <div class="bg-red-500 h-2 rounded-full" style="width: ${totalIssues > 0 ? (highSeverity / totalIssues) * 100 : 0}%"></div>
+                                    </div>
+                                    <span class="text-sm font-semibold text-red-600">${highSeverity}</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-700">Sedang</span>
+                                <div class="flex items-center">
+                                    <div class="w-32 bg-gray-200 rounded-full h-2 mr-2">
+                                        <div class="bg-yellow-500 h-2 rounded-full" style="width: ${totalIssues > 0 ? (mediumSeverity / totalIssues) * 100 : 0}%"></div>
+                                    </div>
+                                    <span class="text-sm font-semibold text-yellow-600">${mediumSeverity}</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-700">Ringan</span>
+                                <div class="flex items-center">
+                                    <div class="w-32 bg-gray-200 rounded-full h-2 mr-2">
+                                        <div class="bg-green-500 h-2 rounded-full" style="width: ${totalIssues > 0 ? (lowSeverity / totalIssues) * 100 : 0}%"></div>
+                                    </div>
+                                    <span class="text-sm font-semibold text-green-600">${lowSeverity}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Achievements -->
+                    <div class="p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl">
+                        <h4 class="font-semibold text-gray-800 mb-3">🏆 Pencapaian Terbaru</h4>
+                        <div class="space-y-2">
+                            ${resolvedIssues > 0 ? `
+                                <div class="flex items-start">
+                                    <i class="fas fa-trophy text-yellow-500 mt-1 mr-2"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">${resolvedIssues} masalah berhasil diselesaikan!</p>
+                                        <p class="text-xs text-gray-600">Terus pertahankan progress yang baik</p>
+                                    </div>
+                                </div>
+                            ` : ''}
+                            
+                            ${activeIssues === 0 ? `
+                                <div class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">Semua masalah telah terselesaikan!</p>
+                                        <p class="text-xs text-gray-600">Status keuangan dalam kondisi baik</p>
+                                    </div>
+                                </div>
+                            ` : ''}
+                            
+                            ${resolutionRate >= 50 ? `
+                                <div class="flex items-start">
+                                    <i class="fas fa-star text-purple-500 mt-1 mr-2"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">Rate penyelesaian ${resolutionRate}%</p>
+                                        <p class="text-xs text-gray-600">Konsistensi yang sangat baik</p>
+                                    </div>
+                                </div>
+                            ` : ''}
+                            
+                            ${resolutionRate < 50 && totalIssues > 0 ? `
+                                <div class="flex items-start">
+                                    <i class="fas fa-bullseye text-blue-500 mt-1 mr-2"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">Fokus pada penyelesaian masalah</p>
+                                        <p class="text-xs text-gray-600">Targetkan penyelesaian 1 masalah per minggu</p>
+                                    </div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                    
+                    <!-- Recommendations -->
+                    <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl">
+                        <h4 class="font-semibold text-gray-800 mb-3">💡 Rekomendasi</h4>
+                        <div class="space-y-2">
+                            ${activeIssues > 0 ? `
+                                <div class="flex items-start">
+                                    <i class="fas fa-lightbulb text-yellow-500 mt-1 mr-2"></i>
+                                    <p class="text-sm">Prioritaskan penyelesaian ${activeIssues} masalah yang masih aktif</p>
+                                </div>
+                            ` : `
+                                <div class="flex items-start">
+                                    <i class="fas fa-lightbulb text-green-500 mt-1 mr-2"></i>
+                                    <p class="text-sm">Pertahankan kebiasaan baik dengan review keuangan rutin</p>
+                                </div>
+                            `}
+                            
+                            ${highSeverity > 0 ? `
+                                <div class="flex items-start">
+                                    <i class="fas fa-exclamation-triangle text-red-500 mt-1 mr-2"></i>
+                                    <p class="text-sm">Fokus pada ${highSeverity} masalah serius terlebih dahulu</p>
+                                </div>
+                            ` : ''}
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-chart-line text-blue-500 mt-1 mr-2"></i>
+                                <p class="text-sm">Review progress mingguan untuk menjaga konsistensi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Show modal
+            document.getElementById('progressModal').classList.remove('hidden');
+            showNotification('Membuat laporan progress...', 'info');
+        }
+
+        // Fungsi untuk membuat modal progress
+        function createProgressModal() {
+            const modalHTML = `
+                <div id="progressModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+                    <div class="morphic-card max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-xl font-bold text-gray-800">Progress Report</h3>
+                                <button id="closeProgressModal" class="text-gray-500 hover:text-gray-700 micro-celebrate">
+                                    <i class="fas fa-times text-xl"></i>
+                                </button>
+                            </div>
+                            <div id="progressReportContent" class="space-y-4">
+                                <!-- Progress report will be generated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+            // Add event listener untuk close button
+            document.getElementById('closeProgressModal').addEventListener('click', closeProgressModal);
+        }
+
+        // Close progress modal
+        function closeProgressModal() {
+            if (document.getElementById('progressModal')) {
+                document.getElementById('progressModal').classList.add('hidden');
+            }
         }
 
         // Send chat message
@@ -1690,7 +2139,10 @@
 
                 // Update personalized advice based on conversation
                 updatePersonalizedAdviceBasedOnChat();
-            }, 1500 + Math.random() * 1000); // Random delay untuk natural feel
+
+                // Save chat
+                saveAllData();
+            }, 1500 + Math.random() * 1000);
         }
 
         // Add chat message
@@ -1830,11 +2282,24 @@
                 chatContainer.removeChild(chatContainer.lastChild);
             }
 
-            chatMessages = [{
-                sender: 'ai',
-                message: 'Halo! Saya di sini untuk membantu masalah keuanganmu. Ceritakan apa yang sedang kamu hadapi, dan saya akan memberikan saran yang praktis...',
-                timestamp: new Date().toISOString()
-            }];
+            // Jika chatMessages kosong, tambahkan welcome message
+            if (chatMessages.length === 0) {
+                chatMessages = [{
+                    sender: 'ai',
+                    message: 'Halo! Saya di sini untuk membantu masalah keuanganmu. Ceritakan apa yang sedang kamu hadapi, dan saya akan memberikan saran yang praktis...',
+                    timestamp: new Date().toISOString()
+                }];
+            }
+
+            // Render chat messages yang sudah ada
+            chatMessages.forEach(msg => {
+                if (msg.sender !== 'ai' || msg.message !== chatContainer.firstChild.querySelector('p').textContent) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = `chat-bubble ${msg.sender}-bubble`;
+                    messageDiv.innerHTML = `<p class="text-sm">${msg.message}</p>`;
+                    chatContainer.appendChild(messageDiv);
+                }
+            });
 
             scrollChatToBottom();
         }
@@ -2002,7 +2467,7 @@
                 issue.status = 'resolved';
                 issue.resolvedAt = new Date().toISOString();
 
-                saveIssues();
+                saveAllData();
                 updateDashboard();
                 renderIssues();
                 updatePersonalizedAdvice();
@@ -2018,7 +2483,7 @@
         function deleteIssue(issueId) {
             if (confirm('Apakah Anda yakin ingin menghapus masalah ini?')) {
                 issues = issues.filter(i => i.id !== issueId);
-                saveIssues();
+                saveAllData();
                 updateDashboard();
                 renderIssues();
                 updatePersonalizedAdvice();
@@ -2144,6 +2609,12 @@
                 }, 300);
             });
         }
+
+        // Make functions globally accessible
+        window.resolveIssue = resolveIssue;
+        window.deleteIssue = deleteIssue;
+        window.showSolutions = showSolutions;
+        window.showProgress = showProgress;
     </script>
 </body>
 
