@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>SmartDebt - GenZ Finance Hub</title>
     <link rel="stylesheet" href="../css/main.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -520,6 +521,119 @@
 
         .stagger-5 {
             animation-delay: 0.5s;
+        }
+
+        /* SOLUSI RESPONSIVE PALING SEDERHANA */
+        @media (max-width: 768px) {
+
+            /* 1. Buat semua jadi satu kolom */
+            .grid,
+            .grid-cols-1,
+            .grid-cols-2,
+            .grid-cols-3,
+            .grid-cols-4,
+            .md\:grid-cols-2,
+            .lg\:grid-cols-3 {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* 2. Kurangi padding */
+            .p-6 {
+                padding: 1rem !important;
+            }
+
+            .py-8 {
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+
+            .px-4 {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+
+            /* 3. Perkecil font */
+            .text-4xl {
+                font-size: 1.5rem !important;
+            }
+
+            .text-2xl {
+                font-size: 1.25rem !important;
+            }
+
+            .text-xl {
+                font-size: 1.125rem !important;
+            }
+
+            /* 4. Buat button dan input full width */
+            button,
+            .btn-primary,
+            .btn-secondary,
+            input,
+            select {
+                width: 100% !important;
+                margin-bottom: 0.5rem;
+            }
+
+            /* 5. Sembunyikan yang tidak perlu di mobile */
+            .floating-shapes {
+                display: none !important;
+            }
+
+            /* 6. Nonaktifkan efek hover berlebihan */
+            *:hover {
+                transform: none !important;
+            }
+        }
+
+        /* Untuk layar sangat kecil */
+        @media (max-width: 360px) {
+            body {
+                font-size: 14px !important;
+            }
+
+            .text-4xl {
+                font-size: 1.25rem !important;
+            }
+
+            .text-2xl {
+                font-size: 1.125rem !important;
+            }
+        }
+
+        /* Perbaiki overflow umum */
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Pastikan konten tidak keluar layar */
+        * {
+            max-width: 100%;
+        }
+
+        /* SOLUSI NAVBAR FIXED PALING PASTI */
+        nav {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 1000 !important;
+            width: 100% !important;
+        }
+
+        /* Beri padding atas pada konten utama */
+        main {
+            padding-top: 80px !important;
+            /* Sesuaikan dengan tinggi navbar */
+        }
+
+        /* Untuk mobile */
+        @media (max-width: 768px) {
+            main {
+                padding-top: 70px !important;
+            }
         }
     </style>
 </head>
@@ -1047,9 +1161,13 @@
         function loadUserData() {
             const userSession = localStorage.getItem('userSession');
             if (userSession) {
-                const session = JSON.parse(userSession);
-                currentUserId = session.userId;
-                document.getElementById('userName').textContent = session.username || 'User';
+                try {
+                    const session = JSON.parse(userSession);
+                    currentUserId = session.userId;
+                    document.getElementById('userName').textContent = session.username || 'User';
+                } catch (error) {
+                    console.error('Error parsing user session:', error);
+                }
             }
         }
 
@@ -1057,9 +1175,13 @@
         function loadDebts() {
             const saved = localStorage.getItem('smartdebt_debts');
             if (saved) {
-                debts = JSON.parse(saved);
+                try {
+                    debts = JSON.parse(saved);
+                } catch (error) {
+                    console.error('Error parsing debts:', error);
+                    debts = [];
+                }
             } else {
-                // Initialize with empty array - no default data
                 debts = [];
                 saveDebts();
             }
@@ -1073,36 +1195,71 @@
         // Initialize event listeners
         function initializeEventListeners() {
             // Mobile menu toggle
-            document.getElementById('mobile-menu-button').addEventListener('click', function () {
-                const mobileMenu = document.getElementById('mobile-menu');
-                mobileMenu.classList.toggle('hidden');
-            });
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', function () {
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu) {
+                        mobileMenu.classList.toggle('hidden');
+                        const icon = this.querySelector('i');
+                        if (icon) {
+                            icon.classList.toggle('fa-bars');
+                            icon.classList.toggle('fa-times');
+                        }
+                    }
+                });
+            }
 
             // Debt calculator form
-            document.getElementById('debtCalculatorForm').addEventListener('submit', handleDebtCalculation);
+            const debtCalculatorForm = document.getElementById('debtCalculatorForm');
+            if (debtCalculatorForm) {
+                debtCalculatorForm.addEventListener('submit', handleDebtCalculation);
+            }
 
             // Quick actions
-            document.getElementById('addDebtBtn').addEventListener('click', showAddDebtModal);
-            document.getElementById('debtStrategyBtn').addEventListener('click', showDebtStrategy);
-            document.getElementById('exportDebtBtn').addEventListener('click', exportDebtReport);
+            const addDebtBtn = document.getElementById('addDebtBtn');
+            if (addDebtBtn) {
+                addDebtBtn.addEventListener('click', showAddDebtModal);
+            }
+
+            const debtStrategyBtn = document.getElementById('debtStrategyBtn');
+            if (debtStrategyBtn) {
+                debtStrategyBtn.addEventListener('click', showDebtStrategy);
+            }
+
+            const exportDebtBtn = document.getElementById('exportDebtBtn');
+            if (exportDebtBtn) {
+                exportDebtBtn.addEventListener('click', showExportOptions);
+            }
 
             // Modal controls
-            document.getElementById('closeDebtModal').addEventListener('click', closeAddDebtModal);
-            document.getElementById('cancelDebt').addEventListener('click', closeAddDebtModal);
-            document.getElementById('addDebtForm').addEventListener('submit', handleAddDebt);
+            const closeDebtModal = document.getElementById('closeDebtModal');
+            if (closeDebtModal) {
+                closeDebtModal.addEventListener('click', closeAddDebtModal);
+            }
 
-            // Filter and sort controls
-            document.getElementById('filterDebtsBtn').addEventListener('click', toggleFilterOptions);
+            const cancelDebt = document.getElementById('cancelDebt');
+            if (cancelDebt) {
+                cancelDebt.addEventListener('click', closeAddDebtModal);
+            }
+
+            const addDebtForm = document.getElementById('addDebtForm');
+            if (addDebtForm) {
+                addDebtForm.addEventListener('submit', handleAddDebt);
+            }
 
             // Set default start date to today
-            document.getElementById('startDate').value = new Date().toISOString().split('T')[0];
+            const startDateInput = document.getElementById('startDate');
+            if (startDateInput) {
+                startDateInput.value = new Date().toISOString().split('T')[0];
+            }
         }
 
         // Handle debt calculation
         function handleDebtCalculation(e) {
             e.preventDefault();
 
-            const name = document.getElementById('debtName').value;
+            const name = document.getElementById('debtName').value.trim();
             const amount = parseFloat(document.getElementById('debtAmount').value);
             const interestRate = parseFloat(document.getElementById('interestRate').value);
             const term = parseInt(document.getElementById('loanTerm').value);
@@ -1110,6 +1267,11 @@
 
             if (!name || !amount || !interestRate || !term) {
                 showNotification('Mohon lengkapi semua field!', 'error');
+                return;
+            }
+
+            if (amount <= 0 || interestRate < 0 || term <= 0) {
+                showNotification('Mohon masukkan nilai yang valid!', 'error');
                 return;
             }
 
@@ -1128,7 +1290,8 @@
                 monthlyPayment: result.monthlyPayment,
                 totalInterest: result.totalInterest,
                 status: 'active',
-                paidMonths: 0
+                paidMonths: 0,
+                createdAt: new Date().toISOString()
             };
 
             debts.push(debt);
@@ -1138,7 +1301,13 @@
             updateCharts();
             updateDebtInsights();
 
-            showNotification('Hutang berhasil ditambahkan!', 'success');
+            showNotification('Hutang berhasil ditambahkan! 🎉', 'success');
+
+            // Reset form
+            document.getElementById('debtName').value = '';
+            document.getElementById('debtAmount').value = '';
+            document.getElementById('interestRate').value = '';
+            document.getElementById('loanTerm').value = '';
         }
 
         // Calculate debt based on payment type
@@ -1192,44 +1361,80 @@
         // Display calculation result
         function displayCalculationResult(result) {
             const resultsDiv = document.getElementById('quickResults');
-            document.getElementById('resultMonthly').textContent = formatCurrency(result.monthlyPayment);
-            document.getElementById('resultInterest').textContent = formatCurrency(result.totalInterest);
-            document.getElementById('resultTotal').textContent = formatCurrency(result.totalPayment);
+            if (resultsDiv) {
+                document.getElementById('resultMonthly').textContent = formatCurrency(result.monthlyPayment);
+                document.getElementById('resultInterest').textContent = formatCurrency(result.totalInterest);
+                document.getElementById('resultTotal').textContent = formatCurrency(result.totalPayment);
 
-            resultsDiv.classList.remove('hidden');
-            resultsDiv.classList.add('spring-bounce');
+                resultsDiv.classList.remove('hidden');
+
+                // Auto hide after 10 seconds
+                setTimeout(() => {
+                    resultsDiv.classList.add('hidden');
+                }, 10000);
+            }
         }
 
         // Show add debt modal
         function showAddDebtModal() {
-            document.getElementById('addDebtModal').classList.remove('hidden');
+            const modal = document.getElementById('addDebtModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.style.display = 'flex';
+            }
         }
 
         // Close add debt modal
         function closeAddDebtModal() {
-            document.getElementById('addDebtModal').classList.add('hidden');
+            const modal = document.getElementById('addDebtModal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.style.display = 'none';
+
+                // Reset form
+                document.getElementById('addDebtForm').reset();
+                document.getElementById('startDate').value = new Date().toISOString().split('T')[0];
+            }
         }
 
         // Handle add debt
         function handleAddDebt(e) {
             e.preventDefault();
 
-            const debt = {
-                id: Date.now(),
-                name: document.getElementById('modalDebtName').value,
-                amount: parseFloat(document.getElementById('modalDebtAmount').value),
-                interestRate: parseFloat(document.getElementById('modalInterestRate').value),
-                term: parseInt(document.getElementById('modalLoanTerm').value),
-                startDate: document.getElementById('startDate').value,
-                type: document.getElementById('modalPaymentType').value,
-                status: 'active',
-                paidMonths: 0
-            };
+            const name = document.getElementById('modalDebtName').value.trim();
+            const amount = parseFloat(document.getElementById('modalDebtAmount').value);
+            const interestRate = parseFloat(document.getElementById('modalInterestRate').value);
+            const term = parseInt(document.getElementById('modalLoanTerm').value);
+            const startDate = document.getElementById('startDate').value;
+            const paymentType = document.getElementById('modalPaymentType').value;
+
+            if (!name || !amount || !interestRate || !term || !startDate) {
+                showNotification('Mohon lengkapi semua field!', 'error');
+                return;
+            }
+
+            if (amount <= 0 || interestRate < 0 || term <= 0) {
+                showNotification('Mohon masukkan nilai yang valid!', 'error');
+                return;
+            }
 
             // Calculate payment details
-            const calculation = calculateDebt(debt.amount, debt.interestRate, debt.term, debt.type);
-            debt.monthlyPayment = calculation.monthlyPayment;
-            debt.totalInterest = calculation.totalInterest;
+            const calculation = calculateDebt(amount, interestRate, term, paymentType);
+
+            const debt = {
+                id: Date.now(),
+                name: name,
+                amount: amount,
+                interestRate: interestRate,
+                term: term,
+                startDate: startDate,
+                type: paymentType,
+                monthlyPayment: calculation.monthlyPayment,
+                totalInterest: calculation.totalInterest,
+                status: 'active',
+                paidMonths: 0,
+                createdAt: new Date().toISOString()
+            };
 
             debts.push(debt);
             saveDebts();
@@ -1239,7 +1444,7 @@
             updateDebtInsights();
             closeAddDebtModal();
 
-            showNotification('Hutang berhasil ditambahkan!', 'success');
+            showNotification('Hutang berhasil ditambahkan! 🎉', 'success');
         }
 
         // Show debt strategy
@@ -1249,38 +1454,212 @@
                 return;
             }
 
-            const strategy = generateDebtStrategy();
-            showNotification(`Strategi: ${strategy}`, 'info');
+            const activeDebts = debts.filter(d => d.status === 'active');
+            const highInterestDebts = activeDebts.filter(d => d.interestRate > 15);
+            const totalMonthly = activeDebts.reduce((sum, d) => sum + d.monthlyPayment, 0);
+            const totalDebt = activeDebts.reduce((sum, d) => sum + d.amount, 0);
+
+            let strategyMessage = "💡 **Strategi Pelunasan Cerdas**\n\n";
+
+            if (highInterestDebts.length > 0) {
+                strategyMessage += `⚠️ **Prioritas**: Anda punya ${highInterestDebts.length} hutang dengan bunga tinggi (>15%).\n`;
+                strategyMessage += `💰 **Total bunga tinggi**: ${formatCurrency(highInterestDebts.reduce((sum, d) => sum + d.monthlyPayment, 0))}/bulan\n`;
+                strategyMessage += `🎯 **Rekomendasi**: Lunasi hutang bunga tinggi dulu untuk hemat total bunga.\n\n`;
+            } else {
+                strategyMessage += `✅ **Kondisi baik**: Tidak ada hutang dengan bunga tinggi.\n`;
+            }
+
+            strategyMessage += `📊 **Analisis Keuangan**:\n`;
+            strategyMessage += `• Total hutang aktif: ${formatCurrency(totalDebt)}\n`;
+            strategyMessage += `• Cicilan bulanan: ${formatCurrency(totalMonthly)}\n`;
+            strategyMessage += `• Jumlah hutang aktif: ${activeDebts.length}\n\n`;
+
+            strategyMessage += `💡 **Tips**:\n`;
+            strategyMessage += `• Bayar tepat waktu untuk hindari denda\n`;
+            strategyMessage += `• Jika bisa, bayar lebih dari minimum\n`;
+            strategyMessage += `• Prioritaskan hutang dengan bunga tertinggi`;
+
+            showNotification(strategyMessage, 'info');
+        }
+
+        // Show export options
+        function showExportOptions() {
+            if (debts.length === 0) {
+                showNotification('Tidak ada data hutang untuk diekspor!', 'warning');
+                return;
+            }
+
+            const activeDebts = debts.filter(d => d.status === 'active');
+            const totalAmount = activeDebts.reduce((sum, d) => sum + d.amount, 0);
+
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 fade-in';
+            modal.id = 'exportModal';
+
+            modal.innerHTML = `
+            <div class="morphic-card max-w-md w-full">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-bold text-gray-800">Ekspor Data Hutang</h3>
+                        <button onclick="closeExportModal()" class="text-gray-500 hover:text-gray-700 micro-celebrate">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl border border-blue-100">
+                            <p class="text-sm text-gray-600">Total data yang akan diekspor:</p>
+                            <p class="text-lg font-bold text-gray-800">${debts.length} hutang</p>
+                            <p class="text-sm text-gray-500">(${activeDebts.length} aktif, ${debts.length - activeDebts.length} lunas)</p>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <button onclick="exportAsCSV()" class="w-full btn-secondary text-left p-4 micro-celebrate">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                        <i class="fas fa-file-csv text-green-600"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-800">Export ke CSV</p>
+                                        <p class="text-xs text-gray-500">Format data untuk Excel</p>
+                                    </div>
+                                </div>
+                            </button>
+                            
+                            <button onclick="exportAsText()" class="w-full btn-secondary text-left p-4 micro-celebrate">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                        <i class="fas fa-file-alt text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-800">Export ke Text</p>
+                                        <p class="text-xs text-gray-500">Format mudah dibaca</p>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <button onclick="closeExportModal()" class="btn-secondary w-full micro-celebrate">
+                            Batal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+            document.body.appendChild(modal);
+        }
+
+        // Close export modal
+        function closeExportModal() {
+            const modal = document.getElementById('exportModal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        // Export as CSV
+        function exportAsCSV() {
+            const headers = ['Nama', 'Jumlah', 'Bunga%', 'Jangka', 'Cicilan/Bulan', 'Total Bunga', 'Status', 'Tanggal Mulai', 'Bulan Dibayar', 'Bulan Tersisa'];
+
+            const rows = debts.map(debt => [
+                debt.name,
+                debt.amount,
+                debt.interestRate,
+                debt.term,
+                debt.monthlyPayment,
+                debt.totalInterest,
+                debt.status === 'active' ? 'Aktif' : 'Lunas',
+                debt.startDate,
+                debt.paidMonths || 0,
+                debt.term - (debt.paidMonths || 0)
+            ]);
+
+            const csvContent = [headers, ...rows]
+                .map(row => row.map(cell => `"${cell}"`).join(','))
+                .join('\n');
+
+            const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `smartdebt_export_${new Date().toISOString().slice(0, 10)}.csv`;
+            link.click();
+
+            closeExportModal();
+            showNotification('Data berhasil diekspor ke CSV! 📄', 'success');
+        }
+
+        // Export as Text
+        function exportAsText() {
+            const activeDebts = debts.filter(d => d.status === 'active');
+            const settledDebts = debts.filter(d => d.status === 'settled');
+
+            let textContent = `LAPORAN HUTANG - SMARTDEBT\n`;
+            textContent += `Tanggal: ${new Date().toLocaleDateString('id-ID')}\n`;
+            textContent += `========================================\n\n`;
+
+            textContent += `📊 RINGKASAN\n`;
+            textContent += `Total Hutang Aktif: ${formatCurrency(activeDebts.reduce((sum, d) => sum + d.amount, 0))}\n`;
+            textContent += `Total Cicilan/Bulan: ${formatCurrency(activeDebts.reduce((sum, d) => sum + d.monthlyPayment, 0))}\n`;
+            textContent += `Hutang Aktif: ${activeDebts.length}\n`;
+            textContent += `Hutang Lunas: ${settledDebts.length}\n\n`;
+
+            textContent += `📋 DETAIL HUTANG\n`;
+            textContent += `========================================\n`;
+
+            debts.forEach((debt, index) => {
+                textContent += `\n${index + 1}. ${debt.name}\n`;
+                textContent += `   Jumlah: ${formatCurrency(debt.amount)}\n`;
+                textContent += `   Bunga: ${debt.interestRate}%\n`;
+                textContent += `   Jangka: ${debt.term} bulan\n`;
+                textContent += `   Cicilan: ${formatCurrency(debt.monthlyPayment)}/bulan\n`;
+                textContent += `   Status: ${debt.status === 'active' ? 'Aktif' : 'Lunas'}\n`;
+                textContent += `   Progress: ${Math.round((debt.paidMonths || 0) / debt.term * 100)}%\n`;
+            });
+
+            textContent += `\n💡 REKOMENDASI\n`;
+            textContent += `========================================\n`;
+            textContent += generateDebtStrategy();
+
+            const blob = new Blob([textContent], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `smartdebt_report_${new Date().toISOString().slice(0, 10)}.txt`;
+            link.click();
+
+            closeExportModal();
+            showNotification('Laporan berhasil diekspor ke Text! 📝', 'success');
         }
 
         // Generate debt strategy
         function generateDebtStrategy() {
-            if (debts.length === 1) {
-                return "Fokus lunasi satu hutang ini dengan konsisten";
+            if (debts.length === 0) {
+                return "Mulai dengan mencatat hutang pertama Anda";
             }
 
-            const highInterestDebts = debts.filter(d => d.interestRate > 15);
+            const activeDebts = debts.filter(d => d.status === 'active');
+            if (activeDebts.length === 0) {
+                return "Semua hutang telah lunas! 🎉";
+            }
+
+            const highInterestDebts = activeDebts.filter(d => d.interestRate > 15);
+            const totalMonthly = activeDebts.reduce((sum, d) => sum + d.monthlyPayment, 0);
+
             if (highInterestDebts.length > 0) {
-                return "Prioritas lunasi hutang dengan bunga tinggi terlebih dahulu";
+                return "Fokus lunasi hutang dengan bunga tinggi terlebih dahulu untuk menghemat total bunga";
             }
 
-            const totalMonthly = debts.reduce((sum, debt) => sum + debt.monthlyPayment, 0);
             if (totalMonthly > 5000000) {
-                return "Pertimbangkan konsolidasi hutang untuk mengurangi beban bulanan";
+                return "Pertimbangkan konsolidasi hutang untuk mengurangi beban cicilan bulanan";
             }
 
-            return "Teruskan pembayaran rutin dan hindari hutang baru";
-        }
+            if (activeDebts.length > 3) {
+                return "Gunakan metode snowball: lunasi hutang terkecil dulu untuk momentum positif";
+            }
 
-        // Export debt report
-        function exportDebtReport() {
-            showNotification('Laporan hutang berhasil diekspor!', 'success');
-        }
-
-        // Toggle filter options
-        function toggleFilterOptions() {
-            // Implementation for filter options
-            showNotification('Filter diterapkan!', 'info');
+            return "Teruskan pembayaran rutin dan hindari penambahan hutang baru";
         }
 
         // Update dashboard statistics
@@ -1290,50 +1669,22 @@
             const totalInterest = activeDebts.reduce((sum, debt) => sum + debt.totalInterest, 0);
             const totalMonthly = activeDebts.reduce((sum, debt) => sum + debt.monthlyPayment, 0);
 
-            // Animate counter values
-            animateCounter('totalActiveDebt', totalAmount);
-            animateCounter('totalDebt', totalAmount);
-            animateCounter('activeDebts', activeDebts.length);
-            animateCounter('totalInterest', totalInterest);
-            animateCounter('monthlyPayment', Math.round(totalMonthly));
+            // Update display
+            document.getElementById('totalActiveDebt').textContent = formatCurrency(totalAmount);
+            document.getElementById('totalDebt').textContent = formatCurrency(totalAmount);
+            document.getElementById('activeDebts').textContent = activeDebts.length;
+            document.getElementById('totalInterest').textContent = formatCurrency(totalInterest);
+            document.getElementById('monthlyPayment').textContent = formatCurrency(totalMonthly);
 
             document.getElementById('activeLoans').textContent = `${activeDebts.length} pinjaman`;
-        }
-
-        // Animate counter
-        function animateCounter(elementId, targetValue) {
-            const element = document.getElementById(elementId);
-            const currentValue = parseFloat(element.textContent.replace(/[^\d]/g, '') || 0);
-            const duration = 1000;
-            const steps = 60;
-            const stepValue = (targetValue - currentValue) / steps;
-            let currentStep = 0;
-
-            const timer = setInterval(() => {
-                currentStep++;
-                const newValue = currentValue + (stepValue * currentStep);
-
-                if (elementId.includes('Debt') || elementId.includes('Payment') || elementId.includes('Interest')) {
-                    element.textContent = formatCurrency(Math.round(newValue));
-                } else {
-                    element.textContent = Math.round(newValue);
-                }
-
-                if (currentStep >= steps) {
-                    clearInterval(timer);
-                    if (elementId.includes('Debt') || elementId.includes('Payment') || elementId.includes('Interest')) {
-                        element.textContent = formatCurrency(targetValue);
-                    } else {
-                        element.textContent = targetValue;
-                    }
-                }
-            }, duration / steps);
         }
 
         // Render debts
         function renderDebts() {
             const container = document.getElementById('debtList');
             const emptyState = document.getElementById('emptyState');
+
+            if (!container || !emptyState) return;
 
             if (debts.length === 0) {
                 container.innerHTML = '';
@@ -1343,93 +1694,111 @@
 
             emptyState.classList.add('hidden');
 
-            container.innerHTML = debts.map(debt => {
+            // Sort by status (active first) and date (newest first)
+            const sortedDebts = [...debts].sort((a, b) => {
+                if (a.status === 'active' && b.status !== 'active') return -1;
+                if (a.status !== 'active' && b.status === 'active') return 1;
+                return new Date(b.createdAt) - new Date(a.createdAt);
+            });
+
+            container.innerHTML = sortedDebts.map(debt => {
                 const progress = Math.min(100, (debt.paidMonths || 0) / debt.term * 100);
                 const remainingMonths = debt.term - (debt.paidMonths || 0);
+                const isActive = debt.status === 'active';
 
                 return `
-                    <div class="morphic-card p-5 slide-up debt-card" data-debt-id="${debt.id}">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg micro-celebrate">
-                                    <i class="fas fa-file-invoice-dollar text-white text-lg"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-semibold text-gray-800">${debt.name}</h3>
-                                    <p class="text-sm text-gray-500">Bunga: ${debt.interestRate}% | Jangka: ${debt.term} bulan</p>
-                                </div>
+                <div class="morphic-card p-5 slide-up debt-card" data-debt-id="${debt.id}">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-r ${isActive ? 'from-blue-500 to-purple-600' : 'from-green-500 to-emerald-600'} rounded-xl flex items-center justify-center shadow-lg micro-celebrate">
+                                <i class="fas ${isActive ? 'fa-file-invoice-dollar' : 'fa-check-circle'} text-white text-lg"></i>
                             </div>
-                            <div class="text-right">
-                                <p class="font-bold text-lg text-gray-800">${formatCurrency(debt.amount)}</p>
-                                <p class="text-sm text-gray-500">${formatCurrency(debt.monthlyPayment)}/bln</p>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">${debt.name}</h3>
+                                <p class="text-sm text-gray-500">Bunga: ${debt.interestRate}% | Jangka: ${debt.term} bulan</p>
                             </div>
                         </div>
-                        
-                        <div class="mb-4">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-medium text-gray-600">Progress Pelunasan</span>
-                                <span class="text-sm font-medium text-gray-800">${Math.round(progress)}%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: ${progress}%"></div>
-                            </div>
-                            <div class="flex justify-between mt-2">
-                                <span class="text-xs text-green-600">Sisa: ${remainingMonths} bulan</span>
-                                <span class="text-xs text-gray-500">Total Bunga: ${formatCurrency(debt.totalInterest)}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-                            <div class="flex items-center space-x-2">
-                                <span class="status-indicator bg-green-500"></span>
-                                <span class="text-sm text-gray-600">Aktif</span>
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <button onclick="makePayment(${debt.id})" class="text-sm px-4 py-2 bg-green-100 text-green-600 rounded-xl hover:bg-green-200 transition-all duration-300 micro-celebrate">
-                                    <i class="fas fa-money-bill-wave mr-1"></i>Bayar
-                                </button>
-                                <button onclick="deleteDebt(${debt.id})" class="text-gray-500 hover:text-red-600 p-2 rounded-lg transition-all duration-300 micro-celebrate">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
+                        <div class="text-right">
+                            <p class="font-bold text-lg text-gray-800">${formatCurrency(debt.amount)}</p>
+                            <p class="text-sm text-gray-500">${formatCurrency(debt.monthlyPayment)}/bln</p>
                         </div>
                     </div>
-                `;
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-medium text-gray-600">Progress Pelunasan</span>
+                            <span class="text-sm font-medium text-gray-800">${Math.round(progress)}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progress}%"></div>
+                        </div>
+                        <div class="flex justify-between mt-2">
+                            <span class="text-xs ${isActive ? 'text-green-600' : 'text-gray-500'}">
+                                ${isActive ? `Sisa: ${remainingMonths} bulan` : 'Lunas'}
+                            </span>
+                            <span class="text-xs text-gray-500">Total Bunga: ${formatCurrency(debt.totalInterest)}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                        <div class="flex items-center space-x-2">
+                            <span class="status-indicator ${isActive ? 'bg-green-500' : 'bg-gray-400'}"></span>
+                            <span class="text-sm text-gray-600">${isActive ? 'Aktif' : 'Lunas'}</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            ${isActive ? `
+                            <button onclick="makePayment(${debt.id})" class="text-sm px-4 py-2 bg-green-100 text-green-600 rounded-xl hover:bg-green-200 transition-all duration-300 micro-celebrate">
+                                <i class="fas fa-money-bill-wave mr-1"></i>Bayar
+                            </button>
+                            ` : ''}
+                            <button onclick="deleteDebt(${debt.id})" class="text-gray-500 hover:text-red-600 p-2 rounded-lg transition-all duration-300 micro-celebrate">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
             }).join('');
         }
 
         // Make payment
         function makePayment(debtId) {
             const debt = debts.find(d => d.id === debtId);
-            if (debt) {
-                debt.paidMonths = (debt.paidMonths || 0) + 1;
-
-                if (debt.paidMonths >= debt.term) {
-                    debt.status = 'settled';
-                    showNotification(`Hutang "${debt.name}" telah lunas! 🎉`, 'success');
-                } else {
-                    showNotification(`Pembayaran untuk "${debt.name}" berhasil!`, 'success');
-                }
-
-                saveDebts();
-                updateDashboard();
-                renderDebts();
-                updateCharts();
-                updateDebtInsights();
+            if (!debt) {
+                showNotification('Hutang tidak ditemukan', 'error');
+                return;
             }
+
+            debt.paidMonths = (debt.paidMonths || 0) + 1;
+
+            if (debt.paidMonths >= debt.term) {
+                debt.status = 'settled';
+                showNotification(`Selamat! Hutang "${debt.name}" telah lunas! 🎉`, 'success');
+            } else {
+                showNotification(`Pembayaran untuk "${debt.name}" berhasil dicatat!`, 'success');
+            }
+
+            saveDebts();
+            updateDashboard();
+            renderDebts();
+            updateCharts();
+            updateDebtInsights();
         }
 
         // Delete debt
         function deleteDebt(debtId) {
-            if (confirm('Apakah Anda yakin ingin menghapus hutang ini?')) {
-                debts = debts.filter(d => d.id !== debtId);
-                saveDebts();
-                updateDashboard();
-                renderDebts();
-                updateCharts();
-                updateDebtInsights();
-                showNotification('Hutang berhasil dihapus!', 'success');
+            if (!confirm('Apakah Anda yakin ingin menghapus hutang ini?')) {
+                return;
             }
+
+            debts = debts.filter(d => d.id !== debtId);
+            saveDebts();
+            updateDashboard();
+            renderDebts();
+            updateCharts();
+            updateDebtInsights();
+
+            showNotification('Hutang berhasil dihapus!', 'success');
         }
 
         // Initialize charts
@@ -1440,20 +1809,29 @@
 
         // Update debt distribution chart
         function updateDebtDistributionChart() {
-            const ctx = document.getElementById('debtDistributionChart').getContext('2d');
+            const ctx = document.getElementById('debtDistributionChart');
+            if (!ctx) return;
+
+            const activeDebts = debts.filter(debt => debt.status === 'active');
 
             if (debtChart) {
                 debtChart.destroy();
             }
 
-            const activeDebts = debts.filter(debt => debt.status === 'active');
-
             if (activeDebts.length === 0) {
-                // Show empty state
+                // Clear canvas and show message
+                const canvas = ctx;
+                const context = canvas.getContext('2d');
+                context.clearRect(0, 0, canvas.width, canvas.height);
+
+                context.fillStyle = '#9ca3af';
+                context.font = '14px Arial';
+                context.textAlign = 'center';
+                context.fillText('Tidak ada data hutang', canvas.width / 2, canvas.height / 2);
                 return;
             }
 
-            debtChart = new Chart(ctx, {
+            debtChart = new Chart(ctx.getContext('2d'), {
                 type: 'doughnut',
                 data: {
                     labels: activeDebts.map(debt => debt.name),
@@ -1492,26 +1870,34 @@
 
         // Update payment schedule chart
         function updatePaymentScheduleChart() {
-            const ctx = document.getElementById('paymentScheduleChart').getContext('2d');
+            const ctx = document.getElementById('paymentScheduleChart');
+            if (!ctx) return;
+
+            const activeDebts = debts.filter(debt => debt.status === 'active');
 
             if (paymentChart) {
                 paymentChart.destroy();
             }
 
-            const activeDebts = debts.filter(debt => debt.status === 'active');
-
             if (activeDebts.length === 0) {
-                // Show empty state
+                // Clear canvas and show message
+                const canvas = ctx;
+                const context = canvas.getContext('2d');
+                context.clearRect(0, 0, canvas.width, canvas.height);
+
+                context.fillStyle = '#9ca3af';
+                context.font = '14px Arial';
+                context.textAlign = 'center';
+                context.fillText('Tidak ada jadwal pembayaran', canvas.width / 2, canvas.height / 2);
                 return;
             }
 
-            // Sample data for payment schedule
-            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'];
-            const payments = months.map((_, index) =>
-                activeDebts.reduce((sum, debt) => sum + debt.monthlyPayment, 0)
-            );
+            // Calculate payments for next 6 months
+            const months = ['Bulan 1', 'Bulan 2', 'Bulan 3', 'Bulan 4', 'Bulan 5', 'Bulan 6'];
+            const totalMonthly = activeDebts.reduce((sum, d) => sum + d.monthlyPayment, 0);
+            const payments = months.map(() => totalMonthly);
 
-            paymentChart = new Chart(ctx, {
+            paymentChart = new Chart(ctx.getContext('2d'), {
                 type: 'line',
                 data: {
                     labels: months,
@@ -1563,6 +1949,8 @@
             const insightsContainer = document.getElementById('debtInsights');
             const emptyInsights = document.getElementById('emptyInsights');
 
+            if (!insightsContainer || !emptyInsights) return;
+
             if (debts.length === 0) {
                 insightsContainer.innerHTML = '';
                 emptyInsights.classList.remove('hidden');
@@ -1572,22 +1960,24 @@
             emptyInsights.classList.add('hidden');
 
             const activeDebts = debts.filter(debt => debt.status === 'active');
+            const settledDebts = debts.filter(debt => debt.status === 'settled');
             const totalMonthly = activeDebts.reduce((sum, debt) => sum + debt.monthlyPayment, 0);
             const totalDebt = activeDebts.reduce((sum, debt) => sum + debt.amount, 0);
-            const avgInterest = activeDebts.reduce((sum, debt) => sum + debt.interestRate, 0) / activeDebts.length;
+            const avgInterest = activeDebts.length > 0 ?
+                activeDebts.reduce((sum, debt) => sum + debt.interestRate, 0) / activeDebts.length : 0;
 
             const insights = [
                 {
                     icon: 'fa-chart-line',
                     color: 'from-blue-100 to-purple-100 text-blue-600',
                     title: 'Beban Bulanan',
-                    description: `Total cicilan bulanan Anda ${formatCurrency(totalMonthly)}`
+                    description: `Total cicilan: ${formatCurrency(totalMonthly)}`
                 },
                 {
                     icon: 'fa-percentage',
                     color: 'from-amber-100 to-orange-100 text-amber-600',
                     title: 'Rata-rata Bunga',
-                    description: `Bunga rata-rata ${avgInterest.toFixed(1)}% per tahun`
+                    description: `${avgInterest.toFixed(1)}% per tahun`
                 },
                 {
                     icon: 'fa-calendar',
@@ -1598,20 +1988,21 @@
             ];
 
             insightsContainer.innerHTML = insights.map((insight, index) => `
-                <div class="flex items-start space-x-3 p-3 bg-gradient-to-r ${insight.color} rounded-2xl border border-white micro-celebrate stagger-item stagger-${index + 1}">
-                    <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
-                        <i class="fas ${insight.icon}"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h4 class="font-semibold text-gray-800 mb-1">${insight.title}</h4>
-                        <p class="text-sm text-gray-600">${insight.description}</p>
-                    </div>
+            <div class="flex items-start space-x-3 p-3 bg-gradient-to-r ${insight.color} rounded-2xl border border-white micro-celebrate stagger-item stagger-${index + 1}">
+                <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                    <i class="fas ${insight.icon}"></i>
                 </div>
-            `).join('');
+                <div class="flex-1">
+                    <h4 class="font-semibold text-gray-800 mb-1">${insight.title}</h4>
+                    <p class="text-sm text-gray-600">${insight.description}</p>
+                </div>
+            </div>
+        `).join('');
         }
 
         // Utility functions
         function formatCurrency(amount) {
+            if (!amount && amount !== 0) return 'Rp 0';
             return new Intl.NumberFormat('id-ID', {
                 style: 'currency',
                 currency: 'IDR',
@@ -1622,6 +2013,8 @@
 
         function showNotification(message, type = 'info') {
             const container = document.getElementById('notificationContainer');
+            if (!container) return;
+
             const notification = document.createElement('div');
 
             const colors = {
@@ -1631,18 +2024,18 @@
                 info: 'bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 text-blue-700 border-l-blue-500'
             };
 
-            notification.className = `notification ${colors[type]}`;
+            notification.className = `notification ${colors[type] || colors.info}`;
             notification.innerHTML = `
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                        <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle'} mr-3 text-lg"></i>
-                        <span class="text-sm font-medium">${message}</span>
-                    </div>
-                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-gray-400 hover:text-gray-600 micro-celebrate">
-                        <i class="fas fa-times"></i>
-                    </button>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle'} mr-3 text-lg"></i>
+                    <span class="text-sm font-medium">${message}</span>
                 </div>
-            `;
+                <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-gray-400 hover:text-gray-600 micro-celebrate">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        `;
 
             container.appendChild(notification);
 
@@ -1653,6 +2046,36 @@
                 }
             }, 5000);
         }
+
+        // Pastikan navbar fixed
+        function fixNavbar() {
+            const nav = document.querySelector('nav');
+            const main = document.querySelector('main');
+
+            if (!nav || !main) return;
+
+            // Set position fixed
+            nav.style.position = 'fixed';
+            nav.style.top = '0';
+            nav.style.left = '0';
+            nav.style.right = '0';
+            nav.style.zIndex = '1000';
+            nav.style.width = '100%';
+
+            // Hitung tinggi navbar dan set padding
+            const navHeight = nav.offsetHeight;
+            main.style.paddingTop = navHeight + 20 + 'px';
+
+            // Update saat resize
+            window.addEventListener('resize', function () {
+                const newHeight = nav.offsetHeight;
+                main.style.paddingTop = newHeight + 20 + 'px';
+            });
+        }
+
+        // Panggil saat halaman load
+        document.addEventListener('DOMContentLoaded', fixNavbar);
+        window.addEventListener('load', fixNavbar);
     </script>
 </body>
 
